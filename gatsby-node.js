@@ -2,12 +2,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 exports.onCreateWebpackConfig = ({ getConfig, stage, rules, loaders, plugins, actions }) => {
   const config = getConfig();
-  console.log('config', config);
+  // console.log('stage', stage);
   if (stage === 'build-javascript') {
     // Use our custom entrypoint
     config.entry.app = './src/production-app.js';
     // Disable sourcemaps: https://webpack.js.org/configuration/devtool/
-    config.devtool = false;
+    // config.devtool = false;
 
     config.plugins.unshift(new CleanWebpackPlugin({
       // https://github.com/sindresorhus/del#patterns
@@ -18,6 +18,9 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, rules, loaders, plugins, ac
     const commons = config.entry.commons.filter(a => a.indexOf('.cache/app') === -1);
     commons.push('./src/app.js');
     config.entry.commons = commons;
+  } else if (stage === 'build-html') {
+    // console.log('config', config);
+    config.entry.main = './src/static-entry.js';
   }
 
   actions.replaceWebpackConfig(config);
