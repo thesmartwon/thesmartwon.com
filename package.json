@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "gatsby": "^2.3.22",
+    "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-sass": "^2.0.11",
     "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
@@ -24,7 +25,6 @@
     "url": "https://github.com/thesmartwon/thesmartwon.github.io"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^2.0.1",
     "preact": "^8.4.2",
     "preact-compat": "^3.18.4"
   }

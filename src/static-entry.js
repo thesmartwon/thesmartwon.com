@@ -3,6 +3,7 @@ const fs = require(`fs`)
 const { join } = require(`path`)
 const { renderToString, renderToStaticMarkup } = require(`react-dom/server`)
 const { get, merge, isObject, flatten, uniqBy } = require(`lodash`)
+const apiRunner = require(`../.cache/api-runner-ssr`)
 
 const syncRequires = require(`../.cache/sync-requires`)
 const { dataPaths, pages } = require(`../.cache/data.json`)
@@ -31,6 +32,32 @@ export default (pagePath, callback) => {
   let preBodyComponents = []
   let postBodyComponents = []
   let bodyProps = {}
+
+  const setHeadComponents = components => {
+    headComponents = headComponents.concat(components)
+  }
+
+  const setHtmlAttributes = attributes => {
+    htmlAttributes = merge(htmlAttributes, attributes)
+  }
+
+  const setBodyAttributes = attributes => {
+    bodyAttributes = merge(bodyAttributes, attributes)
+  }
+
+  const setPreBodyComponents = components => {
+    preBodyComponents = preBodyComponents.concat(components)
+  }
+
+  const setPostBodyComponents = components => {
+    postBodyComponents = postBodyComponents.concat(
+      sanitizeComponents(components)
+    )
+  }
+
+  const setBodyProps = props => {
+    bodyProps = merge({}, bodyProps, props)
+  }
 
   const page = getPage(pagePath)
 
@@ -99,10 +126,28 @@ export default (pagePath, callback) => {
 
   scriptsAndStyles = uniqBy(scriptsAndStyles, item => item.name)
 
+  const scripts = scriptsAndStyles.filter(
+    script => script.name && script.name.endsWith(`.js`)
+  )
+  const styles = scriptsAndStyles.filter(
+    style => style.name && style.name.endsWith(`.css`)
+  )
+
+  apiRunner(`onRenderBody`, {
+    setHeadComponents,
+    setHtmlAttributes,
+    setBodyAttributes,
+    setPreBodyComponents,
+    setPostBodyComponents,
+    setBodyProps,
+    pathname: pagePath,
+    bodyHtml,
+    scripts,
+    styles,
+    pathPrefix: __PATH_PREFIX__,
+  })
+
   if (dataAndContext.pageContext.javascript !== false) {
-    const scripts = scriptsAndStyles.filter(
-      script => script.name && script.name.endsWith(`.js`)
-    )
     scripts
       .slice(0)
       .reverse()
@@ -183,9 +228,6 @@ export default (pagePath, callback) => {
     postBodyComponents.push(...bodyScripts)
   }
 
-  const styles = scriptsAndStyles.filter(
-    style => style.name && style.name.endsWith(`.css`)
-  )
   styles
     .slice(0)
     .reverse()
@@ -216,7 +258,7 @@ export default (pagePath, callback) => {
         )
       }
     })
-
+  
   const html = `<!DOCTYPE html>${renderToStaticMarkup(
     <Html
       {...bodyProps}

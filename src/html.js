@@ -7,14 +7,14 @@ export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        {/* <meta charSet="utf-8" /> */}
+        {/* <meta httpEquiv="x-ua-compatible" content="ie=edge" /> */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {/* https://varvy.com/pagespeed/render-blocking-css.html */}
-        {process.env.NODE_ENV === 'development' ? props.headComponents : props.headComponents}
+        {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
@@ -26,7 +26,7 @@ export default function HTML(props) {
           id="b"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
-        {process.env.NODE_ENV === 'development' ? props.postBodyComponents : props.postBodyComponents}
+        {props.postBodyComponents}
       </body>
     </html>
   )

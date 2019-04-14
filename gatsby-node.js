@@ -1,5 +1,4 @@
 const path = require("path");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 exports.createPages = ({actions}) => {
   actions.createPage({
@@ -15,26 +14,24 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, rules, loaders, plugins, ac
   const config = getConfig();
   // console.log('stage', stage);
   if (stage === 'build-javascript') {
+    console.log('optimization', config.optimization)
+    config.optimization = {};
     // Use our custom entrypoint
     config.entry.app = './src/production-app.js';
     // Disable sourcemaps: https://webpack.js.org/configuration/devtool/
-    // config.devtool = false;
+    config.devtool = false;
 
+    // https://preactjs.com/guide/switching-to-preact
     config.resolve.alias["react"] = "preact-compat";
     config.resolve.alias["react-dom"] = "preact-compat";
     config.resolve.alias["create-react-class"] = "preact-compat/lib/create-react-class";
-
-    config.plugins.unshift(new CleanWebpackPlugin({
-      // https://github.com/sindresorhus/del#patterns
-      cleanOnceBeforeBuildPatterns: ['**/*', '!**/static/**']
-    }));
   } else if (stage === 'develop') {
     // Use our custom entrypoint
     const commons = config.entry.commons.filter(a => a.indexOf('.cache/app') === -1);
     commons.push('./src/app.js');
     config.entry.commons = commons;
   } else if (stage === 'build-html') {
-    // console.log('config', config);
+    // console.log('plugins', config.plugins);
     config.entry.main = './src/static-entry.js';
   }
 
