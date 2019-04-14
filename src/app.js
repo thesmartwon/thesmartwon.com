@@ -1,10 +1,19 @@
 /* eslint-disable */
 import React from "react"
 import ReactDOM from "react-dom"
+import domReady from "@mikaelkristiansson/domready"
 
 import socketIo from "../.cache/socketIo"
-import syncRequires from "../.cache/sync-requires"
 import pages from "../.cache/pages.json"
+import syncRequires from "../.cache/sync-requires"
+import JSONStore from "../.cache/json-store"
+import emitter from "../.cache/emitter"
+import loader from "./loader"
+
+window.___emitter = emitter
+
+loader.addPagesArray(pages);
+loader.addDevRequires(syncRequires);
 
 function supportsServiceWorkers(location, navigator) {
   if (location.hostname === `localhost` || location.protocol === `https:`) {
@@ -39,13 +48,13 @@ if (supportsServiceWorkers(location, navigator)) {
 
 const renderer = ReactDOM.render
 
-for (let page of pages) {
-  if (page.path === window.location.pathname) {
-    const Root = syncRequires.components[page.componentChunkName];
-    console.log('root', Root);
-    document.addEventListener('DOMContentLoaded', () => {
-      renderer(<Root />, document.getElementById(`b`))
-    })
-    break
-  }
-}
+loader.getResourcesForPathname(window.location.pathname).then(pageResources => {
+  domReady(() => {
+    console.log('rendering baby', pages, pageResources)
+    renderer(<JSONStore
+      pages={pages}
+      pageResources={pageResources}
+      location={window.location}
+    />, document.getElementById(`b`))
+  })
+});

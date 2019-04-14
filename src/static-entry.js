@@ -9,6 +9,8 @@ const syncRequires = require(`../.cache/sync-requires`)
 const { dataPaths, pages } = require(`../.cache/data.json`)
 const { version: gatsbyVersion } = require(`gatsby/package.json`)
 
+console.log('pages', pages)
+
 // Speed up looking up pages.
 const pagesObjectMap = new Map()
 pages.forEach(p => pagesObjectMap.set(p.path, p))
@@ -20,16 +22,6 @@ const stats = JSON.parse(
 const chunkMapping = JSON.parse(
   fs.readFileSync(`${process.cwd()}/public/chunk-map.json`, `utf-8`)
 )
-
-// const testRequireError = require("./test-require-error")
-// For some extremely mysterious reason, webpack adds the above module *after*
-// this module so that when this code runs, testRequireError is undefined.
-// So in the meantime, we'll just inline it.
-const testRequireError = (moduleName, err) => {
-  const regex = new RegExp(`Error: Cannot find module\\s.${moduleName}`)
-  const firstLine = err.toString().split(`\n`)[0]
-  return regex.test(firstLine)
-}
 
 let Html = require(`./html`)
 Html = Html && Html.__esModule ? Html.default : Html
@@ -110,6 +102,7 @@ export default (pagePath, callback) => {
   }
 
   const page = getPage(pagePath)
+  console.log('page', pagePath, page)
 
   let dataAndContext = {}
   if (page.jsonName in dataPaths) {
@@ -130,7 +123,7 @@ export default (pagePath, callback) => {
     syncRequires.components[page.componentChunkName],
     {
       ...dataAndContext,
-      pathContext: dataAndContext.pageContext,
+      pageContext: dataAndContext.pageContext,
     }
   )
   bodyHtml = renderToString(pageElement)

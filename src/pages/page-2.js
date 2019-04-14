@@ -1,3 +1,9 @@
 import React from "react"
+import Nav from '../components/nav'
 
-export default () => <div>Page 2 woohoo!</div>
+export default () => (
+  <div>
+    <Nav />
+    Page 2 woohoo!
+  </div>
+)

@@ -1,4 +1,15 @@
+const path = require("path");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+exports.createPages = ({actions}) => {
+  actions.createPage({
+    component: path.resolve(__dirname, "src/pages/page-3.js"),
+    path: "/custompage/",
+    context: {
+      thing: 2
+    }
+  });
+}
 
 exports.onCreateWebpackConfig = ({ getConfig, stage, rules, loaders, plugins, actions }) => {
   const config = getConfig();

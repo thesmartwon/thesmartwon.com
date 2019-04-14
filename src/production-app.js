@@ -2,7 +2,7 @@ import React, { createElement } from "react"
 import ReactDOM from "react-dom"
 import domReady from "@mikaelkristiansson/domready"
 import asyncRequires from "../.cache/async-requires"
-import loader from "../.cache/loader"
+import loader from "./loader"
 
 window.asyncRequires = asyncRequires
 window.___loader = loader
@@ -13,7 +13,11 @@ loader.addProdRequires(asyncRequires)
 
 console.log('loader things', window.page, window.dataPath, asyncRequires)
 
-loader.getResourcesForPathnameSync(window.location.pathname).then((pageResources) => {
+const preferDefault = m => (m && m.default) || m
+
+
+
+loader.getResourcesForPathname(window.location.pathname).then((pageResources) => {
   const Root = () =>
     createElement(
       'div',
