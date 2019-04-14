@@ -9,8 +9,6 @@ const syncRequires = require(`../.cache/sync-requires`)
 const { dataPaths, pages } = require(`../.cache/data.json`)
 const { version: gatsbyVersion } = require(`gatsby/package.json`)
 
-console.log('pages', pages)
-
 // Speed up looking up pages.
 const pagesObjectMap = new Map()
 pages.forEach(p => pagesObjectMap.set(p.path, p))
@@ -53,36 +51,6 @@ export default (pagePath, callback) => {
   let postBodyComponents = []
   let bodyProps = {}
 
-  const replaceBodyHTMLString = body => {
-    bodyHtml = body
-  }
-
-  const setHeadComponents = components => {
-    headComponents = headComponents.concat(sanitizeComponents(components))
-  }
-
-  const setHtmlAttributes = attributes => {
-    htmlAttributes = merge(htmlAttributes, attributes)
-  }
-
-  const setBodyAttributes = attributes => {
-    bodyAttributes = merge(bodyAttributes, attributes)
-  }
-
-  const setPreBodyComponents = components => {
-    preBodyComponents = preBodyComponents.concat(sanitizeComponents(components))
-  }
-
-  const setPostBodyComponents = components => {
-    postBodyComponents = postBodyComponents.concat(
-      sanitizeComponents(components)
-    )
-  }
-
-  const setBodyProps = props => {
-    bodyProps = merge({}, bodyProps, props)
-  }
-
   const getHeadComponents = () => headComponents
 
   const replaceHeadComponents = components => {
@@ -102,7 +70,6 @@ export default (pagePath, callback) => {
   }
 
   const page = getPage(pagePath)
-  console.log('page', pagePath, page)
 
   let dataAndContext = {}
   if (page.jsonName in dataPaths) {
@@ -191,20 +158,20 @@ export default (pagePath, callback) => {
       )
     })
 
-  if (page.jsonName in dataPaths) {
-    const dataPath = `${__PATH_PREFIX__}/static/d/${
-      dataPaths[page.jsonName]
-    }.json`
-    headComponents.push(
-      <link
-        as="fetch"
-        rel="preload"
-        key={dataPath}
-        href={dataPath}
-        crossOrigin="use-credentials"
-      />
-    )
-  }
+  // if (page.jsonName in dataPaths) {
+  //   const dataPath = `${__PATH_PREFIX__}/static/d/${
+  //     dataPaths[page.jsonName]
+  //   }.json`
+  //   headComponents.push(
+  //     <link
+  //       as="fetch"
+  //       rel="preload"
+  //       key={dataPath}
+  //       href={dataPath}
+  //       crossOrigin="use-credentials"
+  //     />
+  //   )
+  // }
 
   styles
     .slice(0)
@@ -239,9 +206,10 @@ export default (pagePath, callback) => {
 
   // Add page metadata for the current page
   const windowData = `/*<![CDATA[*/window.page=${JSON.stringify(page)};${
-    page.jsonName in dataPaths
-      ? `window.dataPath="${dataPaths[page.jsonName]}";`
-      : ``
+    // page.jsonName in dataPaths
+    //   ? `window.dataPath="${dataPaths[page.jsonName]}";`
+    //   : ``
+    ''
   }/*]]>*/`
 
   postBodyComponents.push(

@@ -8,10 +8,11 @@ import pages from "../.cache/pages.json"
 import syncRequires from "../.cache/sync-requires"
 import JSONStore from "../.cache/json-store"
 import emitter from "../.cache/emitter"
-import loader from "./loader"
+import loader, { setApiRunnerForLoader } from "../.cache/loader"
 
 window.___emitter = emitter
 
+setApiRunnerForLoader(() => null);
 loader.addPagesArray(pages);
 loader.addDevRequires(syncRequires);
 

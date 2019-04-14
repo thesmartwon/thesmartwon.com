@@ -1,38 +1,20 @@
-import React, { createElement } from "react"
+import React from "react"
 import ReactDOM from "react-dom"
 import domReady from "@mikaelkristiansson/domready"
 import asyncRequires from "../.cache/async-requires"
-import loader from "./loader"
-
-window.asyncRequires = asyncRequires
-window.___loader = loader
-
-loader.addPagesArray([window.page])
-loader.addDataPaths({ [window.page.jsonName]: window.dataPath })
-loader.addProdRequires(asyncRequires)
 
 console.log('loader things', window.page, window.dataPath, asyncRequires)
+const renderer = ReactDOM.hydrate
 
-const preferDefault = m => (m && m.default) || m
-
-
-
-loader.getResourcesForPathname(window.location.pathname).then((pageResources) => {
-  const Root = () =>
-    createElement(
-      'div',
-      { },
-      createElement(pageResources.component, {
-        location,
-        key: pageResources.page.path,
-      })
-    )
-
-  const renderer = ReactDOM.hydrate
-
+asyncRequires.components[window.page.componentChunkName]().then((m) => {
+  const Component = (m && m.default) || m
   domReady(() => {
     renderer(
-      <Root />,
+      <div>
+        <Component
+          location={location}
+          key={window.page.path}/>
+      </div>,
       document.getElementById(`b`)
     )
   })
