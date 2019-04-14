@@ -38,13 +38,7 @@ const sanitizeComponents = components => {
 
 export default (pagePath, callback) => {
   let bodyHtml = ``
-  let headComponents = [
-    <meta
-      name="generator"
-      content={`Gatsby ${gatsbyVersion}`}
-      key={`generator-${gatsbyVersion}`}
-    />,
-  ]
+  let headComponents = []
   let htmlAttributes = {}
   let bodyAttributes = {}
   let preBodyComponents = []
@@ -223,19 +217,21 @@ export default (pagePath, callback) => {
   )
 
   // Add chunk mapping metadata
-  const scriptChunkMapping = `/*<![CDATA[*/window.___chunkMapping=${JSON.stringify(
-    chunkMapping
-  )};/*]]>*/`
-
-  postBodyComponents.push(
-    <script
-      key={`chunk-mapping`}
-      id={`gatsby-chunk-mapping`}
-      dangerouslySetInnerHTML={{
-        __html: scriptChunkMapping,
-      }}
-    />
-  )
+  if (process.env.NODE_ENV !== `production`) {
+    const scriptChunkMapping = `/*<![CDATA[*/window.___chunkMapping=${JSON.stringify(
+      chunkMapping
+    )};/*]]>*/`
+  
+    postBodyComponents.push(
+      <script
+        key={`chunk-mapping`}
+        id={`gatsby-chunk-mapping`}
+        dangerouslySetInnerHTML={{
+          __html: scriptChunkMapping,
+        }}
+      />
+    )
+  }
 
   // Filter out prefetched bundles as adding them as a script tag
   // would force high priority fetching.
