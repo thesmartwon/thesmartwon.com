@@ -3,10 +3,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 exports.createPages = ({actions}) => {
   actions.createPage({
-    component: path.resolve(__dirname, "src/pages/page-3.js"),
+    component: path.resolve(__dirname, "src/pages/page-2.js"),
     path: "/custompage/",
     context: {
-      thing: 2
+      javascript: false
     }
   });
 }
