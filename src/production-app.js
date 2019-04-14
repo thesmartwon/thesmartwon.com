@@ -4,12 +4,11 @@ import domReady from "@mikaelkristiansson/domready"
 import asyncRequires from "../.cache/async-requires"
 
 console.log('loader things', window.page, window.dataPath, asyncRequires)
-const renderer = ReactDOM.hydrate
 
 asyncRequires.components[window.page.componentChunkName]().then((m) => {
   const Component = (m && m.default) || m
   domReady(() => {
-    renderer(
+    ReactDOM.render(
       <div>
         <Component
           location={location}

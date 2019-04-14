@@ -20,6 +20,10 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, rules, loaders, plugins, ac
     // Disable sourcemaps: https://webpack.js.org/configuration/devtool/
     // config.devtool = false;
 
+    config.resolve.alias["react"] = "preact-compat";
+    config.resolve.alias["react-dom"] = "preact-compat";
+    config.resolve.alias["create-react-class"] = "preact-compat/lib/create-react-class";
+
     config.plugins.unshift(new CleanWebpackPlugin({
       // https://github.com/sindresorhus/del#patterns
       cleanOnceBeforeBuildPatterns: ['**/*', '!**/static/**']
