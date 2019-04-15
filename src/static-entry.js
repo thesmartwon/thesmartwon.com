@@ -147,7 +147,7 @@ export default (pagePath, callback) => {
     pathPrefix: __PATH_PREFIX__,
   })
 
-  if (dataAndContext.pageContext.javascript !== false) {
+  if (dataAndContext.pageContext.javascript === true) {
     scripts
       .slice(0)
       .reverse()
@@ -165,10 +165,9 @@ export default (pagePath, callback) => {
 
     // Add page metadata for the current page
     const windowData = `/*<![CDATA[*/window.page=${JSON.stringify(page)};${
-        // page.jsonName in dataPaths
-        //   ? `window.dataPath="${dataPaths[page.jsonName]}";`
-        //   : ``
-        ''
+        page.jsonName in dataPaths
+          ? `window.dataPath="${dataPaths[page.jsonName]}";`
+          : ``
       }/*]]>*/`
 
     postBodyComponents.push(
@@ -181,20 +180,20 @@ export default (pagePath, callback) => {
       />
     )
 
-    // if (page.jsonName in dataPaths) {
-    //   const dataPath = `${__PATH_PREFIX__}/static/d/${
-    //     dataPaths[page.jsonName]
-    //   }.json`
-    //   headComponents.push(
-    //     <link
-    //       as="fetch"
-    //       rel="preload"
-    //       key={dataPath}
-    //       href={dataPath}
-    //       crossOrigin="use-credentials"
-    //     />
-    //   )
-    // }
+    if (page.jsonName in dataPaths) {
+      const dataPath = `${__PATH_PREFIX__}/static/d/${
+        dataPaths[page.jsonName]
+      }.json`
+      headComponents.push(
+        <link
+          as="fetch"
+          rel="preload"
+          key={dataPath}
+          href={dataPath}
+          crossOrigin="use-credentials"
+        />
+      )
+    }
 
     // Add chunk mapping metadata
     if (process.env.NODE_ENV !== `production`) {
@@ -234,7 +233,7 @@ export default (pagePath, callback) => {
     .forEach(style => {
       // Add <link>s for styles that should be prefetched
       // otherwise, inline as a <style> tag
-
+      console.log(pagePath, 'i got style', style)
       if (style.rel === `prefetch`) {
         headComponents.push(
           <link
