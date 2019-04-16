@@ -5,6 +5,7 @@ const Tags = ({ pageContext }) => {
   return (
     <div>
       {JSON.stringify(pageContext)}
+      <button onClick={() => console.log(pageContext)}>prove it</button>
       <Stateful />
     </div>
   )

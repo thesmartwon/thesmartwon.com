@@ -1,16 +1,18 @@
 /* eslint-disable */
 import React from "react"
 import ReactDOM from "react-dom"
-import domReady from "@mikaelkristiansson/domready"
+import domReady from "./dom-ready"
+// import domReady from "@mikaelkristiansson/domready"
 
 import socketIo from "../.cache/socketIo"
 import pages from "../.cache/pages.json"
 import syncRequires from "../.cache/sync-requires"
 import JSONStore from "../.cache/json-store"
 import emitter from "../.cache/emitter"
-import loader from "../.cache/loader"
+import loader, { setApiRunnerForLoader } from "../.cache/loader"
 
 window.___emitter = emitter
+setApiRunnerForLoader(() => undefined)
 
 loader.addPagesArray(pages);
 loader.addDevRequires(syncRequires);

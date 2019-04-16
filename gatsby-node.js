@@ -33,7 +33,7 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, rules, loaders, plugins, ac
     // console.log('plugins', config.plugins);
     config.entry.main = './src/static-entry.js';
   }
-  config.optimization = {};
+  // config.optimization = {};
 
   actions.replaceWebpackConfig(config);
 }
