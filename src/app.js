@@ -51,12 +51,11 @@ if (supportsServiceWorkers(location, navigator)) {
 const renderer = ReactDOM.render
 
 loader.getResourcesForPathname(window.location.pathname).then(pageResources => {
-  domReady(() => {
-    console.log('rendering baby', pages, pageResources)
+  domReady(() => 
     renderer(<JSONStore
       pages={pages}
       pageResources={pageResources}
       location={window.location}
     />, document.getElementById(`b`))
-  })
+  )
 });

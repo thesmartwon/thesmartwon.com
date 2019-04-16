@@ -7,14 +7,14 @@ const jsonDataPaths = { [window.page.jsonName]: window.dataPath }
 const createJsonURL = jsonName => `${__PATH_PREFIX__}/static/d/${jsonName}.json`
 
 const fetchResource = resourceName => {
-  if (resourceName.slice(0, 12) === `component---`) {
+  if (resourceName.slice(0, 12) === 'component---') {
     return asyncRequires.components[resourceName]()
   }
 
   return new Promise((resolve, reject) => {
     const url = createJsonURL(jsonDataPaths[resourceName])
     const req = new XMLHttpRequest()
-    req.open(`GET`, url, true)
+    req.open('GET', url, true)
     req.withCredentials = true
     req.onreadystatechange = () => {
       if (req.readyState === 4) {
