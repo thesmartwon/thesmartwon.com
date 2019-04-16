@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Stateful extends React.Component {
+export default class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

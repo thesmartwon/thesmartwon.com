@@ -37,11 +37,7 @@ Promise.all([
 ]).then(([component, json]) => {
   domReady(() => {
     ReactDOM.render(
-      React.createElement(
-        'div',
-        {},
-        React.createElement(component, json)
-      ),
+      React.createElement(component, json),
       document.getElementById('b')
     )
   })

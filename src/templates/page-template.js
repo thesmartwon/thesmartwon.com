@@ -1,13 +1,13 @@
 import React from "react"
-import Stateful from '../pages/page-3';
+import Counter from '../components/counter';
 
 const Tags = ({ pageContext }) => {
   return (
-    <div>
+    <main>
       {JSON.stringify(pageContext)}
       <button onClick={() => console.log(pageContext)}>prove it</button>
-      <Stateful />
-    </div>
+      <Counter />
+    </main>
   )
 }
 
