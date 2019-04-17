@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
           frontmatter {
             title
             date
+            javascript
           }
         }
       }
@@ -31,7 +32,6 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
   const config = getConfig();
   // console.log("stage", stage);
   if (stage === "build-javascript") {
-    console.log("optimization", config.optimization.OptimizeCssAssetsWebpackPlugin)
     // Use our custom entrypoint
     config.entry.app = "./src/production-app.js";
     // Disable sourcemaps: https://webpack.js.org/configuration/devtool/

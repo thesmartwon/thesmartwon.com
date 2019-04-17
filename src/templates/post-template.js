@@ -1,8 +1,9 @@
-import React from "react"
-import Counter from '../components/counter';
-import {Helmet} from "react-helmet";
+import React from 'react'
+import Counter from '../components/counter'
+import { Helmet } from 'react-helmet'
+import '../pages/index.scss'
 
-const Tags = ({ pageContext }) => {
+export default ({ pageContext }) => {
   return (
     <main>
       <Helmet title={pageContext.title} defer={false} />
@@ -12,5 +13,3 @@ const Tags = ({ pageContext }) => {
     </main>
   )
 }
-
-export default Tags

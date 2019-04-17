@@ -43,6 +43,7 @@ module.exports = {
       options: {
         analyzerPort: 3000,
         production: true,
+        disable: process.env.NODE_ENV !== "production"
       },
     }
   ]
