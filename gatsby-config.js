@@ -1,18 +1,49 @@
 module.exports = {
   plugins: [
-    `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: `${__dirname}/src/posts/`,
+      },
+    },
+    {
+      // Markdown + JSX
+      resolve: "gatsby-mdx",
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1035,
+              sizeByPixelDensity: true
+            }
+          },
+        ]
+      }
+    },
+    { // Make a web manifest for nice mobile page background
+      // Also handles favicon
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: "The Smart Blog",
         start_url: "/",
         icon: "static/favicon.ico",
         icons: [],
-        display: 'minimal-ui',
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        display: "minimal-ui",
+        background_color: "#f7f0eb",
+        theme_color: "#a2466c",
       },
     },
-    `gatsby-mdx`,
+    "gatsby-plugin-sass",
+    // Add stuff to <head>
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      options: {
+        analyzerPort: 3000,
+        production: true,
+      },
+    }
   ]
 }
