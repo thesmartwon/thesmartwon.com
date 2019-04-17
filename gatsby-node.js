@@ -3,25 +3,28 @@ const path = require("path");
 exports.createPages = async ({ graphql, actions }) => {
   await graphql(`
     {
-      allMdx {
+      allMarkdownRemark {
         nodes {
+          id
           fileAbsolutePath
           frontmatter {
-            title
-            date
             javascript
           }
         }
       }
     }
-  `).then(({data}) => {
-    data.allMdx.nodes.forEach(node => {
+  `).then(result => {
+    if (result.errors) {
+      return Promise.reject(result.errors)
+    }
+    result.data.allMarkdownRemark.nodes.forEach(node => {
       const match = (/.*(posts.*)\..*/).exec(node.fileAbsolutePath);
       actions.createPage({
         component: path.resolve(__dirname, "src/templates/post-template.js"),
         path: `/${match[1]}/`,
         context: {
-          ...node.frontmatter
+          id: node.id,
+          javascript: node.javascript
         }
       });
     })

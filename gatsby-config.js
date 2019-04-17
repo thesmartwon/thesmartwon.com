@@ -4,14 +4,13 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "pages",
-        path: `${__dirname}/src/posts/`,
+        path: `${__dirname}/src/posts`,
       },
     },
     {
-      // Markdown + JSX
-      resolve: "gatsby-mdx",
+      resolve: "gatsby-transformer-remark",
       options: {
-        gatsbyRemarkPlugins: [
+        plugins: [
           {
             resolve: "gatsby-remark-images",
             options: {

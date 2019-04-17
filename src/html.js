@@ -1,14 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function HTML(props) {
-  // console.log(props.path);
-  // console.log('html headComponents', JSON.stringify(props.headComponents));
   return (
     <html {...props.htmlAttributes}>
       <head>
-        {/* <meta charSet="utf-8" /> */}
-        {/* <meta httpEquiv="x-ua-compatible" content="ie=edge" /> */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -18,9 +14,6 @@ export default function HTML(props) {
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
-        <noscript key="noscript">
-          Some things might not work because Javascript is disabled, but you aren't missing out on much.
-        </noscript>
         <div
           key="body"
           id="b"

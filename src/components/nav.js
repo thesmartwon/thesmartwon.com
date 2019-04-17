@@ -15,8 +15,7 @@ export default () => {
   )
   return (
     <div>
-      Data: {JSON.stringify(data)}
-      <button onClick={() => console.log(data)}>Click to log data</button>
+      Paths: {JSON.stringify(data)}
     </div>
   )
 }

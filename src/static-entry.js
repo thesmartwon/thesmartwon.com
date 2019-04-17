@@ -76,6 +76,9 @@ export default (pagePath, callback) => {
     }
   }
 
+  const hasJavascript = dataAndContext.pageContext.frontmatter &&
+    dataAndContext.pageContext.frontmatter.javascript === true
+
   const pageElement = React.createElement(
     syncRequires.components[page.componentChunkName],
     {
@@ -83,7 +86,7 @@ export default (pagePath, callback) => {
       pageContext: dataAndContext.pageContext,
     }
   )
-  bodyHtml = renderToString(pageElement)
+  bodyHtml = hasJavascript === true ? renderToString(pageElement) : renderToStaticMarkup(pageElement)
 
   // Create paths to scripts
   let scriptsAndStyles = flatten(
@@ -147,7 +150,7 @@ export default (pagePath, callback) => {
     pathPrefix: __PATH_PREFIX__,
   })
 
-  if (dataAndContext.pageContext.javascript === true) {
+  if (hasJavascript === true) {
     scripts
       .slice(0)
       .reverse()
