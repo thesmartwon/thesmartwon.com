@@ -8,6 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
           id
           fileAbsolutePath
           frontmatter {
+            title
             javascript
           }
         }
@@ -21,10 +22,11 @@ exports.createPages = async ({ graphql, actions }) => {
       const match = (/.*(posts.*)\..*/).exec(node.fileAbsolutePath);
       actions.createPage({
         component: path.resolve(__dirname, "src/templates/post-template.js"),
-        path: `/${match[1]}/`,
+        path: `/${match[1]}`,
         context: {
           id: node.id,
-          javascript: node.javascript
+          title: node.frontmatter.title,
+          javascript: node.frontmatter.javascript ? node.frontmatter.javascript : false
         }
       });
     })
