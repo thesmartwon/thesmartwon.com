@@ -1,7 +1,10 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+.is-paddingless-horizontal { padding-left: 0; padding-right: 0; }
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
+.grid {
+	display: grid;
+	grid-template-columns:
+		[xl-start] 1fr 1.5rem [md-start] minmax(0, 624px) [md-end] 1.5rem 1fr [xl-end];
 }
+
+.grid *  { grid-column: md; }
+.grid-xl { grid-column: xl; }

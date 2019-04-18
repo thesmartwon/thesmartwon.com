@@ -28,9 +28,15 @@ export default () => {
     }, {})
   
   return (
-    <div>
-      <span><Link href="/">The Smart Blog</Link></span>
-      <ul>
+		<section class="section is-paddingless-horizontal">
+			<div class="container">
+				<nav class="breadcrumb" aria-label="breadcrumbs">
+					<ul>
+						<li><Link>Home</Link></li>
+					</ul>
+				</nav>
+			</div>
+            {/* <ul>
         {Object.entries(groups).map(([group, links]) => (
           <React.Fragment key={group}>
             <h2>{group}</h2>
@@ -39,7 +45,7 @@ export default () => {
             )}
           </React.Fragment>
         ))}
-      </ul>
-    </div>
+      </ul> */}
+		</section>
   )
 }

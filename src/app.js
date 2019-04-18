@@ -2,7 +2,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import domReady from "./dom-ready"
-// import domReady from "@mikaelkristiansson/domready"
 
 import socketIo from "../.cache/socketIo"
 import pages from "../.cache/pages.json"
@@ -10,9 +9,10 @@ import syncRequires from "../.cache/sync-requires"
 import JSONStore from "../.cache/json-store"
 import emitter from "../.cache/emitter"
 import loader, { setApiRunnerForLoader } from "../.cache/loader"
+import { apiRunner } from "../.cache/api-runner-browser" // hot reloading
 
 window.___emitter = emitter
-setApiRunnerForLoader(() => undefined)
+setApiRunnerForLoader(apiRunner)
 
 loader.addPagesArray(pages);
 loader.addDevRequires(syncRequires);
@@ -28,6 +28,7 @@ function supportsServiceWorkers(location, navigator) {
 const socket = socketIo()
 if (socket) {
   socket.on(`reload`, () => {
+    console.log('reload')
     window.location.reload()
   })
 }
