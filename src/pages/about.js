@@ -1,7 +1,8 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import Link from '../components/link'
-import 'bulma'
 import CenterLayout from '../layouts/center-layout';
+
 
 export default () => (
   <CenterLayout
@@ -12,6 +13,7 @@ export default () => (
     )}
     path={'/about'}
   >
+    <Helmet title="About The Smart Won" defer={false} />
     <div className="content is-medium">
       <p>
         <Link href="/">thesmartwon.com</Link> started as a place for me to share topics with friends without having to repeat myself (plus they get to keep these notes).

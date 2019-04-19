@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Link from './link'
 import {capitalize} from '../helpers/capitalize'
 
+
 export default () => {
   const data = useStaticQuery(
     graphql`
@@ -32,7 +33,7 @@ export default () => {
     <>
     {Object.entries(groups).map(([key, value]) => (
       <React.Fragment key={key}>
-        <h1>{capitalize(key)}</h1>
+        <h3>{capitalize(key)}</h3>
         {value.map(v => <Link key={v.path} href={v.path}>{v.context.title}</Link>)}
       </React.Fragment>
     ))

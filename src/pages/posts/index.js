@@ -1,8 +1,8 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import Nav from '../../components/nav'
-import Mug from '../cup-of-hot-chocolate.svg'
 import CenterLayout from '../../layouts/center-layout';
+
 
 export default () => (
   <CenterLayout

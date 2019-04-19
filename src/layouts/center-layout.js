@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Breadcrumb from '../components/breadcrumb'
 import './center-layout.scss'
 
+
 export default function CenterLayout(props) {
   return (
     <div className="container grid">
