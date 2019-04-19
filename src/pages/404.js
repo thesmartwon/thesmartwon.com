@@ -1,7 +1,10 @@
 import React from "react"
 
 export default () => (
-  <div>
-    Pick a real page broooo
-  </div>
+  <>
+    <h1>404 captain</h1>
+    <p>
+    You got the wrong link broooo
+    </p>
+  </>
 )

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Link from './link'
+import {capitalize} from '../helpers/capitalize'
 
 export default () => {
   const data = useStaticQuery(
@@ -26,26 +27,16 @@ export default () => {
       acc[group].push(node);
       return acc;
     }, {})
-  
+  console.log('groups', groups)
   return (
-		<section class="section is-paddingless-horizontal">
-			<div class="container">
-				<nav class="breadcrumb" aria-label="breadcrumbs">
-					<ul>
-						<li><Link>Home</Link></li>
-					</ul>
-				</nav>
-			</div>
-            {/* <ul>
-        {Object.entries(groups).map(([group, links]) => (
-          <React.Fragment key={group}>
-            <h2>{group}</h2>
-            {links.map(link =>
-              <li key={link.path}><Link href={link.path}>{link.context.title}</Link></li>
-            )}
-          </React.Fragment>
-        ))}
-      </ul> */}
-		</section>
+    <>
+    {Object.entries(groups).map(([key, value]) => (
+      <React.Fragment key={key}>
+        <h1>{capitalize(key)}</h1>
+        {value.map(v => <Link key={v.path} href={v.path}>{v.context.title}</Link>)}
+      </React.Fragment>
+    ))
+    }
+    </>
   )
 }

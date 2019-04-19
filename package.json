@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
+    "develop": "shx rm -rf .public && gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve"
   },
@@ -17,7 +17,7 @@
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.0.34",
+    "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "gatsby-remark-images": "^3.0.10",
     "gatsby-source-filesystem": "^2.0.29",
@@ -35,6 +35,7 @@
     "null-loader": "^0.1.1",
     "preact": "^8.4.2",
     "preact-compat": "^3.18.4",
+    "shx": "^0.3.2",
     "webpack-bundle-analyzer": "^3.3.2"
   }
 }

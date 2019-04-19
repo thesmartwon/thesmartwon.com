@@ -1,14 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import Nav from '../components/nav'
+import Breadcrumb from '../components/breadcrumb'
 import '../pages/index.scss'
 
 export default ({ pageContext, data }) => {
   const { frontmatter, html } = data.markdownRemark
   return (
     <>
-      <Nav />
+      <Breadcrumb />
       <main>
         <Helmet title={pageContext.title} defer={false} />
         <h1>{frontmatter.title}</h1>

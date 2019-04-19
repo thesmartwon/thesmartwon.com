@@ -27,7 +27,7 @@ module.exports = {
       options: {
         name: "The Smart Blog",
         start_url: "/",
-        icon: "static/favicon.ico",
+        icon: "static/favicon.jpg",
         icons: [],
         display: "minimal-ui",
         background_color: "#f7f0eb",
