@@ -1,5 +1,5 @@
 ---
-title:  "Is Graduate School Worth it?"
+title:  "Is Grad School Worth it?"
 date:   2017-10-30 12:34:20 -0400
 ---
 {% assign undergrad = 72000 %}

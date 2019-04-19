@@ -1,0 +1,17 @@
+@import 'bulma/sass/utilities/_all.sass';
+@import 'bulma/sass/elements/tag.sass';
+@import 'bulma/sass/components/media.sass';
+@import 'bulma/sass/components/level.sass';
+
+
+.article-title {
+  color: $link;
+}
+
+.article-body {
+  line-height: 1.4;
+}
+
+.no-overflow {
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
 ---
-title:  "How to buy a used bike off Craigslist"
+title:  "How to Buy a Used Bike off Craigslist"
 date:   2018-01-10 15:14:20 -0400
 ---
 #### TLDR;

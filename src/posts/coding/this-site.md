@@ -1,6 +1,7 @@
 ---
-title:  "How this site was built"
+title:  "How this Site was Built"
 date:   2019-04-18 21:45:00 -0400
+draft: true
 ---
 You probably don't notice, but this site is nearly as fast as it can possibly be! I didn't want to make any compromises on the developmer experience, though. Writing should be fun and easy, and deployment should only take one click. That was a mistake I made with the last version of [thesmartwon.com](thesmartwon.com), which was a Jekyll site that used some custom plugins that required manual deployment. Plus, I just didn't have the time to learn Ruby to make the site do what I want.
 

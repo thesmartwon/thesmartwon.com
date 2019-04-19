@@ -3,19 +3,13 @@
 @import 'bulma/sass/layout/section.sass';
 @import 'bulma/sass/elements/container.sass';
 @import 'bulma/sass/elements/content.sass';
+@import 'bulma/sass/grid/columns.sass';
 
 // Assume the layout will be used to render typography
 @import 'bulma/sass/elements/title.sass';
 
-
-.is-paddingless-horizontal { padding-left: 0; padding-right: 0; }
-
-.grid {
-	display: grid;
-	grid-template-columns:
-		[xl-start] 1fr 1.5rem [md-start] minmax(0, 624px) [md-end] 1.5rem 1fr [xl-end];
-	max-width: "1024px"
+.titles-section {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
 }
-
-.grid *  { grid-column: md; }
-.grid-xl { grid-column: xl; }

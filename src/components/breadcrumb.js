@@ -26,16 +26,12 @@ export default (props) => {
   crumbs.unshift({name: 'Home', path: '/', isActive: false})
   
   return (
-		<section className="section is-paddingless-horizontal">
-			<div className="container">
-				<nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            {crumbs.map(crumb => (
-                <li key={crumb.name} className={crumb.isActive ? 'is-active' : ''}><Link href={crumb.path}>{crumb.name}</Link></li>
-            ))}
-          </ul>
-				</nav>
-			</div>
-		</section>
+    <nav className="breadcrumb is-marginless is-centered" aria-label="breadcrumbs">
+      <ul>
+        {crumbs.map(crumb => (
+          <li key={crumb.name} className={crumb.isActive ? 'is-active' : ''}><Link href={crumb.path}>{crumb.name}</Link></li>
+        ))}
+      </ul>
+    </nav>
   )
 }
