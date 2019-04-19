@@ -1,4 +1,16 @@
 const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem")
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  if (node.internal.type === "MarkdownRemark") {
+    const slug = createFilePath({ node, getNode, basePath: "posts" })
+    actions.createNodeField({
+      node,
+      name: "slug",
+      value: `/posts${slug}`,
+    });
+  }
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   await graphql(`
@@ -7,6 +19,9 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           fileAbsolutePath
+          fields {
+            slug
+          }
           frontmatter {
             title
             javascript
@@ -19,13 +34,15 @@ exports.createPages = async ({ graphql, actions }) => {
       return Promise.reject(result.errors)
     }
     result.data.allMarkdownRemark.nodes.forEach(node => {
-      const match = (/.*(posts.*)\..*/).exec(node.fileAbsolutePath);
       actions.createPage({
         component: path.resolve(__dirname, "src/templates/post-template.js"),
-        path: `/${match[1]}`,
+        path: node.fields.slug,
         context: {
+          // To lookup more data in template
           id: node.id,
+          // For nav, which queries sitePage
           title: node.frontmatter.title,
+          // To check in static-entry if should include scripts or not
           javascript: node.frontmatter.javascript ? node.frontmatter.javascript : false
         }
       });

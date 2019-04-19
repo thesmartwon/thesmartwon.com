@@ -2,8 +2,7 @@ import React from 'react';
 import Link from './link'
 import {capitalize} from '../helpers/capitalize'
 
-const crumbify = (word, crumbs) => {
-  console.log('crumbify', word, crumbs)
+const crumbify = (word, crumbs, curPath) => {
   let path = ''
   for (var crumb of crumbs) {
     path += '/' + crumb;
@@ -14,14 +13,14 @@ const crumbify = (word, crumbs) => {
   return {
     name: capitalize(word),
     path: path,
-    isActive: path === window.location.pathname
+    isActive: path === curPath
   }
 }
 
-export default () => {
-  let crumbs = window.location.pathname.split('/')
+export default (props) => {
+  let crumbs = props.path.split('/')
       .filter(p => p)
-  crumbs = crumbs.map(crumb => crumbify(crumb, crumbs))
+  crumbs = crumbs.map(crumb => crumbify(crumb, crumbs, props.path))
   crumbs.unshift({name: 'Home', path: '/', isActive: false})
   
   return (
@@ -35,16 +34,6 @@ export default () => {
           </ul>
 				</nav>
 			</div>
-            {/* <ul>
-        {Object.entries(groups).map(([group, links]) => (
-          <React.Fragment key={group}>
-            <h2>{group}</h2>
-            {links.map(link =>
-              <li key={link.path}><Link href={link.path}>{link.context.title}</Link></li>
-            )}
-          </React.Fragment>
-        ))}
-      </ul> */}
 		</section>
   )
 }
