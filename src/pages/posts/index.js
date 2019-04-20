@@ -47,7 +47,6 @@ export default () => {
   const groups = getGroups(data.pages.nodes)
   const split = splitGroups(groups, 2)
 
-  console.log('split', split)
   return (
     <CenterLayout
       title={<h1 className="title is-2">All Posts</h1>}
