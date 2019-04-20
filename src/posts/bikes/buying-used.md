@@ -1,6 +1,7 @@
 ---
 title:  "Guide to Buying a Bike off Craigslist"
 date:   2018-01-10 15:14:20 -0400
+javascript: false
 ---
 
 #### TLDR;

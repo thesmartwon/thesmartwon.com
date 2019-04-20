@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import CenterLayout from '../layouts/center-layout'
 
-export default ({ data }) => {
+export default function PostTemplate({ data, children }) {
   const { frontmatter, html, timeToRead, fields } = data.markdownRemark
 
   return (
@@ -19,10 +20,30 @@ export default ({ data }) => {
       path={fields.slug}
     >
       <Helmet title={frontmatter.title} defer={false} />
-      <div className="content is-medium" dangerouslySetInnerHTML={{__html: html}} />
+      {
+        children
+          ? <div className="content is-medium">{children}</div>
+          : <div className="content is-medium" dangerouslySetInnerHTML={{__html: html}} />
+      }
     </CenterLayout>
   )
 }
+
+PostTemplate.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      html: PropTypes.string,
+      timeToRead: PropTypes.number.isRequired,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+        dateShort: PropTypes.string,
+        dateLong: PropTypes.string,
+        javascript: PropTypes.bool
+      }).isRequired,
+      fields: PropTypes.shape({slug: PropTypes.string}).isRequired
+    }).isRequired
+  }).isRequired
+};
 
 export const pageQuery = graphql`
   query BlogPostByPath($id: String!) {
@@ -41,3 +62,4 @@ export const pageQuery = graphql`
     }
   }
 `
+

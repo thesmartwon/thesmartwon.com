@@ -76,8 +76,7 @@ export default (pagePath, callback) => {
     }
   }
 
-  const hasJavascript = dataAndContext.pageContext.frontmatter &&
-    dataAndContext.pageContext.frontmatter.javascript === true
+  const hasJavascript = dataAndContext.pageContext.javascript === true
 
   const pageElement = React.createElement(
     syncRequires.components[page.componentChunkName],

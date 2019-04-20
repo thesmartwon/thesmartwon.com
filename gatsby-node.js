@@ -1,17 +1,18 @@
 const path = require("path");
-const { createFilePath } = require("gatsby-source-filesystem")
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+const slugRegex = /(posts\/.*)\..*/
+
+
+exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "MarkdownRemark") {
     if (node.frontmatter.draft && process.env.NODE_ENV === "production") {
       // actions.deleteNode({node}) doesn't work
       return
     }
-    const slug = createFilePath({ node, getNode, basePath: "posts" })
     actions.createNodeField({
       node,
       name: "slug",
-      value: `/posts${slug}`,
+      value: slugRegex.exec(node.fileAbsolutePath)[1],
     });
   }
 }
@@ -32,6 +33,11 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
+    allFile(filter: {absolutePath: {glob: "**/posts/*/*.js"}}) {
+      nodes {
+        absolutePath
+      }
+    }
   }
   `).then(result => {
     if (result.errors) {
@@ -47,9 +53,20 @@ exports.createPages = async ({ graphql, actions }) => {
           // For nav, which queries sitePage
           title: node.frontmatter.title,
           // To check in static-entry if should include scripts or not
-          javascript: node.frontmatter.javascript ? node.frontmatter.javascript : false
+          javascript: node.frontmatter.javascript
         }
       });
+    })
+    result.data.allFile.nodes.forEach(node => {
+      const path = slugRegex.exec(node.absolutePath)[1]
+      actions.createPage({
+        component: node.absolutePath,
+        path: path,
+        context: {
+          // If we put a js template in our folder, we KNOW we want javascript
+          javascript: true
+        }
+      })
     })
   })
 }
