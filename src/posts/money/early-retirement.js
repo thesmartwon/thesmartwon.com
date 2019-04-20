@@ -2,28 +2,19 @@ import React from 'react'
 import Link from '../../components/link'
 import RetirementCalc from '../../components/retirement-calc'
 import PostTemplate from '../../templates/post-template'
+import { markdownRemark } from './early-retirement.meta'
+
+
 
 export default function EarlyRetirement() {
   return (
-    <PostTemplate
-      data={{markdownRemark: {
-        timeToRead: 4,
-        frontmatter: {
-          title: 'How to Retire Early',
-          dateShort: '2018-12-18',
-          dateLong: 'Decemeber 18, 2018',
-          javascript: true
-        },
-        fields: {slug: '/posts/money/early-retirement'}
-      }}}
-    >
+    <PostTemplate data={{markdownRemark}}>
       <p>Brilliant, you'd like to quit your day job and do something
         more meaningful with your life. Now how do you do it?</p>
-      <p>(insert meme here)</p>
       <p>Well, your investments need to make more money per year than
         your expenses. Great news: with just a $70k salary (
         <Link href="https://www.mrmoneymustache.com/2013/07/25/50-jobs-over-50000-without-a-degree-part-1">no college degree required</Link>
-        ) living off $24k a year it will take you approximately 11 years to retire even if you have nothing saved.
+        ) living off $24k a year it will take you approximately 12 years to retire even if you have nothing saved.
         Don't believe me? Let's do the math.
       </p>
       <RetirementCalc />

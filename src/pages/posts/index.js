@@ -9,7 +9,7 @@ import { capitalize } from '../../helpers/capitalize'
 // Group nodes by topic (school, money, bikes, etc...)
 const getGroups = nodes => {
   return nodes.reduce((acc, node) => {
-      const group = node.fields.slug.split('/')[2];
+      const group = node.path.split('/')[2];
       acc[group] = acc[group] || [];
       acc[group].push(node);
       return acc;
@@ -33,12 +33,10 @@ export default () => {
   const data = useStaticQuery(
     graphql`
     {
-      allMarkdownRemark(filter: {fields: {slug: {ne: null}}}) {
+      pages: allSitePage(filter: {context: {title: {ne: null}}}) {
         nodes {
-          fields {
-            slug
-          }
-          frontmatter {
+          path
+          context {
             title
           }
         }
@@ -46,9 +44,10 @@ export default () => {
     }
   `)
 
-  const groups = getGroups(data.allMarkdownRemark.nodes)
+  const groups = getGroups(data.pages.nodes)
   const split = splitGroups(groups, 2)
 
+  console.log('split', split)
   return (
     <CenterLayout
       title={<h1 className="title is-2">All Posts</h1>}
@@ -67,7 +66,9 @@ export default () => {
               {col.map(group => (
                 <React.Fragment key={group[0]}>
                   <h3>{capitalize(group[0])}</h3>
-                  {group[1].map(v => <Link key={v.fields.slug} href={v.fields.slug}>{v.frontmatter.title}</Link>)}
+                  {group[1].map(v =>
+                    <Link key={v.path} href={v.path}>{v.context.title}</Link>
+                  )}
                 </React.Fragment>))}
             </div>
           ))}

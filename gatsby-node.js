@@ -1,6 +1,6 @@
 const path = require("path");
 
-const slugRegex = /(posts\/.*)\..*/
+const slugRegex = /(\/posts\/.*)\..*/
 
 
 exports.onCreateNode = ({ node, actions }) => {
@@ -29,8 +29,11 @@ exports.createPages = async ({ graphql, actions }) => {
         }
         frontmatter {
           title
+          date
           javascript
         }
+        timeToRead
+        excerpt
       }
     }
     allFile(filter: {absolutePath: {glob: "**/posts/*/*.js"}}) {
@@ -52,6 +55,9 @@ exports.createPages = async ({ graphql, actions }) => {
           id: node.id,
           // For nav, which queries sitePage
           title: node.frontmatter.title,
+          date: node.frontmatter.date,
+          excerpt: node.excerpt,
+          timeToRead: node.timeToRead,
           // To check in static-entry if should include scripts or not
           javascript: node.frontmatter.javascript
         }
@@ -59,10 +65,17 @@ exports.createPages = async ({ graphql, actions }) => {
     })
     result.data.allFile.nodes.forEach(node => {
       const path = slugRegex.exec(node.absolutePath)[1]
+      // TODO: find a way to make this much prettier
+      const markdownRemark = require(node.absolutePath.replace('.js', '.meta')).markdownRemark
       actions.createPage({
         component: node.absolutePath,
         path: path,
         context: {
+          // For nav, which queries sitePage
+          title: markdownRemark.frontmatter.title,
+          date: markdownRemark.frontmatter.date,
+          excerpt: markdownRemark.excerpt,
+          timeToRead: markdownRemark.timeToRead,
           // If we put a js template in our folder, we KNOW we want javascript
           javascript: true
         }
