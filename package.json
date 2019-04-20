@@ -7,7 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "shx rm -rf .public && gatsby develop",
+    "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve"
   },
@@ -35,7 +35,6 @@
     "null-loader": "^0.1.1",
     "preact": "^8.4.2",
     "preact-compat": "^3.18.4",
-    "shx": "^0.3.2",
     "webpack-bundle-analyzer": "^3.3.2"
   }
 }

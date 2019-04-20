@@ -14,8 +14,11 @@ module.exports = {
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 1035,
-              sizeByPixelDensity: true
+              maxWidth: 960,
+              linkImagesToOriginal: false,
+              wrapperStyle: () => '',
+              backgroundColor: '#f7f0eb',
+              quality: 90,
             }
           },
         ]
