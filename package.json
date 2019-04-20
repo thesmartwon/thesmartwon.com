@@ -8,6 +8,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
+    "deploy": "gh-pages --dist public",
     "start": "npm run develop",
     "serve": "gatsby serve"
   },
@@ -32,6 +33,7 @@
     "url": "https://github.com/thesmartwon/thesmartwon.github.io"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "null-loader": "^0.1.1",
     "preact": "^8.4.2",
     "preact-compat": "^3.18.4",
