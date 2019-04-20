@@ -114,7 +114,7 @@ export default class RetirementCalc extends React.Component {
               <div className="control select is-warning">
                 <select onChange={event => this.setState({status: event.target.value})}>
                   {Object.keys(fedTaxBrackets).map(key => (
-                    <option value={key} key={key}>{key}</option>
+                    <option value={key} key={key} selected={key === this.state.status}>{key}</option>
                   ))}
                 </select>
               </div>

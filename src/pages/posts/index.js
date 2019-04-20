@@ -58,7 +58,7 @@ export default () => {
       )}
       path={'/posts'}
     >
-      <Helmet title="The Smart Won's Posts" defer={false} />
+      <Helmet title="The Smart Posts" defer={false} />
       <div className="content is-medium">
         <div className="columns">
           {split.map(col => (

@@ -1,5 +1,5 @@
 {
-  "name": "thesmartwon.github.io",
+  "name": "thesmartwon.com",
   "private": true,
   "description": "An optimized Gatsby site",
   "version": "0.1.0",
@@ -19,7 +19,6 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-sharp": "^2.0.35",
-    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "gatsby-remark-images": "^3.0.10",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-remark": "^2.3.8",
@@ -30,9 +29,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thesmartwon/thesmartwon.github.io"
+    "url": "https://github.com/thesmartwon/thesmartwon.com"
   },
   "devDependencies": {
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "gh-pages": "^2.0.1",
     "null-loader": "^0.1.1",
     "preact": "^8.4.2",

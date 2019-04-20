@@ -42,7 +42,7 @@ export default () => {
       )}
       path={'/'}
     >
-      <Helmet title="The Smart Won's Blog" defer={false} />
+      <Helmet title="The Smart Blog" defer={false} />
       <div className="content is-medium has-text-centered">
         {data.pages.nodes.map(node => (
           <div key={node.path} style={{padding: '1.5rem'}}>

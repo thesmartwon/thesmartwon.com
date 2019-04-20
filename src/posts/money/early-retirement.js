@@ -5,7 +5,6 @@ import PostTemplate from '../../templates/post-template'
 import { markdownRemark } from './early-retirement.meta'
 
 
-
 export default function EarlyRetirement() {
   return (
     <PostTemplate data={{markdownRemark}}>
