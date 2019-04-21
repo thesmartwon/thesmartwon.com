@@ -12,6 +12,12 @@ javascript: false
 	- People are constantly test riding bikes (especially the $200+ ones), so don't feel weird asking.
 	- To be polite, trade your ID for a test ride so that the seller knows you won't steal the bike.
 
+<figure>
+
+![Fixie](fixie.jpg)
+<figcaption>A fixie (single gear) bike listed for $200 on Craigslist with mediocre comonents.</figcaption>
+</figure>
+
 # The Guide
 I recently bought a bike after religiously checking Craigslist for a month, and I'd like to share the process I went through. I'm a huge fan of bikes and the [lifestyle they encourage.](http://www.mrmoneymustache.com/2011/04/18/get-rich-with-bikes/)
 
@@ -85,6 +91,12 @@ Most non-department store bikes are measured by their [seat tube length.](https:
 
 The best option is to spend an afternoon at a nearby bike shop and test out different sizes.
 
+<figure>
+
+![Frame geometry](frame-geometry.jpg)
+<figcaption>The parts of a normal bike frame.</figcaption>
+</figure>
+
 ## 2. Understanding different frames
 A frame is the core of the bike, and it determines all the other components you can use on it. If you're planning on maintenance or upgrades then you are really investing in a frame.
 
@@ -119,6 +131,13 @@ Carbon Fiber has just started peeking its head in the consumer world around 2000
 - <span class="tag is-success">pro</span> Tends to make the lightest frames
 - <span class="tag is-success">pro</span> Absorbs a lot of road shock, almost as much as steel
 - <span class="tag is-danger">con</span> Can't DIY repair the frame (they fail [catastrophically](https://www.google.com/search?q=carbon+fiber+bike+crash&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiy3YHk9M3YAhWBUN8KHQmqDfAQ_AUIDCgD&biw=950&bih=994) in crashes), need a professional
+
+<figure>
+
+![Racing geometry bike](caad10.jpg)
+<figcaption>This bike has a more racing geometry since the rider has to lean farther forward to reach the handlebars.
+This is the same frame that I first bought (and love), a Cannondale CAAD 10!</figcaption>
+</figure>
 
 ## 3. Understanding components
 Components are... complicated. They've been letting you brake and shift gears since the inception of bicycles, but the way they do that has changed, and everyone has their own preferences. There are some globally agreed on facts, though:
