@@ -48,7 +48,7 @@ export default class RetirementCalc extends React.Component {
 
   render() {
     const projection = projectRetirement(
-      this.state.income,
+      this.state.income > 10000 ? this.state.income : 10000,
       this.state.raise / 100,
       this.state.safeWithdrawal / 100,
       this.state.effectiveGrowth / 100,
@@ -94,7 +94,7 @@ export default class RetirementCalc extends React.Component {
                   type="number"
                   step="1000"
                   value={this.state.income}
-                  onChange={event => this.setState({income: Number(event.target.value > 20000 ? event.target.value : 20000)})} />
+                  onChange={event => this.setState({income: Number(event.target.value)})} />
               </div>
               <p className="help">Your salary</p>
             </div>
