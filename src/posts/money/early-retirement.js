@@ -13,7 +13,7 @@ export default function EarlyRetirement() {
       <p>Well, your investments need to make more money per year than
         your expenses. Great news: with just a $70k salary (
         <Link href="https://www.mrmoneymustache.com/2013/07/25/50-jobs-over-50000-without-a-degree-part-1">no college degree required</Link>
-        ) living off $24k a year it will take you approximately 12 years to retire even if you have nothing saved.
+        ) living off $24k a year it will take you approximately 11 years to retire even if you have nothing saved.
         Don't believe me? Let's do the math.
       </p>
       <RetirementCalc />

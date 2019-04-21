@@ -45,6 +45,7 @@ export const projectRetirement = (
   raise,
   safeWithdrawal,
   effectiveGrowth,
+  k401match,
   status,
   expenses,
   desiredContributions,
@@ -61,7 +62,7 @@ export const projectRetirement = (
 
     const contributions = {
       hsa: max(min(toInvest, desiredContributions.hsa), 0),
-      k401: max(min(toInvest - desiredContributions.hsa, desiredContributions.k401), 0),
+      k401: max(min(toInvest - desiredContributions.hsa, desiredContributions.k401) + income * k401match, 0),
       ira: max(min(toInvest - desiredContributions.hsa - desiredContributions.k401, desiredContributions.ira), 0),
       afterTax: max(toInvest - desiredContributions.hsa - desiredContributions.k401 - desiredContributions.ira, 0)
     }

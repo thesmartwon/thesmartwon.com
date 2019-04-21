@@ -52,6 +52,7 @@ export default class RetirementCalc extends React.Component {
       this.state.raise / 100,
       this.state.safeWithdrawal / 100,
       this.state.effectiveGrowth / 100,
+      this.state.k401match / 100,
       this.state.status,
       this.state.expenses,
       this.state.desiredContributions,
