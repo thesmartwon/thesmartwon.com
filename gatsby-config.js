@@ -30,8 +30,19 @@ module.exports = {
       options: {
         name: "The Smart Blog",
         start_url: "/",
-        icon: "static/favicon.jpg",
-        icons: [],
+        icon: "src/pages/favicon.jpg",
+        icons: [
+          {
+            src: `/favicons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+        ],
         display: "minimal-ui",
         background_color: "#f7f0eb",
         theme_color: "#a2466c",

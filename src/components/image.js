@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import './image.scss'
 
 // This image gets used in *.js files
-export default Image = ({height, src, alt}) => (
-  <div className="image" style={{height: `${height}px`}}>
-    <img src={src} alt={alt} />
-  </div>
-)
+export default function Image({height, src, alt}) {
+  return (
+    <div className="image" style={{height: `${height}px`}}>
+      <img src={src} alt={alt} />
+    </div>
+  )
+} 
 
 Image.propTypes = {
   height: PropTypes.number.isRequired,
