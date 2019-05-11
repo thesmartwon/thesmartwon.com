@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from './link'
-import {capitalize} from '../helpers/capitalize'
+import { capitalize } from '../helpers/capitalize'
 import './breadcrumb.scss'
 
 

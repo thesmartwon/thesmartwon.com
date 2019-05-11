@@ -1,7 +1,6 @@
-const path = require("path");
-
-const slugRegex = /(\/posts\/.*)\..*/
-
+const path = require("path")
+const fileSlugRegex = /(\/posts\/.*)\..*/
+const topicPages = {}
 
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "MarkdownRemark") {
@@ -12,8 +11,24 @@ exports.onCreateNode = ({ node, actions }) => {
     actions.createNodeField({
       node,
       name: "slug",
-      value: slugRegex.exec(node.fileAbsolutePath)[1],
-    });
+      value: fileSlugRegex.exec(node.fileAbsolutePath)[1],
+    })
+  }
+}
+
+const addTopicIndex = (pagePath, actions) => {
+  const topic = /\/posts\/(.*)\/.*/.exec(pagePath)[1]
+
+  if (topic && !topicPages[topic]) {
+    actions.createPage({
+      component: path.resolve(__dirname, "src/templates/topic-template.js"),
+        path: `/posts/${topic}`,
+        context: {
+          topic: topic,
+          glob: `**/posts/${topic}/*`
+        }
+    })
+    topicPages[topic] = true
   }
 }
 
@@ -36,7 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
         excerpt
       }
     }
-    allFile(filter: {absolutePath: {glob: "**/posts/*/*.js"}}) {
+    jsPosts: allFile(filter: {absolutePath: {glob: "**/posts/*/*.js"}}) {
       nodes {
         absolutePath
       }
@@ -47,9 +62,10 @@ exports.createPages = async ({ graphql, actions }) => {
       return Promise.reject(result.errors)
     }
     result.data.allMarkdownRemark.nodes.forEach(node => {
+      const pagePath = node.fields.slug
       actions.createPage({
         component: path.resolve(__dirname, "src/templates/post-template.js"),
-        path: node.fields.slug,
+        path: pagePath,
         context: {
           // To lookup more data in template
           id: node.id,
@@ -61,15 +77,16 @@ exports.createPages = async ({ graphql, actions }) => {
           // To check in static-entry if should include scripts or not
           javascript: node.frontmatter.javascript
         }
-      });
+      })
+      addTopicIndex(pagePath, actions)
     })
-    result.data.allFile.nodes.forEach(node => {
-      const path = slugRegex.exec(node.absolutePath)[1]
+    result.data.jsPosts.nodes.forEach(node => {
       // TODO: find a way to make this much prettier
       const markdownRemark = require(node.absolutePath.replace('.js', '.meta')).markdownRemark
+      const pagePath = fileSlugRegex.exec(node.absolutePath)[1]
       actions.createPage({
         component: node.absolutePath,
-        path: path,
+        path: pagePath,
         context: {
           // For nav, which queries sitePage
           title: markdownRemark.frontmatter.title,
@@ -80,37 +97,38 @@ exports.createPages = async ({ graphql, actions }) => {
           javascript: true
         }
       })
+      addTopicIndex(pagePath, actions)
     })
   })
 }
 
 exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
-  const config = getConfig();
-  // console.log("stage", stage);
+  const config = getConfig()
+  // console.log("stage", stage)
   if (stage === "build-javascript") {
     // Use our custom entrypoint
-    config.entry.app = "./src/production-app.js";
+    config.entry.app = "./src/production-app.js"
     // Disable sourcemaps: https://webpack.js.org/configuration/devtool/
-    // config.devtool = false;
+    // config.devtool = false
 
     // https://preactjs.com/guide/switching-to-preact
-    config.resolve.alias["react"] = "preact-compat";
-    config.resolve.alias["react-dom"] = "preact-compat";
-    config.resolve.alias["create-react-class"] = "preact-compat/lib/create-react-class";
+    config.resolve.alias["react"] = "preact-compat"
+    config.resolve.alias["react-dom"] = "preact-compat"
+    config.resolve.alias["create-react-class"] = "preact-compat/lib/create-react-class"
     config.module.rules.push({
       test: /.*react\-helmet.*/,
       use: "null-loader"
-    });
+    })
   } else if (stage === "develop") {
     // Use our custom entrypoint
-    const commons = config.entry.commons.filter(a => a.indexOf(".cache/app") === -1);
-    commons.push("./src/app.js");
-    config.entry.commons = commons;
+    const commons = config.entry.commons.filter(a => a.indexOf(".cache/app") === -1)
+    commons.push("./src/app.js")
+    config.entry.commons = commons
   } else if (stage === "build-html") {
-    // console.log("plugins", config.plugins);
-    config.entry.main = "./src/static-entry.js";
+    // console.log("plugins", config.plugins)
+    config.entry.main = "./src/static-entry.js"
   }
-  // config.optimization = {};
+  // config.optimization = {}
 
-  actions.replaceWebpackConfig(config);
+  actions.replaceWebpackConfig(config)
 }

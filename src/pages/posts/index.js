@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import CenterLayout from '../../layouts/center-layout';
 import Link from '../../components/link'
 import { capitalize } from '../../helpers/capitalize'
-
+import ArticlePreview from '../../components/article-preview'
 
 // Group nodes by topic (school, money, bikes, etc...)
 const getGroups = nodes => {
@@ -15,6 +15,7 @@ const getGroups = nodes => {
       return acc;
     }, {})
 }
+
 // Split groups into num columns
 const splitGroups = (groups, num) => {
   const res = []
@@ -38,6 +39,9 @@ export default () => {
           path
           context {
             title
+            dateShort: date(formatString: "YYYY-MM-DD")
+            dateLong: date(formatString: "MMMM DD, YYYY")
+            timeToRead
           }
         }
       }
@@ -61,13 +65,11 @@ export default () => {
       <div className="content is-medium">
         <div className="columns">
           {split.map(col => (
-            <div key={col[0][0]} className="column">
+            <div key={col[0][0]} className="column has-text-centered">
               {col.map(group => (
                 <React.Fragment key={group[0]}>
-                  <h3>{capitalize(group[0])}</h3>
-                  {group[1].map(v =>
-                    <Link key={v.path} href={v.path}>{v.context.title}</Link>
-                  )}
+                  <h3><Link className="title" href={`/posts/${group[0]}`}>{capitalize(group[0])}</Link></h3>
+                  {group[1].map(ArticlePreview)}
                 </React.Fragment>))}
             </div>
           ))}

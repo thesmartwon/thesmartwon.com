@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import CenterLayout from '../layouts/center-layout'
+import Link from '../components/link'
 
 export default function PostTemplate({ data, children }) {
   const { frontmatter, html, timeToRead, fields } = data.markdownRemark
@@ -20,11 +21,14 @@ export default function PostTemplate({ data, children }) {
       path={fields.slug}
     >
       <Helmet title={frontmatter.title} defer={false} />
-      {
-        children
+      {children
           ? <div className="content is-medium">{children}</div>
           : <div className="content is-medium" dangerouslySetInnerHTML={{__html: html}} />
       }
+      <div className="has-text-centered">
+        <Link href="#">Back to top</Link>{' / '}
+        <Link href="/posts">View all posts</Link>
+      </div>
     </CenterLayout>
   )
 }
@@ -62,4 +66,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
