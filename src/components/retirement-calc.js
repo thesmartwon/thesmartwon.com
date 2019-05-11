@@ -28,22 +28,22 @@ export default class RetirementCalc extends React.Component {
       effectiveGrowth: 7,
       showGains: false,
       showContributions: false,
-      tabShown: 1
+      tabShown: 1,
     }
+  }
 
-    this.setDesired = (name, value) => {
-      this.state.desiredContributions[name] = Number(value)
-      this.setState({desiredContributions: this.state.desiredContributions})
-    }
+  setDesired = (name, value) => {
+    this.state.desiredContributions[name] = Number(value)
+    this.setState({desiredContributions: this.state.desiredContributions})
+  }
 
-    this.setBalance = (name, value) => {
-      this.state.initialBalances[name] = Number(value)
-      this.setState({initialBalances: this.state.initialBalances})
-    }
+  setBalance = (name, value) => {
+    this.state.initialBalances[name] = Number(value)
+    this.setState({initialBalances: this.state.initialBalances})
+  }
 
-    this.format = num => {
-      return Math.round(num / 100) / 10 + 'k'
-    }
+  format = num => {
+    return Math.round(num / 100) / 10 + 'k'
   }
 
   render() {
@@ -58,11 +58,9 @@ export default class RetirementCalc extends React.Component {
       this.state.desiredContributions,
       this.state.initialBalances
     )
-
+    const finalNestEgg = projection[projection.length - 1].total
     let totalSaved = 0
     projection.forEach(year => totalSaved += Object.values(year.contributions).reduce((a, b) => a + b))
-
-    const finalNestEgg = projection[projection.length - 1].total
 
     const tabs = [
       {num: 1, caption: 'Taxes'},
@@ -113,9 +111,9 @@ export default class RetirementCalc extends React.Component {
             <div className="field">
               <label className="label">Status</label>
               <div className="control select is-warning">
-                <select onChange={event => this.setState({status: event.target.value})}>
+                <select onChange={event => this.setState({status: event.target.value})} value={this.state.status}>
                   {Object.keys(fedTaxBrackets).map(key => (
-                    <option value={key} key={key} selected={key === this.state.status}>{key}</option>
+                    <option value={key} key={key}>{key}</option>
                   ))}
                 </select>
               </div>
@@ -240,11 +238,11 @@ export default class RetirementCalc extends React.Component {
                     step="0.25"
                     value={this.state.safeWithdrawal}
                     onChange={event => this.setState({safeWithdrawal: Number(event.target.value)})} />
-                  <span className="icon is-right">
+                  <span className="icon is-right italic-icon">
                     <i>%</i>
                   </span>
                 </div>
-                <p className="help"><Link href="https://www.madfientist.com/safe-withdrawal-rate/">Nest Egg * safeWithdrawal > Expenses</Link></p>
+                <p className="help"><Link href="https://www.madfientist.com/safe-withdrawal-rate/">Nest Egg * Safe Withdrawal > Expenses</Link></p>
               </div>
               <div className="field">
                 <label className="label">Effective Growth Rate</label>
@@ -255,7 +253,7 @@ export default class RetirementCalc extends React.Component {
                     step="0.5"
                     value={this.state.effectiveGrowth}
                     onChange={event => this.setState({effectiveGrowth: Number(event.target.value)})} />
-                  <span className="icon is-right">
+                  <span className="icon is-right italic-icon">
                     <i>%</i>
                   </span>
                 </div>
@@ -273,7 +271,7 @@ export default class RetirementCalc extends React.Component {
                     step="0.5"
                     value={this.state.raise}
                     onChange={event => this.setState({raise: Number(event.target.value)})} />
-                  <span className="icon is-right">
+                  <span className="icon is-right italic-icon">
                     <i>%</i>
                   </span>
                 </div>
@@ -281,7 +279,7 @@ export default class RetirementCalc extends React.Component {
               </div>
           </div>}
         <hr />
-        <table className="table is-narrow is-fullwidth">
+        <table className="table is-narrow is-fullwidth is-striped">
           <thead>
             <tr>
               <th>Year</th>
@@ -303,7 +301,8 @@ export default class RetirementCalc extends React.Component {
                 <td>{this.format(year.accounts.hsa)}
                   {this.state.showContributions &&
                     <span className="tag is-success">+{this.format(year.contributions.hsa)}</span>}
-                  {/* <span className="tag is-primary">+{this.format(year.growth.hsa)}</span> */}
+                  {this.state.showGains &&
+                    <span className="tag is-primary">+{this.format(year.growth.hsa)}</span>}
                 </td>
                 <td>{this.format(year.accounts.k401)}
                   {this.state.showContributions &&
@@ -347,11 +346,9 @@ export default class RetirementCalc extends React.Component {
           </div>
         </div>
         <p>
-          In this situation, you have to save {this.format(totalSaved)} over {projection.length} years.
-          Yet, through the magic of compounding interest, when you retire you have
-          {' ' + this.format(finalNestEgg)} and can safely withdraw
-          {' ' + this.format(finalNestEgg * this.state.safeWithdrawal)} per year, which will meet your
-          {' ' + this.format(this.state.expenses)} of living expenses.
+          <b>{projection.length}</b> years to retirement 
+          / <b>{this.format(finalNestEgg * this.state.safeWithdrawal / 100.0)}</b> per year 
+          / <b>{this.format(totalSaved)}</b> total contributions
         </p>
       </>
     );

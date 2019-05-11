@@ -2,3 +2,9 @@
 @import 'bulma/sass/elements/form.sass';
 @import 'bulma/sass/elements/table.sass';
 @import 'bulma/sass/components/tabs.sass';
+
+.italic-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

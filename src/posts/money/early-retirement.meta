@@ -8,7 +8,7 @@ module.exports = {
       dateLong: 'Decemeber 18, 2018',
       javascript: true
     },
-    excerpt: "Brilliant, you'd like to quit your day job and do something more meaningful with your life. Now how do you do it?",
+    excerpt: "Brilliant, you'd like to quit your day job and do something more meaningful with your life. Now how do you do it?…",
     fields: {slug: '/posts/money/early-retirement'}
   }
 }
