@@ -1,5 +1,16 @@
 # https://circleci.com/blog/deploying-documentation-to-github-pages-with-continuous-integration/
 version: 2
+workflows:
+  version: 2
+  build:
+    jobs:
+    - docs-build
+    - docs-deploy:
+        filters:
+          branches:
+            only: master
+        requires:
+        - docs-build
 jobs:
   docs-build:
     docker:
@@ -9,10 +20,9 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
     - run:
-        name: Install
-        command: yarn install
+        name: Conditional Install
+        command: if [ ! -d node_modules ]; then yarn install --frozen-lockfile; fi
     - save_cache:
         paths:
         - node_modules
@@ -44,14 +54,3 @@ jobs:
     - run:
         name: Deploy
         command: $(yarn global bin)/gh-pages --message 'Publishing [ci skip]' --dist public
-workflows:
-  version: 2
-  build:
-    jobs:
-    - docs-build
-    - docs-deploy:
-        filters:
-          branches:
-            only: master
-        requires:
-        - docs-build
