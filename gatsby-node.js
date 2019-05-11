@@ -119,6 +119,10 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
       test: /.*react\-helmet.*/,
       use: "null-loader"
     })
+    config.module.rules.push({
+      test: /.*core\-js.*/,
+      use: "null-loader"
+    })
   } else if (stage === "develop") {
     // Use our custom entrypoint
     const commons = config.entry.commons.filter(a => a.indexOf(".cache/app") === -1)

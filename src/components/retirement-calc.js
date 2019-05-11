@@ -347,7 +347,7 @@ export default class RetirementCalc extends React.Component {
         </div>
         <p>
           <b>{projection.length}</b> years to retirement 
-          / <b>{this.format(finalNestEgg * this.state.safeWithdrawal / 100.0)}</b> per year 
+          / <b>{this.format(finalNestEgg * this.state.safeWithdrawal / 100.0)}</b> withdrawable per year 
           / <b>{this.format(totalSaved)}</b> total contributions
         </p>
       </>
