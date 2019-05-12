@@ -14,7 +14,7 @@ export default function PostTemplate({ data, children }) {
       subtitle={(
         <span className="has-text-grey">
           <time dateTime={frontmatter.dateShort}>{frontmatter.dateLong}</time>
-        · {timeToRead} min read
+          {' · '}{timeToRead} min read
         </span>
       )}
       javascript={frontmatter.javascript}

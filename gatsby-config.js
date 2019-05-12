@@ -17,7 +17,7 @@ module.exports = {
               maxWidth: 960,
               linkImagesToOriginal: false,
               wrapperStyle: () => '',
-              backgroundColor: '#f7f0eb',
+              backgroundColor: "#F5F5F5",
               quality: 90,
             }
           },
@@ -33,19 +33,16 @@ module.exports = {
         icon: "src/pages/favicon.jpg",
         icons: [
           {
-            src: `/favicons/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`,
-          },
-          {
-            src: `/favicons/android-chrome-512x512.png`,
-            sizes: `512x512`,
-            type: `image/png`,
+            src: "/favicon.png",
+            sizes: "128x128",
+            type: "image/png",
           },
         ],
         display: "minimal-ui",
-        background_color: "#f7f0eb",
-        theme_color: "#a2466c",
+        background_color: "#F5F5F5",
+        theme_color: "#00D1B2",
+        cache_busting_mode: "none", // change this if changing favicon
+        legacy: false, // this will not add apple-touch-icon links to <head>
       },
     },
     "gatsby-plugin-sass",
