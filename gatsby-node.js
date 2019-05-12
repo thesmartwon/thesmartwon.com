@@ -125,7 +125,7 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
     })
   } else if (stage === "develop") {
     // Use our custom entrypoint
-    const commons = config.entry.commons.filter(a => a.indexOf(".cache/app") === -1)
+    const commons = config.entry.commons.filter(a => a.indexOf(".cache") === -1)
     commons.push("./src/app.js")
     config.entry.commons = commons
   } else if (stage === "build-html") {

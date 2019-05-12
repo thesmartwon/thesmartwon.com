@@ -36,7 +36,7 @@ export default () => {
       )}
       subtitle={(
         <h2 className="subtitle is-4 has-text-grey-light">
-          Relax and have a good read!<img src={Mug} style={{paddingLeft: '.8rem'}}></img>
+          Relax and have a good read!<img src={Mug} alt="Mug" style={{paddingLeft: '1rem', height: '1.5rem'}} />
         </h2>
       )}
       path={'/'}
