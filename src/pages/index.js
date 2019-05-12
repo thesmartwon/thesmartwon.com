@@ -43,7 +43,7 @@ export default () => {
     >
       <Helmet title="The Smart Blog" defer={false} />
       <div className="content is-medium has-text-centered">
-        {data.pages.nodes.map(ArticlePreview)}
+        {data.pages.nodes.map(node => ArticlePreview(node, false))}
         <div>
           <Link href="/posts">View all posts</Link>
         </div>

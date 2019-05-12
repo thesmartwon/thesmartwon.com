@@ -69,7 +69,7 @@ export default () => {
               {col.map(group => (
                 <React.Fragment key={group[0]}>
                   <h3><Link className="title" href={`/posts/${group[0]}`}>{capitalize(group[0])}</Link></h3>
-                  {group[1].map(ArticlePreview)}
+                  {group[1].map(node => ArticlePreview(node, true))}
                 </React.Fragment>))}
             </div>
           ))}

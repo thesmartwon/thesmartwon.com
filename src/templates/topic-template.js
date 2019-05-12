@@ -26,7 +26,7 @@ export default ({ data, pageContext }) => {
     >
       <Helmet title={`${capitalize(topic)} Posts`} defer={false} />
       <div className="content is-medium">
-        {data.pages.nodes.map(ArticlePreview)}
+        {data.pages.nodes.map(node => ArticlePreview(node, true))}
       </div>
     </CenterLayout>
   )

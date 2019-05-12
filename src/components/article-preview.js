@@ -2,7 +2,7 @@ import React from 'react'
 import Link from './link'
 import './article-preview.scss'
 
-export default (node) => {
+export default (node, showTime) => {
   const { path, context } = node
   const topic = path.split('/')[2]
 
@@ -14,13 +14,13 @@ export default (node) => {
             {context.title}
           </Link>
           <div className="tags has-addons level-item">
-            {context.excerpt
-              ? <Link className="tag is-rounded is-warning" href={`/posts/${topic}`}>
-                  {topic}
-                </Link>
-              : <span className="tag is-rounded is-warning">
+            {showTime
+              ? <span className="tag is-rounded is-warning">
                   {context.timeToRead} mins
                 </span>
+              : <Link className="tag is-rounded is-warning" href={`/posts/${topic}`}>
+                  {topic}
+                </Link>
             }
             <span className="tag is-rounded">
               <time dateTime={context.dateShort}>{context.dateLong}</time>
