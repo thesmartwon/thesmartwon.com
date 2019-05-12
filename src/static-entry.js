@@ -239,22 +239,26 @@ export default (pagePath, callback) => {
         headComponents.push(
           <link
             as="style"
-            rel={style.rel}
+            rel="prefetch"
             key={style.name}
             href={`${__PATH_PREFIX__}/${style.name}`}
           />
         )
       } else {
         headComponents.unshift(
-          <style
-            data-href={`${__PATH_PREFIX__}/${style.name}`}
-            dangerouslySetInnerHTML={{
-              __html: fs.readFileSync(
-                join(process.cwd(), `public`, style.name),
-                `utf-8`
-              ),
-            }}
+          <link
+            rel="stylesheet"
+            href={`${__PATH_PREFIX__}/${style.name}`}
           />
+          // <style
+          //   data-href={`${__PATH_PREFIX__}/${style.name}`}
+          //   dangerouslySetInnerHTML={{
+          //     __html: fs.readFileSync(
+          //       join(process.cwd(), `public`, style.name),
+          //       `utf-8`
+          //     ),
+          //   }}
+          // />
         )
       }
     })
