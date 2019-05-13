@@ -30,12 +30,12 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thesmartwon/thesmartwon.com"
-  },
   "devDependencies": {
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "gh-pages": "2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesmartwon/thesmartwon.com"
   }
 }

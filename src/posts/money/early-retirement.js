@@ -15,7 +15,7 @@ export default () => (
     <Image src={retirementMeme} alt="Make it so, captain" height={350} />
     <p>Well, your investments need to make more money per year than
       your expenses. Great news:</p>
-    <div class="notification is-success">
+    <div class="notification is-info">
       if you're starting from $0, you can retire in just 11 years with just a $70k salary (
       <Link href="https://www.mrmoneymustache.com/2013/07/25/50-jobs-over-50000-without-a-degree-part-1">no college degree required</Link>)
     </div>

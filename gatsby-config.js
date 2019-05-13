@@ -46,14 +46,13 @@ module.exports = {
       },
     },
     "gatsby-plugin-sass",
-    // Add stuff to <head>
-    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-react-helmet", // Add stuff to <head>
     {
       resolve: "gatsby-plugin-webpack-bundle-analyzer",
       options: {
         analyzerPort: 3000,
         production: true,
-        disable: process.env.CI || process.env.NODE_ENV !== "production"
+        disable: process.env.CI || process.env.NODE_ENV !== "production",
       },
     }
   ]

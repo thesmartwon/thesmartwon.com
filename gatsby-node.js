@@ -35,7 +35,7 @@ const addTopicIndex = (pagePath, actions) => {
 exports.createPages = async ({ graphql, actions }) => {
   await graphql(`
   {
-    allMarkdownRemark(filter: {fields: {slug: {ne: null}}}) {
+    mdPosts: allMarkdownRemark(filter: {fields: {slug: {ne: null}}}) {
       nodes {
         id
         fileAbsolutePath
@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
-    result.data.allMarkdownRemark.nodes.forEach(node => {
+    result.data.mdPosts.nodes.forEach(node => {
       const pagePath = node.fields.slug
       actions.createPage({
         component: path.resolve(__dirname, "src/templates/post-template.js"),
