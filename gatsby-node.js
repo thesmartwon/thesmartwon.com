@@ -4,8 +4,8 @@ const topicPages = {}
 
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "MarkdownRemark") {
-    if (node.frontmatter.draft && process.env.NODE_ENV === "production") {
-      // actions.deleteNode({node}) doesn't work
+    if (node.frontmatter.draft) {
+      // actions.deleteNode({node}) doesn't work, so just don't add a slug, which we filter on
       return
     }
     actions.createNodeField({
