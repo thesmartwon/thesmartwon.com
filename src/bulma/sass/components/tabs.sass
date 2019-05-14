@@ -53,6 +53,7 @@ $tabs-toggle-link-active-color: $link-invert !default
       color: $tabs-link-hover-color
   li
     display: block
+    margin-top: 0.25em
     &.is-active
       a
         border-bottom-color: $tabs-link-active-border-bottom-color
@@ -85,6 +86,16 @@ $tabs-toggle-link-active-color: $link-invert !default
   &.is-centered
     ul
       justify-content: center
-  &.is-right
-    ul
-      justify-content: flex-end
+  &.is-boxed
+    a
+      border: 1px solid transparent
+      border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0
+      &:hover
+        background-color: $tabs-boxed-link-hover-background-color
+        border-bottom-color: $tabs-boxed-link-hover-border-bottom-color
+    li
+      &.is-active
+        a
+          background-color: $tabs-boxed-link-active-background-color
+          border-color: $tabs-boxed-link-active-border-color
+          border-bottom-color: $tabs-boxed-link-active-border-bottom-color !important
