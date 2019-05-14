@@ -45,7 +45,12 @@ module.exports = {
         legacy: false, // this will not add apple-touch-icon links to <head>
       },
     },
-    "gatsby-plugin-sass",
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        includePaths: ["src"]
+      },
+    },
     "gatsby-plugin-react-helmet", // Add stuff to <head>
     {
       resolve: "gatsby-plugin-webpack-bundle-analyzer",
