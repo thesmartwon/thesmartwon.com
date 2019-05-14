@@ -13,7 +13,7 @@ export default (node, showTime) => {
           <Link href={path} className={`title article-title ${context.excerpt ? 'is-3' : 'is-4'}`}>
             {context.title}
           </Link>
-          <div className="tags has-addons level-item">
+          <div className="tags has-addons is-centered">
             {showTime
               ? <span className="tag is-rounded is-warning">
                   {context.timeToRead} mins

@@ -3,17 +3,16 @@ import Link from './link'
 import { capitalize } from '../helpers/capitalize'
 import './breadcrumb.scss'
 
-
 const crumbify = (word, crumbs, curPath) => {
   let path = ''
-  for (var crumb of crumbs) {
+  for (let crumb of crumbs) {
     path += '/' + crumb;
     if (word === crumb)
       break
   }
 
   return {
-    name: capitalize(word),
+    name: word.split('-').map(capitalize).join(' '),
     path: path,
     isActive: path === curPath
   }

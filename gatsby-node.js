@@ -2,6 +2,10 @@ const path = require("path")
 const fileSlugRegex = /(\/posts\/.*)\..*/
 const topicPages = {}
 
+const trimIndex = path => {
+  return path.replace("/index", "")
+}
+
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type === "MarkdownRemark") {
     if (node.frontmatter.draft) {
@@ -11,7 +15,7 @@ exports.onCreateNode = ({ node, actions }) => {
     actions.createNodeField({
       node,
       name: "slug",
-      value: fileSlugRegex.exec(node.fileAbsolutePath)[1],
+      value: trimIndex(fileSlugRegex.exec(node.fileAbsolutePath)[1]),
     })
   }
 }
@@ -62,7 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
       return Promise.reject(result.errors)
     }
     result.data.mdPosts.nodes.forEach(node => {
-      const pagePath = node.fields.slug
+      const pagePath = trimIndex(node.fields.slug)
       actions.createPage({
         component: path.resolve(__dirname, "src/templates/post-template.js"),
         path: pagePath,
@@ -83,7 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
     result.data.jsPosts.nodes.forEach(node => {
       // TODO: find a way to make this much prettier
       const markdownRemark = require(node.absolutePath.replace('.js', '.meta')).markdownRemark
-      const pagePath = fileSlugRegex.exec(node.absolutePath)[1]
+      const pagePath = trimIndex(fileSlugRegex.exec(node.absolutePath)[1])
       actions.createPage({
         component: node.absolutePath,
         path: pagePath,
