@@ -156,7 +156,7 @@ export default class RetirementCalc extends React.Component {
                     step="1"
                     value={this.state.k401match}
                     onChange={event => this.setState({k401match: Number(event.target.value)})} />
-                  <span className="icon is-right">
+                  <span className="icon is-right is-centered">
                     <i>%</i>
                   </span>
                 </div>
@@ -238,7 +238,7 @@ export default class RetirementCalc extends React.Component {
                     step="0.25"
                     value={this.state.safeWithdrawal}
                     onChange={event => this.setState({safeWithdrawal: Number(event.target.value)})} />
-                  <span className="icon is-right italic-icon">
+                  <span className="icon is-right is-centered">
                     <i>%</i>
                   </span>
                 </div>
@@ -253,7 +253,7 @@ export default class RetirementCalc extends React.Component {
                     step="0.5"
                     value={this.state.effectiveGrowth}
                     onChange={event => this.setState({effectiveGrowth: Number(event.target.value)})} />
-                  <span className="icon is-right italic-icon">
+                  <span className="icon is-right is-centered">
                     <i>%</i>
                   </span>
                 </div>
@@ -271,7 +271,7 @@ export default class RetirementCalc extends React.Component {
                     step="0.5"
                     value={this.state.raise}
                     onChange={event => this.setState({raise: Number(event.target.value)})} />
-                  <span className="icon is-right italic-icon">
+                  <span className="icon is-right is-centered">
                     <i>%</i>
                   </span>
                 </div>

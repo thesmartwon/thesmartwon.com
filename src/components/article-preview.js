@@ -9,7 +9,7 @@ export default (node, showTime) => {
   return (
     <div key={path} style={{paddingBottom: '3rem'}}>
       <div className="media">
-        <div className="media-content has-text-centered no-overflow">
+        <div className="media-content has-text-centered is-clipped">
           <Link href={path} className={`title article-title ${context.excerpt ? 'is-3' : 'is-4'}`}>
             {context.title}
           </Link>

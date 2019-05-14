@@ -44,32 +44,8 @@ $breadcrumb-item-separator-color: $grey-light !default
       margin-right: 0.5em
     &:last-child
       margin-left: 0.5em
-  // Alignment
+    // Alignment
   &.is-centered
     ol,
     ul
       justify-content: center
-  &.is-right
-    ol,
-    ul
-      justify-content: flex-end
-  // Sizes
-  &.is-small
-    font-size: $size-small
-  &.is-medium
-    font-size: $size-medium
-  &.is-large
-    font-size: $size-large
-  // Styles
-  &.has-arrow-separator
-    li + li::before
-      content: "\02192"
-  &.has-bullet-separator
-    li + li::before
-      content: "\02022"
-  &.has-dot-separator
-    li + li::before
-      content: "\000b7"
-  &.has-succeeds-separator
-    li + li::before
-      content: "\0227B"
