@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/styles.15afead8077417a4fb0a.css"/><link rel="shortcut icon" href="/favicon.png"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#00D1B2"/><title data-react-helmet="true">(Don&#x27;t Fear) The Command Line</title></head><body><div id="b"><div class="container"><div class="column is-8 is-offset-2"><nav class="breadcrumb is-marginless is-centered" aria-label="breadcrumbs"><ul><li class=""><a href="/">Home</a></li><li class=""><a href="/posts">Posts</a></li><li class=""><a href="/posts/coding">Coding</a></li><li class="is-active"><a href="/posts/coding/command-line">Command Line</a></li></ul></nav><div class="section titles-section"><h1 class="title is-2">(Don&#x27;t Fear) The Command Line</h1><span class="has-text-grey"><time dateTime="2019-05-16">May 16, 2019</time> · 6 min read</span></div><div class="content is-medium"><p>For many, the command line is a scary prompt that reminds people of old computers that were hard to use.</p>
+<figure>
+<p><span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAD/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/aAAwDAQACEAMQAAABUNwCd7SK/8QAGxAAAgIDAQAAAAAAAAAAAAAAAQIAAwQRExL/2gAIAQEAAQUCyXIs6NKztcmv03ExE0v/xAAWEQADAAAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8BNX//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPwFn/8QAGBABAAMBAAAAAAAAAAAAAAAAAAERMQL/2gAIAQEABj8CqGr6Q1T/xAAaEAADAQADAAAAAAAAAAAAAAAAARExIVHx/9oACAEBAAE/IUdk46H4xmw6UyciHTJJrD//2gAMAwEAAgADAAAAEH//AP/EABgRAAIDAAAAAAAAAAAAAAAAAAABESEx/9oACAEDAQE/EElQsP/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/ECv/xAAbEAACAwADAAAAAAAAAAAAAAABEQAhMVGx8f/aAAgBAQABPxAAASzQ57MVRuY9l4A5TiR3NGuEp2wZ5jR8z//Z'); background-size: cover; display: block;"
+    ></span>
+    <img
+        class="gatsby-resp-image-image"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px #F5F5F5;"
+        alt="Old CRT Terminal"
+        title=""
+        src="/static/1cfe11607b75ed3790890ebff513d6b6/fc413/old-terminal.jpg"
+        srcset="/static/1cfe11607b75ed3790890ebff513d6b6/16b37/old-terminal.jpg 240w,
+/static/1cfe11607b75ed3790890ebff513d6b6/809c4/old-terminal.jpg 480w,
+/static/1cfe11607b75ed3790890ebff513d6b6/fc413/old-terminal.jpg 960w,
+/static/1cfe11607b75ed3790890ebff513d6b6/45150/old-terminal.jpg 1440w"
+        sizes="(max-width: 960px) 100vw, 960px"
+      />
+  </span></p>
+<figcaption>Ooh, scary.</figcaption>
+</figure>
+<p>For others like me, it's the most powerful tool to control your operating system, whether it be Windows, Mac OSX, or Linux. Let's learn what a command line can do for you! To follow along, open a program on your computer called "terminal" or "cmd".</p>
+<h3>Echo... hello!</h3>
+<p>Once you've started a terminal, try the <code>echo</code> command! It simply prints the text you pass it.</p>
+<pre><code class="language-bash">> echo "Hello!"
+Hello!
+</code></pre>
+<figure>
+<p><img src="/you-had-me-at-hello-65dd5afc1155cc9bff818ea21beef4f6.gif" alt="You had me at hello"></p>
+<figcaption>You had me at hello.</figcaption>
+</figure>
+<h2>The file system</h2>
+<p>You have files on your computer than contain everything from your photos to what's needed to boot your computer.</p>
+<h3>Listing files</h3>
+<p>To see some of those files, list them using <code>ls</code>.</p>
+<pre><code class="language-bash">> ls
+Documents   Pictures   snap   Templates 
+Desktop     Downloads  go     Music
+</code></pre>
+<p>Actually, your file system is a hierarchy of folders.
+You can see where you are in that hierarchy using <code>pwd</code> (print working directory).</p>
+<pre><code class="language-bash">> pwd
+/home/thesm
+</code></pre>
+<p>My terminal started me out in my home directory.
+To change directories I use <code>cd</code> (change directory).</p>
+<pre><code class="language-bash">> cd /home
+> pwd
+/home
+</code></pre>
+<pre><code class="language-bash">> cd /
+> pwd
+/
+</code></pre>
+<p>To go back to my home directory, I can use the alias <code>~</code> which resolves to <code>/home/thesm</code> for me.</p>
+<pre><code class="language-bash">> cd ~
+> pwd
+/home/thesm
+</code></pre>
+<figure>
+<p><span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 320px;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMEAQL/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAHNTLUfVyJeCiwzr//EABsQAAICAwEAAAAAAAAAAAAAAAABAhIDETEh/9oACAEBAAEFArxK7bj7SxiSiaH1j7//xAAYEQADAQEAAAAAAAAAAAAAAAAAAREQIf/aAAgBAwEBPwGts7lP/8QAGBEBAAMBAAAAAAAAAAAAAAAAAQAQERL/2gAIAQIBAT8B5AyaUT//xAAdEAABBAIDAAAAAAAAAAAAAAAAARAREjFBISIy/9oACAEBAAY/Aqank6rLWUWc6PZh/wD/xAAcEAEAAgIDAQAAAAAAAAAAAAABABEhMUFxkcH/2gAIAQEAAT8h0OtyPkc0Deobw9hQqlxQNonSOeX5HpSicOpS2J//2gAMAwEAAgADAAAAEHT3ff/EABkRAAIDAQAAAAAAAAAAAAAAAAABEBEhMf/aAAgBAwEBPxDQHBtfT//EABkRAQEBAAMAAAAAAAAAAAAAAAEAESExYf/aAAgBAgEBPxB8JGPDHRAwv//EAB0QAQACAgMBAQAAAAAAAAAAAAEAESExQXHRUWH/2gAIAQEAAT8QxoLO1K+nX7KxMGSCexYtG2ztAWhYDllKuCGu8OxhNZXsM0oBjUaBu65SgAAPCz//2Q=='); background-size: cover; display: block;"
+    ></span>
+    <img
+        class="gatsby-resp-image-image"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px #F5F5F5;"
+        alt="Don't Fear the Reaper"
+        title=""
+        src="/static/78af7835c20e0fd31e3b207eea442fcd/a7687/dont-fear-the-reaper.jpg"
+        srcset="/static/78af7835c20e0fd31e3b207eea442fcd/16b37/dont-fear-the-reaper.jpg 240w,
+/static/78af7835c20e0fd31e3b207eea442fcd/a7687/dont-fear-the-reaper.jpg 320w"
+        sizes="(max-width: 320px) 100vw, 320px"
+      />
+  </span></p>
+<figcaption>Don't fear the computer.</figcaption>
+</figure>
+<p>Now let me introduce you to the magic of tab completion.
+Sometimes, you don't know where you want to <code>cd</code> to.
+In those cases, press the Tab key after typing <code>cd</code> to get a list of possibilities.</p>
+<figure>
+<p><img src="/you-complete-me-59385cb7dd87e4d8f7a712b128b4c79b.gif" alt="You complete me"></p>
+<figcaption>Tab completes me.</figcaption>
+</figure>
+<pre><code class="language-bash">> cd &#x3C;Press Tab Key>
+bundle/         .npm/           .cache/
+.cups/          Pictures/       .dbus/
+Desktop/        Public/         Documents/
+Downloads/      src/            .gnupg/
+go/             Templates/      .IdeaIC2018.3/
+Videos/         .vim/
+</code></pre>
+<p>As you can see, I have a lot of folders sitting around. You can start typing and then use tab completion to filter them down even more.</p>
+<pre><code class="language-bash">> cd D
+Desktop/   Documents/ Downloads/
+</code></pre>
+<p>By the way, tab completion works with most commands, so please do use it!</p>
+<h3>Moving files</h3>
+<p>Files can be copied and moved around to suit your needs.
+First, let's create an empty directory using <code>mkdir</code> to safely play inside and then <code>cd</code> into it.</p>
+<pre><code class="language-bash">> mkdir fun
+> cd fun
+</code></pre>
+<p>Now, let's make a file that says "Hello!".</p>
+<pre><code class="language-bash">> echo "Hello!" > hello.txt
+</code></pre>
+<p>This command takes the output of the first command (which is "Hello!") and redirects it to a file named hello.txt.</p>
+<p>Now let's copy it using <code>cp</code>.</p>
+<pre><code class="language-bash">> cp hello.txt hello2.txt
+</code></pre>
+<figure>
+<p><span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 112px;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEA0lEQVQ4y6WUa0ybVRjHa5vNhS9+MHzxlswszjljZHYXjd9M/MJqXJzEGMySJRJslsDqKAMqvW8gzGBEdEWFAokb4JSu9PK2XUtLC/RCKb3Rvi29xg9LzIwfjIxyHp/zzk4I0yz6Jr+c97zvc/7nPOf/nMPj4WOz2R6Zm5vjezwevtvtfmicTid/6jslleDl7Bd4ZX+fgIrx/u9T8mkEOz6YzebH7Xb7cYfDIbQyjNBCsdk4zIxNaLWahAwzK2RmEZNJiLFCjD3GMNZDt0NdfKqRt7XXlHzqC5wgpvp5sViERCJRSafTwKZSkF5b46DvqfQ6rKWQHLK+DslEgmQyGQgGg7d5+3/b87Ov+1TRqzQW3J1nOMH5+fnhcrkM2Uxm0+3xgMFuB5PTyWGw3wKb5XtwOSbAOT4Bc1OTEEsmSQ6Fl5fDv6y5ekbL851XMkzrwZJXVV8V/LpYKkGeZe9OWCxElkgSDZshmgxLOldZYpk8T8I3PyCB984QX5OYBBJxksH/kbAfolZ5b2Gus6Pg1aTzHsVUVfAqFSziCnVGI5z0+qDBH4DTgQA0uBdAcuMzkBp74OObPdA10w/RUISw2SyEQ0tb+XnNrV/Dysk7oU8u3QnKJPcFSyiYy2Y3TQ4HaK9dg77pH+DT6Wnovz4NX974FgYNw/DFTzoYNuohGUuQ9F8rvK7r6m8SS9+Wdsi1Fzvlw1VTrpbQlGQyucmiKYVt5JFcOgs5NIWynsrSOKDmLSwsbqnUl0AulxOVUvGjWqU4xQliGXyFDkMoFNpE54g/GITADgLbITQmHA6Dy+XauHxZe+6j5qaaHXWINaWnZYBBd5eXl+Eh2IpGo+Dz+X6Px+OPUY2BgYE9CoWCq0keHqGzOCtEIhGyurpKgX+B/t9CISpo6+3t5VZnsVh4Eonk71UuLi7Gs9S5cLhC03kQKysrtCWxWKzCsiygiIiOxdR3Hr36+vpHcdYkzgitra0VqVQKbW1tu2hvb4eWlhYyNDRUoVXBMMy7dLzX6xUoT77BO3/4mXuCIpFoLxqSpO4ZDIaKEWvxn5iZmSF4M1VyuRygmac5DyxmgeyVA3zV8efv7WFdXd1eTCfh9/tpCVQ0Gg1Rq9W70Gq1pLu7m4yOjlYKhQJd4Tt0PADwd6WMe5Oim67X6zfGxsYIAg9iZGSkYjKZNqggXn0NVQ3pS/uvXHz52TGuU1tbK1haWlqhN04+nweazjoeftpuh36jQrRN4S2Egm/R8e+fOFrTceTAHz2vvQC0ZDhRTPnpwcFBUWNj4zfj4+OvY/AR3LOjs3gHUnDvjmEGh5ubm2VisViGLh/S6XT7qis8+9yTr3548Kk3uQ7O9p9v6zgAr+/FJ+73/wTHw55gK+blnwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    ></span>
+    <img
+        class="gatsby-resp-image-image"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px #F5F5F5;"
+        alt="Copy this"
+        title=""
+        src="/static/f08228ff976d986dd3021dee11041423/e72b5/copy-this.png"
+        srcset="/static/f08228ff976d986dd3021dee11041423/e72b5/copy-this.png 112w"
+        sizes="(max-width: 112px) 100vw, 112px"
+      />
+  </span>
+<span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 112px;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEhklEQVQ4y5WUC0xTVxjHLxRkc8FlS2CSsU1YonFidOhM1BmXxSwbU2TIJpubTBxDwPIqUNrSN6BjiI1FNgUcmRbCRBACRQr0cfuAgmHjYenrtre3lOKAOQYYJmZnp7fC3ECTneTmu+ec7/zO//vOdw6C/KcRWoGvx7oHyxGrNBn53+0kgviMtjI24WjxNqIza41nzNlb6O/sLaKMD1ygOHuKfa1tXjCBchBT42dPB7r7i67+biwtm+gXlDnU3BpCzYlczc+pFZLKx38pRywtJ54MFMfv3HE6LFj0Q/KBTyFUjKMFVkLDLYGhi51agdCpE3605DvW9w3FYyctEsTcnLA6sDrpQEdxRDi4mXcYTA2XKO1KxgiOMi7YZNRXHGp2DKHhnCO0/BZCzY0gofozFG9aihFTw9GVwNu1qdRvoyJLqxL27PptiL/FrqBzHeoCjNAKc5Z8bF2ZkYSW202o2btJmE5AQjHpqZVAl15YOmM+X+buL74Cw+QSqoIguzyb6UCZFZNDZyUA1IV7/CxtX71MaNhyXJEf7OnjSobP087G19CUGAwhRwgNr9WhYmV5Bs9F72yoSXkPM9+IXevp2+W0w1B9rfdwRD5Ye8pK0sTQ974AgOV++V6EcrePuS9v78ag3Dc2PKj88C0w1Eg9v7Qx1pmZ6ZBnryNTIUtfCTTdOIqYmo4hhsYTyMRtHuWg39blUKjhIfvTQl/Y59Kkb398TW12jA9MhTe/HemIuenz1eP+InDdv/ICla+9ZyqLu2/7btMOBHkxLWx9fsbGkDDP3OWMT2DBJ5F+g/WPFTsmTUEauceR+GcCSFhe5Otvxwc8G+1S0l61djM0P7fkSCwqTlufhGqtidsDCt/Z2gLAcOjS+sUxLmmzI177B6qtTvIFU5f9PP+0zaHmRtohYJbRR2zyvD8cGj5m1wjGLQoWjsk5fw3UUwmDjN50d/DsJY9/d6XYB7gPwWgaHz0GuqLlMPtr08I1VcmjVhkTGG/Rp2Bhz9tR7kO3XggsctYIoRPed2g4YzZVwWA9PRqkbQiO8+Y0iryWd+o/9oIcKGc7rmLDOuROE72COVjccxC24NYLAKET/ImreTPw9gA4D3A1/4FNxRgTvb8N8HZvngaz4vWkGEmqV9ivrbH+mJJ5ve96cq4dLbjn6ClegEW7SGj4i5iCOWntpjutCqYbzs05tPxFo4zWZ+3OdSorTs6ilxLxsR42mxQFb4+tk4YgxrbUMJsip9rQ/PWb0NHi0vGAuZNutyny58b1hQBHOQtQ4TSOshccKBtuwh7GFIwJoodLjOn5s4M3T8cAl/g5UwdtzfKhjHbklJu68qXGLqhEyZr35MyK8mcMXQzcruZBVbnzmIL10NVbCIxdjFn4WACrnLVw5xZ9wCBj/TjSnlv1U06I3zIwL3FXkPxaqqinIUOqrjvVXFcWz4s/GPluYIB/hER0nNdek3a1gh9LPZMTlSC9klJZK0pg5yftjxGx444Js6I+gAgSJik5giDotS+fdMkDnn9pSyC0lEcLlr5V/aUXY0n7Nya7W+stgCJKAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+    ></span>
+    <img
+        class="gatsby-resp-image-image"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px #F5F5F5;"
+        alt="Pasta that"
+        title=""
+        src="/static/ddda556bb1ec64679404870b8608c3e0/e72b5/pasta-that.png"
+        srcset="/static/ddda556bb1ec64679404870b8608c3e0/e72b5/pasta-that.png 112w"
+        sizes="(max-width: 112px) 100vw, 112px"
+      />
+  </span></p>
+<figcaption>Copy hello.txt and pasta hello2.txt</figcaption>
+</figure>
+<p>And let's rename the original using <code>mv</code>.</p>
+<pre><code class="language-bash">> mv hello.txt goodbye.txt
+</code></pre>
+<p>Let's see the result of our work using <code>ls</code>!</p>
+<pre><code class="language-bash">> ls
+goodbye.txt  hello2.txt
+</code></pre>
+<p>Not exactly exciting yet, but we're learning!</p>
+<h3>Reading files</h3>
+<p>To read a file's contents, you can use <code>less</code>, <code>more</code>, or my favorite, <code>cat</code> (which means concatenate).</p>
+<figure>
+<p><span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDBP/EABYBAQEBAAAAAAAAAAAAAAAAAAMAAf/aAAwDAQACEAMQAAAB4pwphgW//8QAGBABAAMBAAAAAAAAAAAAAAAAAQACEBP/2gAIAQEAAQUC51lgMN//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPwFn/8QAFhEBAQEAAAAAAAAAAAAAAAAAARBh/9oACAECAQE/AQ2f/8QAGhAAAAcAAAAAAAAAAAAAAAAAAAECESAhM//aAAgBAQAGPwLRIo3j/8QAGhABAAMAAwAAAAAAAAAAAAAAAQAQETFRgf/aAAgBAQABPyEA5vGZ2ffI0Wv/2gAMAwEAAgADAAAAEOcP/8QAFxEBAAMAAAAAAAAAAAAAAAAAARBBsf/aAAgBAwEBPxBDWx//xAAZEQEAAgMAAAAAAAAAAAAAAAABABFBccH/2gAIAQIBAT8QYyd1wJc//8QAGRABAAMBAQAAAAAAAAAAAAAAAQARITFh/9oACAEBAAE/EFleA0m4RLoqsnUTETWLs//Z'); background-size: cover; display: block;"
+    ></span>
+    <img
+        class="gatsby-resp-image-image"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px #F5F5F5;"
+        alt="Nyan cat"
+        title=""
+        src="/static/8c1fb37ada1772994c7bbad16ab4e422/fc413/nyan-cat.jpg"
+        srcset="/static/8c1fb37ada1772994c7bbad16ab4e422/16b37/nyan-cat.jpg 240w,
+/static/8c1fb37ada1772994c7bbad16ab4e422/809c4/nyan-cat.jpg 480w,
+/static/8c1fb37ada1772994c7bbad16ab4e422/fc413/nyan-cat.jpg 960w,
+/static/8c1fb37ada1772994c7bbad16ab4e422/2e52d/nyan-cat.jpg 1280w"
+        sizes="(max-width: 960px) 100vw, 960px"
+      />
+  </span></p>
+<figcaption>Cats bring people together.</figcaption>
+</figure>
+<pre><code class="language-bash">> cat hello2.txt
+Hello!
+</code></pre>
+<p>If you decided to use <code>less</code>, to exit it just press q.</p>
+<h3>Manipulating files</h3>
+<p>Now comes the fun part. Lets say we want to overwrite goodbye.txt to contain "Goodbye!". Like before, we do:</p>
+<pre><code class="language-bash">> echo "Goodbye!" > goodbye.txt
+</code></pre>
+<p>Now let's say we want to make a new file that says "Hello! Goodbye!". <code>cat</code> takes care of that too.</p>
+<pre><code class="language-bash">> cat hello2.txt goodbye.txt
+Hello!
+Goodbye!
+</code></pre>
+<p>To make it a file, we just have to redirect the output using <code>></code>.</p>
+<pre><code class="language-bash">> cat hello2.txt goodbye.txt > hello-goodbye.txt
+</code></pre>
+<p>Let's say we want to copy all our files into a new directory. Let's make a directory like we did before using <code>mkdir</code>, and then use a fancy glob operator called * to copy all the files at once that end in <code>.txt</code>.</p>
+<pre><code class="language-bash">> mkdir copies
+> cp *.txt copies
+</code></pre>
+<p>Hooray, we can manipulate our file system!</p>
+<h2>Processes</h2>
+<p>All those commands we ran (and all programs you run!) are actually creating processes to do work for them, which your operating system also manages. To see running process, use <code>ps</code>.</p>
+<pre><code class="language-bash">> ps
+  PID TTY          TIME CMD
+23093 pts/1    00:00:00 bash
+25326 pts/1    00:00:00 ps
+</code></pre>
+<p>PID stands for Process ID. Every process has one. TTY is the terminal the command is running on. Time is the amount of CPU time it's taken, and CMD is the command that's being run.</p>
+<pre><code class="language-bash">> top
+top - 18:39:16 up  1:12,  1 user,  load average: 0.20, 0.30, 0.27
+Tasks: 405 total,   1 running, 315 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  3.8 us,  1.6 sy,  0.0 ni, 94.5 id,  0.0 wa,  0.0 hi,  0.1 si,  0.0 st
+KiB Mem : 16441856 total,  7211060 free,  3671524 used,  5559272 buff/cache
+KiB Swap: 31998972 total, 31998972 free,        0 used. 12522024 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+20097 thesm     20   0 2126196 416264 111964 S  23.8  2.5   5:58.58 code
+18850 thesm     20   0 1522628 144840  91992 S  11.9  0.9   2:17.64 code
+ 2347 thesm     20   0 4679016 323000 101520 S   8.3  2.0   3:25.06 gnome-shell
+18902 thesm     20   0  692688 147168  81872 S   7.3  0.9   2:15.90 code
+ 2215 root      20   0  451816 111980  81116 S   6.0  0.7   1:29.56 Xorg
+ 1387 root     -51   0       0      0      0 S   1.7  0.0   1:11.42 irq/77-nvidia
+ 5277 thesm     20   0  362000   8448   6416 S   0.7  0.1   0:20.43 ibus-daemon
+25343 thesm     20   0   51452   4228   3468 R   0.7  0.0   0:00.11 top
+    1 root      20   0  225836   9704   6812 S   0.3  0.1   0:07.28 systemd
+21070 thesm     20   0 2563208 343980 128284 S   0.3  2.1   0:17.76 thunderbird
+</code></pre>
+<p><code>top</code> gives a slightly more interesting view. Press <code>q</code> to quit it, just like <code>less</code>.</p>
+<p>You can create processes by running more programs, kill them by PID using <code>kill</code>, and even fork existing programs so two copies of them run at once. I won't go in-depth now, but know they are just files being executed.</p>
+<h2>Man pages</h2>
+<p>All of these commands have much more to them. You can pass programs flags (like <code>cp -r</code> to <code>r</code>ecursively copy a directory), or you can pipe the output of one command to be the input of another using <code>|</code> instead of <code>></code>.</p>
+<p>Commands are just files sitting in your <code>$PATH</code> that happen to be executable. Check your path using <code>echo</code>:</p>
+<pre><code class="language-bash">> echo $PATH
+/usr/sbin:/usr/bin:/sbin:/bin
+</code></pre>
+<p>Try <code>ls</code> on things in between the colons to see what programs you can run!</p>
+<pre><code class="language-bash">> ls /usr/bin
+</code></pre>
+<p>There's probably a lot of output, so pipe it through less to read it slower! Use the arrow keys to scroll.</p>
+<pre><code class="language-bash">> ls /usr/bin | less
+</code></pre>
+<p>You can look up the manual page for commands using <code>man</code> to learn all about them.</p>
+<pre><code class="language-bash">> man ls
+LS(1)                                                                    User Commands                                                                    LS(1)
+
+NAME
+       ls - list directory contents
+
+SYNOPSIS
+       ls [OPTION]... [FILE]...
+
+DESCRIPTION
+       List information about the FILEs (the current directory by default).  Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -a, --all
+              do not ignore entries starting with .
+
+       -A, --almost-all
+              do not list implied . and ..
+</code></pre>
+<p>Go out and learn about some of my favorite commands!</p>
+<ul>
+<li><code>grep</code>: Find strings in text</li>
+<li><code>gcc</code>: Compile C programs</li>
+<li><code>vim</code>: A wonky text editor that saves keystrokes</li>
+<li><code>which</code>: A program to print the path to other programs in $PATH</li>
+<li><code>diff</code>: Find differences between files</li>
+<li><code>readelf</code>: Show information about executable files</li>
+<li><code>python</code>: Write programs in a simple language</li>
+<li><code>printf</code>: Like <code>echo</code> but better</li>
+<li><code>tee</code>: Write to standard output (your terminal...) and another file at the same time</li>
+<li><code>zip</code>: Add files to an archive</li>
+</ul>
+<figure>
+<p><span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 960px;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAACA//aAAwDAQACEAMQAAABwr12TRQkU//EABkQAAIDAQAAAAAAAAAAAAAAAAACAREjMf/aAAgBAQABBQJetGZBdqf/xAAWEQADAAAAAAAAAAAAAAAAAAACEDH/2gAIAQMBAT8BCL//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPwFn/8QAFxAAAwEAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAQAGPwITuT//xAAaEAEAAwADAAAAAAAAAAAAAAABABEhEEFR/9oACAEBAAE/IRcYjs3jLFD5uJU//9oADAMBAAIAAwAAABAnD//EABYRAQEBAAAAAAAAAAAAAAAAAAEQIf/aAAgBAwEBPxDSJ//EABYRAAMAAAAAAAAAAAAAAAAAAAEQMf/aAAgBAgEBPxCwv//EABsQAQEAAgMBAAAAAAAAAAAAAAERACEQUWGh/9oACAEBAAE/ELxZpccphX1GPCVRmsseRo9O8VR+Z//Z'); background-size: cover; display: block;"
+    ></span>
+    <img
+        class="gatsby-resp-image-image"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;box-shadow:inset 0px 0px 0px 400px #F5F5F5;"
+        alt="Narnia door"
+        title=""
+        src="/static/d988f31592277b9d6987f35d7a26e45f/fc413/narnia-door.jpg"
+        srcset="/static/d988f31592277b9d6987f35d7a26e45f/16b37/narnia-door.jpg 240w,
+/static/d988f31592277b9d6987f35d7a26e45f/809c4/narnia-door.jpg 480w,
+/static/d988f31592277b9d6987f35d7a26e45f/fc413/narnia-door.jpg 960w,
+/static/d988f31592277b9d6987f35d7a26e45f/4c7b4/narnia-door.jpg 1024w"
+        sizes="(max-width: 960px) 100vw, 960px"
+      />
+  </span></p>
+<figcaption>The wardrobe is open...</figcaption>
+</figure></div><div class="has-text-centered"><a href="#">Back to top</a> / <a href="/posts">View all posts</a></div></div></div></div></body></html>
