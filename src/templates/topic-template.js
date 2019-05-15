@@ -5,7 +5,6 @@ import CenterLayout from '../layouts/center-layout'
 import ArticlePreview from '../components/article-preview'
 import { capitalize } from '../helpers/capitalize'
 
-
 export default ({ data, pageContext }) => {
   const { topic } = pageContext
 
