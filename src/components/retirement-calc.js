@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import Link from '../components/link'
 import './retirement-calc.scss'
 import {fedTaxBrackets, projectRetirement} from '../helpers/retire'

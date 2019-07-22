@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import Link from '../../components/link'
 import RetirementCalc from '../../components/retirement-calc'
 import PostTemplate from '../../templates/post-template'

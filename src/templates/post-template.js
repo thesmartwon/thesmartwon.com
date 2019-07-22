@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { h } from 'preact'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import CenterLayout from '../layouts/center-layout'
@@ -32,22 +31,6 @@ export default function PostTemplate({ data, children }) {
     </CenterLayout>
   )
 }
-
-PostTemplate.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      html: PropTypes.string,
-      timeToRead: PropTypes.number.isRequired,
-      frontmatter: PropTypes.shape({
-        title: PropTypes.string,
-        dateShort: PropTypes.string,
-        dateLong: PropTypes.string,
-        javascript: PropTypes.bool
-      }).isRequired,
-      fields: PropTypes.shape({slug: PropTypes.string}).isRequired
-    }).isRequired
-  }).isRequired
-};
 
 export const pageQuery = graphql`
   query BlogPostByPath($id: String!) {

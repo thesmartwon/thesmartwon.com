@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { h } from 'preact'
 
 // This image gets used in *.js files
 export default function Image({height, src, alt}) {
@@ -8,10 +7,4 @@ export default function Image({height, src, alt}) {
       <img src={src} alt={alt} />
     </div>
   )
-} 
-
-Image.propTypes = {
-  height: PropTypes.number.isRequired,
-  src: PropTypes.isRequired,
-  alt: PropTypes.string.isRequired,
 }

@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { h } from 'preact'
 import Breadcrumb from '../components/breadcrumb'
 import './center-layout.scss'
 
@@ -20,16 +19,4 @@ export default function CenterLayout(props) {
       </div>
     </div>
   )
-}
-
-CenterLayout.propTypes = {
-  title: PropTypes.node,
-  subtitle: PropTypes.node,
-  javascript: PropTypes.bool,
-  children: PropTypes.node,
-  path: PropTypes.string
-}
-
-CenterLayout.defaultProps = {
-  javascript: false
 }

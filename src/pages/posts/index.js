@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby';
 import CenterLayout from '../../layouts/center-layout';

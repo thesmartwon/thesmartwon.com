@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import Link from './link'
 import './article-preview.scss'
 

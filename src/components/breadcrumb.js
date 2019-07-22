@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 import Link from './link'
 import { capitalize } from '../helpers/capitalize'
 import './breadcrumb.scss'
