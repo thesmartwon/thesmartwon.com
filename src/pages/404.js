@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-export const Page404 = () => (
+export default () => (
   <html>
     <head>
       <title>Page Not Found!!1</title>
