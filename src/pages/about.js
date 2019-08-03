@@ -3,7 +3,7 @@ import { Helmet } from 'preact-helmet'
 import Link from '../components/link'
 import CenterLayout from '../layouts/center-layout';
 
-export default () => (
+export const About = () => (
   <CenterLayout
     title={(
       <h1 className="title is-2">

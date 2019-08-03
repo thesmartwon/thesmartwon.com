@@ -1,24 +1,19 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const pages = require('./src/render');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-module.exports = {
-	mode: 'development',
+module.exports = (env, argv) => ({
 	entry: {
-		index: './src/index.js',
+		index: './src/index.js',		
 	},
-	devtool: 'inline-source-map',
   devServer: {
     contentBase: './public'
 	},
 	module: {
 		rules: [
-			{
-				test: /.*preact\-helmet.*/,
-				use: 'null-loader'
-			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
@@ -30,7 +25,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === 'development',
+              hmr: argv.mode === 'development',
             },
           },
 					'css-loader',
@@ -47,24 +42,27 @@ module.exports = {
 						}
 					}
 				]
-			},
+			}
 		]
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin(),
-		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: '!!prerender-loader?string&entry=./src/index.js!./src/index.html',
-		})
-		// ...Object.entries(pages).map(([page, templateContent]) => 
-		// 	new HtmlWebpackPlugin({
-		// 		filename: `${page}.html`,
-		// 		templateContent
-		// 	}))
+		// new HtmlWebpackPlugin({
+		// 	filename: 'index.html',
+		// 	template: `!!prerender-loader?string&entry=./src/index.js&params=${'/profile'}!./src/index.html`,
+		// })
+		...["", "profile", "404"].map(route => 
+			new HtmlWebpackPlugin({
+				filename: `${route || 'index'}.html`,
+				template: `!!prerender-loader?string&entry=./src/index.js&params=${'/' + route}!./src/index.html`,
+			})
+		),
+		// ...(argv.mode === 'production' && [new webpack.IgnorePlugin(/preact-helmet/)]),
+		// new BundleAnalyzerPlugin()
 	],
 	output: {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'public')
 	}
-};
+});
