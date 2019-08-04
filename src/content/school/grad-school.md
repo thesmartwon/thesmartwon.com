@@ -1,6 +1,6 @@
 ---
 title:  "Is Grad School Worth it?"
-date:   2017-10-30 12:34:20 -0400
+date:  2017-10-30T12:34:20-0400
 javascript: false
 ---
 

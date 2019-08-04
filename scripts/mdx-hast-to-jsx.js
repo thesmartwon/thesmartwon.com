@@ -1,4 +1,4 @@
-const {transformSync} = require('@babel/core')
+const { transformSync } = require('@babel/core')
 const styleToObject = require('style-to-object')
 const camelCaseCSS = require('camelcase-css')
 

@@ -30,4 +30,5 @@ require.extensions['.svg'] = urlLoader
 require.extensions['.gif'] = mod => urlLoader(mod, true)
 
 // Render the pages!
-require('./render-pages');
+require('./render-content')
+// require('./render-pages')

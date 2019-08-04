@@ -1,6 +1,6 @@
 ---
 title:  "(Don't Fear) The Command Line"
-date:   2019-05-15 21:00:00 -0400
+date:  2019-05-15T21:00:00-0400
 javascript: false
 ---
 
