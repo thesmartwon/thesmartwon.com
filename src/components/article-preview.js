@@ -1,6 +1,5 @@
 import { h } from 'preact'
 import Link from './link'
-import './article-preview.scss'
 
 export default (node, showTime) => {
   const { path, context } = node

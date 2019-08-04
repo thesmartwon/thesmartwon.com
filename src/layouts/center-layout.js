@@ -1,6 +1,5 @@
 import { h } from 'preact'
 import Breadcrumb from '../components/breadcrumb'
-import './center-layout.scss'
 
 export default function CenterLayout(props) {
   return (

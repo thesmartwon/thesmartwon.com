@@ -1,7 +1,6 @@
 import { h } from 'preact';
 import Link from './link'
 import { capitalize } from '../helpers/capitalize'
-import './breadcrumb.scss'
 
 const crumbify = (word, crumbs, curPath) => {
   let path = ''

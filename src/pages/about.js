@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { Helmet } from 'preact-helmet'
 import Link from '../components/link'
-import CenterLayout from '../layouts/center-layout';
+import CenterLayout from '../layouts/center-layout'
 
 export default () => (
   <CenterLayout

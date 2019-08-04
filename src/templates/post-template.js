@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'preact-helmet'
 import { graphql } from 'gatsby'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'

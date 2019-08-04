@@ -1,10 +1,12 @@
 import { h } from 'preact'
 import { Helmet } from 'preact-helmet'
-import Mug from './cup-of-hot-chocolate.svg'
+import Mug from './favicon.jpg'
+// import Mug from './cup-of-hot-chocolate.svg'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'
 import ArticlePreview from '../components/article-preview'
 
+console.log('mug is', Mug)
 export default () => {
   const data = undefined;
 
@@ -17,7 +19,11 @@ export default () => {
       )}
       subtitle={(
         <h2 className="subtitle is-4 has-text-grey-light">
-          Relax and have a good read!<img src={Mug} alt="Mug" style={{paddingLeft: '1rem', height: '1.5rem'}} />
+          {'Relax and have a good read! '}
+          <img
+            src={Mug}
+            alt="Mug"
+            style={{height: '1.5rem'}} />
         </h2>
       )}
       path={'/'}

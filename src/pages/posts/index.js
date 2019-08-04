@@ -1,6 +1,5 @@
 import { h } from 'preact'
-import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby';
+import { Helmet } from 'preact-helmet'
 import CenterLayout from '../../layouts/center-layout';
 import Link from '../../components/link'
 import { capitalize } from '../../helpers/capitalize'
@@ -31,24 +30,25 @@ const splitGroups = (groups, num) => {
 }
 
 export default () => {
-  const data = useStaticQuery(
-    graphql`
-    {
-      pages: allSitePage(filter: {context: {title: {ne: null}}}) {
-        nodes {
-          path
-          context {
-            title
-            dateShort: date(formatString: "YYYY-MM-DD")
-            dateLong: date(formatString: "MMMM DD, YYYY")
-            timeToRead
-          }
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(
+  //   graphql`
+  //   {
+  //     pages: allSitePage(filter: {context: {title: {ne: null}}}) {
+  //       nodes {
+  //         path
+  //         context {
+  //           title
+  //           dateShort: date(formatString: "YYYY-MM-DD")
+  //           dateLong: date(formatString: "MMMM DD, YYYY")
+  //           timeToRead
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+  const data = {}
 
-  const groups = getGroups(data.pages.nodes)
+  const groups = {} // getGroups(data.pages.nodes)
   const split = splitGroups(groups, 2)
 
   return (
