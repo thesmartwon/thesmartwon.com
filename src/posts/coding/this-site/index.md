@@ -5,8 +5,7 @@ javascript: false
 ---
 You probably don't notice, but this site is nearly as fast as it can possibly be! I did that because I value your data bill and places which are just now getting emerging internet. I'm also a minimalist.
 <figure>
-
-![Road runner](./road-runner.jpg)
+<img src="./road-runner.jpg" alt="Road runner" />
 <figcaption>This is exactly how my site gets delivered to you.</figcaption>
 </figure>
 
@@ -14,11 +13,8 @@ I didn't want to make any compromises on my developer experience, though. Writin
 
 Enter [Gatsby](https://gatsbyjs.org), a framework to pipeline data (like [Markdown](https://en.wikipedia.org/wiki/Markdown)) onto webpages using templates. However, the 200kb Gatsby weighs in at for Hello World is just to big compared to the 10kb for my last Jekyll blog. On emerging 3G that's still 2-3 seconds to load 200kb for what is maybe only 5kb of content!
 <figure>
-
-![Gatsby logo](./gatsby-logo.jpg)
-<figcaption>
-
-[GatsbyJS](https://www.gatsbyjs.org) is a nice way to write modern React+JSX without compromising much on SEO and speed.</figcaption>
+<img src="./gatsby-logo.jpg" alt="Gatsby logo" />
+<figcaption><a href="https://www.gatsbyjs.org">GatsbyJS</a> is a nice way to write modern React+JSX without compromising much on SEO and speed.</figcaption>
 </figure>
 
 I didn't just blindly adopt Gatsby, though. I value understanding how a system works completely, and there were too many things I didn't understand. I wanted to NOT include JS on pages that didn't need them and to use [Preact](https://preactjs.com) to make the ones that needed JS (like my [retirement projector](/posts/money/early-retirement)) even lighter. No one else seems to want that. Everyone else seems to be okay with the bloat.
@@ -57,8 +53,7 @@ I've already forgotten a lot of what I did a month ago, but look through the [ea
 - [React-helmet](https://github.com/nfl/react-helmet) to set `<head>` per-page for things like the title. It's made by the NFL, who knew.
 
 <figure>
-
-![Getting tackled](./football.jpg)
+<img src="./football.jpg" alt="Getting tackled" />
 <figcaption>React-helmet is a cool name coming from the NFL. I like American football.</figcaption>
 </figure>
 

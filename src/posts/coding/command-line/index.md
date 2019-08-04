@@ -6,8 +6,7 @@ javascript: false
 
 For many, the command line is a scary prompt that reminds people of old computers that were hard to use.
 <figure>
-
-![Old CRT Terminal](./old-terminal.jpg)
+<img src="./old-terminal.jpg" alt="Old CRT Terminal" />
 <figcaption>Ooh, scary.</figcaption>
 </figure>
 
@@ -23,8 +22,7 @@ Hello!
 ```
 
 <figure>
-
-![You had me at hello](./you-had-me-at-hello.gif)
+<img src="./you-had-me-at-hello.gif" alt="You had me at hello" />
 <figcaption>You had me at hello.</figcaption>
 </figure>
 
@@ -73,8 +71,7 @@ To go back to my home directory, I can use the alias `~` which resolves to `/hom
 ```
 
 <figure>
-
-![Don't Fear the Reaper](./dont-fear-the-reaper.jpg)
+<img src="./dont-fear-the-reaper.jpg" alt="Don't Fear the Reaper" />
 <figcaption>Don't fear the computer.</figcaption>
 </figure>
 
@@ -83,8 +80,7 @@ Sometimes, you don't know where you want to `cd` to.
 In those cases, press the Tab key after typing `cd ` to get a list of possibilities.
 
 <figure>
-
-![You complete me](./you-complete-me.gif)
+<img src="./you-complete-me.gif" alt="You complete me" />
 <figcaption>Tab completes me.</figcaption>
 </figure>
 
@@ -133,9 +129,7 @@ Now let's copy it using `cp`.
 ```
 
 <figure>
-
-![Copy this](./copy-this.png)
-![Pasta that](./pasta-that.png)
+<img src="./copy-this.png" alt="Copy this" /><img src="./pasta-that.png" alt="Pasta that" />
 <figcaption>Copy hello.txt and pasta hello2.txt</figcaption>
 </figure>
 
@@ -159,8 +153,7 @@ Not exactly exciting yet, but we're learning!
 To read a file's contents, you can use `less`, `more`, or my favorite, `cat` (which means concatenate).
 
 <figure>
-
-![Nyan cat](./nyan-cat.jpg)
+<img src="./nyan-cat.jpg" alt="Nyan cat" />
 <figcaption>Cats bring people together.</figcaption>
 </figure>
 
@@ -301,7 +294,6 @@ Go out and learn about some of my favorite commands!
 - `zip`: Add files to an archive
 
 <figure>
-
-![Narnia door](./narnia-door.jpg)
+<img src="./narnia-door.jpg" alt="Narnia door" />
 <figcaption>The wardrobe is open...</figcaption>
 </figure>
