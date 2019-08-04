@@ -8,11 +8,11 @@ require('@babel/register')({
   presets: ['@babel/preset-env']
 })
 
-const urlLoader = mod => {
+const urlLoader = (mod, noInline) => {
   const data = fs.readFileSync(mod.id)
   const mimeType = mime.getType(mod.id) || ''
-  
-  if (data.length < 10240) {
+
+  if (data.length < 10240 && !noInline) {
     // Inline
     mod.exports = `data:${mimeType};base64,${data.toString('base64')}`
   } else {
@@ -27,7 +27,7 @@ const urlLoader = mod => {
 require.extensions['.png'] = urlLoader
 require.extensions['.jpg'] = urlLoader
 require.extensions['.svg'] = urlLoader
-require.extensions['.gif'] = () => {}
+require.extensions['.gif'] = mod => urlLoader(mod, true)
 
 // Render the pages!
 require('./render-pages');

@@ -1,12 +1,10 @@
 import { h } from 'preact'
 import { Helmet } from 'preact-helmet'
-import Mug from './favicon.jpg'
-// import Mug from './cup-of-hot-chocolate.svg'
+import Mug from './cup-of-hot-chocolate.svg'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'
 import ArticlePreview from '../components/article-preview'
 
-console.log('mug is', Mug)
 export default () => {
   const data = undefined;
 

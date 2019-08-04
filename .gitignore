@@ -6,6 +6,7 @@ node_modules
 
 # built files
 public
+*.md.js
 
 # Mac files
 .DS_Store
