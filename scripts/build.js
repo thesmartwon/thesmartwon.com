@@ -31,4 +31,6 @@ require.extensions['.gif'] = mod => urlLoader(mod, true)
 
 // Render the pages!
 require('./render-content')
-// require('./render-pages')
+  .then(pageIndex =>
+    require('./render-pages')(pageIndex)
+  )

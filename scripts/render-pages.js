@@ -6,29 +6,44 @@ const render = require('preact-render-to-string')
 const { h } = require('preact')
 const { HTML } = require('./html')
 
-const pageIndex = {}
 const pageDirectory = 'src/pages/'
-const renderPage = Component => `<!DOCTYPE html>${render(<HTML><Component /></HTML>)}`
+const renderPage = (pageIndex, fname) => {
+	const Component = pageIndex[fname].component
+	return `<!DOCTYPE html>${render(
+		<HTML>
+			<Component
+				pages={Object.values(pageIndex)
+					.filter(page => page.frontmatter)
+					.sort((p1, p2) => p2.frontmatter.date.localeCompare(p1.frontmatter.date))
+				}
+				/>
+		</HTML>)}`
+}
 
 const watcher = chokidar.watch(pageDirectory, {
 	ignored: ['**/*.swp', '**/*.md.js'],
   persistent: true
 })
 
-watcher
-  .on('add', file => {
-		if (path.sep === '\\') {
-			file = file.replace(/\\/g, '/')
-		}
-		const ext = path.extname(file)
-		const fname = file.replace(pageDirectory, '').replace(ext, '')
-		if (ext === '.js') {
-			pageIndex[fname] = renderPage(require(`../${file}`).default)
-			fs.ensureFileSync(`public/${fname}.html`)
-			fs.writeFileSync(`public/${fname}.html`, pageIndex[fname])
-		}
-	})
-	.on('ready', () => {
-		console.log(pageIndex)
-		watcher.close()
-	})
+module.exports = pageIndex => new Promise(resolve =>
+	watcher
+		.on('add', file => {
+			if (path.sep === '\\') {
+				file = file.replace(/\\/g, '/')
+			}
+			const ext = path.extname(file)
+			const fname = file.replace(pageDirectory, '').replace(ext, '')
+			if (ext === '.js') {
+				pageIndex[fname] = {
+					slug: fname,
+					component: require(`../${file}`).default
+				}
+				fs.ensureFileSync(`public/${fname}.html`)
+				fs.writeFileSync(`public/${fname}.html`, renderPage(pageIndex, fname))
+			}
+		})
+		.on('ready', () => {
+			watcher.close()
+			resolve(pageIndex)
+		})
+);

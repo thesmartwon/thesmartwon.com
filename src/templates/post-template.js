@@ -27,21 +27,3 @@ export const PostTemplate = ({ frontmatter, timeToRead, slug, children }) => (
     </div>
   </CenterLayout>
 )
-
-// export const pageQuery = graphql`
-//   query BlogPostByPath($id: String!) {
-//     markdownRemark(id: { eq: $id } ) {
-//       html
-//       timeToRead
-//       frontmatter {
-//         title
-//         dateShort: date(formatString: "YYYY-MM-DD")
-//         dateLong: date(formatString: "MMMM DD, YYYY")
-//         javascript
-//       }
-//       fields {
-//         slug
-//       }
-//     }
-//   }
-// `

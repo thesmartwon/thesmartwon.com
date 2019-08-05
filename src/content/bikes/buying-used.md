@@ -101,7 +101,9 @@ A frame is the core of the bike, and it determines all the other components you 
 ### [Steel (is real)](http://road.cc/content/buyers-guide/194720-18-best-steel-road-bikes-and-frames-%E2%80%94-great-rides-cyclings-traditional)
 
 Steel is THE classic material used to make bikes. It's lightened by being "butted" in places the tube doesn't have to be thick.
+<figure>
 <img src="./steel-bike.jpg" alt="Steel bike" />
+</figure>
 
 - <span class="tag is-success">pro</span> Super strong, so all the tubes will be the skinniest ([looks great!](https://www.google.com/search?q=steel+bike+frames&source=lnms&tbm=isch&sa=X&ved=0ahUKEwj587yNqc7YAhUwRN8KHf2UAz0Q_AUICygC&biw=950&bih=994))
 - <span class="tag is-success">pro</span> Easy to repair -- can literally bend the steel back into place and it's good to go
@@ -109,8 +111,9 @@ Steel is THE classic material used to make bikes. It's lightened by being "butte
 - <span class="tag is-danger">con</span> Tends to make the heaviest frames
 
 ### [Aluminum](https://www.bicycling.com/bikes-gear/trends/aluminum-frames-are-back-and-better-ever)
+<figure>
 <img src="./aluminum-bike.jpg" alt="Aluminum mountain bike" />
-
+</figure>
 
 Aluminum is the modern material used to make bikes. Most bikes made post-1990 bikes are aluminum. It's not as strong as steel, so tubes have to be thicker to support the same weight.
 
@@ -119,13 +122,15 @@ Aluminum is the modern material used to make bikes. Most bikes made post-1990 bi
 - <span class="tag is-danger">con</span> Doesn't absorb much road shock (ie. "stiff")
 
 ### [Carbon Fiber](http://road.cc/content/feature/211921-13-best-carbon-fibre-road-bikes-%C2%A3799-%C2%A310000)
+<figure>
 <img src="./carbon-fiber-bike.jpg" alt="Carbon Fiber bike" />
+</figure>
 
 Carbon Fiber has just started peeking its head in the consumer world around 2000. Like aluminum, it's not as strong as steel so tubes have to be thicker to support the same weight. Carbon fiber frames are more expensive to produce than aluminum, but in theory the best.
 
 - <span class="tag is-success">pro</span> Tends to make the lightest frames
 - <span class="tag is-success">pro</span> Absorbs a lot of road shock, almost as much as steel
-- <span class="tag is-danger">con</span> Can't DIY repair the frame (they fail [catastrophically](https://www.google.com/search?q=carbon+fiber+bike+crash&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiy3YHk9M3YAhWBUN8KHQmqDfAQ_AUIDCgD&biw=950&bih=994) in crashes), need a professional
+- <span class="tag is-danger">con</span> Can't DIY repair the frame (they fail <a href="https://www.google.com/search?q=carbon+fiber+bike+crash&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiy3YHk9M3YAhWBUN8KHQmqDfAQ_AUIDCgD&biw=950&bih=994">catastrophically</a> in crashes), need a professional
 
 <figure>
 <img src="caad10.jpg" alt="Racing geometry bike" />
@@ -137,7 +142,12 @@ This is the same frame that I first bought (and love), a Cannondale CAAD 10!</fi
 Components are... complicated. They've been letting you brake and shift gears since the inception of bicycles, but the way they do that has changed, and everyone has their own preferences. There are some globally agreed on facts, though:
 
 1. Shimano groupsets (shifters + gears + brakes) are good. They are by far the most popular (at least in the US). Thankfully, their product lines follow a scale of worst to best AND are labeled on the derailleur of the bike.
+
+<figure>
 <img src="dura-ace.jpg" alt="Dura ace crankshaft" />
+<figcaption>A dura-ace groupset.</figcaption>
+</figure>
+
 
 | Quality | Name							|
 |---------|-------------------|
@@ -154,10 +164,17 @@ Components are... complicated. They've been letting you brake and shift gears si
 It's pretty hard to learn which components work well together with which, but thankfully bike manufacturers take care of that part for you. If you want to learn more about what each of those parts of your bike does, instead of watching hours of tutorials online like I did, buy [some cheap tools](https://www.amazon.com/s/ref=nb_sb_ss_c_1_9/140-5840151-4715015?url=search-alias%3Daps&field-keywords=bike+tool+kit&sprefix=bike+tool%2Caps%2C126&crid=38BYVW8P2CC4R) and get out there and actually [take apart a bike yourself!](http://www.jimlangley.net/wrench/wrench_images/bicycle_parts_labeled.jpg)
 
 ## 4. Understanding comfort
-"Geometry" is the term we use to describe exactly how a bike positions its rider on the bicycle (think a Harley with high handlebars vs. a Tron bike).<img src="harley-bike.jpg" alt="Harley bike" />
+"Geometry" is the term we use to describe exactly how a bike positions its rider on the bicycle (think a Harley with high handlebars vs. a Tron bike).
+
+<figure>
+<img src="harley-bike.jpg" alt="Harley bike" />
+</figure>
 <p style="text-align: center">vs</p>
 
-![Tron bike](tron-bike.jpg)
+<figure>
+<img src="tron-bike.jpg" alt="Tron bike" />
+</figure>
+
 Every bike's geometry is different, so the only way to really know the geometries you like is to try different bikes! Faster bikes tend to have more aggressive and uncomfortable geometries that position the rider higher up and with a more straight back, but it all depends on the size of the person, so your mileage ***will*** vary.
 
 Seats ($30), handlebars ($50), and handlebar tape ($10) are all really cheap to replace on a used bike, and add to comfort. You can take straight bars off a bike and put on curved road bars easily ($40).
@@ -179,8 +196,11 @@ While riding, you're looking for three things:
 1. Does the frame absorb the road well?
 2. Do I like the geometry of the bike? How long could I ride before becoming uncomfortable?
 3. Do the gears change smoothly?
-- If you're skipping over gears, you can loosen the rear derailleur barrel to shift farther per click, or tighten it to shift less per click. ![Rear derailleur](rear-derailleur.jpg)
-- If you can't reach the highest of lowest gear, you can adjust screws on top of the derailleur to reach them. This is tedious, so just know it can be done.
+	- If you're skipping over gears, you can loosen the rear derailleur barrel to shift farther per click, or tighten it to shift less per click.
+<figure>
+<img src="rear-derailleur.jpg" alt="Rear derailleur" />
+</figure>
+	- If you can't reach the highest of lowest gear, you can adjust screws on top of the derailleur to reach them. This is tedious, so just know it can be done.
 
 
 ### Conclusion

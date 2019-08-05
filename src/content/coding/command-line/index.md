@@ -72,7 +72,7 @@ To go back to my home directory, I can use the alias `~` which resolves to `/hom
 
 <figure>
 <img src="./dont-fear-the-reaper.jpg" alt="Don't Fear the Reaper" />
-<figcaption>Don't fear the computer.</figcaption>
+<figcaption>(Don't fear) the computer.</figcaption>
 </figure>
 
 Now let me introduce you to the magic of tab completion.
@@ -81,7 +81,7 @@ In those cases, press the Tab key after typing `cd ` to get a list of possibilit
 
 <figure>
 <img src="./you-complete-me.gif" alt="You complete me" />
-<figcaption>Tab completes me.</figcaption>
+<figcaption>Tabs complete me.</figcaption>
 </figure>
 
 
