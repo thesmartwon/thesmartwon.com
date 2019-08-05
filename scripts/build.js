@@ -4,7 +4,10 @@ const mime = require('mime')
 // Hack to hijack all require()s and babel them
 require('@babel/register')({
   ignore: [/node_modules/],
-  plugins: [['@babel/plugin-transform-react-jsx', { 'pragma':'h' }]],
+  plugins: [
+    ['@babel/plugin-transform-react-jsx', { pragma: 'h' }, ],
+    ['@babel/plugin-proposal-class-properties']
+  ],
   presets: ['@babel/preset-env']
 })
 
@@ -18,7 +21,9 @@ const urlLoader = (mod, noInline) => {
   } else {
     mod.exports = path.basename(mod.id)
     // Copy to dist
-    const srcPath = mod.id.replace(/.*src[\/\\]pages/, '')
+    const srcPath = mod.id
+      .replace(/.*src[\/\\]content/, '')
+      .replace(/.*src[\/\\]pages/, '')
     fs.ensureFileSync(`public/${srcPath}`)
     fs.copySync(mod.id, `public/${srcPath}`)
   }

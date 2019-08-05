@@ -3,7 +3,7 @@ import Link from './link'
 
 export default (page, showReadTime = true) => {
   const { slug, frontmatter } = page
-  const topic = slug.split('/')[1]
+  const topic = slug.split('/')[2]
 
   return (
     <div key={slug} style={{paddingBottom: '3rem'}}>

@@ -1,10 +1,8 @@
-import { h } from 'preact'
+import { h, Component, Fragment } from 'preact'
 import Link from '../components/link'
-import './retirement-calc.scss'
-import {fedTaxBrackets, projectRetirement} from '../helpers/retire'
+import { fedTaxBrackets, projectRetirement } from '../helpers/retire'
 
-
-export default class RetirementCalc extends React.Component {
+export default class RetirementCalc extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +68,7 @@ export default class RetirementCalc extends React.Component {
     ]
 
     return (
-      <>
+      <Fragment>
         <div className="tabs is-centered is-boxed">
           <ul>
             {tabs.map(tab => 
@@ -350,7 +348,7 @@ export default class RetirementCalc extends React.Component {
           / <b>{this.format(finalNestEgg * this.state.safeWithdrawal / 100.0)}</b> withdrawable per year 
           / <b>{this.format(totalSaved)}</b> total contributions
         </p>
-      </>
+      </Fragment>
     );
   }
 }

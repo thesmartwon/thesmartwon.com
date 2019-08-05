@@ -6,7 +6,7 @@ import ArticlePreview from '../../components/article-preview'
 
 // Group nodes by topic (school, money, bikes, etc...)
 const getGroups = pages => pages.reduce((acc, page) => {
-    const group = page.slug.split('/')[1];
+    const group = page.slug.split('/')[2];
     acc[group] = acc[group] || [];
     acc[group].push(page);
     return acc;

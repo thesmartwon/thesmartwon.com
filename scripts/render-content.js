@@ -16,8 +16,7 @@ const pageIndex = {}
 const contentDirectory = 'src/content/'
 const renderPost = post => {
 
-	return `<!DOCTYPE html>
-${render(
+	return `<!DOCTYPE html>\n${render(
 		<HTML title={post.frontmatter.title}>
 			<PostTemplate
 				frontmatter={post.frontmatter}
@@ -89,7 +88,7 @@ module.exports = new Promise(resolve =>
 					fname = fname.replace(ext, '')
 					mdxFile.data.frontmatter.timeToRead = parseInt(wordCount / 300)
 					pageIndex[fname] = {
-						slug: fname.replace('/index', ''),
+						slug: `/${fname.replace('/index', '')}`,
 						component: require(`../${file}.js`).default,
 						frontmatter: mdxFile.data.frontmatter,
 					}
