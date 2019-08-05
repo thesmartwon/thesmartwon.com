@@ -1,19 +1,16 @@
-import { h } from 'preact'
-import { Helmet } from 'preact-helmet'
+import { h, Fragment } from 'preact'
 import CenterLayout from '../../layouts/center-layout';
 import Link from '../../components/link'
 import { capitalize } from '../../helpers/capitalize'
 import ArticlePreview from '../../components/article-preview'
 
 // Group nodes by topic (school, money, bikes, etc...)
-const getGroups = nodes => {
-  return nodes.reduce((acc, node) => {
-      const group = node.path.split('/')[2];
-      acc[group] = acc[group] || [];
-      acc[group].push(node);
-      return acc;
-    }, {})
-}
+const getGroups = pages => pages.reduce((acc, page) => {
+    const group = page.slug.split('/')[1];
+    acc[group] = acc[group] || [];
+    acc[group].push(page);
+    return acc;
+  }, {})
 
 // Split groups into num columns
 const splitGroups = (groups, num) => {
@@ -29,26 +26,9 @@ const splitGroups = (groups, num) => {
   return res
 }
 
-export default () => {
-  // const data = useStaticQuery(
-  //   graphql`
-  //   {
-  //     pages: allSitePage(filter: {context: {title: {ne: null}}}) {
-  //       nodes {
-  //         path
-  //         context {
-  //           title
-  //           dateShort: date(formatString: "YYYY-MM-DD")
-  //           dateLong: date(formatString: "MMMM DD, YYYY")
-  //           timeToRead
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  const data = {}
-
-  const groups = {} // getGroups(data.pages.nodes)
+export const title = 'The Smart Posts'
+export default ({ path, pages }) => {
+  const groups = getGroups(pages)
   const split = splitGroups(groups, 2)
 
   return (
@@ -59,18 +39,17 @@ export default () => {
           I hope something tickles your fancy
         </h2>
       )}
-      path={'/posts'}
+      path={path}
     >
-      <Helmet title="The Smart Posts" defer={false} />
       <div className="content is-medium">
         <div className="columns">
           {split.map(col => (
             <div key={col[0][0]} className="column has-text-centered">
               {col.map(group => (
-                <React.Fragment key={group[0]}>
+                <Fragment key={group[0]}>
                   <h3><Link className="title" href={`/posts/${group[0]}`}>{capitalize(group[0])}</Link></h3>
-                  {group[1].map(node => ArticlePreview(node, true))}
-                </React.Fragment>))}
+                  {group[1].map(node => ArticlePreview(node, false))}
+                </Fragment>))}
             </div>
           ))}
         </div>

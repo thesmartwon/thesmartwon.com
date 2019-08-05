@@ -1,18 +1,17 @@
 import { h } from 'preact'
-import { Helmet } from 'preact-helmet'
 import Link from '../components/link'
 import CenterLayout from '../layouts/center-layout'
 
-export default () => (
+export const title = 'About The Smart Won'
+export default ({ path }) => (
   <CenterLayout
     title={(
       <h1 className="title is-2">
         About
       </h1>
     )}
-    path={'/about'}
+    path={path}
   >
-    <Helmet title="About The Smart Won" defer={false} />
     <div className="content is-medium">
       <p>
         <Link href="/">thesmartwon.com</Link> started as a place for me to share topics with friends without having to repeat myself (plus they get to keep these notes).

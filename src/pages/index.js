@@ -1,13 +1,11 @@
 import { h } from 'preact'
-import { Helmet } from 'preact-helmet'
 import Mug from './cup-of-hot-chocolate.svg'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'
 import ArticlePreview from '../components/article-preview'
 
-export default ({ pages }) => {
-  console.log(pages)
-  return (
+export const title = 'The Smart Blog'
+export default ({ path, pages }) => (
   <CenterLayout
     title={(
       <h1 className="title is-2">
@@ -23,15 +21,13 @@ export default ({ pages }) => {
           style={{height: '1.5rem'}} />
       </h2>
     )}
-    path={'/'}
+    path={path}
   >
-    <Helmet title="The Smart Blog" defer={false} />
     <div className="content is-medium has-text-centered">
-      {pages.map(page => ArticlePreview(page, false))}
+      {pages.map(page => ArticlePreview(page))}
       <div>
         <Link href="/posts">View all posts</Link>
       </div>
     </div>
   </CenterLayout>
 )
-    }

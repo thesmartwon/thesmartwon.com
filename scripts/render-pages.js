@@ -10,12 +10,13 @@ const pageDirectory = 'src/pages/'
 const renderPage = (pageIndex, fname) => {
 	const Component = pageIndex[fname].component
 	return `<!DOCTYPE html>${render(
-		<HTML>
+		<HTML title={pageIndex[fname].title}>
 			<Component
 				pages={Object.values(pageIndex)
 					.filter(page => page.frontmatter)
 					.sort((p1, p2) => p2.frontmatter.date.localeCompare(p1.frontmatter.date))
 				}
+				path={'/' + fname.replace('index', '')}
 				/>
 		</HTML>)}`
 }
@@ -34,9 +35,11 @@ module.exports = pageIndex => new Promise(resolve =>
 			const ext = path.extname(file)
 			const fname = file.replace(pageDirectory, '').replace(ext, '')
 			if (ext === '.js') {
+				const page = require(`../${file}`)
 				pageIndex[fname] = {
 					slug: fname,
-					component: require(`../${file}`).default
+					component: page.default,
+					title: page.title
 				}
 				fs.ensureFileSync(`public/${fname}.html`)
 				fs.writeFileSync(`public/${fname}.html`, renderPage(pageIndex, fname))

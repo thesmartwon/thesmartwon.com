@@ -1,13 +1,9 @@
 import { h } from 'preact'
-import { Helmet } from 'preact-helmet'
-import { graphql } from 'gatsby'
 import CenterLayout from '../layouts/center-layout'
 import ArticlePreview from '../components/article-preview'
 import { capitalize } from '../helpers/capitalize'
 
-export default ({ data, pageContext }) => {
-  const { topic } = pageContext
-
+export default ({ path, pages, pageContext }) => {
   return (
     <CenterLayout
       title={<h1 className="title is-2">{capitalize(topic)} Posts</h1>}
@@ -31,21 +27,3 @@ export default ({ data, pageContext }) => {
   )
 }
 
-export const pageQuery = graphql`
-  query BlogPostByTopic($glob: String!) {
-    pages: allSitePage(filter: {context: {title: {ne: null}}, path: {glob: $glob}},
-                        sort: {order: DESC, fields: context___date},
-                        limit: 15) {
-      nodes {
-        path
-        context {
-          title
-          dateShort: date(formatString: "YYYY-MM-DD")
-          dateLong: date(formatString: "MMMM DD, YYYY")
-          timeToRead
-          excerpt
-        }
-      }
-    }
-  }
-`

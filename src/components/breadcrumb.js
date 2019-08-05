@@ -19,7 +19,7 @@ const crumbify = (word, crumbs, curPath) => {
 
 export default (props) => {
   let crumbs = props.path.split('/')
-      .filter(p => p)
+      .filter(Boolean)
   crumbs = crumbs.map(crumb => crumbify(crumb, crumbs, props.path))
   crumbs.unshift({name: 'Home', path: '/', isActive: false})
   

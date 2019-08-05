@@ -18,11 +18,10 @@ const renderPost = post => {
 
 	return `<!DOCTYPE html>
 ${render(
-		<HTML>
+		<HTML title={post.frontmatter.title}>
 			<PostTemplate
 				frontmatter={post.frontmatter}
 				slug={post.slug}
-				timeToRead={parseInt(post.wordCount / 300)}
 			>
 				{h(post.component)}
 			</PostTemplate>
@@ -49,12 +48,12 @@ const markdownPipe = require('unified')()
 	.use(() => (ast, file) => {
 		let excerpt = ''
 		visit(ast, 'text', item => {
-			if (excerpt.length < 300) {
+			if (excerpt.length < 150) {
 				excerpt += item.value + ' '
 			}
 		})
 
-		file.data.excerpt = excerpt.substr(0, 300).trim()
+		file.data.frontmatter.excerpt = excerpt.substr(0, 150).trim()
 	})
 	// Render to JSX
 	.use(require('remark-mdx'))
@@ -88,12 +87,11 @@ module.exports = new Promise(resolve =>
 
 					// require() it and render templated content
 					fname = fname.replace(ext, '')
+					mdxFile.data.frontmatter.timeToRead = parseInt(wordCount / 300)
 					pageIndex[fname] = {
 						slug: fname.replace('/index', ''),
 						component: require(`../${file}.js`).default,
 						frontmatter: mdxFile.data.frontmatter,
-						excerpt: mdxFile.data.excerpt,
-						wordCount: wordCount
 					}
 					fs.ensureFileSync(`public/${fname}.html`)
 					fs.writeFileSync(`public/${fname}.html`, renderPost(pageIndex[fname]))
