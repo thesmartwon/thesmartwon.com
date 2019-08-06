@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import Link from './link'
 
-export default (page, showReadTime = true) => {
+export default (page, showPreview = true) => {
   const { slug, frontmatter } = page
   const topic = slug.split('/')[2]
 
@@ -9,11 +9,11 @@ export default (page, showReadTime = true) => {
     <div key={slug} style={{paddingBottom: '3rem'}}>
       <div className="media">
         <div className="media-content has-text-centered is-clipped">
-          <Link href={slug} className={`title article-title ${showReadTime ? 'is-3' : 'is-4'}`}>
+          <Link href={slug} className={`title article-title ${showPreview ? 'is-3' : 'is-4'}`}>
             {frontmatter.title}
           </Link>
           <div className="tags has-addons is-centered">
-            {showReadTime
+            {showPreview
               ? <span className="tag is-rounded is-warning">
                   {frontmatter.timeToRead} mins
                 </span>
@@ -27,11 +27,11 @@ export default (page, showReadTime = true) => {
           </div>
         </div>
       </div>
-      {frontmatter.excerpt && 
+      {showPreview && 
         <div className="article-body">
           <p>{frontmatter.excerpt}…</p>
         </div>
       }
-      </div>
+    </div>
   )
 }

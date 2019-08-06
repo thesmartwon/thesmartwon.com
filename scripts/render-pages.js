@@ -21,32 +21,39 @@ const renderPage = (pageIndex, fname) => {
 		</HTML>)}`
 }
 
-const watcher = chokidar.watch(pageDirectory, {
-	ignored: ['**/*.swp', '**/*.md.js'],
-  persistent: true
-})
+const onFile = (pageFile, pageIndex) => {
+	if (path.sep === '\\') {
+		pageFile = pageFile.replace(/\\/g, '/')
+	}
+	const ext = path.extname(pageFile)
+	const fname = pageFile.replace(pageDirectory, '').replace(ext, '')
+	if (ext === '.js') {
+		delete require.cache[require.resolve(`../${pageFile}`)]
+		const page = require(`../${pageFile}`)
+		pageIndex[fname] = {
+			slug: fname,
+			component: page.default,
+			title: page.title
+		}
+		fs.ensureFileSync(`public/${fname}.html`)
+		fs.writeFileSync(`public/${fname}.html`, renderPage(pageIndex, fname))
 
-module.exports = pageIndex => new Promise(resolve =>
-	watcher
-		.on('add', file => {
-			if (path.sep === '\\') {
-				file = file.replace(/\\/g, '/')
-			}
-			const ext = path.extname(file)
-			const fname = file.replace(pageDirectory, '').replace(ext, '')
-			if (ext === '.js') {
-				const page = require(`../${file}`)
-				pageIndex[fname] = {
-					slug: fname,
-					component: page.default,
-					title: page.title
-				}
-				fs.ensureFileSync(`public/${fname}.html`)
-				fs.writeFileSync(`public/${fname}.html`, renderPage(pageIndex, fname))
-			}
+		console.log(`${pageFile}: no issues found`)
+	}
+}
+
+module.exports = (pageIndex, watchMode) => new Promise(resolve =>
+	chokidar
+		.watch(pageDirectory, {
+			ignored: ['**/*.swp', '**/*.md.js'],
+			persistent: true
 		})
+		.on('add', file => onFile(file, pageIndex))
+		.on('change', file => onFile(file, pageIndex))
 		.on('ready', () => {
-			watcher.close()
+			if (!watchMode) {
+				watcher.close()
+			}
 			resolve(pageIndex)
 		})
 );

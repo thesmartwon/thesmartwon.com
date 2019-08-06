@@ -1,4 +1,4 @@
-import { h, Component, Fragment } from 'preact'
+import { h, Component } from 'preact'
 import Link from '../components/link'
 import { fedTaxBrackets, projectRetirement } from '../helpers/retire'
 
@@ -68,7 +68,7 @@ export default class RetirementCalc extends Component {
     ]
 
     return (
-      <Fragment>
+      <div id="retirementCalc">
         <div className="tabs is-centered is-boxed">
           <ul>
             {tabs.map(tab => 
@@ -348,7 +348,7 @@ export default class RetirementCalc extends Component {
           / <b>{this.format(finalNestEgg * this.state.safeWithdrawal / 100.0)}</b> withdrawable per year 
           / <b>{this.format(totalSaved)}</b> total contributions
         </p>
-      </Fragment>
+      </div>
     );
   }
 }

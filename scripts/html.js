@@ -13,9 +13,7 @@ export const HTML = ({ children, title }) => (
 			<meta name="theme-color" content="#00D1B2" />
 		</head>
 		<body>
-			<div id="b">
-				{children}
-			</div>
+			{children}
 		</body>
 	</html>
 );

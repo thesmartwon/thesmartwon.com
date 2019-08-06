@@ -35,7 +35,8 @@ require.extensions['.svg'] = urlLoader
 require.extensions['.gif'] = mod => urlLoader(mod, true)
 
 // Render the pages!
-require('./render-content')
+const watchMode = process.argv[2] === '--watch'
+require('./render-content')(watchMode)
   .then(pageIndex =>
-    require('./render-pages')(pageIndex)
+    require('./render-pages')(pageIndex, watchMode)
   )

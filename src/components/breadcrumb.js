@@ -2,7 +2,7 @@ import { h } from 'preact';
 import Link from './link'
 import { capitalize } from '../helpers/capitalize'
 
-const crumbify = (word, crumbs, curPath) => {
+const crumbify = (word, crumbs) => {
   let path = ''
   for (let crumb of crumbs) {
     path += '/' + crumb;
@@ -12,16 +12,18 @@ const crumbify = (word, crumbs, curPath) => {
 
   return {
     name: word.split('-').map(capitalize).join(' '),
-    path: path,
-    isActive: path === curPath
+    path: path
   }
 }
 
-export default (props) => {
-  let crumbs = props.path.split('/')
+export default props => {
+  let crumbs = [{ name: 'Home', path: '/' }]
+  crumbs = crumbs.concat(
+    props.path.split('/')
       .filter(Boolean)
-  crumbs = crumbs.map(crumb => crumbify(crumb, crumbs, props.path))
-  crumbs.unshift({name: 'Home', path: '/', isActive: false})
+      .map(crumb => crumbify(crumb, crumbs))
+  )
+  crumbs[crumbs.length - 1].isActive = true
   
   return (
     <nav className="breadcrumb is-marginless is-centered" aria-label="breadcrumbs">

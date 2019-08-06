@@ -1,7 +1,6 @@
 ---
 title: How to Retire Early
 date: 2018-12-18T21:45:00-0400
-javascript: true
 ---
 
 import RetirementCalc from '../../components/retirement-calc'
@@ -91,3 +90,5 @@ If you want more control over the numbers, you can play around with
   <a href="https://gist.github.com/thesmartwon/acab1443532c03f27accc04c254355f1"> my (incomplete) simple Python program, </a>
   which is indeed an estimate. However, based on my actual tax returns so far it has proved to be accurate.
   I hope you realize retirement is closer than you think! Remember, your mileage may vary!
+
+<script src="early-retirement.js" />

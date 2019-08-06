@@ -14,24 +14,15 @@ const { PostTemplate } = require('../src/templates/post-template')
 
 const pageIndex = {}
 const contentDirectory = 'src/content/'
-const renderPost = post => {
-
-	return `<!DOCTYPE html>\n${render(
-		<HTML title={post.frontmatter.title}>
-			<PostTemplate
-				frontmatter={post.frontmatter}
-				slug={post.slug}
-			>
-				{h(post.component)}
-			</PostTemplate>
-		</HTML>)}`
-}
-
-const watcher = chokidar.watch(contentDirectory, {
-	ignored: ['**/*.swp', '**/*.md.js'],
-  persistent: true
-})
-
+const renderPost = post => `<!DOCTYPE html>\n${render(
+	<HTML title={post.frontmatter.title}>
+		<PostTemplate
+			frontmatter={post.frontmatter}
+			slug={post.slug}
+		>
+			{h(post.component)}
+		</PostTemplate>
+	</HTML>)}`
 const markdownPipe = require('unified')()
 	.use(require('remark-parse'))
 	// Frontmatter
@@ -59,51 +50,61 @@ const markdownPipe = require('unified')()
 	.use(require('./mdx-ast-to-mdx-hast'))
 	.use(require('./mdx-hast-to-jsx'))
 
-module.exports = new Promise(resolve => 
-	watcher
-		.on('add', file => {
-			if (path.sep === '\\') {
-				file = file.replace(/\\/g, '/')
+const onFile = file => {
+	if (path.sep === '\\') {
+		file = file.replace(/\\/g, '/')
+	}
+	const ext = path.extname(file)
+	let fname = file.replace(contentDirectory, 'posts/')
+	if (ext === '.md') {
+		const readFile = vfile.readSync(file)
+		const wordCount = String(readFile.contents).split(' ').length
+
+		markdownPipe.process(readFile, (err, mdxFile) => {
+			if (err || !mdxFile) {
+				console.error(report(mdxFile), err)
+				return
 			}
-			const ext = path.extname(file)
-			let fname = file.replace(contentDirectory, 'posts/')
-			if (ext === '.md') {
-				const readFile = vfile.readSync(file)
-				const wordCount = String(readFile.contents).split(' ').length
-
-				markdownPipe.process(readFile, (err, mdxFile) => {
-					if (err || !mdxFile) {
-						console.error(report(mdxFile), err)
-						return
-					}
-					if (mdxFile.data.frontmatter.draft) {
-						console.log(report(mdxFile), '(skipped draft)')
-						return
-					}
-					// Write out JS component
-					const jsFile = file + '.js'
-					fs.writeFileSync(jsFile, mdxFile.contents, 'utf8')
-
-					// require() it and render templated content
-					fname = fname.replace(ext, '')
-					mdxFile.data.frontmatter.timeToRead = parseInt(wordCount / 300)
-					pageIndex[fname] = {
-						slug: `/${fname.replace('/index', '')}`,
-						component: require(`../${file}.js`).default,
-						frontmatter: mdxFile.data.frontmatter,
-					}
-					fs.ensureFileSync(`public/${fname}.html`)
-					fs.writeFileSync(`public/${fname}.html`, renderPost(pageIndex[fname]))
-
-					console.log(report(mdxFile))
-				})
-			} else {
-				fs.ensureFileSync(`public/${fname}`)
-				fs.copySync(file, `public/${fname}`)
+			if (mdxFile.data.frontmatter.draft) {
+				console.log(report(mdxFile), '(skipped draft)')
+				return
 			}
+			// Write out JS component
+			const jsFile = file + '.js'
+			fs.writeFileSync(jsFile, mdxFile.contents, 'utf8')
+
+			// require() it and render templated content
+			fname = fname.replace(ext, '')
+			mdxFile.data.frontmatter.timeToRead = parseInt(wordCount / 300)
+			delete require.cache[require.resolve(`../${file}.js`)]
+			pageIndex[fname] = {
+				slug: `/${fname.replace('/index', '')}`,
+				component: require(`../${file}.js`).default,
+				frontmatter: mdxFile.data.frontmatter,
+			}
+			fs.ensureFileSync(`public/${fname}.html`)
+			fs.writeFileSync(`public/${fname}.html`, renderPost(pageIndex[fname]))
+
+			console.log(report(mdxFile))
 		})
+	} else {
+		fs.ensureFileSync(`public/${fname}`)
+		fs.copySync(file, `public/${fname}`)
+	}
+}
+
+module.exports = watchMode => new Promise(resolve => 
+	chokidar
+		.watch(contentDirectory, {
+			ignored: ['**/*.swp', '**/*.js'],
+			persistent: true
+		})
+		.on('add', onFile)
+		.on('change', onFile)
 		.on('ready', () => {
-			watcher.close();
+			if (!watchMode) {
+				watcher.close();
+			}
 			resolve(pageIndex);
 		})
 )
