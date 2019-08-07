@@ -5,7 +5,7 @@ I want to write React templates and render them to static HTML that doesn't incl
 
 However, for some pages, I want to include Javascript. And I want to fully control how it's bundled.
 
-I also want to write my posts in Markdown rather than JSX and include some frontmatter on them and pass
+I also want to write my posts in [MDX](https://mdxjs.com/) and include some frontmatter on them and pass
 them to my React templates for index pages that show all posts.
 
 ### What it does
