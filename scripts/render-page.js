@@ -5,9 +5,9 @@ const render = require('preact-render-to-string')
 const { h } = require('preact')
 const { HTML } = require('./html')
 
-const renderPage = (Component, title, slug, posts) => {
+const renderPage = (Component, title, cssFileNames = [], slug, posts) => {
 	return `<!DOCTYPE html>${render(
-		<HTML title={title}>
+		<HTML title={title} cssFileNames={cssFileNames}>
 			<Component
 				posts={Object.values(posts)
 					.filter(p => p.frontmatter)

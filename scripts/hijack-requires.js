@@ -21,6 +21,13 @@ const urlLoader = (mod, noInline) => {
   } else {
     mod.exports = path.basename(mod.id)
     // We *could* copy to dist, but our `copyContent` gulp task does that
+    // The issue is we still should require() images and things in our MD
+    // const destFile = mod.id
+    //   .replace(/posts/, 'dist/posts')
+    //   .replace(/src[\/\\]pages/, 'dist')
+    // console.log('oy', destFile)
+    // fs.ensureFileSync(destFile)
+    // fs.copySync(mod.id, destFile)
   }
 }
 

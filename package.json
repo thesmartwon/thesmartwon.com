@@ -5,14 +5,14 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp",
     "build:css": "gulp css",
     "build:html": "gulp render",
     "build:js": "gulp js",
     "build:static": "gulp copy",
     "clean": "shx rm -rf public",
     "deploy": "gh-pages --dist dist",
-    "serve": "http-server"
+    "serve": "http-server dist"
   },
   "dependencies": {
     "preact": "^10.0.0-rc.1"

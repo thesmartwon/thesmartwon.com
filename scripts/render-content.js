@@ -8,7 +8,11 @@ const { HTML } = require('./html')
 const { PostTemplate } = require('../src/templates/post-template')
 
 const renderPost = post => `<!DOCTYPE html>\n${render(
-	<HTML title={post.frontmatter.title}>
+	<HTML
+		title={post.frontmatter.title}
+		cssFileNames={post.cssFileNames}
+		jsFileNames={post.jsFileNames}
+		>
 		<PostTemplate
 			frontmatter={post.frontmatter}
 			slug={post.slug}
