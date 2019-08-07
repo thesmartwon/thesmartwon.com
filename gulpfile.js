@@ -1,9 +1,10 @@
-const crypto = require('crypto');
-const fs = require('fs-extra');
-const through2 = require('through2');
-const { src, dest, series } = require('gulp');
-const rollup = require('rollup');
-const sass = require('node-sass');
+const { src, dest, series, parallel, watch } = require('gulp')
+const crypto = require('crypto')
+const fs = require('fs-extra')
+const through2 = require('through2')
+const rollup = require('rollup')
+const path = require('path')
+const sass = require('node-sass')
 const babel = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
 const { terser } = require('rollup-plugin-terser')
@@ -13,10 +14,44 @@ require('./scripts/hijack-requires')
 const { markdownPipe, renderPost } = require('./scripts/render-content')
 const { renderPage } = require('./scripts/render-page')
 
+const paths = {
+	postAssets: {
+    src: [
+			'posts/**/*',
+			'!posts/**/*.md',
+			'!posts/**/*.js',
+		],
+    dest: 'dist/posts'
+	},
+	staticAssets: {
+		src: 'static/*',
+		dest: 'dist'
+	},
+	sass: {
+		src: 'src/main.scss',
+		dest: 'dist'
+	},
+	js: {
+		src: [
+			'posts/**/*.js',
+			'!posts/**/*.md.js'
+		],
+		dest: 'dist/posts'
+	},
+	posts: {
+		src: 'posts/**/*.md',
+		dest: 'dist/posts'
+	},
+	pages: {
+		src: 'src/pages/**/*.js',
+		dest: 'dist'
+	}
+}
 
-const posts = {}
-const cssFileNames = []
-const jsFileNames = {}
+let posts = {}
+let cssFileNames = []
+let jsFileNames = {}
+let jsWatchFiles = []
 const slugify = chunk => chunk.history[0]
 	.replace(chunk._base, '/posts')
 	.replace(/\\/g, '/')
@@ -24,46 +59,54 @@ const slugify = chunk => chunk.history[0]
 	.replace('.md', '')
 	.replace('.js', '')
 
+const getHash = string => {
+	if (process.env.NODE_ENV === 'production') {
+		const hash = crypto.createHash('md5').update(string).digest('hex')
+		return hash.substr(0, 5)
+	}
+
+	return 'dev'
+}
+
 function clean(cb) {
 	fs.remove('dist', cb)
 }
 
-function copyStatic() {
-	return src('static/*')
-		.pipe(dest('dist'));
+function copyStaticAssets() {
+	return src(paths.staticAssets.src)
+		.pipe(dest(paths.staticAssets.dest));
 }
 
 function copyPostAssets() {
-	return src([
-		'posts/**/*',
-		'!posts/**/*.md',
-		'!posts/**/*.js',
-	])
-		.pipe(dest('dist/posts'));
+	return src(paths.postAssets.src)
+		.pipe(dest(paths.postAssets.dest));
 }
 
-function css(cb) {
-	const css = sass.renderSync({
-		file: 'src/main.scss',
-		outputStyle: 'compressed',
-		outFile: 'dist/main.css',
-		sourceMap: true,
-	})
-	console.log(`Compiled ${css.stats.includedFiles.length} SASS files`)
-	const hash = crypto.createHash('md5').update(css.css).digest('hex')
-	const destFile = `dist/main-${hash.substr(0, 5)}.css`
-	cssFileNames.push(destFile.replace('dist', ''))
-	fs.ensureDirSync('dist')
-	fs.writeFileSync(destFile, css.css)
-	console.log(`Wrote ${destFile}`)
-	cb();
+function css() {
+	cssFileNames = []
+	return src(paths.sass.src)
+		.pipe(through2.obj(function (chunk, _, cb2) {
+			const css = sass.renderSync({
+				file: chunk.history[0], // For import resolution
+				outputStyle: 'compressed',
+			})
+			console.log(`Compiled ${css.stats.includedFiles.length} SASS files`)
+			chunk.contents = Buffer.from(css.css)
+
+			chunk.history.push(
+				chunk.history[0].replace('.scss', `-${getHash(css.css)}.css`))
+			cssFileNames.push('/' + path.basename(chunk.history[1]))
+
+			console.log('cssFileNames', cssFileNames)
+			cb2(null, chunk)
+		}))
+		.pipe(dest(paths.sass.dest))
 }
 
-function js(cb) {
-	return src([
-		'posts/**/*.js',
-		'!posts/**/*.md.js'
-	])
+function js() {
+	jsFileNames = {}
+	jsWatchFiles = []
+	return src(paths.js.src)
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			const slug = slugify(chunk)
 			rollup.rollup({
@@ -73,26 +116,28 @@ function js(cb) {
 					babel({ exclude: 'node_modules/**' }),
 					terser(),
 				],
-			}).then(bundle => bundle.generate({
-				format: 'iife', // immediately invoked function expression
-				name: slug.split('/').pop().replace('-', ''), // global variable name representing your bundle
-				compact: true,
-			}).then(({ output }) => {
-				chunk.contents = Buffer.from(output[0].code)
-				const hash = crypto.createHash('md5').update(output[0].code).digest('hex')
-				chunk.history.push(chunk.history[0].replace('.js', `-${hash.substr(0, 5)}.js`))
-				jsFileNames[slug] = jsFileNames[slug] || []
-				jsFileNames[slug].push(chunk.history[1].split('/').pop())
-				console.log('Bundled', chunk.history[1])
-				
-				cb2(null, chunk)
-			}))
+			}).then(bundle => {
+				jsWatchFiles = jsWatchFiles.concat(bundle.watchFiles)
+				bundle.generate({
+					format: 'iife', // immediately invoked function expression
+					name: slug.split('/').pop().replace('-', ''), // global variable name representing your bundle
+					compact: true,
+				}).then(({ output }) => {
+					chunk.contents = Buffer.from(output[0].code)
+					chunk.history.push(chunk.history[0].replace('.js', `-${getHash(output[0].code)}.js`))
+					jsFileNames[slug] = jsFileNames[slug] || []
+					jsFileNames[slug].push(path.basename(chunk.history[1]))
+					console.log('jsFileNames', slug, jsFileNames[slug])
+					
+					cb2(null, chunk)
+				})})
 		}))
-		.pipe(dest('dist/posts'))
+		.pipe(dest(paths.js.dest))
 }
 
 function renderPosts() {
-	return src('posts/**/*.md')
+	posts = {}
+	return src(paths.posts.src)
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			const destFile = chunk.history[0].replace(/\\/g, '/') + '.js'
 			const vfile = markdownPipe.processSync(chunk._contents)
@@ -117,6 +162,7 @@ function renderPosts() {
 				jsFileNames: jsFileNames[slug]
 			}
 			posts[slug] = post
+			
 
 			chunk.contents = Buffer.from(renderPost(post))
 			chunk.history.push(chunk.history[0].replace('.md', '.html'))
@@ -124,15 +170,15 @@ function renderPosts() {
 
 			cb2(null, chunk)
 		}))
-		.pipe(dest('dist/posts'))
+		.pipe(dest(paths.posts.dest))
 }
 
 function renderPages() {
-	return src('src/pages/**/*.js')
+	return src(paths.pages.src)
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			delete require.cache[require.resolve(chunk.history[0])]
 			const page = require(chunk.history[0])
-			const slug = slugify(chunk)
+			const slug = slugify(chunk).replace('/posts', '') + '/'
 
 			chunk.contents = Buffer.from(
 				renderPage(page.default, page.title, cssFileNames, slug, posts)
@@ -142,21 +188,37 @@ function renderPages() {
 
 			cb2(null, chunk)
 		}))
-		.pipe(dest('dist'))
+		.pipe(dest(paths.pages.dest))
 }
 
 function removeNull(cb) {
 	fs.remove('dist/basicallydevnull', cb)
 }
 
+function start() {
+	watch(paths.postAssets.src, { ignoreInitial: false }, copyPostAssets)
+	watch(paths.staticAssets.src, { ignoreInitial: false }, copyStaticAssets)
+
+	// TODO: parallel css/js
+	css()
+		.on('end', () => js() // TODO: rollup.watch
+			.on('end', () => {
+				watch(paths.sass.src, css)
+				watch(jsWatchFiles, js)
+				watch(paths.posts.src, { ignoreInitial: false }, series(renderPosts, renderPages))
+				watch(paths.pages.src, { ignoreInitial: false }, renderPages)
+			})
+		)
+}
+
 module.exports = {
 	clean,
-	copyStatic,
+	copyStaticAssets,
 	copyPostAssets,
-	copy: series(copyStatic, copyPostAssets),
+	copy: series(copyStaticAssets, copyPostAssets),
 	css,
 	js,
 	renderPosts,
-	render: series(renderPosts, renderPages),
-	default: series(copyStatic, copyPostAssets, css, js, renderPosts, renderPages, removeNull),
+	start,
+	default: series(parallel(copyStaticAssets, copyPostAssets, css, js), renderPosts, renderPages, removeNull),
 }

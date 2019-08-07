@@ -16,20 +16,27 @@ const crumbify = (word, crumbs) => {
   }
 }
 
-export default props => {
-  let crumbs = [{ name: 'Home', path: '/' }]
-  crumbs = crumbs.concat(
-    props.path.split('/')
-      .filter(Boolean)
-      .map(crumb => crumbify(crumb, crumbs))
-  )
+export default ({ path }) => {
+  let crumbs = [{ text: 'Home', path: '/' }]
+  const split = path.split('/')
+    .filter(Boolean)
+  if (split.length > 0) {
+    split.reduce((acc, cur) => {
+      crumbs.push({
+        text: cur.split('-').map(capitalize).join(' '),
+        path: `${acc}/${cur}`
+      })
+
+      return `${acc}/${cur}`
+    }, '')
+  }
   crumbs[crumbs.length - 1].isActive = true
   
   return (
     <nav className="breadcrumb is-marginless is-centered" aria-label="breadcrumbs">
       <ul>
         {crumbs.map(crumb => (
-          <li key={crumb.name} className={crumb.isActive ? 'is-active' : ''}><Link href={crumb.path}>{crumb.name}</Link></li>
+          <li key={crumb.text} className={crumb.isActive ? 'is-active' : ''}><Link href={crumb.path}>{crumb.text}</Link></li>
         ))}
       </ul>
     </nav>
