@@ -1,10 +1,6 @@
-const path = require('path')
-const fs = require('fs-extra')
 const render = require('preact-render-to-string')
 // Unified
-const vfile = require('to-vfile')
 const visit = require('unist-util-visit')
-const report = require('vfile-reporter')
 // HTML template
 const moment = require('moment');
 const { h } = require('preact')
@@ -51,42 +47,4 @@ const markdownPipe = require('unified')()
 module.exports = {
 	markdownPipe,
 	renderPost,
-}
-
-
-const renderFile = file => {
-	if (path.sep === '\\') {
-		file = file.replace(/\\/g, '/')
-	}
-	const ext = path.extname(file)
-	let fname = file.replace(contentDirectory, 'posts/')
-	const readFile = vfile.readSync(file)
-	const wordCount = String(readFile.contents).split(' ').length
-
-	markdownPipe.process(readFile, (err, mdxFile) => {
-		if (err || !mdxFile) {
-			console.error(report(mdxFile), err)
-			return
-		}
-		if (mdxFile.data.frontmatter.draft) {
-			console.log(report(mdxFile), '(skipped draft)')
-			return
-		}
-		// Write out JS component
-		const jsFile = file + '.js'
-		fs.writeFileSync(jsFile, mdxFile.contents, 'utf8')
-
-		// require() it and render templated content
-		fname = fname.replace(ext, '')
-		mdxFile.data.frontmatter.timeToRead = parseInt(wordCount / 300)
-		delete require.cache[require.resolve(`../${file}.js`)]
-		pageIndex[fname] = {
-			slug: `/${fname.replace('/index', '')}`,
-			component: require(`../${file}.js`).default,
-			frontmatter: mdxFile.data.frontmatter,
-		}
-		console.log(report(mdxFile))
-
-		return renderPost(pageIndex[fname])
-	})
 }

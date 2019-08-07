@@ -3,7 +3,7 @@ title: How to Retire Early
 date: 2018-12-18T21:45:00-0400
 ---
 
-import RetirementCalc from '../../components/retirement-calc'
+import RetirementCalc from '../../src/components/retirement-calc'
 import retirementMeme from './retirement-meme.png'
 import wakeUp from './wake-up.gif'
 

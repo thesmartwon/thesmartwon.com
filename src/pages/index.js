@@ -5,7 +5,7 @@ import Link from '../components/link'
 import ArticlePreview from '../components/article-preview'
 
 export const title = 'The Smart Blog'
-export default ({ path, pages }) => (
+export default ({ path, posts }) => (
   <CenterLayout
     title={(
       <h1 className="title is-2">
@@ -24,7 +24,7 @@ export default ({ path, pages }) => (
     path={path}
   >
     <div className="content is-medium has-text-centered">
-      {pages.map(page => ArticlePreview(page))}
+      {posts.map(page => ArticlePreview(page))}
       <div>
         <Link href="/posts">View all posts</Link>
       </div>

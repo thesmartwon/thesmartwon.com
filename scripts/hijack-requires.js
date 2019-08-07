@@ -20,13 +20,7 @@ const urlLoader = (mod, noInline) => {
     mod.exports = `data:${mimeType};base64,${data.toString('base64')}`
   } else {
     mod.exports = path.basename(mod.id)
-    // Copy to dist
-    const srcPath = mod.id
-      .replace(/.*src[\/\\]content/, 'posts')
-      .replace(/.*src[\/\\]pages/, '')
-    console.log('oy', srcPath)
-      fs.ensureFileSync(`public/${srcPath}`)
-    fs.copySync(mod.id, `public/${srcPath}`)
+    // We *could* copy to dist, but our `copyContent` gulp task does that
   }
 }
 

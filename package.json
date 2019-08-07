@@ -5,14 +5,13 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "build": "npm-run-all build:html build:css build:js build:static",
+    "build": "gulp build",
     "build:css": "gulp css",
-    "build:html": "node scripts/render-html.js",
-    "watch:html": "node scripts/render-html.js --watch",
-    "build:js": "rollup -c",
-    "build:static": "shx cp -r static/* public",
+    "build:html": "gulp render",
+    "build:js": "gulp js",
+    "build:static": "gulp copy",
     "clean": "shx rm -rf public",
-    "deploy": "gh-pages --dist public",
+    "deploy": "gh-pages --dist dist",
     "serve": "http-server"
   },
   "dependencies": {
@@ -33,7 +32,6 @@
     "mime": "^2.4.4",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
-    "npm-run-all": "^4.1.5",
     "preact-render-to-string": "^5.0.6",
     "rehype-format": "^2.3.2",
     "rehype-raw": "^4.0.1",
@@ -50,10 +48,8 @@
     "shx": "^0.3.2",
     "style-to-object": "^0.2.3",
     "through2": "^2.0.5",
-    "to-vfile": "^6.0.0",
     "typescript": "^3.5.3",
-    "unified": "^8.3.2",
-    "vfile-reporter": "^6.0.0"
+    "unified": "^8.3.2"
   },
   "repository": {
     "type": "git",

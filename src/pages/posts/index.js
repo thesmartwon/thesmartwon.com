@@ -27,8 +27,8 @@ const splitGroups = (groups, num) => {
 }
 
 export const title = 'The Smart Posts'
-export default ({ path, pages }) => {
-  const groups = getGroups(pages)
+export default ({ path, posts }) => {
+  const groups = getGroups(posts)
   const split = splitGroups(groups, 2)
 
   return (
