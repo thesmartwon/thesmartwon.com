@@ -24,7 +24,13 @@ const paths = {
     dest: 'dist/posts'
 	},
 	staticAssets: {
-		src: 'static/*',
+		src: [
+			'src/pages/*',
+			'src/pages/**/*',
+			'!src/pages/*.js',
+			'!src/pages/**/*.js',
+			'static/*',
+		],
 		dest: 'dist'
 	},
 	sass: {
@@ -215,7 +221,7 @@ module.exports = {
 	clean,
 	copyStaticAssets,
 	copyPostAssets,
-	copy: series(copyStaticAssets, copyPostAssets),
+	copy: parallel(copyStaticAssets, copyPostAssets),
 	css,
 	js,
 	renderPosts,
