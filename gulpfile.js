@@ -190,7 +190,7 @@ function renderPages() {
 				renderPage(page.default, page.title, cssFileNames, slug, posts)
 			)
 			chunk.history.push(chunk.history[0].replace('.js', '.html'))
-			console.log('Rendered', slug)
+			console.log('Rendered', slug, '->', chunk.history[1])
 
 			cb2(null, chunk)
 		}))

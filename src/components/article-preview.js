@@ -1,8 +1,8 @@
 import { h } from 'preact'
 import Link from './link'
 
-export default (page, showPreview = true) => {
-  const { slug, frontmatter } = page
+export default (post, showPreview = true) => {
+  const { slug, frontmatter } = post
   const topic = slug.split('/')[2]
 
   return (
