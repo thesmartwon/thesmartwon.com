@@ -1,7 +1,6 @@
 ---
 title:  "How this Site was Built"
 date:  2019-05-12T21:00:00-0400
-javascript: false
 ---
 You probably don't notice, but this site is nearly as fast as it can possibly be! I did that because I value your data bill and places which are just now getting emerging internet. I'm also a minimalist.
 <figure>

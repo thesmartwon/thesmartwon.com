@@ -1,7 +1,6 @@
 ---
 title:  "A History of the Web"
 date:  2019-05-13T21:00:00-0400
-javascript: false
 draft: true
 ---
 

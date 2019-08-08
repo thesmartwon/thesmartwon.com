@@ -14,7 +14,7 @@ export const PostTemplate = ({ frontmatter, slug, children }) => (
     javascript={frontmatter.javascript}
     path={slug}
   >
-    <div className="content is-medium">
+    <div id="content" className="content is-medium">
       {children}
     </div>
       
