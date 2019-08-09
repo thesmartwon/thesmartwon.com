@@ -1,0 +1,1 @@
+export const pluralize = (word, num) => num > 1 ? word + 's' : word

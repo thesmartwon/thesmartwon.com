@@ -26,7 +26,10 @@ I understand how every line of HTML, CSS, and Javascript got there (preferably w
 
 If you're into the technical aspects, check out the section below!
 
-![Show me the source](./show-me-the-source-yoda.jpg)
+<figure>
+<img src="show-me-the-source-yoda.jpg" alt="Show me the source" />
+<figcaption>Use the source, Luke!</figcaption>
+</figure>
 
 # How I Made the Site
 ### Gatsby Internals I Tore Apart

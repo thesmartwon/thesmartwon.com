@@ -48,7 +48,7 @@ export default ({ path, posts }) => {
               {col.map(group => (
                 <Fragment key={group[0]}>
                   <h3><Link className="title" href={`/posts/${group[0]}`}>{capitalize(group[0])}</Link></h3>
-                  {group[1].map(post => ArticlePreview(post, false))}
+                  {group[1].map(post => ArticlePreview(post, false, false))}
                 </Fragment>))}
             </div>
           ))}

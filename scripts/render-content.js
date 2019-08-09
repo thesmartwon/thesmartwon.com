@@ -34,14 +34,16 @@ const markdownPipe = require('unified')()
 		});
 	})
 	.use(() => (ast, file) => {
+		const { frontmatter } = file.data
 		let excerpt = ''
 		visit(ast, 'text', item => {
-			if (excerpt.length < 150) {
-				excerpt += item.value + ' '
-			}
+			excerpt += item.value + ' '
 		})
 
-		file.data.frontmatter.excerpt = excerpt.substr(0, 150).trim()
+		frontmatter.excerpt = excerpt.substr(0, 150).trim()
+		// Assume 300wpm reading speed
+		// Round to nearest .5
+		frontmatter.timeToRead = Math.round(excerpt.split(' ').length / 300 * 2) / 2
 	})
 	// Render to JSX
 	.use(require('remark-mdx'))
