@@ -32,7 +32,7 @@ jobs:
         command: yarn build
     - persist_to_workspace:
         root: .
-        paths: public
+        paths: dist
   docs-deploy:
     docker:
     - image: circleci/node:8.15
@@ -41,7 +41,7 @@ jobs:
     - attach_workspace:
         at: .
     - run:
-        command: ls public
+        command: ls dist
     - run:
         name: Git config
         command: |
@@ -53,4 +53,4 @@ jobs:
         - 83:21:89:0d:e0:0d:dc:98:0e:2b:07:46:4b:dd:66:8f
     - run:
         name: Deploy
-        command: $(yarn global bin)/gh-pages --message 'Publishing [ci skip]' --dist public
+        command: $(yarn global bin)/gh-pages --message 'Publishing [ci skip]' --dist dist
