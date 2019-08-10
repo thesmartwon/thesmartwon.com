@@ -1,9 +1,10 @@
 ---
 title: How to Retire Early
 date: 2018-12-18T21:45:00-0400
+javascript: true
 ---
 
-import RetirementCalc from '../../src/components/retirement-calc'
+import { RetirementCalc } from '../../src/components/retirement-calc'
 
 Brilliant, you'd like to quit your day job and do something more meaningful with your life.
 Now how do you do it?
@@ -90,7 +91,7 @@ Money put into the account is not tax-deffered, and gains are taxed as income.
 However, withdrawals have no penalty or restrictions (except for what your brokerage states)!
 
 # Conclusion
-If you want more control over the numbers, you can play around with [an (incomplete) Python script I wrote](https://gist.github.com/thesmartwon/acab1443532c03f27accc04c254355f1) or the [source code for the calculator on the page]() . I hope you realize retirement is closer than you think!
+If you want more control over the numbers, you can play around with [an (incomplete) Python script I wrote](https://gist.github.com/thesmartwon/acab1443532c03f27accc04c254355f1) or the [source code for the calculator on the page](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/helpers/retire.js) . I hope you realize retirement is closer than you think!
 
 Remember, your mileage may vary!
 <figure>

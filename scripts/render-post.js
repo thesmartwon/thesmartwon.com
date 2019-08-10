@@ -29,12 +29,13 @@ const markdownPipe = require('unified')()
 	.use(() => (ast, file) => {
 		visit(ast, 'yaml', item => {
 			file.data.frontmatter = item.data.parsedValue
-			file.data.frontmatter.dateShort = moment(file.data.frontmatter.date).format('YYYY-MM-DD')
-			file.data.frontmatter.dateLong = moment(file.data.frontmatter.date).format('MMMM DD, YYYY')
+			const { frontmatter } = file.data
+			frontmatter.dateShort = moment(frontmatter.date).format('YYYY-MM-DD')
+			frontmatter.dateLong = moment(frontmatter.date).format('MMMM DD, YYYY')
 		});
 	})
 	.use(() => (ast, file) => {
-		const { frontmatter } = file.data
+		let { frontmatter } = file.data
 		let excerpt = ''
 		visit(ast, 'text', item => {
 			excerpt += item.value + ' '

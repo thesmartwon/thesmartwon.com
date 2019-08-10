@@ -1,4 +1,4 @@
-const { src, dest, series, parallel, watch } = require('gulp')
+const { src, dest, series, parallel, watch, lastRun } = require('gulp')
 const crypto = require('crypto')
 const fs = require('fs-extra')
 const through2 = require('through2')
@@ -11,7 +11,7 @@ const { terser } = require('rollup-plugin-terser')
 
 // Hijack to allow JSX in renderPost and renderPage
 require('./scripts/hijack-requires')
-const { markdownPipe, renderPost } = require('./scripts/render-content')
+const { markdownPipe, renderPost } = require('./scripts/render-post')
 const { renderPage } = require('./scripts/render-page')
 
 const paths = {
@@ -79,18 +79,18 @@ function clean(cb) {
 }
 
 function copyStaticAssets() {
-	return src(paths.staticAssets.src)
+	return src(paths.staticAssets.src, { since: lastRun(copyStaticAssets) })
 		.pipe(dest(paths.staticAssets.dest));
 }
 
 function copyPostAssets() {
-	return src(paths.postAssets.src)
+	return src(paths.postAssets.src, { since: lastRun(copyPostAssets) })
 		.pipe(dest(paths.postAssets.dest));
 }
 
 function css() {
 	cssFileNames = []
-	return src(paths.sass.src)
+	return src(paths.sass.src, { since: lastRun(css) })
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			const css = sass.renderSync({
 				file: chunk.history[0], // For import resolution
@@ -112,7 +112,7 @@ function css() {
 function js() {
 	jsFileNames = {}
 	jsWatchFiles = []
-	return src(paths.js.src)
+	return src(paths.js.src, { since: lastRun(js) })
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			const slug = slugify(chunk)
 			rollup.rollup({
@@ -126,7 +126,7 @@ function js() {
 				jsWatchFiles = jsWatchFiles.concat(bundle.watchFiles)
 				bundle.generate({
 					format: 'iife', // immediately invoked function expression
-					name: slug.split('/').pop().replace('-', ''), // global variable name representing your bundle
+					name: slug.split('/').pop().replace(/\-/g, ''), // global variable name representing your bundle
 					compact: true,
 				}).then(({ output }) => {
 					chunk.contents = Buffer.from(output[0].code)
@@ -143,7 +143,7 @@ function js() {
 
 function renderPosts() {
 	posts = {}
-	return src(paths.posts.src)
+	return src(paths.posts.src, { since: lastRun(renderPosts) })
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			const destFile = chunk.history[0].replace(/\\/g, '/') + '.js'
 			const vfile = markdownPipe.processSync(chunk._contents)

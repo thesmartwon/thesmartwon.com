@@ -2,7 +2,7 @@ import { h, Component } from 'preact'
 import Link from '../components/link'
 import { fedTaxBrackets, projectRetirement } from '../helpers/retire'
 
-export default class RetirementCalc extends Component {
+export class RetirementCalc extends Component {
   constructor(props) {
     super(props);
     this.state = {
