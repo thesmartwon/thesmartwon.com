@@ -42,9 +42,9 @@ const markdownPipe = require('unified')()
 		})
 
 		frontmatter.excerpt = excerpt.substr(0, 150).trim()
-		// Assume 300wpm reading speed
+		// Assume 200wpm reading speed
 		// Round to nearest .5
-		frontmatter.timeToRead = Math.round(excerpt.split(' ').length / 300 * 2) / 2
+		frontmatter.timeToRead = Math.round(excerpt.split(' ').length / 200 * 2) / 2
 	})
 	// Render to JSX
 	.use(require('remark-mdx'))
