@@ -123,7 +123,8 @@ function js() {
 					terser(),
 				],
 			}).then(bundle => {
-				jsWatchFiles = jsWatchFiles.concat(bundle.watchFiles)
+				jsWatchFiles = jsWatchFiles.concat(bundle.watchFiles
+					.filter(file => !file.includes('rollupPluginBabelHelpers.js')))
 				bundle.generate({
 					format: 'iife', // immediately invoked function expression
 					name: slug.split('/').pop().replace(/\-/g, ''), // global variable name representing your bundle
@@ -226,5 +227,10 @@ module.exports = {
 	js,
 	renderPosts,
 	start,
-	default: series(parallel(copyStaticAssets, copyPostAssets, css, js), renderPosts, renderPages, removeNull),
+	default: series(
+		parallel(copyStaticAssets, copyPostAssets, css, js),
+		renderPosts,
+		renderPages,
+		removeNull
+	),
 }

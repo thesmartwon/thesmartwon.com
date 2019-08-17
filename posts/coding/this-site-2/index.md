@@ -12,9 +12,9 @@ I ditched Gatsby.
 <figcaption>Gatsby is dead.</figcaption>
 </figure>
 
-I decided to ditch Gatsby because after [an update to how resources were loaded,](https://github.com/gatsbyjs/gatsby/pull/14889) my site wouldn't build anymore with all its modified Gatsby internals. 
-I could just use an old version of Gatsby forever, but even with the old version things were breaking because even old Gatsby's dependencies were updated according to Gatsby's [package.json](https://github.com/gatsbyjs/gatsby/blob/master/package.json) (welcome the the traums of the NPM ecosystem).
-I didn't want to my project's entire life to hang on a single `package-lock.json`, so I decided to write my own framework.
+I decided to ditch Gatsby because after [an update to how Gatsby's resources were loaded,](https://github.com/gatsbyjs/gatsby/pull/14889) my site wouldn't build anymore. 
+I could just use an old version of Gatsby forever, but even with the old version things were breaking because of dependencies of Gatsby's dependencies in its [package.json](https://github.com/gatsbyjs/gatsby/blob/master/package.json) (welcome to the NPM ecosystem).
+I didn't want to my entire project's to hinge on a single `package-lock.json`, so I decided to write my own framework.
 
 ## Death to Webpack, too
 Webpack is a little black box everyone depends on.
@@ -24,14 +24,14 @@ Webpack is a little black box everyone depends on.
 <figcaption>Most web developers use this. Most don't have the slightest idea how it works.</figcaption>
 </figure>
 
-I like Webpack, so I experimented with building my site using [prerender-loader](https://github.com/GoogleChromeLabs/prerender-loader)/[prerender-SPA-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) paired with [Preact-router](https://github.com/preactjs/preact-router).
-I never want to actually use a router since I have to update it every post, but it was bareable and I could dynamically generate routes based on [globbing](https://github.com/isaacs/node-glob) my local directories.
+I like Webpack, so I experimented with building my site using [prerender-loader](https://github.com/GoogleChromeLabs/prerender-loader) or [prerender-SPA-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) paired with [Preact-router](https://github.com/preactjs/preact-router).
+I never want to actually use a router since I have to update it every post, but it was bearable and I could dynamically generate routes based on [globbing](https://github.com/isaacs/node-glob) my local directories.
 
 There were a lot of small annoying problems I ran into with prerendering (like needing React AND Preact).
-The real problem, though is that I had to use the same bloated JS to generate the static HTML as I bundled for the page. This includes things I never want to ship in my bundle like [preact-helmet](https://github.com/download/preact-helmet). There was the issue of dynamically templating some pages to NOT include JS...
+The real problem ended up being I had to use the same bloated JS to generate the static HTML as I bundled in the page. This includes things I never want to ship in my bundle like [preact-helmet](https://github.com/download/preact-helmet). There was the issue of dynamically templating some pages to NOT include JS...
 
-Suffice it to say it got complicated FAST and I gave up on a Webpack approach.
-I briefly checked out [Parcel](https://github.com/parcel-bundler/parcel), but it seems that the _approach_ is flawed more than the tools. Bundlers are made for SPAs.
+Suffice it to say it got complicated FAST (I'd have to run webpack twice -- once to prerender, and once to bundle) so I gave up on a Webpack approach.
+I briefly checked out [Parcel](https://github.com/parcel-bundler/parcel) but it seems that the _approach_ is flawed more than the tools. Bundlers are made for SPAs.
 
 ## What I actually want
 
@@ -40,18 +40,18 @@ I briefly checked out [Parcel](https://github.com/parcel-bundler/parcel), but it
 <figcaption>I just want to use Preact as much as I can.</figcaption>
 </figure>
 
-Since my pages don't include JS, I really just want a template rendering framework, like [hexo](https://hexo.io) or [hugo](https://gohugo.io) to render my site's HTML.
-However, I want to write React components in JSX for reusable parts of my site (not EJS or `%`-style PHP templates), like the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post-template.js), [article previews](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/article-preview.js), and the [breadcrumb](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/breadcrumb.js).
+Since my pages don't include JS, I really just want a templating framework, like [hexo](https://hexo.io) or [hugo](https://gohugo.io) to render my site's HTML.
+However, I want to write React components in JSX instead of EJS or `%`-style PHP templates. For example, I already had the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post-template.js), [article previews](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/article-preview.js), and the [breadcrumb](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/breadcrumb.js) written in React,.
 
 <figure>
 
 ```js
 {posts.map(post => ArticlePreview(post))}
 ```
-<figcaption>This is all I have to write for Article previews. No copy/pasting and updating and index per-post.</figcaption>
+<figcaption>This is all I write for Article previews on navigation pages. No copy/pasting and updating per-post.</figcaption>
 </figure>
 
-Using React as my templating engine makes it easy for when I want to write things like my [retirement calculator](/posts/money/early-retirement). I can just keep using React.
+Using React as my templating engine makes it easy for when I want to write JS for things like my [retirement calculator](/posts/money/early-retirement). I can just keep using React.
 
 # Back to the basics
 I needed to render my components to HTML using something like [preact-render-to-string](https://github.com/preactjs/preact-render-to-string).
@@ -74,20 +74,20 @@ require('@babel/register')({
   presets: ['@babel/preset-env']
 })
 
-// All further `require()`s go through Babel (and so can include JSX,
-// class properties, and `include` statements)
+// All further `require()`s go through Babel (so they can 
+// include JSX, class properties, and `import` statements)
 const { myComponent } = require('some-component');
 console.log(render(h(myComponent)))
 ```
 
-After figuring out `preact-render-to-string` was something I could use with JSX and not having to have extra intermediate files piped through Babel, I was SOLD!!
+After figuring out [preact-render-to-string](https://github.com/preactjs/preact-render-to-string) was something I could use with JSX without having to have extra intermediate files, I was SOLD!!
 
 <figure>
 <img src="shut-up-and-take-my-money.jpg" alt="Take my money" />
 <figcaption>Shut up and take my soul.</figcaption>
 </figure>
 
-## Let's pimp out this renderer
+## Let's commit to this renderer
 I need to extract some metadata from Markdown files (like the post's title and date) to include in my templated site components (like the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post-template.js)). [Unified](https://github.com/unifiedjs/unified) is THE natural choice for this in NodeJS land.
 
 ### Enter: MDX
@@ -98,7 +98,7 @@ I also wanted to be able to include React components in my Markdown files so dyn
 <figcaption>Pretty neat idea. Markdown -> JSX.</figcaption>
 </figure>
 
-Added together, I created a Unified pipeline that looked like this:
+I created a Unified pipeline that used [remark-mdx](https://github.com/mdx-js/mdx/tree/master/packages/remark-mdx) like this:
 
 ```js
 const markdownPipe = require('unified')()
@@ -138,18 +138,17 @@ Now for each one of my Markdown files, I have a `.md.js` file that looks like th
 
 ```js
 import { h, Fragment } from 'preact'
-import { Logo } from '../../../src/components/logo.js'
 
 export default () => <Fragment>
   {/* Content here */}
 </Fragment>;
 ```
 
-Now I just `require()` that file and use `preact-render-to-string` on it!
+Now I just `require()` that file and use [preact-render-to-string](https://github.com/preactjs/preact-render-to-string) on it!
 I also collect some metadata on all the posts rendered in order to build index pages that list all the posts.
 
 ### But you need _some_ JavaScript
-For interactive pages, I do need some JavaScript. Rollup played the role of Babel+bundle+minifying JS files that just look like this:
+For interactive pages, I do need some JavaScript. Rollup played the role of Babelling, bundling, and minifying JS files like this:
 
 ```js
 import { h, render } from 'preact'
@@ -177,13 +176,13 @@ rollup.rollup({
 }))
 ```
 
-The more annoying part is injecting the CSS and JS file names dynamically into the HTML templates. I just kept track of where I wrote out the CSS and JS files. For development, I don't bother changing the file name to include a hash because that's a lot of work. 
+The more annoying part is injecting the CSS and JS file names dynamically into the HTML templates. I just kept track of where I wrote out the CSS and JS files. For development, I don't bother changing the filename to include a hash because that's a lot of work.
 
 ### Orchestrating it all
-I used to have a single NodeJS script orchestrating all the tools, but I just decided to use [Gulp](https://gulpjs.com/), which is a nice task runner that has everything I need to read and write files at certain paths. The default task of [my Gulpfile](https://github.com/thesmartwon/thesmartwon.com/blob/master/gulpfile.js):
+I used to have a single NodeJS script orchestrating all the tools, but I just decided to use [Gulp](https://gulpjs.com/), which is a nice task runner to read and write files at certain paths. The default task of [my Gulpfile](https://github.com/thesmartwon/thesmartwon.com/blob/master/gulpfile.js):
 - Creates assets with no dependencies: parallel(copyStaticAssets, copyPostAssets, css, js)
   - Populates cssFileNames = [] and jsFileNames = {}
-- Renders posts (and populates posts = {})
+- Renders posts (and populates posts = {} to pass to index pages)
 - Renders Pages
 - Cleans up a file that all posts that are drafts and shouldn't be rendered get pointed to
 
@@ -208,10 +207,12 @@ function start() {
 }
 ```
 
-I do still have to reload my page manually after my site rebuild, but I could look into using [browser-sync](https://www.browsersync.io/docs/gulp) so I don't have to reload the page manually each time. That would let me stop having [http-server](https://www.npmjs.com/package/http-server) open in another terminal serving my `dist` folder.
+I do still have to reload my page manually after my site rebuilds, but I could look into using [browser-sync](https://www.browsersync.io/docs/gulp) to auto-reload it. That would also save me having [http-server](https://www.npmjs.com/package/http-server) open in another terminal serving my `dist` folder.
 
 ## Reflection
 All this work took me upwards of 25 hours. The hardest part was writing the remark plugins for MDX. A lot of it was wasted researching prerendering, and I did write a few posts in the meantime.
+
+It was well worth it to control every tool that creates the HTML, CSS, and JS my readers read. I'm (fairly) framework agnostic and learned a ton of new things! 
 
 # Future work
 My hot-reloading development workflow still needs a few changes:
@@ -227,4 +228,4 @@ My production environment also needs a few fixes:
   <figcaption>Shut up and take my soul.</figcaption>
 </figure>
 ```
-- I need a way to separate out my Preact dependency into another JS file and reference it between bundles.
+- I need a way to separate out my Preact dependency so it doesn't have to reload 4kb on every JS page.
