@@ -1,10 +1,10 @@
 ---
 title:  "One Year of Work"
-date:  2020-02-20T13:50:00-0400
+date:  2020-02-02T13:50:00-0400
 ---
 
 # My Job
-I've been working as a frontend build engineer for an open-source company one year now. I came in with virtually no Javascript experience: before this job my only frontend experience was an internship. I came in with little Git workflow experience, but I've taken time to `git` good and Github feels like home to me. I support developer workflows and environments, publish our packages to NPM, publish our documentation, and swoop in to help devs when they come across problems they can't solve.
+I've been working as a frontend build engineer for an open-source company one year now. I came in with only a summer internship's worth of Javascript experience. I had little Github workflow experience, but I've taken time to `git` good. I support developer workflows and environments, publish our packages to NPM, publish our documentation, and swoop in to help devs when they come across problems they can't solve.
 
 I've filled holes on our team for the entire past year. Infrastucture and architecting is the hole I'm usually filling since we're experiencing growth pangs beyond what our initial architecture can support. My job is akin to construction, I have to support a sinking foundation as developers keep adding features and fixing things around the house.
 

@@ -143,7 +143,6 @@ function js() {
 }
 
 function renderPosts() {
-	posts = {}
 	return src(paths.posts.src, { since: lastRun(renderPosts) })
 		.pipe(through2.obj(function (chunk, _, cb2) {
 			const destFile = chunk.history[0].replace(/\\/g, '/') + '.js'

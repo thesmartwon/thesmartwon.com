@@ -13,9 +13,9 @@ export const TopicTemplate = ({ path, topic, subtitle, posts, children }) => (
     )}
     path={path}
   >
-    <div className="content is-medium">
+    <ul className="content is-medium" style="list-style-type:none">
       {children}
       {posts.map(post => ArticlePreview(post, true, false))}
-    </div>
+    </ul>
   </CenterLayout>
 )

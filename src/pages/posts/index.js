@@ -44,13 +44,13 @@ export default ({ path, posts }) => {
       <div className="content is-medium">
         <div className="columns">
           {split.map(col => (
-            <div key={col[0][0]} className="column has-text-centered">
+            <ul key={col[0][0]} className="column has-text-centered" style="list-style-type:none">
               {col.map(group => (
                 <Fragment key={group[0]}>
                   <h3><Link className="title" href={`/posts/${group[0]}`}>{capitalize(group[0])}</Link></h3>
                   {group[1].map(post => ArticlePreview(post, false, false))}
                 </Fragment>))}
-            </div>
+            </ul>
           ))}
         </div>
       </div>
