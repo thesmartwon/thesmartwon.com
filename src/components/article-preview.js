@@ -7,7 +7,7 @@ export default (post, showPreview = true, showTopic = true) => {
   const topic = slug.split('/')[2]
 
   return (
-    <div key={slug} style={{paddingBottom: '3rem'}}>
+    <li key={slug} style={{paddingBottom: '3rem'}}>
       <div className="media">
         <div className="media-content has-text-centered is-clipped">
           <Link href={slug} className={`title article-title ${showPreview ? 'is-3' : 'is-4'}`}>
@@ -33,6 +33,6 @@ export default (post, showPreview = true, showTopic = true) => {
           <p>{frontmatter.excerpt}…</p>
         </div>
       }
-    </div>
+    </li>
   )
 }

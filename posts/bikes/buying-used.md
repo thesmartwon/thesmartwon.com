@@ -3,7 +3,8 @@ title:  "Craigslist Bike Guide"
 date:  2018-01-10T15:14:20-0400
 ---
 
-#### TLDR;
+**TLDR;**
+
 1. Find your frame size using [this chart](https://www.evanscycles.com/en-us/help/bike-sizing-road)
 2. Visit [craigslist bicycles](https://raleigh.craigslist.org/search/bia?hasPic=1&bundleDuplicates=1&searchNearby=2&nearbyArea=367&nearbyArea=335&nearbyArea=273&nearbyArea=61&nearbyArea=634&nearbyArea=272&min_price=90&max_price=500) (I have the filters set up for you)
 	- Click the X on bikes that are too big or too small for you. Also X anything that [looks like what you'd see in Target or Walmart.](http://www.randomthoughts.fyi/2012/01/buying-bikes-from-craigslist.html) (More commonly you'll be clicking the X on weird bikes, or things that aren't bikes at all!)

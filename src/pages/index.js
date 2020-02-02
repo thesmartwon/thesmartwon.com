@@ -23,11 +23,11 @@ export default ({ path, posts }) => (
     )}
     path={path}
   >
-    <div className="content is-medium has-text-centered">
+    <ul className="content is-medium has-text-centered">
       {posts.map(post => ArticlePreview(post))}
       <div>
         <Link href="/posts">View all posts</Link>
       </div>
-    </div>
+    </ul>
   </CenterLayout>
 )

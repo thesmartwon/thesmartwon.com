@@ -14,7 +14,7 @@ To get a Master's, it'll cost me $9k * 4 semesters + $72k * 2 years = **$180k**.
 
 You have to look at the ___difference___ between $102k and $72k, which is only $30k. In that case, it will take $160k / $30k = **5 years** to pay off the _opportunity cost_ of grad school, not a meager 3! Not to mention that all the money I save by graduating early (at least 50%) is going to be growing in [index funds](https://www.mrmoneymustache.com/2011/05/18/how-to-make-money-in-the-stock-market/) at an effective rate of 7%, which will amount to an **extra $29k** over those 5 years. On the flip side, the graduate student will be in debt $36k, and have a _negative_ interest rate on that!
 
-# 5 years in the future
+## 5 years in the future
 
 But oh, I'm not so Smart if I don't factor in after those 5 years. Most people work 40 years, so getting that extra $30k/year really pays off in the long term, doesn't it? Nope. _How many 40 year olds in computer science get paid more because they have a Master's?_ Also, do you really want to work longer? Personally, I want to [go crazy and retire in my 30s](/posts/money/early-retirement) so I can go out and make a difference in the world doing what I love, not stuck behind a desk until I'm so old I only have 20% of my weakened life left.
 

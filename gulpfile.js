@@ -1,6 +1,7 @@
 const { src, dest, series, parallel, watch, lastRun } = require('gulp')
 const crypto = require('crypto')
 const fs = require('fs-extra')
+const os = require('os')
 const through2 = require('through2')
 const rollup = require('rollup')
 const path = require('path')
@@ -150,11 +151,15 @@ function renderPosts() {
 			const vfile = markdownPipe.processSync(chunk._contents)
 			fs.writeFileSync(destFile, vfile.contents)
 			process.stdout.write(`Compiled ${
-				chunk.history[0].replace(chunk._base, '')}.js...`)
+				chunk.history[0].replace(chunk._base, '').replace(/\\/g, '/')
+			}.js...`)
 
 			if (vfile.data.frontmatter.draft) {
 				console.log('norender', vfile.data.frontmatter.title, '(draft)')
-				chunk.history.push('basicallydevnull')
+				chunk.history.push(process.platform === 'win32'
+					? path.join(os.tmpdir(), 'thesmartwon.com.nul')
+					: '/dev/null'
+				)
 				cb2(null, chunk)
 				return
 			}
@@ -169,7 +174,6 @@ function renderPosts() {
 				jsFileNames: jsFileNames[slug]
 			}
 			posts[slug] = post
-			
 
 			chunk.contents = Buffer.from(renderPost(post))
 			chunk.history.push(chunk.history[0].replace('.md', '.html'))
