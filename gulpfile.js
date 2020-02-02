@@ -1,7 +1,6 @@
 const { src, dest, series, parallel, watch, lastRun } = require('gulp')
 const crypto = require('crypto')
 const fs = require('fs-extra')
-const os = require('os')
 const through2 = require('through2')
 const rollup = require('rollup')
 const path = require('path')
@@ -156,10 +155,7 @@ function renderPosts() {
 
 			if (vfile.data.frontmatter.draft) {
 				console.log('norender', vfile.data.frontmatter.title, '(draft)')
-				chunk.history.push(process.platform === 'win32'
-					? path.join(os.tmpdir(), 'thesmartwon.com.nul')
-					: '/dev/null'
-				)
+				chunk.history.push('basicallydevnull')
 				cb2(null, chunk)
 				return
 			}
