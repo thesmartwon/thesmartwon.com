@@ -37,9 +37,9 @@ const markdownPipe = require('unified')()
 	.use(() => (ast, file) => {
 		let { frontmatter } = file.data
 		let excerpt = ''
-		visit(ast, 'text', item => {
-			excerpt += item.value + ' '
-		})
+		visit(ast, 'paragraph', paragraph =>
+			visit(paragraph, 'text', text => excerpt += text.value.trimRight() + ' ')
+		)
 
 		frontmatter.excerpt = excerpt.substr(0, 150).trim()
 		// Assume 200wpm reading speed

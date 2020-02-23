@@ -5,8 +5,7 @@ const mime = require('mime')
 require('@babel/register')({
   ignore: [/node_modules/],
   plugins: [
-    ['@babel/plugin-transform-react-jsx', { pragma: 'h' }, ],
-    ['@babel/plugin-proposal-class-properties']
+    ['@babel/plugin-transform-react-jsx', { pragma: 'h' }, ]
   ],
   presets: ['@babel/preset-env']
 })

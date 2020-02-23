@@ -1,6 +1,7 @@
 const { src, dest, series, parallel, watch, lastRun } = require('gulp')
 const crypto = require('crypto')
 const fs = require('fs-extra')
+const browserSync = require('browser-sync').create()
 const through2 = require('through2')
 const rollup = require('rollup')
 const path = require('path')
@@ -201,6 +202,19 @@ function removeNull(cb) {
 	fs.remove('dist/basicallydevnull', cb)
 }
 
+function startWorkspaceServer() {
+  browserSync.init({
+    server: {
+      baseDir: './dist',
+			index: 'index.html',
+			serveStaticOptions: {
+				extensions: ['html']
+			}
+    },
+		files: ['dist/**/*'],
+  });
+}
+
 function start() {
 	watch(paths.postAssets.src, { ignoreInitial: false }, copyPostAssets)
 	watch(paths.staticAssets.src, { ignoreInitial: false }, copyStaticAssets)
@@ -225,7 +239,7 @@ module.exports = {
 	css,
 	js,
 	renderPosts,
-	start,
+	start: parallel(start, startWorkspaceServer),
 	default: series(
 		parallel(copyStaticAssets, copyPostAssets, css, js),
 		renderPosts,

@@ -1,8 +1,6 @@
-const path = require('path')
-const fs = require('fs-extra')
+const { h } = require('preact')
 const render = require('preact-render-to-string')
 // HTML template
-const { h } = require('preact')
 const { HTML } = require('./html')
 
 const renderPage = (Component, title, cssFileNames = [], slug, posts) => {
