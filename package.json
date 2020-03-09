@@ -30,7 +30,6 @@
     "fs-extra": "^8.1.0",
     "gh-pages": "2.0.1",
     "gulp": "^4.0.2",
-    "http-server": "0.9.0",
     "mdast-util-to-hast": "^6.0.1",
     "mime": "^2.4.4",
     "moment": "^2.24.0",

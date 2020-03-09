@@ -3,15 +3,15 @@ const max = (a, b) => a > b ? a : b
 // Taxes
 const fedTaxRate = [.1,  .12,    .22,    .24,    .32,     .25,      .37]
 export const fedTaxBrackets = {
-  single:  [ 0,  9700,   39475,  84200,  160725,   204100,   510300],
-  married: [ 0,  19400,  78950,  168400, 321450,   408200,   612350],
-  head:    [ 0,  13850,  52850,  84200,  160700,   204100,   510300]
+  single:  [ 0,  9875,   40125,  85525,  163300,   207350,   518400],
+  married: [ 0,  19750,  80250,  171050, 326600,   414700,   622050],
+  head:    [ 0,  14100,  53700,  85500,  163300,   207350,   518400]
 }
 
 export const standardDeductions = {
-  single:   12200,
-  married:  24400,
-  head:     18350
+  single:   12400,
+  married:  24800,
+  head:     18650
 }
 
 // https://www.irs.gov/pub/irs-pdf/f1040.pdf

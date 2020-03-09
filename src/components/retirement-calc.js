@@ -10,9 +10,9 @@ export class RetirementCalc extends Component {
       status: 'single',
       expenses: 24000,
       desiredContributions: {
-        hsa: 3500,
-        ira: 6000,
-        k401: 19000,
+        hsa: 3550,
+        ira: 6500,
+        k401: 19500,
       },
       k401match: 3,
       initialBalances: {
