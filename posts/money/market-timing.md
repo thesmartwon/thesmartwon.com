@@ -158,3 +158,5 @@ As you can see, these differences are so miniscule that timing the market doesn'
 
 If you're focused on a 10+ year time horizon go ahead and take the Naive strategy of buying an index fund on the Coronavirus dip!
 Any reason is a good reason to start investing, and the statistics favor it in the majority of historical dips.
+
+_Python code [available on Github.](https://gist.github.com/thesmartwon/bbeca52965ee7c3020219b98305f271c)_
