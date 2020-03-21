@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'
 
@@ -12,15 +12,21 @@ export const PostTemplate = ({ frontmatter, slug, children }) => (
       </span>
     )}
     javascript={frontmatter.javascript}
+    isFullscreen={frontmatter.isFullscreen}
     path={slug}
   >
-    <div id="content" className="content is-medium">
-      {children}
-    </div>
-      
-    <div className="has-text-centered">
-      <Link href="#">Back to top</Link>{' / '}
-      <Link href="/posts">View all posts</Link>
-    </div>
+    {frontmatter.isFullscreen ? children : (
+      <Fragment>
+        <div id="content" className="content is-medium">
+          {children}
+        </div>
+          
+        <div className="has-text-centered">
+          <Link href="#">Back to top</Link>{' / '}
+          <Link href="/posts">View all posts</Link>
+        </div>
+      </Fragment>
+    )}
+
   </CenterLayout>
 )

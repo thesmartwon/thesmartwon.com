@@ -46,7 +46,7 @@ export class RetirementCalc extends Component {
 
   render() {
     const projection = projectRetirement(
-      this.state.income > 10000 ? this.state.income : 10000,
+      Math.max(this.state.income, 10000),
       this.state.raise / 100,
       this.state.safeWithdrawal / 100,
       this.state.effectiveGrowth / 100,
