@@ -69,17 +69,17 @@ Now how do you do it?</description>
   	<lang>en-US</lang>
   </item>
   <item>
-  	<title>Is Grad School Worth it?</title>
-  	<link>https://thesmartwon.com/posts/school/grad-school</link>
-  	<description>Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.</description>
-  	<category>school</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
   	<title>One Year of Work</title>
   	<link>https://thesmartwon.com/posts/work/one-year</link>
   	<description>I've been working as a frontend build engineer for an open-source company one year now.</description>
   	<category>work</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>Is Grad School Worth it?</title>
+  	<link>https://thesmartwon.com/posts/school/grad-school</link>
+  	<description>Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.</description>
+  	<category>school</category>
   	<lang>en-US</lang>
   </item>
 </channel>
