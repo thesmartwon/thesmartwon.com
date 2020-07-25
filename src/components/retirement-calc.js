@@ -61,8 +61,8 @@ export class RetirementCalc extends Component {
     projection.forEach(year => totalSaved += Object.values(year.contributions).reduce((a, b) => a + b))
 
     const tabs = [
-      {num: 1, caption: 'Taxes'},
-      {num: 2, caption: 'Desired contributions'},
+      {num: 1, caption: 'Income'},
+      {num: 2, caption: 'Contributions'},
       {num: 3, caption: 'Initial balances'},
       {num: 4, caption: 'Assumptions'},
     ]

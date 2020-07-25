@@ -1,7 +1,7 @@
 import { h } from 'preact';
 
 export const HTML = ({ children, title, cssFileNames = [], jsFileNames = [] }) => (
-	<html lang="en">
+	<html lang="en-US">
 		<head>
 			<meta charset="UTF-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />

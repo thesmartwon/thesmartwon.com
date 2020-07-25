@@ -4,7 +4,7 @@ date: 2018-12-18T21:45:00-0400
 javascript: true
 ---
 
-import { RetirementCalc } from '../../src/components/retirement-calc'
+import { RetirementCalc } from '../../../src/components/retirement-calc'
 
 Brilliant, you'd like to quit your day job and do something more meaningful with your life.
 Now how do you do it?
@@ -98,4 +98,4 @@ Remember, your mileage may vary!
   <img src="ymmv.png" alt="Wake up!" />
 </figure>
 
-<script src="early-retirement.js" />
+<script src="early-retirement.js"></script>

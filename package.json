@@ -10,7 +10,7 @@
     "build:html": "gulp render",
     "build:js": "gulp js",
     "build:static": "gulp copy",
-    "clean": "shx rm -rf public",
+    "clean": "shx rm -rf public posts/**/*.md.js",
     "deploy": "gh-pages --dist dist",
     "serve": "http-server dist",
     "start": "gulp start"
