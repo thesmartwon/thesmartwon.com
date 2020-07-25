@@ -20,28 +20,25 @@ const markdownPipe = require('unified')()
   })
   .use(() => (ast, file) => {
     let { frontmatter } = file.data
-    let excerpt = ''
+    let article = ''
     visit(ast, 'paragraph', paragraph =>
       visit(paragraph, 'text', text => {
-        if (excerpt.length < 150) {
-          excerpt += text.value.trimRight() + ' '
-        }
+        article += text.value.trimRight() + ' '
       })
     )
 
-    // Could be over 150 characters
-    frontmatter.excerpt = excerpt.substr(0, 150).trimRight()
-
+    let excerpt = article.substr(0, 150).trimRight()
     // Finish on end of sentence if possible
-    if (lastSentencePattern.test(frontmatter.excerpt)) {
-      frontmatter.excerpt = frontmatter.excerpt.replace(lastSentencePattern, (_, match) => match)
+    if (lastSentencePattern.test(excerpt)) {
+      excerpt = excerpt.replace(lastSentencePattern, (_, match) => match)
     }
     else {
-      frontmatter.excerpt += '…'
+      excerpt += '…'
     }
+    frontmatter.excerpt = excerpt
     // Assume 200wpm reading speed
     // Round to nearest .5
-    frontmatter.timeToRead = Math.round(excerpt.split(' ').length / 200 * 2) / 2
+    frontmatter.timeToRead = Math.round(article.split(' ').length / 200 * 2) / 2
   })
   // Render to JSX
   .use(require('remark-mdx'))
