@@ -108,7 +108,6 @@ function css() {
 			chunk.history.push(file.replace('.scss', `-${getHash(css.css)}.css`))
 			cssFileNames.push('/' + path.basename(chunk.history[1]))
 
-			console.log('cssFileNames', cssFileNames)
 			cb2(null, chunk)
 		}))
 		.pipe(dest(paths.sass.dest))
@@ -139,7 +138,6 @@ function js() {
 					chunk.history.push(chunk.history[0].replace('.js', `-${getHash(output[0].code)}.js`))
 					jsFileNames[slug] = jsFileNames[slug] || []
 					jsFileNames[slug].push(path.basename(chunk.history[1]))
-					console.log('jsFileNames', slug, jsFileNames[slug])
 
 					cb2(null, chunk)
 				})
@@ -156,9 +154,6 @@ function renderPosts() {
 			const destFile = chunk.history[0].replace(/\\/g, '/') + '.js'
 			const vfile = markdownPipe.processSync(chunk._contents)
 			fs.writeFileSync(destFile, vfile.contents)
-			process.stdout.write(`Post ${
-				chunk.history[0].replace(chunk._base, '').replace(/\\/g, '/')
-				}.js: `)
 
 			if (vfile.data.frontmatter.draft) {
 				console.log('skipped', vfile.data.frontmatter.title, '(draft)')
@@ -180,15 +175,16 @@ function renderPosts() {
 
 			chunk.contents = Buffer.from(renderPost(post))
 			chunk.history.push(chunk.history[0].replace('.md', '.html'))
-			console.log(post.frontmatter.title)
 
 			cb2(null, chunk)
 		}))
 		.pipe(dest(paths.posts.dest))
+		.on('end', () => console.log('Rendered', Object.keys(posts).length, 'posts'))
 }
 
 function renderPages() {
 	const { renderPage } = require('./src/templates/page')
+	let pageCount = 0
 
 	return src(paths.pages.src)
 		.pipe(through2.obj(function (chunk, _, cb2) {
@@ -200,11 +196,12 @@ function renderPages() {
 				renderPage(page.default, page.title, cssFileNames, slug, posts)
 			)
 			chunk.history.push(chunk.history[0].replace('.js', '.html'))
-			console.log('Page', slug)
 
+			pageCount++
 			cb2(null, chunk)
 		}))
 		.pipe(dest(paths.pages.dest))
+		.on('end', () => console.log('Rendered', pageCount, 'pages'))
 }
 
 function removeNull(cb) {
@@ -257,6 +254,7 @@ module.exports = {
 	renderPosts,
 	start: series(clean, start),
 	default: series(
+		clean,
 		parallel(copyStaticAssets, copyPostAssets, css, js),
 		renderPosts,
 		renderPages,
