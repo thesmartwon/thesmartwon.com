@@ -17,6 +17,7 @@ export const HTML = ({
 			)}
 			<link rel="shortcut icon" href="/favicon.png" />
 			<link rel="manifest" href="/manifest.webmanifest" />
+			<link rel="alternate" type="application/rss+xml" title="The Smart Blog • Feed" href="/feed" />
 			<meta name="theme-color" content="#00D1B2" />
 		</head>
 		<body>
