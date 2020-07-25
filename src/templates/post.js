@@ -1,8 +1,10 @@
 import { h, Fragment } from 'preact'
+import render from 'preact-render-to-string'
+import { HTML } from './html'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'
 
-export const PostTemplate = ({ frontmatter, slug, children }) => (
+const PostTemplate = ({ frontmatter, slug, children }) => (
   <CenterLayout
     title={<h1 className="title is-2">{frontmatter.title}</h1>}
     subtitle={(
@@ -30,3 +32,17 @@ export const PostTemplate = ({ frontmatter, slug, children }) => (
 
   </CenterLayout>
 )
+
+export const renderPost = post => `<!DOCTYPE html>\n${render(
+	<HTML
+		title={post.frontmatter.title}
+		cssFileNames={post.cssFileNames}
+		jsFileNames={post.jsFileNames}
+		>
+		<PostTemplate
+			frontmatter={post.frontmatter}
+			slug={post.slug}
+		>
+			{h(post.component)}
+		</PostTemplate>
+	</HTML>)}`

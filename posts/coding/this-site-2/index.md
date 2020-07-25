@@ -41,7 +41,7 @@ I briefly checked out [Parcel](https://github.com/parcel-bundler/parcel) but it 
 </figure>
 
 Since my pages don't include JS, I really just want a templating framework, like [hexo](https://hexo.io) or [hugo](https://gohugo.io) to render my site's HTML.
-However, I want to write React components in JSX instead of EJS or `%`-style PHP templates. For example, I already had the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post-template.js), [article previews](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/article-preview.js), and the [breadcrumb](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/breadcrumb.js) written in React,.
+However, I want to write React components in JSX instead of EJS or `%`-style PHP templates. For example, I already had the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post.js), [article previews](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/article-preview.js), and the [breadcrumb](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/breadcrumb.js) written in React,.
 
 <figure>
 
@@ -88,7 +88,7 @@ After figuring out [preact-render-to-string](https://github.com/preactjs/preact-
 </figure>
 
 ## Let's commit to this renderer
-I need to extract some metadata from Markdown files (like the post's title and date) to include in my templated site components (like the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post-template.js)). [Unified](https://github.com/unifiedjs/unified) is THE natural choice for this in NodeJS land.
+I need to extract some metadata from Markdown files (like the post's title and date) to include in my templated site components (like the [post template](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post.js)). [Unified](https://github.com/unifiedjs/unified) is THE natural choice for this in NodeJS land.
 
 ### Enter: MDX
 I also wanted to be able to include React components in my Markdown files so dynamic components can be statically rendered like the [retirement calculator](/posts/money/early-retirement). Enter [MDX](https://mdxjs.com/), which has a plugin for Unified called [remark-mdx](https://github.com/mdx-js/mdx/tree/master/packages/remark-mdx).

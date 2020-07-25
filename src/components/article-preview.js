@@ -28,10 +28,10 @@ export default (post, showPreview = true, showTopic = true) => {
           </div>
         </div>
       </div>
-      {showPreview && 
-        <div className="article-body">
+      {showPreview &&
+        <article className="article-body">
           <p>{frontmatter.excerpt}…</p>
-        </div>
+        </article>
       }
     </li>
   )

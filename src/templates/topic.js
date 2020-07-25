@@ -19,3 +19,16 @@ export const TopicTemplate = ({ path, topic, subtitle, posts, children }) => (
     </ul>
   </CenterLayout>
 )
+
+export const Level2TopicTemplate = ({ path, posts, subtitle }) => {
+  const topic = path.split('/')[2]
+
+  return (
+    <TopicTemplate 
+      path={path}
+      topic={topic}
+      subtitle={subtitle}
+      posts={posts.filter(post => post.slug.indexOf(topic) >= 0)}
+    />
+  )
+}
