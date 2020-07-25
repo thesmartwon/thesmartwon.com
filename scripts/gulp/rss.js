@@ -18,7 +18,7 @@ const renderRSSItem = (
 	domain
 ) => `  <item>
   	<title>${escapeHTML(title)}</title>
-  	<link>${domain}${slug}</title>
+  	<link>${domain}${slug}</link>
   	<description>${escapeHTML(excerpt)}</description>
   	<category>${slug.split('/')[2]}</category>
   	<lang>en-US</lang>
