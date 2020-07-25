@@ -12,7 +12,7 @@
     "build:static": "gulp copy",
     "clean": "shx rm -rf public posts/**/*.md.js",
     "deploy": "gh-pages --dist dist",
-    "serve": "http-server dist",
+    "serve": "cd dist && python3 -m http.server",
     "start": "gulp start"
   },
   "dependencies": {
