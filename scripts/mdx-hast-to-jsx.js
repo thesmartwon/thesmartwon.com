@@ -1,4 +1,3 @@
-const { transformSync } = require('@babel/core')
 const styleToObject = require('style-to-object')
 const camelCaseCSS = require('camelcase-css')
 
@@ -48,16 +47,13 @@ function toJSX(node) {
 			.map(childNode => childNode.value)
 			.join('\n')
 			
-		const mdxComponent = `() => <Fragment>
-${jsxNodes.map(childNode => toJSX(childNode)).join('')}
-</Fragment>`
-
-		const jsxCheckedComponent = transformSync(mdxComponent, {
-			plugins: [require('@babel/plugin-syntax-jsx')]
-		}).code
+		const mdxComponent = `() => (
+<Fragment>${jsxNodes.map(childNode => toJSX(childNode)).join('')}
+</Fragment>
+);`
 
 		return `${importStatements}\n
-export default ${jsxCheckedComponent}`
+export default ${mdxComponent}`
   }
 
   // Recursively walk through children

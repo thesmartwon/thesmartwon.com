@@ -7,17 +7,17 @@ import Link from '../components/link'
 const PostTemplate = ({ frontmatter, slug, children }) => (
   <CenterLayout
     title={<h1 className="title is-2">{frontmatter.title}</h1>}
-    subtitle={(
+    subtitle={
       <span className="has-text-grey">
         <time dateTime={frontmatter.dateShort}>{frontmatter.dateLong}</time>
         {' · '}{frontmatter.timeToRead} min read
       </span>
-    )}
+    }
     javascript={frontmatter.javascript}
     isFullscreen={frontmatter.isFullscreen}
     path={slug}
   >
-    {frontmatter.isFullscreen ? children : (
+    {frontmatter.isFullscreen ? children :
       <Fragment>
         <div id="content" className="content is-medium">
           {children}
@@ -28,7 +28,7 @@ const PostTemplate = ({ frontmatter, slug, children }) => (
           <Link href="/posts">View all posts</Link>
         </div>
       </Fragment>
-    )}
+    }
 
   </CenterLayout>
 )

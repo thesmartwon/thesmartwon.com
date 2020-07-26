@@ -15,6 +15,6 @@ export const renderPage = (
 				.filter(p => p.frontmatter)
 				.sort((p1, p2) => p2.frontmatter.date.localeCompare(p1.frontmatter.date))
 			}
-			path={slug.replace('index', '')}
+			path={slug.replace(/index$/, '')}
 		/>
 	</HTML>)}`

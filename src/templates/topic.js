@@ -28,7 +28,7 @@ export const Level2TopicTemplate = ({ path, posts, subtitle }) => {
       path={path}
       topic={topic}
       subtitle={subtitle}
-      posts={posts.filter(post => post.slug.indexOf(topic) >= 0)}
+      posts={posts.filter(post => post.slug.includes(topic))}
     />
   )
 }
