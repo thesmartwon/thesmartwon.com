@@ -12,41 +12,6 @@
   	<lang>en-US</lang>
   </item>
   <item>
-  	<title>&lt;Canvas&gt; Game Engine: Part 1</title>
-  	<link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-1</link>
-  	<description>AAA titles like Fallout and Civilization V are usually usually written in low-level languages like C++ so they can directly access hardware (ie a GPU)…</description>
-  	<category>coding</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>&lt;Canvas&gt; Game Engine: Part 2</title>
-  	<link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-2</link>
-  	<description>We left off with a canvas that looked like this: It's not very exciting (or interactive), so let's start spicing it up a bit.</description>
-  	<category>coding</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>(Don't Fear) The Command Line</title>
-  	<link>https://thesmartwon.com/posts/coding/command-line</link>
-  	<description>For many, the command line is a scary prompt that reminds people of old computers that were hard to use.</description>
-  	<category>coding</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>How this Site (used to be) Built</title>
-  	<link>https://thesmartwon.com/posts/coding/this-site</link>
-  	<description> A newer version of this article  is available. You probably don't notice, but this site is nearly as fast as it can possibly be!</description>
-  	<category>coding</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>How this Site is Built</title>
-  	<link>https://thesmartwon.com/posts/coding/this-site-2</link>
-  	<description>I ditched Gatsby. I decided to ditch Gatsby because after an update to how Gatsby's resources were loaded,  my site wouldn't build anymore.</description>
-  	<category>coding</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
   	<title>How to Retire Early</title>
   	<link>https://thesmartwon.com/posts/money/early-retirement</link>
   	<description>Brilliant, you'd like to quit your day job and do something more meaningful with your life.
@@ -80,6 +45,41 @@ Now how do you do it?</description>
   	<link>https://thesmartwon.com/posts/school/grad-school</link>
   	<description>Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.</description>
   	<category>school</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>&lt;Canvas&gt; Game Engine: Part 1</title>
+  	<link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-1</link>
+  	<description>AAA titles like Fallout and Civilization V are usually usually written in low-level languages like C++ so they can directly access hardware (ie a GPU)…</description>
+  	<category>coding</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>&lt;Canvas&gt; Game Engine: Part 2</title>
+  	<link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-2</link>
+  	<description>We left off with a canvas that looked like this: It's not very exciting (or interactive), so let's start spicing it up a bit.</description>
+  	<category>coding</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>(Don't Fear) The Command Line</title>
+  	<link>https://thesmartwon.com/posts/coding/command-line</link>
+  	<description>For many, the command line is a scary prompt that reminds people of old computers that were hard to use.</description>
+  	<category>coding</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>How this Site (used to be) Built</title>
+  	<link>https://thesmartwon.com/posts/coding/this-site</link>
+  	<description> A newer version of this article  is available. You probably don't notice, but this site is nearly as fast as it can possibly be!</description>
+  	<category>coding</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>How this Site is Built</title>
+  	<link>https://thesmartwon.com/posts/coding/this-site-2</link>
+  	<description>I ditched Gatsby. I decided to ditch Gatsby because after an update to how Gatsby's resources were loaded,  my site wouldn't build anymore.</description>
+  	<category>coding</category>
   	<lang>en-US</lang>
   </item>
 </channel>
