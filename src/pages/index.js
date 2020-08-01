@@ -13,21 +13,21 @@ export default ({ path, posts }) => (
       </h1>
     }
     subtitle={
-      <h2 className="subtitle is-4 has-text-grey-light">
+      <h2 className="subtitle is-4">
         {'Relax and have a good read! '}
         <img
           src={Mug}
           alt="Mug"
-          style={{height: '1.5rem'}} />
+          style={{ height: '1.5rem' }} />
       </h2>
     }
     path={path}
   >
-    <ul className="content is-medium has-text-centered">
-      {posts.slice(0, 5).map(post => ArticlePreview(post))}
-      <div>
-        <Link href="/posts">View all posts</Link>
-      </div>
-    </ul>
+    <div className="content is-medium has-text-centered">
+      <ul style={{ listStyleType: 'none' }}>
+        {posts.slice(0, 5).map(post => ArticlePreview(post))}
+      </ul>
+      <Link href="/posts">View all posts</Link>
+    </div>
   </CenterLayout>
 )

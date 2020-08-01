@@ -7,7 +7,7 @@ export const TopicTemplate = ({ path, topic, subtitle, posts, children }) => (
   <CenterLayout
     title={<h1 className="title is-2">{capitalize(topic)} Posts</h1>}
     subtitle={(
-      <h2 className="subtitle is-4 has-text-grey-light">
+      <h2 className="subtitle is-4">
         {subtitle}
       </h2>
     )}

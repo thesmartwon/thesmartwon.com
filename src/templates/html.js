@@ -4,12 +4,14 @@ export const HTML = ({
 	children,
 	title,
 	cssFileNames = [],
-	jsFileNames = []
+	jsFileNames = [],
+	excerpt
 }) => (
 	<html lang="en-US">
 		<head>
 			<meta charset="UTF-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			{excerpt && <meta name="description" content={excerpt}></meta>}
 			<title>{title || 'thesmartwon.com'}</title>
       {/* https://varvy.com/pagespeed/render-blocking-css.html */}
 			{cssFileNames.map(fileName =>
@@ -22,7 +24,9 @@ export const HTML = ({
 		</head>
 		<body>
 			{children}
-			{jsFileNames.map(fileName => <script src={fileName} />)}
+			{jsFileNames.map(fileName =>
+				<script src={fileName} />
+			)}
 		</body>
 	</html>
 );

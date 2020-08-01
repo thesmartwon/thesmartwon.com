@@ -35,7 +35,7 @@ export default ({ path, posts }) => {
     <CenterLayout
       title={<h1 className="title is-2">All Posts</h1>}
       subtitle={(
-        <h2 className="subtitle is-4 has-text-grey-light">
+        <h2 className="subtitle is-4">
           I hope something tickles your fancy
         </h2>
       )}

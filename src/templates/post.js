@@ -22,7 +22,7 @@ const PostTemplate = ({ frontmatter, slug, children }) => (
         <div id="content" className="content is-medium">
           {children}
         </div>
-          
+
         <div className="has-text-centered">
           <Link href="#">Back to top</Link>{' / '}
           <Link href="/posts">View all posts</Link>
@@ -35,10 +35,11 @@ const PostTemplate = ({ frontmatter, slug, children }) => (
 
 export const renderPost = post => `<!DOCTYPE html>\n${render(
 	<HTML
-		title={post.frontmatter.title}
+    title={post.frontmatter.title}
+    excerpt={post.frontmatter.excerpt}
 		cssFileNames={post.cssFileNames}
 		jsFileNames={post.jsFileNames}
-		>
+  >
 		<PostTemplate
 			frontmatter={post.frontmatter}
 			slug={post.slug}
