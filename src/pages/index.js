@@ -24,7 +24,7 @@ export default ({ path, posts }) => (
     path={path}
   >
     <div className="content is-medium has-text-centered">
-      <ul style={{ listStyleType: 'none' }}>
+      <ul className="article-list">
         {posts.slice(0, 5).map(post => ArticlePreview(post))}
       </ul>
       <Link href="/posts">View all posts</Link>

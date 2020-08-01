@@ -3,7 +3,7 @@ import CenterLayout from '../layouts/center-layout'
 import ArticlePreview from '../components/article-preview'
 import { capitalize } from '../helpers/capitalize'
 
-export const TopicTemplate = ({ path, topic, subtitle, posts, children }) => (
+export const TopicTemplate = ({ path, topic, subtitle, posts }) => (
   <CenterLayout
     title={<h1 className="title is-2">{capitalize(topic)} Posts</h1>}
     subtitle={(
@@ -13,10 +13,11 @@ export const TopicTemplate = ({ path, topic, subtitle, posts, children }) => (
     )}
     path={path}
   >
-    <ul className="content is-medium" style="list-style-type:none">
-      {children}
-      {posts.map(post => ArticlePreview(post, true, false))}
-    </ul>
+    <div className="content is-medium has-text-centered">
+      <ul className="article-list">
+        {posts.map(post => ArticlePreview(post, true, false))}
+      </ul>
+    </div>
   </CenterLayout>
 )
 

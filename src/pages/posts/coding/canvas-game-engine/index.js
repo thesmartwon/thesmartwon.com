@@ -12,7 +12,6 @@ export default ({ path, posts }) => {
 			topic={topic}
 			subtitle="Posts about a toy canvas game engine"
 			posts={filteredPosts}
-		>
-		</TopicTemplate>
+		/>
 	)
 }
