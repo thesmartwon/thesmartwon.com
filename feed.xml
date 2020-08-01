@@ -12,42 +12,6 @@
   	<lang>en-US</lang>
   </item>
   <item>
-  	<title>How to Retire Early</title>
-  	<link>https://thesmartwon.com/posts/money/early-retirement</link>
-  	<description>Brilliant, you'd like to quit your day job and do something more meaningful with your life.
-Now how do you do it?</description>
-  	<category>money</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>Timing Market Dips</title>
-  	<link>https://thesmartwon.com/posts/money/market-timing</link>
-  	<description>With all the Coronavirus panic  the DOW has been falling off a cliff the past few days: Which raises a valid question: if you're sitting on some cash…</description>
-  	<category>money</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>My 2019 Spending</title>
-  	<link>https://thesmartwon.com/posts/money/one-year</link>
-  	<description>It's time to come clean. I could never live off $24,000  like my retirement calculator's estimate is based off.</description>
-  	<category>money</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>One Year of Work</title>
-  	<link>https://thesmartwon.com/posts/work/one-year</link>
-  	<description>I've been working as a frontend build engineer for an open-source company one year now.</description>
-  	<category>work</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
-  	<title>Is Grad School Worth it?</title>
-  	<link>https://thesmartwon.com/posts/school/grad-school</link>
-  	<description>Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.</description>
-  	<category>school</category>
-  	<lang>en-US</lang>
-  </item>
-  <item>
   	<title>&lt;Canvas&gt; Game Engine: Part 1</title>
   	<link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-1</link>
   	<description>AAA titles like Fallout and Civilization V are usually usually written in low-level languages like C++ so they can directly access hardware (ie a GPU)…</description>
@@ -80,6 +44,42 @@ Now how do you do it?</description>
   	<link>https://thesmartwon.com/posts/coding/this-site-2</link>
   	<description>I ditched Gatsby. I decided to ditch Gatsby because after an update to how Gatsby's resources were loaded,  my site wouldn't build anymore.</description>
   	<category>coding</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>How to Retire Early</title>
+  	<link>https://thesmartwon.com/posts/money/early-retirement</link>
+  	<description>Brilliant, you'd like to quit your day job and do something more meaningful with your life.
+Now how do you do it?</description>
+  	<category>money</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>Timing Market Dips</title>
+  	<link>https://thesmartwon.com/posts/money/market-timing</link>
+  	<description>With all the Coronavirus panic  the DOW has been falling off a cliff the past few days: Which raises a valid question: if you're sitting on some cash…</description>
+  	<category>money</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>My 2019 Spending</title>
+  	<link>https://thesmartwon.com/posts/money/one-year</link>
+  	<description>It's time to come clean. I could never live off $24,000  like my retirement calculator's estimate is based off.</description>
+  	<category>money</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>Is Grad School Worth it?</title>
+  	<link>https://thesmartwon.com/posts/school/grad-school</link>
+  	<description>Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.</description>
+  	<category>school</category>
+  	<lang>en-US</lang>
+  </item>
+  <item>
+  	<title>One Year of Work</title>
+  	<link>https://thesmartwon.com/posts/work/one-year</link>
+  	<description>I've been working as a frontend build engineer for an open-source company one year now.</description>
+  	<category>work</category>
   	<lang>en-US</lang>
   </item>
 </channel>
