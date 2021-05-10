@@ -1,6 +1,6 @@
 ---
 title: Timing Market Dips
-date: 2020-03-14T20:15:00-0400
+date: 2020-03-14
 ---
 
 With all the [Coronavirus panic](https://www.usatoday.com/story/news/politics/2020/03/13/coronavirus-national-emergency-questions-answers-trump/5026463002/) the DOW has been falling off a cliff the past few days:

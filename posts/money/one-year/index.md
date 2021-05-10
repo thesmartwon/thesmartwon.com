@@ -1,6 +1,6 @@
 ---
 title: My 2019 Spending
-date: 2020-02-24T18:30:00-0400
+date: 2020-02-24
 ---
 
 It's time to come clean. I could never live off [$24,000](../early-retirement) like my retirement calculator's estimate is based off. I could do it off $13,717, which includes cheap rent at home and even an overkill $1,700 server for stock analysis.

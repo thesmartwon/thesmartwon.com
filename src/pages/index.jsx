@@ -25,7 +25,12 @@ export default ({ path, posts }) => (
   >
     <div className="content is-medium has-text-centered">
       <ul className="article-list">
-        {posts.slice(0, 5).map(post => ArticlePreview(post))}
+        {Object.entries(posts)
+          .sort(([_, p1], [__, p2]) => p2.dateShort.localeCompare(p1.dateShort))
+          .slice(0, 5)
+          .map(([slug, post]) =>
+            <ArticlePreview path={slug} {...post} />
+          )}
       </ul>
       <Link href="/posts">View all posts</Link>
     </div>

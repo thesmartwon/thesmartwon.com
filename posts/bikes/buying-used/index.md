@@ -1,6 +1,6 @@
 ---
-title:  "Craigslist Bike Guide"
-date:  2018-01-10T15:14:20-0400
+title: Craigslist Bike Guide
+date: 2018-01-10
 ---
 
 **TLDR;**

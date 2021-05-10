@@ -1,27 +1,34 @@
 import { h, Fragment } from 'preact'
 import Breadcrumb from '../components/breadcrumb'
 
-export default props => (
+export default ({
+  title,
+  subtitle,
+  hasJavascript,
+  isFullscreen,
+  path,
+  children
+}) => (
   <Fragment>
     <div className="container">
       <div className="column is-8 is-offset-2">
-        {props.javascript && (
+        {hasJavascript && (
           <noscript key="noscript">
             Some things might not work because Javascript is disabled, but you aren't missing out on much.
           </noscript>)}
-        <Breadcrumb path={props.path} />
-        {!props.isFullscreen && (
+        <Breadcrumb path={path} />
+        {!isFullscreen && (
           <Fragment>
             <div className="section titles-section">
-              {props.title}
-              {props.subtitle}
+              {title}
+              {subtitle}
             </div>
-            {props.children}
+            {children}
           </Fragment>
         )}
       </div>
     </div>
-    {props.isFullscreen && props.children}
+    {isFullscreen && children}
   </Fragment>
   
 )

@@ -1,6 +1,6 @@
 ---
 title: "Frontend for backend devs: Intro"
-date:  2020-08-01T12:00:00-0400
+date:  2020-08-01
 draft: true
 ---
 

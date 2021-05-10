@@ -1,8 +1,7 @@
 ---
 title: Retirement timeline
-date: 2020-03-21T21:45:00-0400
-isFullscreen: true
-javascript: true
+date: 2020-03-21
+fullscreen: true
 draft: true
 ---
 

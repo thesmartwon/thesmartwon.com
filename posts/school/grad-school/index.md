@@ -1,6 +1,6 @@
 ---
-title:  "Is Grad School Worth it?"
-date:  2017-10-30T12:34:20-0400
+title: Is Grad School Worth it?
+date:  2017-10-30
 ---
 
 Today, my Aunt told me:

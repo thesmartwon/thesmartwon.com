@@ -1,6 +1,6 @@
 import { h, Component } from 'preact'
-import Link from '../components/link'
-import { fedTaxBrackets, projectRetirement } from '../helpers/retire'
+import Link from '../../../src/components/link'
+import { fedTaxBrackets, projectRetirement } from '../../../src/helpers/retire'
 
 export class RetirementCalc extends Component {
   constructor(props) {
@@ -240,7 +240,7 @@ export class RetirementCalc extends Component {
                     <i>%</i>
                   </span>
                 </div>
-                <p className="help"><Link href="https://www.madfientist.com/safe-withdrawal-rate/">Nest Egg * Safe Withdrawal > Expenses</Link></p>
+                <p className="help"><Link href="https://www.madfientist.com/safe-withdrawal-rate/">Nest Egg * Safe Withdrawal &gt; Expenses</Link></p>
               </div>
               <div className="field">
                 <label className="label">Effective Growth Rate</label>

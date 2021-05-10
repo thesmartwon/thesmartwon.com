@@ -1,6 +1,6 @@
 ---
-title:  "<Canvas> Game Engine: Part 2"
-date:  2019-08-07T17:30:00-0700
+title: "<Canvas> Game Engine: Part 2"
+date:  2019-08-07
 ---
 
 ## Where we were

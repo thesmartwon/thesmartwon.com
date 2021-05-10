@@ -1,6 +1,6 @@
 ---
-title:  "How this Site (used to be) Built"
-date:  2019-05-12T21:00:00-0400
+title: How this Site (used to be) Built
+date:  2019-05-12
 ---
 
 <div class="notification is-info">

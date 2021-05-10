@@ -1,6 +1,6 @@
 ---
-title:  "(Don't Fear) The Command Line"
-date:  2019-05-15T21:00:00-0400
+title: "(Don't Fear) The Command Line"
+date:  2019-05-15
 ---
 
 For many, the command line is a scary prompt that reminds people of old computers that were hard to use.

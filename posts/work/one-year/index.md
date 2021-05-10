@@ -1,6 +1,6 @@
 ---
-title:  "One Year of Work"
-date:  2020-02-02T13:50:00-0400
+title: One Year of Work
+date:  2020-02-02
 ---
 
 # My Job

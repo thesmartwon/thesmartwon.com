@@ -1,9 +1,9 @@
 ---
-title:  "How this Site is Built"
-date:  2019-08-09T21:00:00-0400
+title: "How this Site is Built"
+date:  2019-08-09
 ---
 
-import { Logo } from '../../../src/components/logo.js'
+import { Logo } from '../../../src/components/logo'
 
 # RIP Gatsby
 I ditched Gatsby.
