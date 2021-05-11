@@ -5,7 +5,6 @@ const path = require('path')
 const marked = require('marked')
 const yaml = require('js-yaml')
 
-const outDir = 'src/generated'
 
 function getWordCount(text) {
   const matches = text.match(/\S+/g) ;
@@ -48,7 +47,7 @@ function posts() {
       return
     }
 
-    const destFile = path.join(outDir, file.replace(/\\/g, '/') + '.jsx')
+    const destFile = path.join(paths.generatedDir, file.replace(/\\/g, '/') + '.jsx')
     const imports = ["import { h, Fragment } from 'preact'"]
     const importRegex = /^\s*import (.*) from (&#39;|&quot;)(.*)(&#39;|&quot;)$/;
     let fullText = ''
@@ -170,7 +169,7 @@ function source() {
     ...pages()
   }
   // Make an index of posts
-  const indexPath = path.join(outDir, 'index.js')
+  const indexPath = path.join(paths.generatedDir, 'index.js')
   const indexContent = 'module.exports = {\n' +
     Object.entries(index).map(([slug, { frontmatter, destFile }]) =>
   `  ${JSON.stringify(slug)}: {

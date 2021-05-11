@@ -7,6 +7,7 @@ const paths = {
   postsDir: 'posts',
   pagesDir: 'src/pages',
   staticDir: 'static',
+  generatedDir: 'src/generated'
 }
 
 const slugify = p => p

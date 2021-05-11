@@ -5,12 +5,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
-    "build:css": "gulp css",
-    "build:html": "gulp render",
-    "build:js": "gulp js",
-    "build:static": "gulp copy",
-    "clean": "gulp clean",
+    "build": "node scripts/build",
+    "clean": "node scripts/clean",
     "deploy": "gh-pages --dist dist",
     "serve": "cd dist && python3 -m http.server",
     "start": "gulp start"
