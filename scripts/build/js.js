@@ -7,7 +7,7 @@ function js(file) {
   console.log('[js]', file) 
   const { metafile } = esbuild.buildSync({
     entryPoints: [file],
-    entryNames: `[dir]/${path.dirname(file)}/[name].[hash]`,
+    entryNames: `[dir]/${path.dirname(file)}/[name]/[name].[hash]`,
     ...esbuildConfig
   })
   const elapsed = process.hrtime(start)[1] / 1000000

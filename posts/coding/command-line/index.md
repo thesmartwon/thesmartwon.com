@@ -1,5 +1,5 @@
 ---
-title: "(Don't Fear) The Command Line"
+title: (Don't Fear) The Command Line
 date:  2019-05-15
 ---
 
@@ -22,7 +22,7 @@ Hello!
 
 <figure>
 <img src="./you-had-me-at-hello.gif" alt="You had me at hello" />
-<figcaption>You had me at hello.</figcaption>
+<figcaption>you had me at echo</figcaption>
 </figure>
 
 ## The file system
