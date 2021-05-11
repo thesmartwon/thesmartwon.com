@@ -12,7 +12,7 @@ function js(file) {
   })
   const elapsed = process.hrtime(start)[1] / 1000000
   console.log('[js] bundled', Object.keys(metafile.inputs).length, 'files in', elapsed + 'ms')
-  return Object.keys(metafile.outputs)[0]
+  return Object.keys(metafile.outputs).find(outFile => outFile.endsWith('.js'))
 }
 
 module.exports = {

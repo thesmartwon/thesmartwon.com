@@ -28,20 +28,23 @@ function getHash(string) {
 }
 
 function _walk(dir, options, res) {
+  if (typeof options.ext === 'string') {
+    options.ext = new RegExp(options.ext)
+  }
 	fs.readdirSync(dir).forEach(file => {
     const filepath = path.join(dir, file);
     try {
       const stats = fs.statSync(filepath)
       if (stats.isDirectory()) {
         _walk(filepath, options, res)
-      } else if (stats.isFile() && filepath.endsWith(options.ext)) {
+      } else if (stats.isFile() && options.ext.test(filepath)) {
         res.push(filepath)
       }
     } catch { /* can't stat file */ }
   })
 }
 
-function walk(dir, options = { ext: '' }) {
+function walk(dir, options = { ext: /\..*$/ }) {
   const res = []
   _walk(dir, options, res)
   return res
@@ -53,7 +56,14 @@ const esbuildConfig = {
   outdir: paths.outdir,
   jsxFactory: 'h',
   jsxFragment: 'Fragment',
-  loader: { '.svg': 'dataurl' },
+  loader: {
+    '.svg': 'dataurl',
+    /* can't yet configure where these are copied to
+    '.png': 'file',
+    '.jpg': 'file',
+    '.gif': 'file'
+    */
+  },
 }
 
 module.exports = {

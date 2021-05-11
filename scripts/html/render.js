@@ -1,5 +1,4 @@
 const { esbuildConfig, paths } = require('../helpers')
-const sourcedPages = require('../../src/generated')
 const esbuild = require('esbuild')
 const path = require('path')
 const fs = require('fs')
@@ -12,10 +11,10 @@ function render({ cssFileNames }) {
     platform: 'node',
     ...esbuildConfig
   })
-  const outFile = path.join(process.cwd(), Object.keys(metafile.outputs)[0])
+  const outFile = path.join(process.cwd(), Object.keys(metafile.outputs).find(outfile => outfile.endsWith('.js')))
   const { App, renderPost, renderPage } = require(outFile)
 
-  Object.entries(sourcedPages).forEach(([slug, props]) => {
+  Object.entries(require('../../src/generated')).forEach(([slug, props]) => {
     const outFile = path.join(paths.outdir, slug, 'index.html')
     fs.mkdirSync(path.dirname(outFile), { recursive: true })
     global.location = { pathname: slug }

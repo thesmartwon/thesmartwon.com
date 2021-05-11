@@ -34,7 +34,7 @@ marked.setOptions({
   highlight(code, _lang) {
     return '{`' + code.replace(new RegExp('`', 'g'), '&#58;') + '`}'
   }
-});
+})
 function posts() {
   const postIndex = {}
   console.log('[posts] start')
@@ -82,7 +82,7 @@ function posts() {
       html: addFullText
     }
 
-    marked.use({ renderer });
+    marked.use({ renderer })
     const html = marked(contents)
     const jsx = `${imports.join('\n')}
 
