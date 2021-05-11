@@ -9,7 +9,9 @@ It's time to come clean. I could never live off [$24,000](../early-retirement) l
 With a bachelor's degree I make above what my [college department's website says,](https://www.csc.ncsu.edu/future-students/) but not by much. I've taken advantage of my company's 3% matching 401k and HSA plans, which I maxed for the year 2019. I'm very fortunate.
 
 ## Expenses
+
 Category|Amount|Comments
+--------|------|--------
 Rent|5344|I'm lucky to be able to live cheaply at home. Rent includes some meals mom cooks
 Electronics|2072|$1.7k towards a server, $350 towards noise-cancelling headphones
 Gas|1178|About 27mpg while driving to/from work which is 15mi away
@@ -24,6 +26,8 @@ Gifts|116|Mostly art supplies
 Personal care|31|Haircuts, etc.
 
 ### Totals
+Category|Amount
+--------|------
 Expenses|13,717
 Minus electronics|11,645
 Minus entertainment|11,464

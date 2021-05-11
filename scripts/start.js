@@ -1,33 +1,41 @@
-const { src, watch, series, parallel } = require('gulp')
-const through2 = require('through2')
-const { paths } = require('./helpers')
-const { startServer } = require('./startServer')
-const { copyStaticAssets, copyPostAssets } = require('./copy')
-const { css } = require('./css')
-const { js, getJsWatchFiles } = require('./js')
-const { render } = require('./render')
-const { pages } = require('./pages')
+const { watch } = require('chokidar')
+const { build } = require('./build')
+const { css } = require('./build/css')
+const { copy } = require('./build/copy')
+const { post, index, writeIndex } = require('./html/source')
+const { render, esbuildConfigSSR } = require('./html/render')
+const { serve, clients } = require('./serve')
+const esbuild = require('esbuild')
 
-function deleteRenderCache() {
-	return src(paths.render.src)
-		.pipe(through2.obj(function (chunk, _, cb2) {
-			delete require.cache[require.resolve(chunk.history[0])]
-			cb2(null, chunk)
-		}))
+function register(path, listener) {
+  watch(path, { ignoreInitial: true }).on('all', listener)
 }
 
-async function start() {
-	watch(paths.postAssets.src, { ignoreInitial: false }, copyPostAssets)
-	watch(paths.staticAssets.src, { ignoreInitial: false }, copyStaticAssets)
+let cssFileNames = build()
+console.log('watching for changes')
+register('src/**/*.sass', css) // TODO: sass graph
+register('posts/**/*.{jpg,jpeg,gif,svg,png}', copy) // TODO: copy only what changes
+register('posts/**/*.md', (ev, file) => {
+  console.log('[watch]', ev, file)
+  if (ev === 'change' || ev === 'add') {
+    post(file)
+  }
+  else if (ev === 'unlink') {
+    delete index[slugify(file)]
+  }
+  writeIndex()
+})
+esbuild.build({
+  ...esbuildConfigSSR,
+  watch: {
+    onRebuild(error, _res) {
+      clients.forEach((res) => res.write('data: update\n\n'))
+      clients.length = 0
+      if (error) console.log(error)
+      // TODO: find out way to render only changed post + pages
+      render({ cssFileNames })
+    },
+  },
+})
+serve()
 
-	await new Promise(parallel(css, js)) // TODO: rollup.watch
-	watch(paths.sass.src, css)
-	watch(getJsWatchFiles(), js)
-	watch(paths.render.src, series(deleteRenderCache, render))
-	watch(paths.posts.src, { ignoreInitial: false }, series(render, startServer))
-	watch(paths.pages.src, pages)
-}
-
-module.exports = {
-  start
-}

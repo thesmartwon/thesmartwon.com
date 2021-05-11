@@ -7,13 +7,13 @@ const paths = {
   postsDir: 'posts',
   pagesDir: 'src/pages',
   staticDir: 'static',
-  generatedDir: 'src/generated'
+  generatedDir: 'src/generated',
 }
 
 const slugify = p => p
 	.replace(/\\/g, '/')
   .replace(/\/\//g, '/')
-	.replace('/index', '')
+	.replace('/index', '/')
   .replace(/^([^\/])/, (_, match) => '/' + match)
 	.replace('.md', '')
 	.replace('.jsx', '')

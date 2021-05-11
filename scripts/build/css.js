@@ -8,12 +8,12 @@ function css() {
   const start = process.hrtime()
   try {
     const css = sass.renderSync({
-      file: path.join(__dirname, '../../src/main.scss'), 
+      file: 'src/main.sass', 
       outputStyle: 'compressed',
     })
 
     const toFile = path.basename(css.stats.entry)
-      .replace('.scss', `-${getHash(css.css)}.css`)
+      .replace('.sass', `-${getHash(css.css)}.css`)
     
     const outFile = path.join(paths.outdir, toFile)
     fs.writeFileSync(outFile, css.css)

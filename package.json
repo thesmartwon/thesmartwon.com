@@ -5,11 +5,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "node scripts/build",
+    "build": "NODE_ENV=production node scripts/build",
     "clean": "node scripts/clean",
     "deploy": "gh-pages --dist dist",
-    "serve": "cd dist && python3 -m http.server",
-    "start": "gulp start"
+    "serve": "node scripts/serve",
+    "start": "node scripts/start"
   },
   "dependencies": {
     "preact": "^10.0.0",
