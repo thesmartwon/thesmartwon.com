@@ -1,7 +1,7 @@
 const min = (a, b) => a > b ? b : a
 const max = (a, b) => a > b ? a : b
 // Taxes
-const fedTaxRate = [.1,  .12,    .22,    .24,    .32,     .25,      .37]
+const fedTaxRate = [.1,  .12,    .22,    .24,    .32,     .35,      .37]
 export const fedTaxBrackets = {
   single:  [ 0,  9875,   40125,  85525,  163300,   207350,   518400],
   married: [ 0,  19750,  80250,  171050, 326600,   414700,   622050],
