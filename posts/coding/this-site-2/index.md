@@ -21,7 +21,7 @@ Webpack is a little black box everyone depends on.
 
 <figure>
 <img src="webpack.png" alt="Webpack" />
-<figcaption>Most web developers use this. Most don't have the slightest idea how it works.</figcaption>
+<figcaption>Most web developers use this. Most haven't the slightest idea how it works.</figcaption>
 </figure>
 
 I like Webpack, so I experimented with building my site using [prerender-loader](https://github.com/GoogleChromeLabs/prerender-loader) or [prerender-SPA-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) paired with [Preact-router](https://github.com/preactjs/preact-router).

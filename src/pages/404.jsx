@@ -1,5 +1,6 @@
-import { h, Fragment } from 'preact';
+import { h, Fragment } from 'preact'
 
+export const title = 'Error 404 (Not found)!!1'
 export default () => (
   <Fragment>
     <p><b>404.</b> <ins>That’s an error.</ins></p>

@@ -1,5 +1,7 @@
 const { slugify, paths, walk } = require('../helpers/index')
+const { capitalize } = require('../../src/helpers/capitalize')
 const { js } = require('../build/js')
+const indexTitles = require('../../src/components/postIndex/titles')
 const fs = require('fs')
 const path = require('path')
 const marked = require('marked')
@@ -109,6 +111,7 @@ ${html}
       month: 'long',
       day: 'numeric',
       year: 'numeric',
+      timeZone: 'UTC'
     })
     frontmatter.dateLong = longFormat.format(frontmatter.date)
     frontmatter.dateShort = frontmatter.date.toISOString().substr(0, 10)
@@ -123,11 +126,29 @@ ${html}
   if (fs.existsSync(postJsIndex)) {
     frontmatter.jsFileNames = [path.basename(js(postJsIndex))]
   }
+
   const post = {
     destFile: path.resolve(destFile),
     frontmatter
   }
   index[slug] = post
+
+  // Add index pages
+  const split = slug.split('/').filter(Boolean)
+  split.pop()
+  while (split.length > 0) {
+    const indexSlug = '/' + split.join('/') + '/'
+    const title = split[split.length - 1].replace(/-/g, ' ')
+    index[indexSlug] = {
+      destFile: path.resolve(__dirname, '../../src/components/postIndex'),
+      frontmatter: {
+        title: capitalize(title) + (title.includes('posts') ? '' : ' posts'),
+        subtitle: indexTitles[indexSlug] || '[Insert sassy comment here]',
+      }
+    }
+
+    split.pop()
+  }
 }
 function posts() {
   const mdFiles = walk(paths.postsDir, { ext: '.md' })

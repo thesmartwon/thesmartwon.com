@@ -23,7 +23,7 @@ export default function ArticlePreview({
           </Link>
           <div className="tags has-addons is-centered">
             {showTopic
-              ? <Link className="tag is-rounded is-warning" href={`/posts/${topic}`}>
+              ? <Link className="tag is-rounded is-warning" href={`/posts/${topic}/`}>
                   {topic}
                 </Link>
               : <span className="tag is-rounded is-warning">

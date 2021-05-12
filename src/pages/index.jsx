@@ -3,9 +3,17 @@ import Mug from './cup-of-hot-chocolate.svg'
 import CenterLayout from '../layouts/center-layout'
 import Link from '../components/link'
 import ArticlePreview from '../components/article-preview'
+import sourcedPages from '../generated/index'
+
+const posts = Object.entries(sourcedPages)
+  .filter(([_, props]) => props.timeToRead)
+  .map(([path, props]) => ({
+    path,
+    ...props
+  }))
 
 export const title = 'The Smart Blog'
-export default ({ path, posts }) => (
+export default ({ path }) => (
   <CenterLayout
     title={
       <h1 className="title is-2">

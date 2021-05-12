@@ -34,7 +34,7 @@ const PostTemplate = ({
 
         <div className="has-text-centered">
           <Link href="#">Back to top</Link>{' / '}
-          <Link href="/posts">View all posts</Link>
+          <Link href="/posts/">View all posts</Link>
         </div>
       </Fragment>
     }
