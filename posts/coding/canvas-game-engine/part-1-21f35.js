@@ -1,1 +1,0 @@
-!function(){"use strict";const t=document.getElementById("gameCanvas"),e=t.getContext("2d");e.fillStyle="black",e.fillRect(0,0,t.width,t.height)}();

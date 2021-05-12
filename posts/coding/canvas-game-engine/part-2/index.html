@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="We left off with a canvas that looked like this: This game doesn't work without an HTML canvas :( It's not very exciting (or interactive), so let's st…" /><title>&lt;Canvas&gt; Game Engine: Part 2</title><link rel="stylesheet" type="text/css" href="/main-424a7.css" /><link rel="shortcut icon" href="/favicon.png" /><link rel="manifest" href="/manifest.webmanifest" /><link rel="alternate" type="application/rss+xml" title="The Smart Blog • Feed" href="/feed" /><meta name="theme-color" content="#00D1B2" /></head><body><div class="container"><div class="column is-8 is-offset-2"><noscript>Some things might not work because Javascript is disabled, but you aren't missing out on much.</noscript><nav class="breadcrumb is-marginless is-centered" aria-label="breadcrumbs"><ul><li class><a href="/">Home</a></li><li class><a href="/posts">Posts</a></li><li class><a href="/posts/coding">Coding</a></li><li class><a href="/posts/coding/canvas-game-engine">Canvas Game Engine</a></li><li class="is-active"><a href="/posts/coding/canvas-game-engine/part-2">Part 2</a></li></ul></nav><div class="section titles-section"><h1 class="title is-2">&lt;Canvas&gt; Game Engine: Part 2</h1><span class="has-text-grey"><time dateTime="2019-08-07">August 7, 2019</time> · 1.5 min read</span></div><div id="content" class="content is-medium"><h2 id="where-we-were">Where we were</h2><p>We left off with a canvas that looked like this:</p><canvas id="gameCanvasOld"><h1>This game doesn't work without an HTML canvas :(</h1></canvas><h1 id="where-were-going">Where we're going</h1><p>It's not very exciting (or interactive), so let's start spicing it up a bit. By the end, we should have a nicely sived canvas with a white box moving across the screen to the WASD keys like this:</p><canvas id="gameCanvas"><h1>This game doesn't work without an HTML canvas :(</h1></canvas><p>Let's get started!!</p><h2 id="resizing-the-canvas">Resizing the canvas</h2><p>I'm assuming we want a fullscreen canvas game. In that case, write a helper function to resize the canvas whenever the window size changes like this:</p><pre><code>const resize = canvas =&gt; {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+};</code></pre><p>Now you just have to call it once and register it for when the window changes size:</p><pre><code>resize(canvas);
+window.addEventListener('resize', () =&gt; resize(canvas));</code></pre><h2 id="rendering-a-player">Rendering a player</h2><p>Our player will just be a white box for now. Let's create a <code>Player</code> class that also houses an X and Y variable for its location.</p><pre><code>class Player {
+    constructor() {
+        this.x = 50;
+        this.y = 50;
+    }
+
+    draw(c) {
+        c.fillStyle = &quot;white&quot;;
+        c.fillRect(this.x, this.y, 50, 50); 
+    }
+}</code></pre><p>Now we can make a new player and draw it.</p><pre><code>// Make game objects
+const gameObjects = {
+    player: new Player()
+}
+
+// Clear current canvas
+context.fillStyle = &quot;black&quot;;
+context.fillRect(0, 0, canvas.width, canvas.height); 
+
+// Draw all objects
+Object.values(gameObjects).forEach(obj =&gt; obj.draw(context));</code></pre><h2 id="moving-the-player">Moving the player</h2><p>Now comes the hardest concept to understand for any game engine -- the concept of time. We need our game to draw a certain number of times per second. And we need some logic to check if certain keys are pressed (WASD) on each frame to move the player. Luckily, <a href="mdn/link">MDN has us covered on game loops</a>.</p><p>Our final drawing code should be something like this:</p><pre><code>function main() {
+    // Clear current canvas
+    context.fillStyle = &quot;black&quot;;
+    context.fillRect(0, 0, canvas.width, canvas.height); 
+
+    // Draw all objects
+    Object.values(gameObjects).forEach(obj =&gt; obj.draw(context));
+
+    // Do this loop again
+    window.requestAnimationFrame(main);
+}
+
+window.requestAnimationFrame(main);</code></pre><p>BUT we still need something to change the players' X and Y. For this we'll need some sloppy key handlers above our <code>function main()</code>...</p><pre><code>// Capture key input we care about
+const input = {
+    UP: false,
+    DOWN: false,
+    LEFT: false,
+    RIGHT: false
+};
+window.addEventListener('keydown', event =&gt; {
+    if (event.keyCode === 37) {
+        input.LEFT = true;
+    } else if (event.keyCode === 38) {
+        input.UP = true;
+    } else if (event.keyCode === 39) {
+        input.RIGHT = true;
+    } else if (event.keyCode === 40) {
+        input.DOWN = true;
+    }
+});
+window.addEventListener('keyup', event =&gt; {
+    if (event.keyCode === 37) {
+        input.LEFT = false;
+    } else if (event.keyCode === 38) {
+        input.UP = false;
+    } else if (event.keyCode === 39) {
+        input.RIGHT = false;
+    } else if (event.keyCode === 40) {
+        input.DOWN = false;
+    }
+});</code></pre><p>Now we need to pass this to each game object in our <code>main</code> function:</p><pre><code>function main() {
+    // Update all objects with input
+    Object.values(gameObjects).forEach(obj =&gt; obj.update(input));
+
+    // ...Drawing logic remains
+}</code></pre><p>And finally, our <code>Player</code> needs an <code>update</code> function!</p><pre><code>class Player {
+    update(input) {
+        if (input.UP) {
+            this.y -= 4;
+        }
+        if (input.DOWN) {
+            this.y += 4;
+        }
+        if (input.RIGHT) {
+            this.x += 4;
+        }
+        if (input.LEFT) {
+            this.x -= 4;
+        }
+    }
+}</code></pre><p>And, voila! The start of a game:</p><canvas id="gameCanvas2"><h1>This game doesn't work without an HTML canvas :(</h1></canvas></div><div class="has-text-centered"><a href="#">Back to top</a> / <a href="/posts/">View all posts</a></div></div></div><script src="part-2.N2Y2HK67.js"></script></body></html>
