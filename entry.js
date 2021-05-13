@@ -1965,8 +1965,10 @@ var init_index_md5 = __esm({
       class: "language-md"
     }, `import { RetirementCalc } from './retirement-calc'
 
-Brilliant, you'd like to quit your day job and do something more meaningful
-with your life. Now how do you do it?
+Brilliant, you'd like to quit
+your day job and do something
+more meaningful with your life.
+Now how do you do it?
 
 <RetirementCalc />`)), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Write blog components in JSX", /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "I still want to keep writing code like ", /* @__PURE__ */ a("code", null, `{posts.map(post => ArticlePreview(post))}`), " for index pages!")))), /* @__PURE__ */ a("h3", {
       id: "whats-wrong-with-v2"
