@@ -1,9 +1,9 @@
 ---
-title: "How this Site is Built"
+title: How v2 of this Site was Built
 date:  2019-08-09
 ---
 
-import { Logo } from '../../../src/components/logo'
+import { Logo } from '../../../../src/components/logo'
 
 # RIP Gatsby
 I ditched Gatsby.

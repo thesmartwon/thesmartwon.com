@@ -28,12 +28,15 @@ register('posts/**/*.md', (ev, file) => {
 esbuild.build({
   ...esbuildConfigSSR,
   watch: {
-    onRebuild(error, _res) {
-      clients.forEach((res) => res.write('data: update\n\n'))
-      clients.length = 0
-      if (error) console.log(error)
+    onRebuild(error) {
+      if (error) {
+        console.log(error)
+        return
+      }
       // TODO: find out way to render only changed post + pages
       render({ cssFileNames })
+      clients.forEach(res => res.write('data: update\n\n'))
+      clients.length = 0
     },
   },
 })

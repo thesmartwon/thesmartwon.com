@@ -31,11 +31,6 @@ const unescapeQuotes = text => text.replace(/&#39;/g, "'").replace(/&quot;/g, '"
 
 // MD -> JSX
 const index = {}
-marked.setOptions({ 
-  highlight(code, _lang) {
-    return '{`' + code.replace(new RegExp('`', 'g'), '&#58;') + '`}'
-  }
-})
 function post(file) {
   const [frontmatter, contents] = splitFrontmatter(file)
 
@@ -59,6 +54,9 @@ function post(file) {
     )
     return src
   }
+  const highlight = code => '{`'
+    + code.replace(/`/g, '\\`')
+    + '`}'
 
   // https://marked.js.org/using_pro#renderer
   const renderer = {
@@ -77,10 +75,14 @@ function post(file) {
 
       return false
     },
-    html: addFullText
+    html: addFullText,
+    codespan(src) {
+      return '<code>' + highlight(src).replace(/&gt;/g, '>').replace(/&lt;/g, '<') + '</code>'
+    }
   }
 
   marked.use({ renderer })
+  marked.setOptions({ highlight })
   const html = marked(contents)
   const jsx = `${imports.join('\n')}
 

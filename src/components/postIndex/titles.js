@@ -5,6 +5,7 @@ module.exports = {
   '/posts/work/': 'Work sucks less than school',
   '/posts/bikes/': 'Bikes are fun. Biking is fun.',
   '/posts/coding/': "Beep boop. Coding is like Legos. Move one lego and it all falls apart. But if you leave it alone, it's magnificant.",
-  '/posts/coding/canvas-game-engine': 'Posts about a toy canvas game engine',
+  '/posts/coding/canvas-game-engine/': 'Posts about a toy canvas game engine',
+  '/posts/coding/this-site/': 'Handmade with lots of ❤️',
 }
 

@@ -1,5 +1,5 @@
 ---
-title: How this Site (used to be) Built
+title: How v1 of this Site was Built
 date:  2019-05-12
 ---
 
