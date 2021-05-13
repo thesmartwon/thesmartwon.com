@@ -14,8 +14,10 @@ As an example, I might want to write:
 ```md
 import { RetirementCalc } from './retirement-calc'
 
-Brilliant, you'd like to quit your day job and do something more meaningful
-with your life. Now how do you do it?
+Brilliant, you'd like to quit
+your day job and do something
+more meaningful with your life.
+Now how do you do it?
 
 <RetirementCalc />
 ```
