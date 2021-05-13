@@ -1201,7 +1201,7 @@ var init_part_1_md = __esm({
     init_preact();
     part_1_md_default = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("h1", {
       id: "why-canvas"
-    }, "Why ", /* @__PURE__ */ a("code", null, "<Canvas>"), "?"), /* @__PURE__ */ a("p", null, "AAA titles like Fallout and Civilization V are usually usually written in low-level languages like C++ so they can directly access hardware (ie a GPU) to provide the best possible performance and graphics. However, don't count out browser-based games written in Javascript! Javascript might many steps removed from C++, but it can play games in nearly any browser and be easily turned into phone or native apps. Plus you can easily host it on a website to share it with friends!"), /* @__PURE__ */ a("h2", {
+    }, "Why ", /* @__PURE__ */ a("code", null, `<Canvas>`), "?"), /* @__PURE__ */ a("p", null, "AAA titles like Fallout and Civilization V are usually usually written in low-level languages like C++ so they can directly access hardware (ie a GPU) to provide the best possible performance and graphics. However, don't count out browser-based games written in Javascript! Javascript might many steps removed from C++, but it can play games in nearly any browser and be easily turned into phone or native apps. Plus you can easily host it on a website to share it with friends!"), /* @__PURE__ */ a("h2", {
       id: "disclaimer"
     }, "Disclaimer"), /* @__PURE__ */ a("p", null, "I assume you have a little prior JS knowledge. This tutorial will only setup Webpack."), /* @__PURE__ */ a("h1", {
       id: "step-1"
@@ -1213,7 +1213,7 @@ var init_part_1_md = __esm({
       class: "language-sh"
     }, `mkdir canvasgame && cd canvasgame && npm init`)), /* @__PURE__ */ a("p", null, "Let's use Webpack to bundle our JS. This way we can split up our JS files and get live reloading in the browser for free. Webpack has some bare minimum config we need to take care of to get up and running, so let's do that."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-sh"
-    }, `npm i -D webpack webpack-cli webpack-dev-server clean-webpack-plugin html-webpack-plugin`)), /* @__PURE__ */ a("p", null, "This is what your ", /* @__PURE__ */ a("code", null, "webpack.config.js"), " could look like."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, `npm i -D webpack webpack-cli webpack-dev-server clean-webpack-plugin html-webpack-plugin`)), /* @__PURE__ */ a("p", null, "This is what your ", /* @__PURE__ */ a("code", null, `webpack.config.js`), " could look like."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-js"
     }, `const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -1239,7 +1239,7 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
-};`)), /* @__PURE__ */ a("p", null, "We'll need a dummy ", /* @__PURE__ */ a("code", null, "index.js"), " for now."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+};`)), /* @__PURE__ */ a("p", null, "We'll need a dummy ", /* @__PURE__ */ a("code", null, `index.js`), " for now."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-js"
     }, `// Grab the canvas and thing we draw on
 const canvas = document.getElementById('gameCanvas');
@@ -1247,7 +1247,7 @@ const context = canvas.getContext('2d');
 
 // Draw a black square on the whole canvas
 context.fillStyle = "black";
-context.fillRect(0, 0, canvas.width, canvas.height);`)), /* @__PURE__ */ a("p", null, "And an ", /* @__PURE__ */ a("code", null, "index.html"), " template."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+context.fillRect(0, 0, canvas.width, canvas.height);`)), /* @__PURE__ */ a("p", null, "And an ", /* @__PURE__ */ a("code", null, `index.html`), " template."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-html"
     }, `<!DOCTYPE html>
 <html>
@@ -1272,12 +1272,12 @@ context.fillRect(0, 0, canvas.width, canvas.height);`)), /* @__PURE__ */ a("p", 
             <h1>This game doesn't work without an HTML canvas :(</h1>
         </canvas>
     </body>
-</html>`)), /* @__PURE__ */ a("p", null, "Add some scripts to pull up your webserver to your ", /* @__PURE__ */ a("code", null, "package.json"), ":"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+</html>`)), /* @__PURE__ */ a("p", null, "Add some scripts to pull up your webserver to your ", /* @__PURE__ */ a("code", null, `package.json`), ":"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-json"
     }, `"scripts": {
   "build": "webpack",
   "start": "webpack-dev-server --open"
-},`)), /* @__PURE__ */ a("p", null, "And now you can ", /* @__PURE__ */ a("code", null, "npm start"), " and webpack will pull up your web browser and draw a black box over the canvas like this:"), /* @__PURE__ */ a("canvas", {
+},`)), /* @__PURE__ */ a("p", null, "And now you can ", /* @__PURE__ */ a("code", null, `npm start`), " and webpack will pull up your web browser and draw a black box over the canvas like this:"), /* @__PURE__ */ a("canvas", {
       id: "gameCanvas"
     }, /* @__PURE__ */ a("h1", null, "This game doesn't work without an HTML canvas :(")), /* @__PURE__ */ a("br", null), "It's not much yet, but it'll become something soon... You're ready for ", /* @__PURE__ */ a("a", {
       href: "./part-2"
@@ -1310,7 +1310,7 @@ var init_part_2_md = __esm({
 };`)), /* @__PURE__ */ a("p", null, "Now you just have to call it once and register it for when the window changes size:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `resize(canvas);
 window.addEventListener('resize', () => resize(canvas));`)), /* @__PURE__ */ a("h2", {
       id: "rendering-a-player"
-    }, "Rendering a player"), /* @__PURE__ */ a("p", null, "Our player will just be a white box for now. Let's create a ", /* @__PURE__ */ a("code", null, "Player"), " class that also houses an X and Y variable for its location."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `class Player {
+    }, "Rendering a player"), /* @__PURE__ */ a("p", null, "Our player will just be a white box for now. Let's create a ", /* @__PURE__ */ a("code", null, `Player`), " class that also houses an X and Y variable for its location."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `class Player {
     constructor() {
         this.x = 50;
         this.y = 50;
@@ -1346,7 +1346,7 @@ Object.values(gameObjects).forEach(obj => obj.draw(context));`)), /* @__PURE__ *
     window.requestAnimationFrame(main);
 }
 
-window.requestAnimationFrame(main);`)), /* @__PURE__ */ a("p", null, "BUT we still need something to change the players' X and Y. For this we'll need some sloppy key handlers above our ", /* @__PURE__ */ a("code", null, "function main()"), "..."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `// Capture key input we care about
+window.requestAnimationFrame(main);`)), /* @__PURE__ */ a("p", null, "BUT we still need something to change the players' X and Y. For this we'll need some sloppy key handlers above our ", /* @__PURE__ */ a("code", null, `function main()`), "..."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `// Capture key input we care about
 const input = {
     UP: false,
     DOWN: false,
@@ -1374,12 +1374,12 @@ window.addEventListener('keyup', event => {
     } else if (event.keyCode === 40) {
         input.DOWN = false;
     }
-});`)), /* @__PURE__ */ a("p", null, "Now we need to pass this to each game object in our ", /* @__PURE__ */ a("code", null, "main"), " function:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `function main() {
+});`)), /* @__PURE__ */ a("p", null, "Now we need to pass this to each game object in our ", /* @__PURE__ */ a("code", null, `main`), " function:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `function main() {
     // Update all objects with input
     Object.values(gameObjects).forEach(obj => obj.update(input));
 
     // ...Drawing logic remains
-}`)), /* @__PURE__ */ a("p", null, "And finally, our ", /* @__PURE__ */ a("code", null, "Player"), " needs an ", /* @__PURE__ */ a("code", null, "update"), " function!"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `class Player {
+}`)), /* @__PURE__ */ a("p", null, "And finally, our ", /* @__PURE__ */ a("code", null, `Player`), " needs an ", /* @__PURE__ */ a("code", null, `update`), " function!"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `class Player {
     update(input) {
         if (input.UP) {
             this.y -= 4;
@@ -1414,7 +1414,7 @@ var init_index_md2 = __esm({
       alt: "Old CRT Terminal"
     }), /* @__PURE__ */ a("figcaption", null, "Ooh, scary.")), /* @__PURE__ */ a("p", null, `For others like me, it's the most powerful tool to control your operating system, whether it be Windows, Mac OSX, or Linux. Let's learn what a command line can do for you! To follow along, open a program on your computer called "terminal" or "cmd".`), /* @__PURE__ */ a("h3", {
       id: "echo-hello"
-    }, "Echo... hello!"), /* @__PURE__ */ a("p", null, "Once you've started a terminal, try the ", /* @__PURE__ */ a("code", null, "echo"), " command! It simply prints the text you pass it."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "Echo... hello!"), /* @__PURE__ */ a("p", null, "Once you've started a terminal, try the ", /* @__PURE__ */ a("code", null, `echo`), " command! It simply prints the text you pass it."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> echo "Hello!"
 Hello!`)), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
@@ -1424,14 +1424,14 @@ Hello!`)), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       id: "the-file-system"
     }, "The file system"), /* @__PURE__ */ a("p", null, "You have files on your computer than contain everything from your photos to what's needed to boot your computer."), /* @__PURE__ */ a("h3", {
       id: "listing-files"
-    }, "Listing files"), /* @__PURE__ */ a("p", null, "To see some of those files, list them using ", /* @__PURE__ */ a("code", null, "ls"), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "Listing files"), /* @__PURE__ */ a("p", null, "To see some of those files, list them using ", /* @__PURE__ */ a("code", null, `ls`), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> ls
 Documents   Pictures   snap   Templates 
-Desktop     Downloads  go     Music`)), /* @__PURE__ */ a("p", null, "Actually, your file system is a hierarchy of folders. You can see where you are in that hierarchy using ", /* @__PURE__ */ a("code", null, "pwd"), " (print working directory)."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+Desktop     Downloads  go     Music`)), /* @__PURE__ */ a("p", null, "Actually, your file system is a hierarchy of folders. You can see where you are in that hierarchy using ", /* @__PURE__ */ a("code", null, `pwd`), " (print working directory)."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> pwd
-/home/thesm`)), /* @__PURE__ */ a("p", null, "My terminal started me out in my home directory. To change directories I use ", /* @__PURE__ */ a("code", null, "cd"), " (change directory)."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+/home/thesm`)), /* @__PURE__ */ a("p", null, "My terminal started me out in my home directory. To change directories I use ", /* @__PURE__ */ a("code", null, `cd`), " (change directory)."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> cd /home
 > pwd
@@ -1439,14 +1439,14 @@ Desktop     Downloads  go     Music`)), /* @__PURE__ */ a("p", null, "Actually, 
       class: "language-bash"
     }, `> cd /
 > pwd
-/`)), /* @__PURE__ */ a("p", null, "To go back to my home directory, I can use the alias ", /* @__PURE__ */ a("code", null, "~"), " which resolves to ", /* @__PURE__ */ a("code", null, "/home/thesm"), " for me."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+/`)), /* @__PURE__ */ a("p", null, "To go back to my home directory, I can use the alias ", /* @__PURE__ */ a("code", null, `~`), " which resolves to ", /* @__PURE__ */ a("code", null, `/home/thesm`), " for me."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> cd ~
 > pwd
 /home/thesm`)), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./dont-fear-the-reaper.jpg",
       alt: "Don't Fear the Reaper"
-    }), /* @__PURE__ */ a("figcaption", null, "(Don't fear) the computer.")), /* @__PURE__ */ a("p", null, "Now let me introduce you to the magic of tab completion. Sometimes, you don't know where you want to ", /* @__PURE__ */ a("code", null, "cd"), " to. In those cases, press the Tab key after typing ", /* @__PURE__ */ a("code", null, "cd "), " to get a list of possibilities."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+    }), /* @__PURE__ */ a("figcaption", null, "(Don't fear) the computer.")), /* @__PURE__ */ a("p", null, "Now let me introduce you to the magic of tab completion. Sometimes, you don't know where you want to ", /* @__PURE__ */ a("code", null, `cd`), " to. In those cases, press the Tab key after typing ", /* @__PURE__ */ a("code", null, `cd `), " to get a list of possibilities."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./you-complete-me.gif",
       alt: "You complete me"
     }), /* @__PURE__ */ a("figcaption", null, "Tabs complete me.")), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
@@ -1462,12 +1462,12 @@ Videos/         .vim/`)), /* @__PURE__ */ a("p", null, "As you can see, I have a
     }, `> cd D
 Desktop/   Documents/ Downloads/`)), /* @__PURE__ */ a("p", null, "By the way, tab completion works with most commands, so please do use it!"), /* @__PURE__ */ a("h3", {
       id: "moving-files"
-    }, "Moving files"), /* @__PURE__ */ a("p", null, "Files can be copied and moved around to suit your needs. First, let's create an empty directory using ", /* @__PURE__ */ a("code", null, "mkdir"), " to safely play inside and then ", /* @__PURE__ */ a("code", null, "cd"), " into it."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "Moving files"), /* @__PURE__ */ a("p", null, "Files can be copied and moved around to suit your needs. First, let's create an empty directory using ", /* @__PURE__ */ a("code", null, `mkdir`), " to safely play inside and then ", /* @__PURE__ */ a("code", null, `cd`), " into it."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> mkdir fun
 > cd fun`)), /* @__PURE__ */ a("p", null, `Now, let's make a file that says "Hello!".`), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
-    }, `> echo "Hello!" > hello.txt`)), /* @__PURE__ */ a("p", null, 'This command takes the output of the first command (which is "Hello!") and redirects it to a file named hello.txt.'), /* @__PURE__ */ a("p", null, "Now let's copy it using ", /* @__PURE__ */ a("code", null, "cp"), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, `> echo "Hello!" > hello.txt`)), /* @__PURE__ */ a("p", null, 'This command takes the output of the first command (which is "Hello!") and redirects it to a file named hello.txt.'), /* @__PURE__ */ a("p", null, "Now let's copy it using ", /* @__PURE__ */ a("code", null, `cp`), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> cp hello.txt hello2.txt`)), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./copy-this.png",
@@ -1475,35 +1475,35 @@ Desktop/   Documents/ Downloads/`)), /* @__PURE__ */ a("p", null, "By the way, t
     }), /* @__PURE__ */ a("img", {
       src: "./pasta-that.png",
       alt: "Pasta that"
-    }), /* @__PURE__ */ a("figcaption", null, "Copy hello.txt and pasta hello2.txt")), /* @__PURE__ */ a("p", null, "And let's rename the original using ", /* @__PURE__ */ a("code", null, "mv"), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }), /* @__PURE__ */ a("figcaption", null, "Copy hello.txt and pasta hello2.txt")), /* @__PURE__ */ a("p", null, "And let's rename the original using ", /* @__PURE__ */ a("code", null, `mv`), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
-    }, `> mv hello.txt goodbye.txt`)), /* @__PURE__ */ a("p", null, "Let's see the result of our work using ", /* @__PURE__ */ a("code", null, "ls"), "!"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, `> mv hello.txt goodbye.txt`)), /* @__PURE__ */ a("p", null, "Let's see the result of our work using ", /* @__PURE__ */ a("code", null, `ls`), "!"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> ls
 goodbye.txt  hello2.txt`)), /* @__PURE__ */ a("p", null, "Not exactly exciting yet, but we're learning!"), /* @__PURE__ */ a("h3", {
       id: "reading-files"
-    }, "Reading files"), /* @__PURE__ */ a("p", null, "To read a file's contents, you can use ", /* @__PURE__ */ a("code", null, "less"), ", ", /* @__PURE__ */ a("code", null, "more"), ", or my favorite, ", /* @__PURE__ */ a("code", null, "cat"), " (which means concatenate)."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+    }, "Reading files"), /* @__PURE__ */ a("p", null, "To read a file's contents, you can use ", /* @__PURE__ */ a("code", null, `less`), ", ", /* @__PURE__ */ a("code", null, `more`), ", or my favorite, ", /* @__PURE__ */ a("code", null, `cat`), " (which means concatenate)."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./nyan-cat.jpg",
       alt: "Nyan cat"
     }), /* @__PURE__ */ a("figcaption", null, "Cats bring people together.")), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> cat hello2.txt
-Hello!`)), /* @__PURE__ */ a("p", null, "If you decided to use ", /* @__PURE__ */ a("code", null, "less"), ", to exit it just press q."), /* @__PURE__ */ a("h3", {
+Hello!`)), /* @__PURE__ */ a("p", null, "If you decided to use ", /* @__PURE__ */ a("code", null, `less`), ", to exit it just press q."), /* @__PURE__ */ a("h3", {
       id: "manipulating-files"
     }, "Manipulating files"), /* @__PURE__ */ a("p", null, 'Now comes the fun part. Lets say we want to overwrite goodbye.txt to contain "Goodbye!". Like before, we do:'), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
-    }, `> echo "Goodbye!" > goodbye.txt`)), /* @__PURE__ */ a("p", null, `Now let's say we want to make a new file that says "Hello! Goodbye!". `, /* @__PURE__ */ a("code", null, "cat"), " takes care of that too."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, `> echo "Goodbye!" > goodbye.txt`)), /* @__PURE__ */ a("p", null, `Now let's say we want to make a new file that says "Hello! Goodbye!". `, /* @__PURE__ */ a("code", null, `cat`), " takes care of that too."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> cat hello2.txt goodbye.txt
 Hello!
-Goodbye!`)), /* @__PURE__ */ a("p", null, "To make it a file, we just have to redirect the output using ", /* @__PURE__ */ a("code", null, ">"), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+Goodbye!`)), /* @__PURE__ */ a("p", null, "To make it a file, we just have to redirect the output using ", /* @__PURE__ */ a("code", null, `>`), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
-    }, `> cat hello2.txt goodbye.txt > hello-goodbye.txt`)), /* @__PURE__ */ a("p", null, "Let's say we want to copy all our files into a new directory. Let's make a directory like we did before using ", /* @__PURE__ */ a("code", null, "mkdir"), ", and then use a fancy glob operator called * to copy all the files at once that end in ", /* @__PURE__ */ a("code", null, ".txt"), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, `> cat hello2.txt goodbye.txt > hello-goodbye.txt`)), /* @__PURE__ */ a("p", null, "Let's say we want to copy all our files into a new directory. Let's make a directory like we did before using ", /* @__PURE__ */ a("code", null, `mkdir`), ", and then use a fancy glob operator called * to copy all the files at once that end in ", /* @__PURE__ */ a("code", null, `.txt`), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> mkdir copies
 > cp *.txt copies`)), /* @__PURE__ */ a("p", null, "Hooray, we can manipulate our file system!"), /* @__PURE__ */ a("h2", {
       id: "processes"
-    }, "Processes"), /* @__PURE__ */ a("p", null, "All those commands we ran (and all programs you run!) are actually creating processes to do work for them, which your operating system also manages. To see running process, use ", /* @__PURE__ */ a("code", null, "ps"), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "Processes"), /* @__PURE__ */ a("p", null, "All those commands we ran (and all programs you run!) are actually creating processes to do work for them, which your operating system also manages. To see running process, use ", /* @__PURE__ */ a("code", null, `ps`), "."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> ps
   PID TTY          TIME CMD
@@ -1527,16 +1527,16 @@ KiB Swap: 31998972 total, 31998972 free,        0 used. 12522024 avail Mem
  5277 thesm     20   0  362000   8448   6416 S   0.7  0.1   0:20.43 ibus-daemon
 25343 thesm     20   0   51452   4228   3468 R   0.7  0.0   0:00.11 top
     1 root      20   0  225836   9704   6812 S   0.3  0.1   0:07.28 systemd
-21070 thesm     20   0 2563208 343980 128284 S   0.3  2.1   0:17.76 thunderbird`)), /* @__PURE__ */ a("p", null, /* @__PURE__ */ a("code", null, "top"), " gives a slightly more interesting view. Press ", /* @__PURE__ */ a("code", null, "q"), " to quit it, just like ", /* @__PURE__ */ a("code", null, "less"), "."), /* @__PURE__ */ a("p", null, "You can create processes by running more programs, kill them by PID using ", /* @__PURE__ */ a("code", null, "kill"), ", and even fork existing programs so two copies of them run at once. I won't go in-depth now, but know they are just files being executed."), /* @__PURE__ */ a("h2", {
+21070 thesm     20   0 2563208 343980 128284 S   0.3  2.1   0:17.76 thunderbird`)), /* @__PURE__ */ a("p", null, /* @__PURE__ */ a("code", null, `top`), " gives a slightly more interesting view. Press ", /* @__PURE__ */ a("code", null, `q`), " to quit it, just like ", /* @__PURE__ */ a("code", null, `less`), "."), /* @__PURE__ */ a("p", null, "You can create processes by running more programs, kill them by PID using ", /* @__PURE__ */ a("code", null, `kill`), ", and even fork existing programs so two copies of them run at once. I won't go in-depth now, but know they are just files being executed."), /* @__PURE__ */ a("h2", {
       id: "man-pages"
-    }, "Man pages"), /* @__PURE__ */ a("p", null, "All of these commands have much more to them. You can pass programs flags (like ", /* @__PURE__ */ a("code", null, "cp -r"), " to ", /* @__PURE__ */ a("code", null, "r"), "ecursively copy a directory), or you can pipe the output of one command to be the input of another using ", /* @__PURE__ */ a("code", null, "|"), " instead of ", /* @__PURE__ */ a("code", null, ">"), "."), /* @__PURE__ */ a("p", null, "Commands are just files sitting in your ", /* @__PURE__ */ a("code", null, "$PATH"), " that happen to be executable. Check your path using ", /* @__PURE__ */ a("code", null, "echo"), ":"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "Man pages"), /* @__PURE__ */ a("p", null, "All of these commands have much more to them. You can pass programs flags (like ", /* @__PURE__ */ a("code", null, `cp -r`), " to ", /* @__PURE__ */ a("code", null, `r`), "ecursively copy a directory), or you can pipe the output of one command to be the input of another using ", /* @__PURE__ */ a("code", null, `|`), " instead of ", /* @__PURE__ */ a("code", null, `>`), "."), /* @__PURE__ */ a("p", null, "Commands are just files sitting in your ", /* @__PURE__ */ a("code", null, `$PATH`), " that happen to be executable. Check your path using ", /* @__PURE__ */ a("code", null, `echo`), ":"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> echo $PATH
-/usr/sbin:/usr/bin:/sbin:/bin`)), /* @__PURE__ */ a("p", null, "Try ", /* @__PURE__ */ a("code", null, "ls"), " on things in between the colons to see what programs you can run!"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+/usr/sbin:/usr/bin:/sbin:/bin`)), /* @__PURE__ */ a("p", null, "Try ", /* @__PURE__ */ a("code", null, `ls`), " on things in between the colons to see what programs you can run!"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> ls /usr/bin`)), /* @__PURE__ */ a("p", null, "There's probably a lot of output, so pipe it through less to read it slower! Use the arrow keys to scroll."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
-    }, `> ls /usr/bin | less`)), /* @__PURE__ */ a("p", null, "You can look up the manual page for commands using ", /* @__PURE__ */ a("code", null, "man"), " to learn all about them."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, `> ls /usr/bin | less`)), /* @__PURE__ */ a("p", null, "You can look up the manual page for commands using ", /* @__PURE__ */ a("code", null, `man`), " to learn all about them."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> man ls
 LS(1)                                                                    User Commands                                                                    LS(1)
@@ -1556,21 +1556,21 @@ DESCRIPTION
               do not ignore entries starting with .
 
        -A, --almost-all
-              do not list implied . and ..`)), /* @__PURE__ */ a("p", null, "Go out and learn about some of my favorite commands!"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "grep"), ": Find strings in text"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "gcc"), ": Compile C programs"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "vim"), ": A wonky text editor that saves keystrokes"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "which"), ": A program to print the path to other programs in $PATH"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "diff"), ": Find differences between files"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "readelf"), ": Show information about executable files"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "python"), ": Write programs in a simple language"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "printf"), ": Like ", /* @__PURE__ */ a("code", null, "echo"), " but better"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "tee"), ": Write to standard output (your terminal...) and another file at the same time"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, "zip"), ": Add files to an archive")), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+              do not list implied . and ..`)), /* @__PURE__ */ a("p", null, "Go out and learn about some of my favorite commands!"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `grep`), ": Find strings in text"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `gcc`), ": Compile C programs"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `vim`), ": A wonky text editor that saves keystrokes"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `which`), ": A program to print the path to other programs in $PATH"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `diff`), ": Find differences between files"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `readelf`), ": Show information about executable files"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `python`), ": Write programs in a simple language"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `printf`), ": Like ", /* @__PURE__ */ a("code", null, `echo`), " but better"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `tee`), ": Write to standard output (your terminal...) and another file at the same time"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("code", null, `zip`), ": Add files to an archive")), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./narnia-door.jpg",
       alt: "Narnia door"
     }), /* @__PURE__ */ a("figcaption", null, "The wardrobe is open...")));
   }
 });
 
-// src/generated/posts/coding/this-site/index.md.jsx
+// src/generated/posts/coding/this-site/v1/index.md.jsx
 var index_md_exports3 = {};
 __export(index_md_exports3, {
   default: () => index_md_default3
 });
 var index_md_default3;
 var init_index_md3 = __esm({
-  "src/generated/posts/coding/this-site/index.md.jsx"() {
+  "src/generated/posts/coding/this-site/v1/index.md.jsx"() {
     init_preact();
     index_md_default3 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("div", {
       class: "notification is-info"
@@ -1631,7 +1631,7 @@ var init_index_md3 = __esm({
       href: "https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-manifest"
     }, "Gatsby-remark-manifest"), " for the mobile navbar color and resizing my favicon."), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("a", {
       href: "https://github.com/nfl/react-helmet"
-    }, "React-helmet"), " to set ", /* @__PURE__ */ a("code", null, "<head>"), " per-page for things like the title. It's made by the NFL, who knew.")), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+    }, "React-helmet"), " to set ", /* @__PURE__ */ a("code", null, `<head>`), " per-page for things like the title. It's made by the NFL, who knew.")), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./football.jpg",
       alt: "Getting tackled"
     }), /* @__PURE__ */ a("figcaption", null, "React-helmet is a cool name coming from the NFL. I like American football.")), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, /* @__PURE__ */ a("a", {
@@ -1698,14 +1698,14 @@ var init_logo = __esm({
   }
 });
 
-// src/generated/posts/coding/this-site-2/index.md.jsx
+// src/generated/posts/coding/this-site/v2/index.md.jsx
 var index_md_exports4 = {};
 __export(index_md_exports4, {
   default: () => index_md_default4
 });
 var index_md_default4;
 var init_index_md4 = __esm({
-  "src/generated/posts/coding/this-site-2/index.md.jsx"() {
+  "src/generated/posts/coding/this-site/v2/index.md.jsx"() {
     init_preact();
     init_logo();
     index_md_default4 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("h1", {
@@ -1717,7 +1717,7 @@ var init_index_md4 = __esm({
       href: "https://github.com/gatsbyjs/gatsby/pull/14889"
     }, "an update to how Gatsby's resources were loaded,"), " my site wouldn't build anymore. I could just use an old version of Gatsby forever, but even with the old version things were breaking because of dependencies of Gatsby's dependencies in its ", /* @__PURE__ */ a("a", {
       href: "https://github.com/gatsbyjs/gatsby/blob/master/package.json"
-    }, "package.json"), " (welcome to the NPM ecosystem). I didn't want to my entire project's to hinge on a single ", /* @__PURE__ */ a("code", null, "package-lock.json"), ", so I decided to write my own framework."), /* @__PURE__ */ a("h2", {
+    }, "package.json"), " (welcome to the NPM ecosystem). I didn't want to my entire project's to hinge on a single ", /* @__PURE__ */ a("code", null, `package-lock.json`), ", so I decided to write my own framework."), /* @__PURE__ */ a("h2", {
       id: "death-to-webpack-too"
     }, "Death to Webpack, too"), /* @__PURE__ */ a("p", null, "Webpack is a little black box everyone depends on."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "webpack.png",
@@ -1745,7 +1745,7 @@ var init_index_md4 = __esm({
       href: "https://hexo.io"
     }, "hexo"), " or ", /* @__PURE__ */ a("a", {
       href: "https://gohugo.io"
-    }, "hugo"), " to render my site's HTML. However, I want to write React components in JSX instead of EJS or ", /* @__PURE__ */ a("code", null, "%"), "-style PHP templates. For example, I already had the ", /* @__PURE__ */ a("a", {
+    }, "hugo"), " to render my site's HTML. However, I want to write React components in JSX instead of EJS or ", /* @__PURE__ */ a("code", null, `%`), "-style PHP templates. For example, I already had the ", /* @__PURE__ */ a("a", {
       href: "https://github.com/thesmartwon/thesmartwon.com/blob/master/src/templates/post.js"
     }, "post template"), ", ", /* @__PURE__ */ a("a", {
       href: "https://github.com/thesmartwon/thesmartwon.com/blob/master/src/components/article-preview.js"
@@ -1759,7 +1759,7 @@ var init_index_md4 = __esm({
       id: "back-to-the-basics"
     }, "Back to the basics"), /* @__PURE__ */ a("p", null, "I needed to render my components to HTML using something like ", /* @__PURE__ */ a("a", {
       href: "https://github.com/preactjs/preact-render-to-string"
-    }, "preact-render-to-string"), ". Rendering React components per-markdown file seems like such a simple use case, yet no other frameworks seemed to have me covered."), /* @__PURE__ */ a("p", null, "To get started using ", /* @__PURE__ */ a("code", null, "preact-render-to-string"), ", I needed a bit of hackery using ", /* @__PURE__ */ a("a", {
+    }, "preact-render-to-string"), ". Rendering React components per-markdown file seems like such a simple use case, yet no other frameworks seemed to have me covered."), /* @__PURE__ */ a("p", null, "To get started using ", /* @__PURE__ */ a("code", null, `preact-render-to-string`), ", I needed a bit of hackery using ", /* @__PURE__ */ a("a", {
       href: "https://babeljs.io/docs/en/babel-register"
     }, "@babel/register"), ":"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-js"
@@ -1778,8 +1778,8 @@ require('@babel/register')({
   presets: ['@babel/preset-env']
 })
 
-// All further &#58;require()&#58;s go through Babel (so they can 
-// include JSX, class properties, and &#58;import&#58; statements)
+// All further \`require()\`s go through Babel (so they can 
+// include JSX, class properties, and \`import\` statements)
 const { myComponent } = require('some-component');
 console.log(render(h(myComponent)))`)), /* @__PURE__ */ a("p", null, "After figuring out ", /* @__PURE__ */ a("a", {
       href: "https://github.com/preactjs/preact-render-to-string"
@@ -1873,13 +1873,13 @@ console.log(render(h(myComponent)))`)), /* @__PURE__ */ a("p", null, "After figu
       href: "https://github.com/thesmartwon/thesmartwon.com/blob/master/scripts/mdx-hast-to-jsx.js"
     }, "mdx-hast-to-jsx"), " built on top of ", /* @__PURE__ */ a("a", {
       href: "https://github.com/mdx-js/mdx/tree/master/packages/remark-mdx"
-    }, "remark-mdx"), "."), /* @__PURE__ */ a("p", null, "Now for each one of my Markdown files, I have a ", /* @__PURE__ */ a("code", null, ".md.js"), " file that looks like this:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "remark-mdx"), "."), /* @__PURE__ */ a("p", null, "Now for each one of my Markdown files, I have a ", /* @__PURE__ */ a("code", null, `.md.js`), " file that looks like this:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-js"
     }, `import { h, Fragment } from 'preact'
 
 export default () => <Fragment>
   {/* Content here */}
-</Fragment>;`)), /* @__PURE__ */ a("p", null, "Now I just ", /* @__PURE__ */ a("code", null, "require()"), " that file and use ", /* @__PURE__ */ a("a", {
+</Fragment>;`)), /* @__PURE__ */ a("p", null, "Now I just ", /* @__PURE__ */ a("code", null, `require()`), " that file and use ", /* @__PURE__ */ a("a", {
       href: "https://github.com/preactjs/preact-render-to-string"
     }, "preact-render-to-string"), " on it! I also collect some metadata on all the posts rendered in order to build index pages that list all the posts."), /* @__PURE__ */ a("h3", {
       id: "but-you-need-some-javascript"
@@ -1913,7 +1913,7 @@ render(h(Logo), root, root)`)), /* @__PURE__ */ a("p", null, "The config is a li
       id: "creating-the-start-task"
     }, "Creating the start task"), /* @__PURE__ */ a("p", null, "This is what Gulp made easy for me since I didn't use a pre-built framework with nice hot-reloading for me. Gulp wraps ", /* @__PURE__ */ a("a", {
       href: "https://github.com/paulmillr/chokidar"
-    }, "chokidar's"), " ", /* @__PURE__ */ a("code", null, "watch"), " function:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "chokidar's"), " ", /* @__PURE__ */ a("code", null, `watch`), " function:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-js"
     }, `function start() {
     watch(paths.postAssets.src, { ignoreInitial: false }, copyPostAssets)
@@ -1933,16 +1933,135 @@ render(h(Logo), root, root)`)), /* @__PURE__ */ a("p", null, "The config is a li
       href: "https://www.browsersync.io/docs/gulp"
     }, "browser-sync"), " to auto-reload it. That would also save me having ", /* @__PURE__ */ a("a", {
       href: "https://www.npmjs.com/package/http-server"
-    }, "http-server"), " open in another terminal serving my ", /* @__PURE__ */ a("code", null, "dist"), " folder."), /* @__PURE__ */ a("h2", {
+    }, "http-server"), " open in another terminal serving my ", /* @__PURE__ */ a("code", null, `dist`), " folder."), /* @__PURE__ */ a("h2", {
       id: "reflection"
     }, "Reflection"), /* @__PURE__ */ a("p", null, "All this work took me upwards of 25 hours. The hardest part was writing the remark plugins for MDX. A lot of it was wasted researching prerendering, and I did write a few posts in the meantime."), /* @__PURE__ */ a("p", null, "It was well worth it to control every tool that creates the HTML, CSS, and JS my readers read. I'm (fairly) framework agnostic and learned a ton of new things! "), /* @__PURE__ */ a("h1", {
       id: "future-work"
-    }, "Future work"), /* @__PURE__ */ a("p", null, "My hot-reloading development workflow still needs a few changes:"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Node-sass as well as Rollup have their own watch functions, so I should use those."), /* @__PURE__ */ a("li", null, "On changes to my component templates, all pages should reload and we need to re-require the module. Currently nothing happens.")), /* @__PURE__ */ a("p", null, "My production environment also needs a few fixes:"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "I need to minimize my images and wrap them in a container to avoid the content changing height once loaded. I also need to use ", /* @__PURE__ */ a("code", null, "srcset"), " for responsive images. I'd also like a nicer way to create centered images for posts than having to write all this each time:")), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+    }, "Future work"), /* @__PURE__ */ a("p", null, "My hot-reloading development workflow still needs a few changes:"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Node-sass as well as Rollup have their own watch functions, so I should use those."), /* @__PURE__ */ a("li", null, "On changes to my component templates, all pages should reload and we need to re-require the module. Currently nothing happens.")), /* @__PURE__ */ a("p", null, "My production environment also needs a few fixes:"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "I need to minimize my images and wrap them in a container to avoid the content changing height once loaded. I also need to use ", /* @__PURE__ */ a("code", null, `srcset`), " for responsive images. I'd also like a nicer way to create centered images for posts than having to write all this each time:")), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-html"
     }, `<figure>
   <img src="shut-up-and-take-my-money.jpg" alt="Take my money" />
   <figcaption>Shut up and take my soul.</figcaption>
 </figure>`)), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "I need a way to separate out my Preact dependency so it doesn't have to reload 4kb on every JS page.")));
+  }
+});
+
+// src/generated/posts/coding/this-site/v3/index.md.jsx
+var index_md_exports5 = {};
+__export(index_md_exports5, {
+  default: () => index_md_default5
+});
+var index_md_default5;
+var init_index_md5 = __esm({
+  "src/generated/posts/coding/this-site/v3/index.md.jsx"() {
+    init_preact();
+    index_md_default5 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "After getting nagged with ", /* @__PURE__ */ a("a", {
+      href: "https://github.com/thesmartwon/thesmartwon.com/pulls?q=is%3Apr+author%3Aapp%2Fdependabot"
+    }, "6 dependabot security vulnerabilities"), " (which weren't actually vulnerabilities) I figured it was finally time to dust off this site and give it some love. "), /* @__PURE__ */ a("h2", {
+      id: "what-i-really-really-want"
+    }, "What I really really want"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Write blog posts in MD which are rendered to HTML", /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Allow importing some JSX"), /* @__PURE__ */ a("li", null, "Allow writing some JS for interactive pages (like the ", /* @__PURE__ */ a("a", {
+      href: "/posts/money/early-retirement"
+    }, "retirement calculator"), ")")))), /* @__PURE__ */ a("p", null, "As an example, I might want to write:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+      class: "language-md"
+    }, `import { RetirementCalc } from './retirement-calc'
+
+Brilliant, you'd like to quit your day job and do something more meaningful
+with your life. Now how do you do it?
+
+<RetirementCalc />`)), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Write blog components in JSX", /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "I still want to keep writing code like ", /* @__PURE__ */ a("code", null, `{posts.map(post => ArticlePreview(post))}`), " for index pages!")))), /* @__PURE__ */ a("h3", {
+      id: "whats-wrong-with-v2"
+    }, "What's wrong with v2?"), /* @__PURE__ */ a("p", null, "v2 of this site had ", /* @__PURE__ */ a("a", {
+      href: "https://github.com/thesmartwon/thesmartwon.com/blob/9b3ec7e047366a79a12a1d94776d967677e2ada3/package.json"
+    }, "too many dependencies"), " and relied on ", /* @__PURE__ */ a("a", {
+      href: "https://babeljs.io/docs/en/babel-register"
+    }, /* @__PURE__ */ a("code", null, `@babel/register`)), " for transpiling JSX for server-side-rendering. This was slow and error-prone when writing a development server. With ", /* @__PURE__ */ a("a", {
+      href: "https://esbuild.github.io/"
+    }, "esbuild"), " being the fastest transpiler and bundler in town (and sporting no dependencies!) I had to give it a try."), /* @__PURE__ */ a("h2", {
+      id: "the-perfect-system"
+    }, "The perfect system"), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+      src: "perfect-system.jpg",
+      alt: "Clu asking to create perfect system"
+    }), /* @__PURE__ */ a("figcaption", null, "Am I still to create the perfect system? [Tron]")), /* @__PURE__ */ a("p", null, "I decided the perfect blog build system has just 3 tasks:"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "build", /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Clean (just ", /* @__PURE__ */ a("code", null, `rm -rf dist`), ")"), /* @__PURE__ */ a("li", null, "Copy static and post assets"), /* @__PURE__ */ a("li", null, "Transpile MD to JSX"), /* @__PURE__ */ a("li", null, "Render JSX to HTML"))), /* @__PURE__ */ a("li", null, "start", /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Build"), /* @__PURE__ */ a("li", null, "Serve ", /* @__PURE__ */ a("code", null, `dist`), " under ", /* @__PURE__ */ a("a", {
+      href: "http://localhost"
+    }, "http://localhost")), /* @__PURE__ */ a("li", null, "Watch for changes"))), /* @__PURE__ */ a("li", null, "serve", /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Serve ", /* @__PURE__ */ a("code", null, `dist`), " under ", /* @__PURE__ */ a("a", {
+      href: "http://localhost"
+    }, "http://localhost"), " exactly like production")))), /* @__PURE__ */ a("h3", {
+      id: "build"
+    }, "Build"), /* @__PURE__ */ a("h4", {
+      id: "transforming-md-to-jsx"
+    }, "Transforming MD to JSX"), /* @__PURE__ */ a("p", null, "The old v2 system was based on ", /* @__PURE__ */ a("code", null, `unified`), " and ", /* @__PURE__ */ a("code", null, `@babel/register`), " but:"), /* @__PURE__ */ a("ol", null, /* @__PURE__ */ a("li", null, "I really don't need all their features, I just need frontmatter and ", /* @__PURE__ */ a("code", null, `import`), " statement support"), /* @__PURE__ */ a("li", null, "Both have rather large dependency trees")), /* @__PURE__ */ a("p", null, "Enter ", /* @__PURE__ */ a("a", {
+      href: "https://marked.js.org/"
+    }, /* @__PURE__ */ a("code", null, `marked`)), ", a JS library with no dependencies and exactly the functionality I need. 10 years of battle-testing has yielded a non-fussy library where the user doesn't have to parse ASTs! After 100 lines of config (mostly manipulating strings) I was able to transform my MD posts to JSX!"), /* @__PURE__ */ a("p", null, "I also took the time to hook up ", /* @__PURE__ */ a("code", null, `esbuild`), " to bundle JS if there's a matching ", /* @__PURE__ */ a("code", null, `.js`), " file to the ", /* @__PURE__ */ a("code", null, `.md`), " file."), /* @__PURE__ */ a("h4", {
+      id: "transforming-jsx-to-html"
+    }, "Transforming JSX to HTML"), /* @__PURE__ */ a("p", null, "The old v2 system had some ", /* @__PURE__ */ a("code", null, `const index = {}`), " variables in memory which were exported and then loaded wherever needed (so import order was important)!"), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+      class: "language-js"
+    }, `let postIndex = {}
+module.exports = { postIndex }`)), /* @__PURE__ */ a("figcaption", null, "Many index, much ", /* @__PURE__ */ a("a", {
+      href: "https://github.com/thesmartwon/thesmartwon.com/blob/9b3ec7e047366a79a12a1d94776d967677e2ada3/scripts/gulp/posts.js"
+    }, "bad old code"))), /* @__PURE__ */ a("p", null, "Instead of having indexes live in memory in source files I complemented the new JSX system by writing a ", /* @__PURE__ */ a("code", null, `src/generated/index.js`), " file with a listing of all pages and posts. As long as this file can be imported by both a JS bundler (for SSR) and by Node (to iterate through every page) I wouldn't need ", /* @__PURE__ */ a("code", null, `@babel/register`), " anymore!"), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+      class: "language-js"
+    }, `const index = require('../../../src/generated')
+Object.entries(index).forEach(renderPage)`)), /* @__PURE__ */ a("figcaption", null, "A sane way to do SSR.")), /* @__PURE__ */ a("h4", {
+      id: "css"
+    }, "CSS"), /* @__PURE__ */ a("p", null, "The old v2 system used ", /* @__PURE__ */ a("a", {
+      href: "https://www.npmjs.com/package/node-sass"
+    }, "node-sass"), ", but they had platform-dependent (and often incompatible) binaries and 16 dependencies. I still needed a SASS compiler since I'm using ", /* @__PURE__ */ a("code", null, `bulma`), ", but I opted for ", /* @__PURE__ */ a("a", {
+      href: "https://www.npmjs.com/package/sass"
+    }, "dart-sass"), " with its single ", /* @__PURE__ */ a("code", null, `chokidar`), " dependency instead."), /* @__PURE__ */ a("h3", {
+      id: "start"
+    }, "Start"), /* @__PURE__ */ a("p", null, "My site builds in around 1s, so the start task really just needs to rereun the correct build tasks and provide a live-reload server."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+      class: "language-sh"
+    }, `npm run build  1.23s user 0.17s system 139% cpu 0.997 total`)), /* @__PURE__ */ a("figcaption", null, 'Now this is actually "blazingly fast". It also scales linearly instead of exponentially (looking at you, Gatsby).')), /* @__PURE__ */ a("h4", {
+      id: "watching-for-changes"
+    }, "Watching for changes"), /* @__PURE__ */ a("p", null, "Since ", /* @__PURE__ */ a("a", {
+      href: "https://www.npmjs.com/package/chokidar"
+    }, /* @__PURE__ */ a("code", null, `chokidar`)), " came along with ", /* @__PURE__ */ a("code", null, `dart-sass`), " I can use it to watch the correct source files:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+      class: "language-js"
+    }, `function register(path, listener) {
+  chokidar.watch(path, { ignoreInitial: true }).on('all', listener)
+}
+// TODO: use CSS instead of SASS
+register('src/**/*.sass', css)
+// TODO: copy only what changes
+register('posts/**/*.{jpg,jpeg,gif,svg,png}', copy)
+// Need to rewrite index to update nav
+register('posts/**/*.md', (ev, file) => {
+  console.log('[watch]', ev, file)
+  if (ev === 'change' || ev === 'add') {
+    post(file)
+  }
+  else if (ev === 'unlink') {
+    delete index[slugify(file)]
+  }
+  writeIndex()
+})`)), /* @__PURE__ */ a("h3", {
+      id: "serving-with-live-reloading"
+    }, "Serving with live-reloading"), /* @__PURE__ */ a("p", null, "The old v2 system used ", /* @__PURE__ */ a("a", {
+      href: "https://www.npmjs.com/package/browser-sync"
+    }, "browser-sync"), " which weighs in with 30 direct dependencies! Instead, I decided to write my own HTTP server to both:"), /* @__PURE__ */ a("ol", null, /* @__PURE__ */ a("li", null, "Serve assets like Github pages's NGINX would in production"), /* @__PURE__ */ a("li", null, "Inject a livereload script for development")), /* @__PURE__ */ a("p", null, "It turned out to only take ", /* @__PURE__ */ a("a", {
+      href: "https://github.com/thesmartwon/thesmartwon.com/blob/master/scripts/serve.js"
+    }, "100 lines of vanilla Node14 code!"), " By tracking connected clients in my HTTP server I could add this to my ", /* @__PURE__ */ a("code", null, `start`), " script to get live-reloading:"), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
+      class: "language-js"
+    }, `const { clients } = require('./serve')
+
+// Index pages now update when I touch site components!
+esbuild.build({
+  ...esbuildConfigSSR,
+  watch: {
+    onRebuild(error) {
+      if (error) {
+        console.log(error)
+        return
+      }
+      // TODO: render only changed post + pages
+      render({ cssFileNames })
+      clients.forEach(res => res.write('data: update'))
+      clients.length = 0
+    },
+  },
+})`)), /* @__PURE__ */ a("h2", {
+      id: "summary"
+    }, "Summary"), /* @__PURE__ */ a("p", null, "Using fewer tools has led to a faster more maintainable build system with fewer dependencies that Github's dependabot shouldn't ever bother me about."), /* @__PURE__ */ a("p", null, "Some future areas for improvement (which are no longer daunting!)"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Add back RSS"), /* @__PURE__ */ a("li", null, "Ditch SASS for my own CSS (I want a dark mode!)"), /* @__PURE__ */ a("li", null, "Create image pipeline (resizing and container size)"), /* @__PURE__ */ a("li", null, "Improve watcher to only rerender changed files")));
   }
 });
 
@@ -2346,16 +2465,16 @@ var init_retirement_calc = __esm({
 });
 
 // src/generated/posts/money/early-retirement/index.md.jsx
-var index_md_exports5 = {};
-__export(index_md_exports5, {
-  default: () => index_md_default5
+var index_md_exports6 = {};
+__export(index_md_exports6, {
+  default: () => index_md_default6
 });
-var index_md_default5;
-var init_index_md5 = __esm({
+var index_md_default6;
+var init_index_md6 = __esm({
   "src/generated/posts/money/early-retirement/index.md.jsx"() {
     init_preact();
     init_retirement_calc();
-    index_md_default5 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "Brilliant, you'd like to quit your day job and do something more meaningful with your life. Now how do you do it?"), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+    index_md_default6 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "Brilliant, you'd like to quit your day job and do something more meaningful with your life. Now how do you do it?"), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "retirement-meme.png",
       alt: "Make it so, captain"
     }), /* @__PURE__ */ a("figcaption", null, "Make it so, captain")), /* @__PURE__ */ a("p", null, "Well, your investments need to make more money per year than your expenses. Great news:"), /* @__PURE__ */ a("div", {
@@ -2426,15 +2545,15 @@ var init_index_md5 = __esm({
 });
 
 // src/generated/posts/money/market-timing/index.md.jsx
-var index_md_exports6 = {};
-__export(index_md_exports6, {
-  default: () => index_md_default6
+var index_md_exports7 = {};
+__export(index_md_exports7, {
+  default: () => index_md_default7
 });
-var index_md_default6;
-var init_index_md6 = __esm({
+var index_md_default7;
+var init_index_md7 = __esm({
   "src/generated/posts/money/market-timing/index.md.jsx"() {
     init_preact();
-    index_md_default6 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "With all the ", /* @__PURE__ */ a("a", {
+    index_md_default7 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "With all the ", /* @__PURE__ */ a("a", {
       href: "https://www.usatoday.com/story/news/politics/2020/03/13/coronavirus-national-emergency-questions-answers-trump/5026463002/"
     }, "Coronavirus panic"), " the DOW has been falling off a cliff the past few days:"), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("a", {
       href: "dow-plummet.html"
@@ -3083,15 +3202,15 @@ var init_index_md6 = __esm({
 });
 
 // src/generated/posts/money/one-year/index.md.jsx
-var index_md_exports7 = {};
-__export(index_md_exports7, {
-  default: () => index_md_default7
+var index_md_exports8 = {};
+__export(index_md_exports8, {
+  default: () => index_md_default8
 });
-var index_md_default7;
-var init_index_md7 = __esm({
+var index_md_default8;
+var init_index_md8 = __esm({
   "src/generated/posts/money/one-year/index.md.jsx"() {
     init_preact();
-    index_md_default7 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "It's time to come clean. I could never live off ", /* @__PURE__ */ a("a", {
+    index_md_default8 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "It's time to come clean. I could never live off ", /* @__PURE__ */ a("a", {
       href: "../early-retirement"
     }, "$24,000"), " like my retirement calculator's estimate is based off. I could do it off $13,717, which includes cheap rent at home and even an overkill $1,700 server for stock analysis."), /* @__PURE__ */ a("h2", {
       id: "income"
@@ -3106,15 +3225,15 @@ var init_index_md7 = __esm({
 });
 
 // src/generated/posts/school/grad-school/index.md.jsx
-var index_md_exports8 = {};
-__export(index_md_exports8, {
-  default: () => index_md_default8
+var index_md_exports9 = {};
+__export(index_md_exports9, {
+  default: () => index_md_default9
 });
-var index_md_default8;
-var init_index_md8 = __esm({
+var index_md_default9;
+var init_index_md9 = __esm({
   "src/generated/posts/school/grad-school/index.md.jsx"() {
     init_preact();
-    index_md_default8 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "Today, my Aunt told me:"), /* @__PURE__ */ a("blockquote", null, /* @__PURE__ */ a("p", null, "More lucrative job opportunities await you at my company with a Master's Degree.")), /* @__PURE__ */ a("p", null, `Her company's not the first to tell me that about Computer Science, especially when they're talking about "machine learning" and other "data science" careers. Sick of school, sick of hearing that I need to pursue more school, and not really caring what field I end up in, I decided to find out the truth about salaries myself. Near the bottom of my Computer Science `, /* @__PURE__ */ a("a", {
+    index_md_default9 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "Today, my Aunt told me:"), /* @__PURE__ */ a("blockquote", null, /* @__PURE__ */ a("p", null, "More lucrative job opportunities await you at my company with a Master's Degree.")), /* @__PURE__ */ a("p", null, `Her company's not the first to tell me that about Computer Science, especially when they're talking about "machine learning" and other "data science" careers. Sick of school, sick of hearing that I need to pursue more school, and not really caring what field I end up in, I decided to find out the truth about salaries myself. Near the bottom of my Computer Science `, /* @__PURE__ */ a("a", {
       href: "https://www.csc.ncsu.edu/future-students/"
     }, "department's website,"), " I found out that the average Computer Science undergrad makes $72k, while the average graduate makes $102k. Also, ", /* @__PURE__ */ a("a", {
       href: "https://studentservices.ncsu.edu/your-money/financial-aid/estimated-cost-of-attendance/undergraduate-student/"
@@ -3133,17 +3252,17 @@ var init_index_md8 = __esm({
 });
 
 // src/generated/posts/work/one-year/index.md.jsx
-var index_md_exports9 = {};
-__export(index_md_exports9, {
-  default: () => index_md_default9
+var index_md_exports10 = {};
+__export(index_md_exports10, {
+  default: () => index_md_default10
 });
-var index_md_default9;
-var init_index_md9 = __esm({
+var index_md_default10;
+var init_index_md10 = __esm({
   "src/generated/posts/work/one-year/index.md.jsx"() {
     init_preact();
-    index_md_default9 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("h1", {
+    index_md_default10 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("h1", {
       id: "my-job"
-    }, "My Job"), /* @__PURE__ */ a("p", null, "I've been working as a frontend build engineer for an open-source company one year now. I came in with only a summer internship's worth of Javascript experience. I had little Github workflow experience, but I've taken time to ", /* @__PURE__ */ a("code", null, "git"), " good. I support developer workflows and environments, publish our packages to NPM, publish our documentation, and swoop in to help devs when they come across problems they can't solve."), /* @__PURE__ */ a("p", null, "I've filled holes on our team for the entire past year. Infrastucture and architecting is the hole I'm usually filling since we're experiencing growth pangs beyond what our initial architecture can support. My job is akin to construction, I have to support a sinking foundation as developers keep adding features and fixing things around the house."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("table", {
+    }, "My Job"), /* @__PURE__ */ a("p", null, "I've been working as a frontend build engineer for an open-source company one year now. I came in with only a summer internship's worth of Javascript experience. I had little Github workflow experience, but I've taken time to ", /* @__PURE__ */ a("code", null, `git`), " good. I support developer workflows and environments, publish our packages to NPM, publish our documentation, and swoop in to help devs when they come across problems they can't solve."), /* @__PURE__ */ a("p", null, "I've filled holes on our team for the entire past year. Infrastucture and architecting is the hole I'm usually filling since we're experiencing growth pangs beyond what our initial architecture can support. My job is akin to construction, I have to support a sinking foundation as developers keep adding features and fixing things around the house."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("table", {
       style: "width:330px;margin:auto"
     }, /* @__PURE__ */ a("tbody", null, /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", null, /* @__PURE__ */ a("img", {
       src: "./github-logo.svg",
@@ -3242,7 +3361,7 @@ var require_generated = __commonJS({
       "/posts/coding/canvas-game-engine/": {
         Component: () => (init_postIndex(), postIndex_exports),
         "title": "Canvas game engine posts",
-        "subtitle": "[Insert sassy comment here]"
+        "subtitle": "Posts about a toy canvas game engine"
       },
       "/posts/coding/": {
         Component: () => (init_postIndex(), postIndex_exports),
@@ -3268,27 +3387,40 @@ var require_generated = __commonJS({
         "dateLong": "May 15, 2019",
         "dateShort": "2019-05-15"
       },
-      "/posts/coding/this-site/": {
+      "/posts/coding/this-site/v1/": {
         Component: () => (init_index_md3(), index_md_exports3),
-        "title": "How this Site (used to be) Built",
+        "title": "How v1 of this Site was Built",
         "excerpt": "A newer version of this article is available. You probably don't notice, but this site is nearly as fast as it can possibly be!",
         "timeToRead": 2,
         "dateLong": "May 12, 2019",
         "dateShort": "2019-05-12"
       },
-      "/posts/coding/this-site-2/": {
+      "/posts/coding/this-site/": {
+        Component: () => (init_postIndex(), postIndex_exports),
+        "title": "This site posts",
+        "subtitle": "Handmade with lots of \u2764\uFE0F"
+      },
+      "/posts/coding/this-site/v2/": {
         Component: () => (init_index_md4(), index_md_exports4),
-        "title": "How this Site is Built",
+        "title": "How v2 of this Site was Built",
         "excerpt": "I ditched Gatsby. I decided to ditch Gatsby because after an update to how Gatsby's resources were loaded, my site wouldn't build anymore.",
         "timeToRead": 4,
         "dateLong": "August 9, 2019",
         "dateShort": "2019-08-09",
         "jsFileNames": [
-          "index.RWSO62O6.js"
+          "index.DMYWRFL7.js"
         ]
       },
-      "/posts/money/early-retirement/": {
+      "/posts/coding/this-site/v3/": {
         Component: () => (init_index_md5(), index_md_exports5),
+        "title": "How this Site will Always be Built",
+        "excerpt": "After getting nagged with 6 dependabot security vulnerabilities (which weren't actually vulnerabilities) I figured it was finally time to dust off thi\u2026",
+        "timeToRead": 2,
+        "dateLong": "May 12, 2021",
+        "dateShort": "2021-05-12"
+      },
+      "/posts/money/early-retirement/": {
+        Component: () => (init_index_md6(), index_md_exports6),
         "title": "How to Retire Early",
         "excerpt": "Brilliant, you'd like to quit your day job and do something more meaningful with your life. Now how do you do it?",
         "timeToRead": 4,
@@ -3304,7 +3436,7 @@ var require_generated = __commonJS({
         "subtitle": "Time is money, friend"
       },
       "/posts/money/market-timing/": {
-        Component: () => (init_index_md6(), index_md_exports6),
+        Component: () => (init_index_md7(), index_md_exports7),
         "title": "Timing Market Dips",
         "excerpt": "With all the Coronavirus panic the DOW has been falling off a cliff the past few days: DOW plummetting to $21k based on Yahoo finance data.",
         "timeToRead": 2,
@@ -3312,7 +3444,7 @@ var require_generated = __commonJS({
         "dateShort": "2020-03-14"
       },
       "/posts/money/one-year/": {
-        Component: () => (init_index_md7(), index_md_exports7),
+        Component: () => (init_index_md8(), index_md_exports8),
         "title": "My 2019 Spending",
         "excerpt": "It's time to come clean. I could never live off $24,000 like my retirement calculator's estimate is based off.",
         "timeToRead": 0.5,
@@ -3320,7 +3452,7 @@ var require_generated = __commonJS({
         "dateShort": "2020-02-24"
       },
       "/posts/school/grad-school/": {
-        Component: () => (init_index_md8(), index_md_exports8),
+        Component: () => (init_index_md9(), index_md_exports9),
         "title": "Is Grad School Worth it?",
         "excerpt": "Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.",
         "timeToRead": 2.5,
@@ -3333,7 +3465,7 @@ var require_generated = __commonJS({
         "subtitle": "School sucks"
       },
       "/posts/work/one-year/": {
-        Component: () => (init_index_md9(), index_md_exports9),
+        Component: () => (init_index_md10(), index_md_exports10),
         "title": "One Year of Work",
         "excerpt": "I've been working as a frontend build engineer for an open-source company one year now.",
         "timeToRead": 3,

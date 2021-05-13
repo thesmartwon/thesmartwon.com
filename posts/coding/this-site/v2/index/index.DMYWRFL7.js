@@ -330,7 +330,7 @@
     }
   };
 
-  // posts/coding/this-site-2/index.js
+  // posts/coding/this-site/v2/index.js
   var root = document.getElementById("preact-logo");
   N(a(Logo), root, root);
 })();
