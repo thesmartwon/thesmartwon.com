@@ -1,4 +1,5 @@
 const { esbuildConfig, paths } = require('../helpers')
+const { rss } = require('./rss')
 const esbuild = require('esbuild')
 const path = require('path')
 const fs = require('fs')
@@ -43,6 +44,7 @@ function render({ cssFileNames }) {
   Object.entries(index).forEach(([slug, props]) =>
     renderPage({ slug, props, cssFileNames, entryFile })
   )
+  rss(index)
 
   const elapsed = process.hrtime(start)[1] / 1000000
   console.log('[render] rendered', Object.keys(index).length, 'files in', elapsed + 'ms')

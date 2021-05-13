@@ -154,4 +154,5 @@ Some future areas for improvement (which are no longer daunting!)
 - Ditch SASS for my own CSS (I want a dark mode!)
 - Create image pipeline (resizing and container size)
 - Improve watcher to only rerender changed files
+- Wrap build system in another package for others to use!
 
