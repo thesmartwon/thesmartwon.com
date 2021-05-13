@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>The Smart Blog</title>
+  <link>https://thesmartwon.com</link>
+  <description>Relax and have a good read!</description>
+  <item>
+    <title>How this Site will Always be Built</title>
+    <link>https://thesmartwon.com/posts/coding/this-site/v3/</link>
+    <description>After getting nagged with 6 dependabot security vulnerabilities (which weren't actually vulnerabilities) I figured it was finally time to dust off thi…</description>
+    <category>coding</category>
+    <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>Timing Market Dips</title>
+    <link>https://thesmartwon.com/posts/money/market-timing/</link>
+    <description>With all the Coronavirus panic the DOW has been falling off a cliff the past few days: DOW plummetting to $21k based on Yahoo finance data.</description>
+    <category>money</category>
+    <pubDate>Sat, 14 Mar 2020 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>My 2019 Spending</title>
+    <link>https://thesmartwon.com/posts/money/one-year/</link>
+    <description>It's time to come clean. I could never live off $24,000 like my retirement calculator's estimate is based off.</description>
+    <category>money</category>
+    <pubDate>Mon, 24 Feb 2020 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>One Year of Work</title>
+    <link>https://thesmartwon.com/posts/work/one-year/</link>
+    <description>I've been working as a frontend build engineer for an open-source company one year now.</description>
+    <category>work</category>
+    <pubDate>Sun, 02 Feb 2020 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>How v2 of this Site was Built</title>
+    <link>https://thesmartwon.com/posts/coding/this-site/v2/</link>
+    <description>I ditched Gatsby. I decided to ditch Gatsby because after an update to how Gatsby's resources were loaded, my site wouldn't build anymore.</description>
+    <category>coding</category>
+    <pubDate>Fri, 09 Aug 2019 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>&lt;Canvas&gt; Game Engine: Part 2</title>
+    <link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-2</link>
+    <description>We left off with a canvas that looked like this: This game doesn't work without an HTML canvas :( It's not very exciting (or interactive), so let's st…</description>
+    <category>coding</category>
+    <pubDate>Wed, 07 Aug 2019 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>&lt;Canvas&gt; Game Engine: Part 1</title>
+    <link>https://thesmartwon.com/posts/coding/canvas-game-engine/part-1</link>
+    <description>AAA titles like Fallout and Civilization V are usually usually written in low-level languages like C++ so they can directly access hardware (ie a GPU)…</description>
+    <category>coding</category>
+    <pubDate>Sun, 21 Jul 2019 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>(Don't Fear) The Command Line</title>
+    <link>https://thesmartwon.com/posts/coding/command-line/</link>
+    <description>For many, the command line is a scary prompt that reminds people of old computers that were hard to use.</description>
+    <category>coding</category>
+    <pubDate>Wed, 15 May 2019 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>How v1 of this Site was Built</title>
+    <link>https://thesmartwon.com/posts/coding/this-site/v1/</link>
+    <description>A newer version of this article is available. You probably don't notice, but this site is nearly as fast as it can possibly be!</description>
+    <category>coding</category>
+    <pubDate>Sun, 12 May 2019 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>How to Retire Early</title>
+    <link>https://thesmartwon.com/posts/money/early-retirement/</link>
+    <description>Brilliant, you'd like to quit your day job and do something more meaningful with your life. Now how do you do it?</description>
+    <category>money</category>
+    <pubDate>Tue, 18 Dec 2018 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>Craigslist Bike Guide</title>
+    <link>https://thesmartwon.com/posts/bikes/buying-used/</link>
+    <description>TLDR; I recently bought a bike after religiously checking Craigslist for a month, and I'd like to share the process I went through.</description>
+    <category>bikes</category>
+    <pubDate>Wed, 10 Jan 2018 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+  <item>
+    <title>Is Grad School Worth it?</title>
+    <link>https://thesmartwon.com/posts/school/grad-school/</link>
+    <description>Today, my Aunt told me: More lucrative job opportunities await you at my company with a Master's Degree.</description>
+    <category>school</category>
+    <pubDate>Mon, 30 Oct 2017 00:00:00 GMT</pubDate>
+    <lang>en-US</lang>
+  </item>
+</channel>
+</rss>

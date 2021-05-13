@@ -2061,7 +2061,7 @@ esbuild.build({
   },
 })`)), /* @__PURE__ */ a("h2", {
       id: "summary"
-    }, "Summary"), /* @__PURE__ */ a("p", null, "Using fewer tools has led to a faster more maintainable build system with fewer dependencies that Github's dependabot shouldn't ever bother me about."), /* @__PURE__ */ a("p", null, "Some future areas for improvement (which are no longer daunting!)"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Add back RSS"), /* @__PURE__ */ a("li", null, "Ditch SASS for my own CSS (I want a dark mode!)"), /* @__PURE__ */ a("li", null, "Create image pipeline (resizing and container size)"), /* @__PURE__ */ a("li", null, "Improve watcher to only rerender changed files")));
+    }, "Summary"), /* @__PURE__ */ a("p", null, "Using fewer tools has led to a faster more maintainable build system with fewer dependencies that Github's dependabot shouldn't ever bother me about."), /* @__PURE__ */ a("p", null, "Some future areas for improvement (which are no longer daunting!)"), /* @__PURE__ */ a("ul", null, /* @__PURE__ */ a("li", null, "Add back RSS"), /* @__PURE__ */ a("li", null, "Ditch SASS for my own CSS (I want a dark mode!)"), /* @__PURE__ */ a("li", null, "Create image pipeline (resizing and container size)"), /* @__PURE__ */ a("li", null, "Improve watcher to only rerender changed files"), /* @__PURE__ */ a("li", null, "Wrap build system in another package for others to use!")));
   }
 });
 
