@@ -12,12 +12,12 @@ export default ({ path }) => (
     )}
     path={path}
   >
-    <div className="content is-medium">
+    <div className="content">
       <p>
         <Link href="/">thesmartwon.com</Link> started as a place for me to share topics with friends without having to repeat myself (plus they get to keep these notes).
         Now it's just a place for me to share my experiences with those who want a little more wisdom. 
       </p>
-      <h4>Who am I?</h4>
+      <h2>Who am I?</h2>
       <p>
         I'm an early college grad who's been programming since elementary school. I plan to rush to financial independence in less than 10 years
         so I can work on what I want instead of what my employers want. Some things I think are cool are

@@ -1,11 +1,13 @@
-const { watch } = require('chokidar')
 const { build } = require('./build')
 const { css } = require('./build/css')
 const { copy } = require('./build/copy')
 const { post, index, writeIndex } = require('./html/source')
 const { render, esbuildConfigSSR } = require('./html/render')
 const { serve, clients } = require('./serve')
+const { walk } = require('./helpers')
+const { watch } = require('chokidar')
 const esbuild = require('esbuild')
+const path = require('path')
 
 function register(path, listener) {
   watch(path, { ignoreInitial: true }).on('all', listener)
@@ -13,17 +15,29 @@ function register(path, listener) {
 
 let cssFileNames = build()
 console.log('watching for changes')
-register('src/**/*.sass', css) // TODO: sass graph
+// TODO: sass graph
+register('src/**/*.sass', () => {
+  css()
+  clients.forEach(res => res.write('data: update\n\n'))
+  clients.length = 0
+})
 register('posts/**/*.{jpg,jpeg,gif,svg,png}', copy) // TODO: copy only what changes
-register('posts/**/*.md', (ev, file) => {
+register('posts/**/*.{md,js,jsx}', (ev, file) => {
   console.log('[watch]', ev, file)
-  if (ev === 'change' || ev === 'add') {
-    post(file)
+  let dirname
+  while (dirname = path.dirname(file)) {
+    file = walk(dirname, { ext: '.md' })[0]
+    if (file) {
+      if (ev === 'change' || ev === 'add') {
+        post(file)
+      }
+      else if (ev === 'unlink') {
+        delete index[slugify(file)]
+      }
+      writeIndex()
+      return
+    }
   }
-  else if (ev === 'unlink') {
-    delete index[slugify(file)]
-  }
-  writeIndex()
 })
 esbuild.build({
   ...esbuildConfigSSR,

@@ -1,6 +1,6 @@
 import { h, Component } from 'preact'
 import Link from '../../../src/components/link'
-import { fedTaxBrackets, projectRetirement } from '../../../src/helpers/retire'
+import { fedTaxBrackets, projectRetirement } from './helpers'
 
 export class RetirementCalc extends Component {
   constructor(props) {
@@ -63,13 +63,13 @@ export class RetirementCalc extends Component {
     const tabs = [
       {num: 1, caption: 'Income'},
       {num: 2, caption: 'Contributions'},
-      {num: 3, caption: 'Initial balances'},
+      {num: 3, caption: 'Balances'},
       {num: 4, caption: 'Assumptions'},
     ]
 
     return (
       <div id="retirementCalc">
-        <div className="tabs is-centered is-boxed">
+        <div className="tabs">
           <ul>
             {tabs.map(tab => 
               <li
@@ -83,10 +83,9 @@ export class RetirementCalc extends Component {
         {this.state.tabShown === 1 && 
           <div className="field-body">
             <div className="field">
-              <label className="label">Income</label>
+              <label>Income</label>
               <div className="control">
                 <input
-                  className="input is-success"
                   type="number"
                   step="1000"
                   value={this.state.income}
@@ -95,10 +94,9 @@ export class RetirementCalc extends Component {
               <p className="help">Your salary</p>
             </div>
             <div className="field">
-              <label className="label">Expenses</label>
+              <label>Expenses</label>
               <div className="control">
                 <input
-                  className="input is-danger"
                   type="number"
                   step="100"
                   value={this.state.expenses}
@@ -107,7 +105,7 @@ export class RetirementCalc extends Component {
               <p className="help">This is the most important variable</p>
             </div>
             <div className="field">
-              <label className="label">Status</label>
+              <label>Status</label>
               <div className="control select is-warning">
                 <select onChange={event => this.setState({status: event.target.value})} value={this.state.status}>
                   {Object.keys(fedTaxBrackets).map(key => (
@@ -121,10 +119,10 @@ export class RetirementCalc extends Component {
         {this.state.tabShown === 2 && 
           <div className="field-body">
             <div className="field">
-              <label className="label">HSA</label>
+              <label>HSA</label>
               <div className="control">
                 <input
-                  className="input is-primary"
+                  className="input"
                   type="number"
                   step="100"
                   value={this.state.desiredContributions.hsa}
@@ -134,10 +132,10 @@ export class RetirementCalc extends Component {
             </div>
             <div className="field is-grouped">
               <div className="field">
-                <label className="label">401k</label>
+                <label>401k</label>
                 <div className="control">
                   <input
-                    className="input is-primary"
+                    className="input"
                     type="number"
                     step="100"
                     value={this.state.desiredContributions.k401}
@@ -146,26 +144,26 @@ export class RetirementCalc extends Component {
                 <p className="help">Desired 401k contribution</p>
               </div>
               <div className="field">
-                <label className="label">401k Match</label>
+                <label>Match</label>
                 <div className="control has-icons-right" style={{width: '7rem'}}>
                   <input
-                    className="input is-primary"
+                    className="input"
                     type="number"
                     step="1"
                     value={this.state.k401match}
                     onChange={event => this.setState({k401match: Number(event.target.value)})} />
-                  <span className="icon is-right is-centered">
-                    <i>%</i>
+                  <span className="icon is-right">
+                    %
                   </span>
                 </div>
-                <p className="help">Employer's match</p>
+                <p className="help">Employer's 401k match</p>
               </div>
             </div>
             <div className="field">
-              <label className="label">IRA</label>
+              <label>IRA</label>
               <div className="control">
                 <input
-                  className="input is-primary"
+                  className="input"
                   type="number"
                   step="100"
                   value={this.state.desiredContributions.ira}
@@ -177,10 +175,10 @@ export class RetirementCalc extends Component {
         {this.state.tabShown === 3 && 
           <div className="field-body">
             <div className="field">
-              <label className="label">HSA</label>
+              <label>HSA</label>
               <div className="control">
                 <input
-                  className="input is-primary"
+                  className="input"
                   type="number"
                   step="100"
                   value={this.state.initialBalances.hsa}
@@ -189,10 +187,10 @@ export class RetirementCalc extends Component {
               <p className="help">Initial HSA balance</p>
             </div>
             <div className="field">
-              <label className="label">401k</label>
+              <label>401k</label>
               <div className="control">
                 <input
-                  className="input is-primary"
+                  className="input"
                   type="number"
                   step="100"
                   value={this.state.initialBalances.k401}
@@ -201,10 +199,10 @@ export class RetirementCalc extends Component {
               <p className="help">Initial 401k balance</p>
             </div>
             <div className="field">
-              <label className="label">IRA</label>
+              <label>IRA</label>
               <div className="control">
                 <input
-                  className="input is-primary"
+                  className="input"
                   type="number"
                   step="100"
                   value={this.state.initialBalances.ira}
@@ -213,10 +211,10 @@ export class RetirementCalc extends Component {
               <p className="help">Initial IRA balance</p>
             </div>
             <div className="field">
-              <label className="label">After tax</label>
+              <label>After tax</label>
               <div className="control">
                 <input
-                  className="input is-primary"
+                  className="input"
                   type="number"
                   step="100"
                   value={this.state.initialBalances.afterTax}
@@ -228,32 +226,32 @@ export class RetirementCalc extends Component {
         {this.state.tabShown === 4 && 
           <div className="field-body">
               <div className="field">
-                <label className="label">Safe Withdrawal Rate</label>
+                <label>Safe Withdrawal Rate</label>
                 <div className="control has-icons-right">
                   <input
-                    className="input is-primary"
+                    className="input"
                     type="number"
                     step="0.25"
                     value={this.state.safeWithdrawal}
                     onChange={event => this.setState({safeWithdrawal: Number(event.target.value)})} />
-                  <span className="icon is-right is-centered">
-                    <i>%</i>
-                  </span>
+                <span className="icon is-right">
+                  %
+                </span>
                 </div>
                 <p className="help"><Link href="https://www.madfientist.com/safe-withdrawal-rate/">Nest Egg * Safe Withdrawal &gt; Expenses</Link></p>
               </div>
               <div className="field">
-                <label className="label">Effective Growth Rate</label>
+                <label>Effective Growth Rate</label>
                 <div className="control has-icons-right">
                   <input
-                    className="input is-primary"
+                    className="input"
                     type="number"
                     step="0.5"
                     value={this.state.effectiveGrowth}
                     onChange={event => this.setState({effectiveGrowth: Number(event.target.value)})} />
-                  <span className="icon is-right is-centered">
-                    <i>%</i>
-                  </span>
+                <span className="icon is-right">
+                  %
+                </span>
                 </div>
                 <p className="help">
                   <Link href="https://www.investopedia.com/ask/answers/042415/what-average-annual-return-sp-500.asp">Average {'S&P'} 500 Growth</Link> -
@@ -261,16 +259,16 @@ export class RetirementCalc extends Component {
                 </p>
               </div>
               <div className="field">
-                <label className="label">Raise Rate</label>
+                <label>Raise Rate</label>
                 <div className="control has-icons-right">
                   <input
-                    className="input is-primary"
+                    className="input"
                     type="number"
                     step="0.5"
                     value={this.state.raise}
                     onChange={event => this.setState({raise: Number(event.target.value)})} />
-                  <span className="icon is-right is-centered">
-                    <i>%</i>
+                  <span className="icon is-right">
+                    %
                   </span>
                 </div>
                 <p className="help">How fast you progress in your career</p>

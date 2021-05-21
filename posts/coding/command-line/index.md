@@ -259,7 +259,6 @@ You can look up the manual page for commands using `man` to learn all about them
 
 ```bash
 > man ls
-LS(1)                                                                    User Commands                                                                    LS(1)
 
 NAME
        ls - list directory contents

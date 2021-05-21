@@ -22,7 +22,7 @@ function renderPage({ slug, props, cssFileNames, entryFile }) {
   props.cssFileNames = cssFileNames
   props.path = slug
   let html
-  if (props.dateShort) {
+  if (props.timeToRead) {
     html = renderPost(props)
   }
   else {

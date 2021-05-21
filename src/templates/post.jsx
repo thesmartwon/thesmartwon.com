@@ -17,7 +17,7 @@ const PostTemplate = ({
   <CenterLayout
     title={<h1 className="title is-2">{title}</h1>}
     subtitle={
-      <span className="has-text-grey">
+      <span className="time-to-read">
         <time dateTime={dateShort}>{dateLong}</time>
         {' · '}{timeToRead} min read
       </span>
@@ -25,16 +25,17 @@ const PostTemplate = ({
     hasJavascript={hasJavascript}
     isFullscreen={isFullscreen}
     path={path}
+    footer={
+      <Fragment>
+        <Link href="#">Back to top</Link>{' / '}
+        <Link href="/posts/">View all posts</Link>
+      </Fragment>
+    }
   >
     {isFullscreen ? children :
       <Fragment>
-        <div id="content" className="content is-medium">
+        <div id="content" className="content">
           {children}
-        </div>
-
-        <div className="has-text-centered">
-          <Link href="#">Back to top</Link>{' / '}
-          <Link href="/posts/">View all posts</Link>
         </div>
       </Fragment>
     }

@@ -19,16 +19,14 @@ export default ({ path }) => {
       }
       path={path}
     >
-      <div className="content is-medium has-text-centered">
-        <ul className="article-list">
-          {Object.entries(sourcedPages)
-            .filter(([slug, props]) => slug.startsWith(path) && props.timeToRead)
-            .sort(([_, p1], [__, p2]) => p2.dateShort.localeCompare(p1.dateShort))
-            .map(([slug, post]) =>
-              <ArticlePreview path={slug} {...post} />
-            )}
-        </ul>
-      </div>
+      <ul className="article-list">
+        {Object.entries(sourcedPages)
+          .filter(([slug, props]) => slug.startsWith(path) && props.timeToRead)
+          .sort(([_, p1], [__, p2]) => p2.dateShort.localeCompare(p1.dateShort))
+          .map(([slug, post]) =>
+            <ArticlePreview path={slug} {...post} />
+          )}
+      </ul>
     </CenterLayout>
   )
 }

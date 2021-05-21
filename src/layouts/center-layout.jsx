@@ -7,27 +7,35 @@ export default ({
   hasJavascript,
   isFullscreen,
   path,
-  children
+  children,
+  footer
 }) => (
   <Fragment>
-    <div className="container">
-      <div className="column is-8 is-offset-2">
-        {hasJavascript && (
-          <noscript key="noscript">
-            Some things might not work because Javascript is disabled, but you aren't missing out on much.
-          </noscript>)}
-        <Breadcrumb path={path} />
-        {!isFullscreen && (
-          <Fragment>
-            <div className="section titles-section">
-              {title}
-              {subtitle}
-            </div>
+    <header>
+      <Breadcrumb path={path} />
+    </header>
+    <div className="page-content">
+      {hasJavascript && (
+        <noscript key="noscript">
+          Interactive page elements might not work because Javascript is disabled
+        </noscript>)}
+      {!isFullscreen && (
+        <Fragment>
+          <div className="section titles-section">
+            {title}
+            {subtitle}
+          </div>
+          <main>
             {children}
-          </Fragment>
-        )}
-      </div>
+          </main>
+        </Fragment>
+      )}
     </div>
+    {footer &&
+      <footer>
+        {footer}
+      </footer>
+    }
     {isFullscreen && children}
   </Fragment>
   

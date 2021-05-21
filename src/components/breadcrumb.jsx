@@ -35,8 +35,13 @@ export default ({ path }) => {
   return (
     <nav className="breadcrumb is-marginless is-centered" aria-label="breadcrumbs">
       <ul>
-        {crumbs.map(crumb => (
-          <li key={crumb.text} className={crumb.isActive ? 'is-active' : ''}><Link href={crumb.path}>{crumb.text}</Link></li>
+        {crumbs.map(({ text, path, isActive }) => (
+          <li key={text} className={isActive ? 'is-active' : ''}>
+            {isActive
+              ? <span>{text}</span>
+              : <Link href={path}>{text}</Link>
+            }
+          </li>
         ))}
       </ul>
     </nav>
