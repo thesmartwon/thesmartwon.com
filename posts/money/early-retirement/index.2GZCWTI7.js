@@ -286,7 +286,7 @@
     className
   }, children);
 
-  // src/helpers/retire.js
+  // posts/money/early-retirement/helpers.js
   var min = (a2, b2) => a2 > b2 ? b2 : a2;
   var max = (a2, b2) => a2 > b2 ? a2 : b2;
   var fedTaxRate = [0.1, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37];
@@ -396,13 +396,13 @@
       const tabs = [
         {num: 1, caption: "Income"},
         {num: 2, caption: "Contributions"},
-        {num: 3, caption: "Initial balances"},
+        {num: 3, caption: "Balances"},
         {num: 4, caption: "Assumptions"}
       ];
       return /* @__PURE__ */ a("div", {
         id: "retirementCalc"
       }, /* @__PURE__ */ a("div", {
-        className: "tabs is-centered is-boxed"
+        className: "tabs"
       }, /* @__PURE__ */ a("ul", null, tabs.map((tab) => /* @__PURE__ */ a("li", {
         key: tab.num,
         className: this.state.tabShown === tab.num ? "is-active" : ""
@@ -412,12 +412,9 @@
         className: "field-body"
       }, /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "Income"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Income"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-success",
         type: "number",
         step: "1000",
         value: this.state.income,
@@ -426,12 +423,9 @@
         className: "help"
       }, "Your salary")), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "Expenses"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Expenses"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-danger",
         type: "number",
         step: "100",
         value: this.state.expenses,
@@ -440,9 +434,7 @@
         className: "help"
       }, "This is the most important variable")), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "Status"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Status"), /* @__PURE__ */ a("div", {
         className: "control select is-warning"
       }, /* @__PURE__ */ a("select", {
         onChange: (event) => this.setState({status: event.target.value}),
@@ -456,12 +448,10 @@
         className: "field-body"
       }, /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "HSA"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "HSA"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.desiredContributions.hsa,
@@ -472,12 +462,10 @@
         className: "field is-grouped"
       }, /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "401k"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "401k"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.desiredContributions.k401,
@@ -486,29 +474,25 @@
         className: "help"
       }, "Desired 401k contribution")), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "401k Match"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Match"), /* @__PURE__ */ a("div", {
         className: "control has-icons-right",
         style: {width: "7rem"}
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "1",
         value: this.state.k401match,
         onChange: (event) => this.setState({k401match: Number(event.target.value)})
       }), /* @__PURE__ */ a("span", {
-        className: "icon is-right is-centered"
-      }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+        className: "icon is-right"
+      }, "%")), /* @__PURE__ */ a("p", {
         className: "help"
-      }, "Employer's match"))), /* @__PURE__ */ a("div", {
+      }, "Employer's 401k match"))), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "IRA"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "IRA"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.desiredContributions.ira,
@@ -519,12 +503,10 @@
         className: "field-body"
       }, /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "HSA"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "HSA"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.initialBalances.hsa,
@@ -533,12 +515,10 @@
         className: "help"
       }, "Initial HSA balance")), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "401k"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "401k"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.initialBalances.k401,
@@ -547,12 +527,10 @@
         className: "help"
       }, "Initial 401k balance")), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "IRA"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "IRA"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.initialBalances.ira,
@@ -561,12 +539,10 @@
         className: "help"
       }, "Initial IRA balance")), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "After tax"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "After tax"), /* @__PURE__ */ a("div", {
         className: "control"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "100",
         value: this.state.initialBalances.afterTax,
@@ -577,37 +553,33 @@
         className: "field-body"
       }, /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "Safe Withdrawal Rate"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Safe Withdrawal Rate"), /* @__PURE__ */ a("div", {
         className: "control has-icons-right"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "0.25",
         value: this.state.safeWithdrawal,
         onChange: (event) => this.setState({safeWithdrawal: Number(event.target.value)})
       }), /* @__PURE__ */ a("span", {
-        className: "icon is-right is-centered"
-      }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+        className: "icon is-right"
+      }, "%")), /* @__PURE__ */ a("p", {
         className: "help"
       }, /* @__PURE__ */ a(link_default, {
         href: "https://www.madfientist.com/safe-withdrawal-rate/"
       }, "Nest Egg * Safe Withdrawal > Expenses"))), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "Effective Growth Rate"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Effective Growth Rate"), /* @__PURE__ */ a("div", {
         className: "control has-icons-right"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "0.5",
         value: this.state.effectiveGrowth,
         onChange: (event) => this.setState({effectiveGrowth: Number(event.target.value)})
       }), /* @__PURE__ */ a("span", {
-        className: "icon is-right is-centered"
-      }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+        className: "icon is-right"
+      }, "%")), /* @__PURE__ */ a("p", {
         className: "help"
       }, /* @__PURE__ */ a(link_default, {
         href: "https://www.investopedia.com/ask/answers/042415/what-average-annual-return-sp-500.asp"
@@ -615,19 +587,17 @@
         href: "https://tradingeconomics.com/united-states/inflation-cpi"
       }, " Inflation"))), /* @__PURE__ */ a("div", {
         className: "field"
-      }, /* @__PURE__ */ a("label", {
-        className: "label"
-      }, "Raise Rate"), /* @__PURE__ */ a("div", {
+      }, /* @__PURE__ */ a("label", null, "Raise Rate"), /* @__PURE__ */ a("div", {
         className: "control has-icons-right"
       }, /* @__PURE__ */ a("input", {
-        className: "input is-primary",
+        className: "input",
         type: "number",
         step: "0.5",
         value: this.state.raise,
         onChange: (event) => this.setState({raise: Number(event.target.value)})
       }), /* @__PURE__ */ a("span", {
-        className: "icon is-right is-centered"
-      }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+        className: "icon is-right"
+      }, "%")), /* @__PURE__ */ a("p", {
         className: "help"
       }, "How fast you progress in your career"))), /* @__PURE__ */ a("hr", null), /* @__PURE__ */ a("table", {
         className: "table is-narrow is-fullwidth is-striped"

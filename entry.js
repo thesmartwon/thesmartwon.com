@@ -848,12 +848,12 @@ var init_breadcrumb = __esm({
       return /* @__PURE__ */ a("nav", {
         className: "breadcrumb is-marginless is-centered",
         "aria-label": "breadcrumbs"
-      }, /* @__PURE__ */ a("ul", null, crumbs.map((crumb) => /* @__PURE__ */ a("li", {
-        key: crumb.text,
-        className: crumb.isActive ? "is-active" : ""
-      }, /* @__PURE__ */ a(link_default, {
-        href: crumb.path
-      }, crumb.text)))));
+      }, /* @__PURE__ */ a("ul", null, crumbs.map(({text, path: path2, isActive}) => /* @__PURE__ */ a("li", {
+        key: text,
+        className: isActive ? "is-active" : ""
+      }, isActive ? /* @__PURE__ */ a("span", null, text) : /* @__PURE__ */ a(link_default, {
+        href: path2
+      }, text)))));
     };
   }
 });
@@ -870,18 +870,17 @@ var init_center_layout = __esm({
       hasJavascript,
       isFullscreen,
       path,
-      children
-    }) => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("div", {
-      className: "container"
-    }, /* @__PURE__ */ a("div", {
-      className: "column is-8 is-offset-2"
+      children,
+      footer
+    }) => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("header", null, /* @__PURE__ */ a(breadcrumb_default, {
+      path
+    })), /* @__PURE__ */ a("div", {
+      className: "page-content"
     }, hasJavascript && /* @__PURE__ */ a("noscript", {
       key: "noscript"
-    }, "Some things might not work because Javascript is disabled, but you aren't missing out on much."), /* @__PURE__ */ a(breadcrumb_default, {
-      path
-    }), !isFullscreen && /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("div", {
+    }, "Interactive page elements might not work because Javascript is disabled"), !isFullscreen && /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("div", {
       className: "section titles-section"
-    }, title4, subtitle), children))), isFullscreen && children);
+    }, title4, subtitle), /* @__PURE__ */ a("main", null, children))), footer && /* @__PURE__ */ a("footer", null, footer), isFullscreen && children);
   }
 });
 
@@ -904,10 +903,10 @@ var init_about = __esm({
       }, "About"),
       path
     }, /* @__PURE__ */ a("div", {
-      className: "content is-medium"
+      className: "content"
     }, /* @__PURE__ */ a("p", null, /* @__PURE__ */ a(link_default, {
       href: "/"
-    }, "thesmartwon.com"), " started as a place for me to share topics with friends without having to repeat myself (plus they get to keep these notes). Now it's just a place for me to share my experiences with those who want a little more wisdom."), /* @__PURE__ */ a("h4", null, "Who am I?"), /* @__PURE__ */ a("p", null, "I'm an early college grad who's been programming since elementary school. I plan to rush to financial independence in less than 10 years so I can work on what I want instead of what my employers want. Some things I think are cool are", " ", /* @__PURE__ */ a(link_default, {
+    }, "thesmartwon.com"), " started as a place for me to share topics with friends without having to repeat myself (plus they get to keep these notes). Now it's just a place for me to share my experiences with those who want a little more wisdom."), /* @__PURE__ */ a("h2", null, "Who am I?"), /* @__PURE__ */ a("p", null, "I'm an early college grad who's been programming since elementary school. I plan to rush to financial independence in less than 10 years so I can work on what I want instead of what my employers want. Some things I think are cool are", " ", /* @__PURE__ */ a(link_default, {
       href: "https://polygon.io"
     }, "automated trading"), ", ", /* @__PURE__ */ a(link_default, {
       href: "http://wiki.sc2ai.net/Main_Page"
@@ -918,14 +917,6 @@ var init_about = __esm({
     }, "Zach Holman"), " on tech and its culture from California"), /* @__PURE__ */ a("li", null, /* @__PURE__ */ a(link_default, {
       href: "https://www.mrmoneymustache.com"
     }, "Mr. Money Mustache"), " on how to be frugal")))));
-  }
-});
-
-// src/pages/cup-of-hot-chocolate.svg
-var cup_of_hot_chocolate_default;
-var init_cup_of_hot_chocolate = __esm({
-  "src/pages/cup-of-hot-chocolate.svg"() {
-    cup_of_hot_chocolate_default = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0aD0iYXV0byIgaGVpZ2h0PSIxLjVyZW0iIHZpZXdCb3g9IjAgMCA0OS4yODQgNDkuMjg0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0OS4yODQgNDkuMjg0OyIKCSB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMzYuNTkxLDM5LjYwNmM4LjE1OC0wLjMyOCwxMS43ODQtNC4wNDEsMTEuNzg0LTguNTg1YzAtMy45NDctMi43MzktNy4yNjgtOC44MDYtOC4yODgKCQkJYzAuMDI3LTEuNDY4LDAuMDI5LTIuODg0LDAuMDI5LTQuMjA2SDAuOTA5YzAsOC42NDQsMC4wMSwyMS4yLDcuNzc2LDI3LjE5N2MtNC43MTMsMC4zNjEtNy43NzYsMC45MzUtNy43NzYsMS41ODEKCQkJYzAsMS4wOTQsOC42NjEsMS45NzksMTkuMzQ1LDEuOTc5czE5LjM0NC0wLjg4NSwxOS4zNDQtMS45NzljMC0wLjY0Ni0zLjA2My0xLjIyMS03Ljc3NS0xLjU4MQoJCQlDMzMuOTMxLDQ0LjA5NywzNS40NzIsNDEuOTkxLDM2LjU5MSwzOS42MDZ6IE0zOS40MjUsMjYuNDkyYzMuNDA0LDAuNzg5LDQuMDEyLDIuNDU4LDMuOTczLDQuNjE5CgkJCWMtMC4wNDMsMi40NTQtMC43NTQsNC4xMTUtNS40MDIsNC42ODdDMzguODM3LDMyLjgxMSwzOS4yMzUsMjkuNjA0LDM5LjQyNSwyNi40OTJ6IE01LjU3OSwyMS41MjdoNi4wNDgKCQkJYy0yLjcxMSw4LDEuODYzLDIwLjY1OCwxLjg2MiwyMC42NThDMy42MDEsMzQuNjA2LDUuNTc5LDIxLjUyNyw1LjU3OSwyMS41Mjd6Ii8+CgkJPHBhdGggZD0iTTIzLjQxOSwxMy4zMTNjMC43NjktNi45NjgsMTYuMTUzLTMuNDgyLDEyLjk0Ny0xMi41MjhjLTAuNDktMS4zODMtMi43MDUtMC43ODctMi4yMSwwLjYwOQoJCQlDMzUuNTYyLDUuMzYsMzAuMjIsNS44NDMsMjcuNSw2Ljc1MmMtMy4yNjcsMS4wOTItNS45NzEsMi45MTgtNi4zNzMsNi41NjFDMjAuOTY1LDE0Ljc4MSwyMy4yNTksMTQuNzY1LDIzLjQxOSwxMy4zMTN6Ii8+CgkJPHBhdGggZD0iTTM0LjMzOSw4LjQzN2MtMywwLjcwNy01Ljc0MiwxLjk5Mi02LjY3Nyw1LjE0NmMtMC40MjEsMS40MjEsMS43OTEsMi4wMjMsMi4yMSwwLjYwOQoJCQljMS4wMzItMy40ODMsNS42MDctMy41NDEsOC41MjgtNC4zODljMy4xMzctMC45MTEsNC45MzItMy4wODQsNC41MDEtNi40MmMtMC4xODgtMS40NDUtMi40OC0xLjQ2My0yLjI5MiwwCgkJCUM0MS4xMyw3LjQxNywzNy40MTgsNy43MSwzNC4zMzksOC40Mzd6Ii8+Cgk8L2c+CjwvZz4KPC9zdmc+Cg==";
   }
 });
 
@@ -992,7 +983,6 @@ var import_generated, posts, title3, pages_default;
 var init_pages = __esm({
   "src/pages/index.jsx"() {
     init_preact();
-    init_cup_of_hot_chocolate();
     init_center_layout();
     init_link();
     init_article_preview();
@@ -1008,22 +998,30 @@ var init_pages = __esm({
       }, "You've found my blog"),
       subtitle: /* @__PURE__ */ a("h2", {
         className: "subtitle is-4"
-      }, "Relax and have a good read! ", /* @__PURE__ */ a("img", {
-        src: cup_of_hot_chocolate_default,
-        alt: "Mug",
-        style: {height: "1.5rem"}
-      })),
-      path
-    }, /* @__PURE__ */ a("div", {
-      className: "content is-medium has-text-centered"
+      }, "Relax and have a good read!", /* @__PURE__ */ a("svg", {
+        className: "mug",
+        x: "0px",
+        y: "0px",
+        width: "auto",
+        height: "1.5rem",
+        viewBox: "0 0 49.284 49.284"
+      }, /* @__PURE__ */ a("g", null, /* @__PURE__ */ a("g", null, /* @__PURE__ */ a("path", {
+        d: "M36.591,39.606c8.158-0.328,11.784-4.041,11.784-8.585c0-3.947-2.739-7.268-8.806-8.288\n              c0.027-1.468,0.029-2.884,0.029-4.206H0.909c0,8.644,0.01,21.2,7.776,27.197c-4.713,0.361-7.776,0.935-7.776,1.581\n              c0,1.094,8.661,1.979,19.345,1.979s19.344-0.885,19.344-1.979c0-0.646-3.063-1.221-7.775-1.581\n              C33.931,44.097,35.472,41.991,36.591,39.606z M39.425,26.492c3.404,0.789,4.012,2.458,3.973,4.619\n              c-0.043,2.454-0.754,4.115-5.402,4.687C38.837,32.811,39.235,29.604,39.425,26.492z M5.579,21.527h6.048\n              c-2.711,8,1.863,20.658,1.862,20.658C3.601,34.606,5.579,21.527,5.579,21.527z"
+      }), /* @__PURE__ */ a("path", {
+        d: "M23.419,13.313c0.769-6.968,16.153-3.482,12.947-12.528c-0.49-1.383-2.705-0.787-2.21,0.609\n              C35.562,5.36,30.22,5.843,27.5,6.752c-3.267,1.092-5.971,2.918-6.373,6.561C20.965,14.781,23.259,14.765,23.419,13.313z"
+      }), /* @__PURE__ */ a("path", {
+        d: "M34.339,8.437c-3,0.707-5.742,1.992-6.677,5.146c-0.421,1.421,1.791,2.023,2.21,0.609\n              c1.032-3.483,5.607-3.541,8.528-4.389c3.137-0.911,4.932-3.084,4.501-6.42c-0.188-1.445-2.48-1.463-2.292,0\n              C41.13,7.417,37.418,7.71,34.339,8.437z"
+      }))))),
+      path,
+      footer: /* @__PURE__ */ a(link_default, {
+        href: "/posts"
+      }, "View all posts")
     }, /* @__PURE__ */ a("ul", {
       className: "article-list"
     }, Object.entries(posts).sort(([_3, p1], [__, p22]) => p22.dateShort.localeCompare(p1.dateShort)).slice(0, 5).map(([slug, post]) => /* @__PURE__ */ a(ArticlePreview, {
       path: slug,
       ...post
-    }))), /* @__PURE__ */ a(link_default, {
-      href: "/posts"
-    }, "View all posts")));
+    }))));
   }
 });
 
@@ -1178,14 +1176,12 @@ var init_postIndex = __esm({
           className: "subtitle is-4"
         }, subtitle),
         path
-      }, /* @__PURE__ */ a("div", {
-        className: "content is-medium has-text-centered"
       }, /* @__PURE__ */ a("ul", {
         className: "article-list"
       }, Object.entries(import_generated2.default).filter(([slug, props]) => slug.startsWith(path) && props.timeToRead).sort(([_3, p1], [__, p22]) => p22.dateShort.localeCompare(p1.dateShort)).map(([slug, post]) => /* @__PURE__ */ a(ArticlePreview, {
         path: slug,
         ...post
-      })))));
+      }))));
     };
   }
 });
@@ -1539,7 +1535,6 @@ KiB Swap: 31998972 total, 31998972 free,        0 used. 12522024 avail Mem
     }, `> ls /usr/bin | less`)), /* @__PURE__ */ a("p", null, "You can look up the manual page for commands using ", /* @__PURE__ */ a("code", null, `man`), " to learn all about them."), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", {
       class: "language-bash"
     }, `> man ls
-LS(1)                                                                    User Commands                                                                    LS(1)
 
 NAME
        ls - list directory contents
@@ -1572,11 +1567,7 @@ var index_md_default3;
 var init_index_md3 = __esm({
   "src/generated/posts/coding/this-site/v1/index.md.jsx"() {
     init_preact();
-    index_md_default3 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("div", {
-      class: "notification is-info"
-    }, /* @__PURE__ */ a("p", null, "  ", /* @__PURE__ */ a("a", {
-      href: "../this-site-2"
-    }, "A newer version of this article"), " is available.")), /* @__PURE__ */ a("p", null, "You probably don't notice, but this site is nearly as fast as it can possibly be! I did that because I value your data bill and places which are just now getting emerging internet. I'm also a minimalist."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
+    index_md_default3 = () => /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("p", null, "You probably don't notice, but this site is nearly as fast as it can possibly be! I did that because I value your data bill and places which are just now getting emerging internet. I'm also a minimalist."), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("img", {
       src: "./road-runner.jpg",
       alt: "Road runner"
     }), /* @__PURE__ */ a("figcaption", null, "This is exactly how my site gets delivered to you.")), /* @__PURE__ */ a("p", null, "I didn't want to make any compromises on my developer experience, though. Writing should be fun and easy (this is a creative outlet, after all!) and deployment should only take one click. That was my main gripe with my the last version of this site."), /* @__PURE__ */ a("p", null, "Enter ", /* @__PURE__ */ a("a", {
@@ -2067,10 +2058,10 @@ esbuild.build({
   }
 });
 
-// src/helpers/retire.js
+// posts/money/early-retirement/helpers.js
 var min, max, fedTaxRate, fedTaxBrackets, standardDeductions, calcFedTax, calcStateTax, addValues, projectRetirement;
-var init_retire = __esm({
-  "src/helpers/retire.js"() {
+var init_helpers = __esm({
+  "posts/money/early-retirement/helpers.js"() {
     min = (a3, b2) => a3 > b2 ? b2 : a3;
     max = (a3, b2) => a3 > b2 ? a3 : b2;
     fedTaxRate = [0.1, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37];
@@ -2141,7 +2132,7 @@ var init_retirement_calc = __esm({
   "posts/money/early-retirement/retirement-calc.jsx"() {
     init_preact();
     init_link();
-    init_retire();
+    init_helpers();
     RetirementCalc = class extends p {
       constructor(props) {
         super(props);
@@ -2188,13 +2179,13 @@ var init_retirement_calc = __esm({
         const tabs = [
           {num: 1, caption: "Income"},
           {num: 2, caption: "Contributions"},
-          {num: 3, caption: "Initial balances"},
+          {num: 3, caption: "Balances"},
           {num: 4, caption: "Assumptions"}
         ];
         return /* @__PURE__ */ a("div", {
           id: "retirementCalc"
         }, /* @__PURE__ */ a("div", {
-          className: "tabs is-centered is-boxed"
+          className: "tabs"
         }, /* @__PURE__ */ a("ul", null, tabs.map((tab) => /* @__PURE__ */ a("li", {
           key: tab.num,
           className: this.state.tabShown === tab.num ? "is-active" : ""
@@ -2204,12 +2195,9 @@ var init_retirement_calc = __esm({
           className: "field-body"
         }, /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "Income"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Income"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-success",
           type: "number",
           step: "1000",
           value: this.state.income,
@@ -2218,12 +2206,9 @@ var init_retirement_calc = __esm({
           className: "help"
         }, "Your salary")), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "Expenses"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Expenses"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-danger",
           type: "number",
           step: "100",
           value: this.state.expenses,
@@ -2232,9 +2217,7 @@ var init_retirement_calc = __esm({
           className: "help"
         }, "This is the most important variable")), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "Status"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Status"), /* @__PURE__ */ a("div", {
           className: "control select is-warning"
         }, /* @__PURE__ */ a("select", {
           onChange: (event) => this.setState({status: event.target.value}),
@@ -2248,12 +2231,10 @@ var init_retirement_calc = __esm({
           className: "field-body"
         }, /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "HSA"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "HSA"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.desiredContributions.hsa,
@@ -2264,12 +2245,10 @@ var init_retirement_calc = __esm({
           className: "field is-grouped"
         }, /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "401k"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "401k"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.desiredContributions.k401,
@@ -2278,29 +2257,25 @@ var init_retirement_calc = __esm({
           className: "help"
         }, "Desired 401k contribution")), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "401k Match"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Match"), /* @__PURE__ */ a("div", {
           className: "control has-icons-right",
           style: {width: "7rem"}
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "1",
           value: this.state.k401match,
           onChange: (event) => this.setState({k401match: Number(event.target.value)})
         }), /* @__PURE__ */ a("span", {
-          className: "icon is-right is-centered"
-        }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+          className: "icon is-right"
+        }, "%")), /* @__PURE__ */ a("p", {
           className: "help"
-        }, "Employer's match"))), /* @__PURE__ */ a("div", {
+        }, "Employer's 401k match"))), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "IRA"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "IRA"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.desiredContributions.ira,
@@ -2311,12 +2286,10 @@ var init_retirement_calc = __esm({
           className: "field-body"
         }, /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "HSA"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "HSA"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.initialBalances.hsa,
@@ -2325,12 +2298,10 @@ var init_retirement_calc = __esm({
           className: "help"
         }, "Initial HSA balance")), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "401k"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "401k"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.initialBalances.k401,
@@ -2339,12 +2310,10 @@ var init_retirement_calc = __esm({
           className: "help"
         }, "Initial 401k balance")), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "IRA"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "IRA"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.initialBalances.ira,
@@ -2353,12 +2322,10 @@ var init_retirement_calc = __esm({
           className: "help"
         }, "Initial IRA balance")), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "After tax"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "After tax"), /* @__PURE__ */ a("div", {
           className: "control"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "100",
           value: this.state.initialBalances.afterTax,
@@ -2369,37 +2336,33 @@ var init_retirement_calc = __esm({
           className: "field-body"
         }, /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "Safe Withdrawal Rate"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Safe Withdrawal Rate"), /* @__PURE__ */ a("div", {
           className: "control has-icons-right"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "0.25",
           value: this.state.safeWithdrawal,
           onChange: (event) => this.setState({safeWithdrawal: Number(event.target.value)})
         }), /* @__PURE__ */ a("span", {
-          className: "icon is-right is-centered"
-        }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+          className: "icon is-right"
+        }, "%")), /* @__PURE__ */ a("p", {
           className: "help"
         }, /* @__PURE__ */ a(link_default, {
           href: "https://www.madfientist.com/safe-withdrawal-rate/"
         }, "Nest Egg * Safe Withdrawal > Expenses"))), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "Effective Growth Rate"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Effective Growth Rate"), /* @__PURE__ */ a("div", {
           className: "control has-icons-right"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "0.5",
           value: this.state.effectiveGrowth,
           onChange: (event) => this.setState({effectiveGrowth: Number(event.target.value)})
         }), /* @__PURE__ */ a("span", {
-          className: "icon is-right is-centered"
-        }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+          className: "icon is-right"
+        }, "%")), /* @__PURE__ */ a("p", {
           className: "help"
         }, /* @__PURE__ */ a(link_default, {
           href: "https://www.investopedia.com/ask/answers/042415/what-average-annual-return-sp-500.asp"
@@ -2407,19 +2370,17 @@ var init_retirement_calc = __esm({
           href: "https://tradingeconomics.com/united-states/inflation-cpi"
         }, " Inflation"))), /* @__PURE__ */ a("div", {
           className: "field"
-        }, /* @__PURE__ */ a("label", {
-          className: "label"
-        }, "Raise Rate"), /* @__PURE__ */ a("div", {
+        }, /* @__PURE__ */ a("label", null, "Raise Rate"), /* @__PURE__ */ a("div", {
           className: "control has-icons-right"
         }, /* @__PURE__ */ a("input", {
-          className: "input is-primary",
+          className: "input",
           type: "number",
           step: "0.5",
           value: this.state.raise,
           onChange: (event) => this.setState({raise: Number(event.target.value)})
         }), /* @__PURE__ */ a("span", {
-          className: "icon is-right is-centered"
-        }, /* @__PURE__ */ a("i", null, "%"))), /* @__PURE__ */ a("p", {
+          className: "icon is-right"
+        }, "%")), /* @__PURE__ */ a("p", {
           className: "help"
         }, "How fast you progress in your career"))), /* @__PURE__ */ a("hr", null), /* @__PURE__ */ a("table", {
           className: "table is-narrow is-fullwidth is-striped"
@@ -2572,27 +2533,133 @@ var init_index_md7 = __esm({
       align: "left"
     }, "Date"), /* @__PURE__ */ a("th", {
       align: "right"
-    }, "Dip %")))), /* @__PURE__ */ a("pre", null, /* @__PURE__ */ a("code", null, `     1 | 1987-10-19 | 22.61
-     2 | 1987-10-26 |  8.03
-     3 | 1988-01-08 |  6.85
-     4 | 1989-10-13 |  6.90
-     5 | 1997-10-27 |  7.18
-     6 | 1998-08-31 |  6.36
-     7 | 2000-04-14 |  5.65
-     8 | 2001-09-17 |  7.12
-     9 | 2008-09-29 |  6.97
-    10 | 2008-10-07 |  5.10
-    11 | 2008-10-09 |  7.33
-    12 | 2008-10-15 |  7.87
-    13 | 2008-10-22 |  5.69
-    14 | 2008-11-05 |  5.04
-    15 | 2008-11-19 |  5.07
-    16 | 2008-11-20 |  5.56
-    17 | 2008-12-01 |  7.70
-    18 | 2011-08-08 |  5.54
-    19 | 2020-03-09 |  7.78
-    20 | 2020-03-11 |  5.85
-    21 | 2020-03-12 |  9.98`)), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("a", {
+    }, "Dip %"))), /* @__PURE__ */ a("tbody", null, /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1987-10-19"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "22.61")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1987-10-26"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "8.03")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "3"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1988-01-08"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "6.85")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "4"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1989-10-13"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "6.90")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "5"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1997-10-27"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "7.18")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "6"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "1998-08-31"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "6.36")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "7"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2000-04-14"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.65")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "8"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2001-09-17"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "7.12")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "9"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-09-29"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "6.97")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "10"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-10-07"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.10")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "11"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-10-09"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "7.33")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "12"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-10-15"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "7.87")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "13"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-10-22"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.69")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "14"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-11-05"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.04")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "15"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-11-19"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.07")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "16"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-11-20"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.56")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "17"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2008-12-01"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "7.70")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "18"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2011-08-08"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.54")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "19"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2020-03-09"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "7.78")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "20"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2020-03-11"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "5.85")), /* @__PURE__ */ a("tr", null, /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "21"), /* @__PURE__ */ a("td", {
+      align: "left"
+    }, "2020-03-12"), /* @__PURE__ */ a("td", {
+      align: "right"
+    }, "9.98")))), /* @__PURE__ */ a("figure", null, /* @__PURE__ */ a("a", {
       href: "dow-dips.html"
     }, /* @__PURE__ */ a("img", {
       src: "dow-dips.png",
@@ -3357,7 +3424,7 @@ var require_generated = __commonJS({
         "dateLong": "July 21, 2019",
         "dateShort": "2019-07-21",
         "jsFileNames": [
-          "part-1.ABS577ID.js"
+          "part-1.C2ORLDUF.js"
         ]
       },
       "/posts/coding/canvas-game-engine/": {
@@ -3378,7 +3445,7 @@ var require_generated = __commonJS({
         "dateLong": "August 7, 2019",
         "dateShort": "2019-08-07",
         "jsFileNames": [
-          "part-2.N2Y2HK67.js"
+          "part-2.MDHX27SZ.js"
         ]
       },
       "/posts/coding/command-line/": {
@@ -3392,7 +3459,7 @@ var require_generated = __commonJS({
       "/posts/coding/this-site/v1/": {
         Component: () => (init_index_md3(), index_md_exports3),
         "title": "How v1 of this Site was Built",
-        "excerpt": "A newer version of this article is available. You probably don't notice, but this site is nearly as fast as it can possibly be!",
+        "excerpt": "You probably don't notice, but this site is nearly as fast as it can possibly be!",
         "timeToRead": 2,
         "dateLong": "May 12, 2019",
         "dateShort": "2019-05-12"
@@ -3410,7 +3477,7 @@ var require_generated = __commonJS({
         "dateLong": "August 9, 2019",
         "dateShort": "2019-08-09",
         "jsFileNames": [
-          "index.DMYWRFL7.js"
+          "index.ASHPYIEQ.js"
         ]
       },
       "/posts/coding/this-site/v3/": {
@@ -3429,7 +3496,7 @@ var require_generated = __commonJS({
         "dateLong": "December 18, 2018",
         "dateShort": "2018-12-18",
         "jsFileNames": [
-          "index.EF77GDJ7.js"
+          "index.2GZCWTI7.js"
         ]
       },
       "/posts/money/": {
@@ -3736,23 +3803,22 @@ var PostTemplate = ({
     className: "title is-2"
   }, title4),
   subtitle: /* @__PURE__ */ a("span", {
-    className: "has-text-grey"
+    className: "time-to-read"
   }, /* @__PURE__ */ a("time", {
     dateTime: dateShort
   }, dateLong), " \xB7 ", timeToRead, " min read"),
   hasJavascript,
   isFullscreen,
-  path
+  path,
+  footer: /* @__PURE__ */ a(y, null, /* @__PURE__ */ a(link_default, {
+    href: "#"
+  }, "Back to top"), " / ", /* @__PURE__ */ a(link_default, {
+    href: "/posts/"
+  }, "View all posts"))
 }, isFullscreen ? children : /* @__PURE__ */ a(y, null, /* @__PURE__ */ a("div", {
   id: "content",
-  className: "content is-medium"
-}, children), /* @__PURE__ */ a("div", {
-  className: "has-text-centered"
-}, /* @__PURE__ */ a(link_default, {
-  href: "#"
-}, "Back to top"), " / ", /* @__PURE__ */ a(link_default, {
-  href: "/posts/"
-}, "View all posts"))));
+  className: "content"
+}, children)));
 var renderPost = ({
   path,
   title: title4,
