@@ -3424,7 +3424,7 @@ var require_generated = __commonJS({
         "dateLong": "July 21, 2019",
         "dateShort": "2019-07-21",
         "jsFileNames": [
-          "part-1.C2ORLDUF.js"
+          "part-1.5PVEFVZW.js"
         ]
       },
       "/posts/coding/canvas-game-engine/": {
@@ -3445,7 +3445,7 @@ var require_generated = __commonJS({
         "dateLong": "August 7, 2019",
         "dateShort": "2019-08-07",
         "jsFileNames": [
-          "part-2.MDHX27SZ.js"
+          "part-2.FIIBLTUI.js"
         ]
       },
       "/posts/coding/command-line/": {
@@ -3477,7 +3477,7 @@ var require_generated = __commonJS({
         "dateLong": "August 9, 2019",
         "dateShort": "2019-08-09",
         "jsFileNames": [
-          "index.ASHPYIEQ.js"
+          "index.ZSU2QRHC.js"
         ]
       },
       "/posts/coding/this-site/v3/": {
@@ -3496,7 +3496,7 @@ var require_generated = __commonJS({
         "dateLong": "December 18, 2018",
         "dateShort": "2018-12-18",
         "jsFileNames": [
-          "index.2GZCWTI7.js"
+          "index.I7GUMFKY.js"
         ]
       },
       "/posts/money/": {
@@ -3750,6 +3750,9 @@ var HTML = ({
 }), /* @__PURE__ */ a("meta", {
   name: "viewport",
   content: "width=device-width, initial-scale=1"
+}), /* @__PURE__ */ a("meta", {
+  name: "color-scheme",
+  content: "dark light"
 }), excerpt && /* @__PURE__ */ a("meta", {
   name: "description",
   content: excerpt
