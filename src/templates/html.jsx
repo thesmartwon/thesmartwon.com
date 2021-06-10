@@ -11,6 +11,7 @@ export const HTML = ({
 		<head>
 			<meta charset="UTF-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="color-scheme" content="dark light" />
 			{excerpt && <meta name="description" content={excerpt}></meta>}
 			<title>{title || 'thesmartwon.com'}</title>
       {/* https://varvy.com/pagespeed/render-blocking-css.html */}
