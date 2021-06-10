@@ -22,7 +22,7 @@ export default ({ path }) => (
     subtitle={
       <h2 className="subtitle is-4">
         Relax and have a good read!
-        <svg className="mug" x="0px" y="0px" width="auto" height="1.5rem" viewBox="0 0 49.284 49.284">
+        <svg className="mug" x="0px" y="0px" width="100%" height="1.5rem" viewBox="0 0 49.284 49.284">
         <g>
           <g>
             <path d="M36.591,39.606c8.158-0.328,11.784-4.041,11.784-8.585c0-3.947-2.739-7.268-8.806-8.288
