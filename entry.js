@@ -1002,7 +1002,7 @@ var init_pages = __esm({
         className: "mug",
         x: "0px",
         y: "0px",
-        width: "auto",
+        width: "100%",
         height: "1.5rem",
         viewBox: "0 0 49.284 49.284"
       }, /* @__PURE__ */ a("g", null, /* @__PURE__ */ a("g", null, /* @__PURE__ */ a("path", {
