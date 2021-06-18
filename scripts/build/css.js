@@ -8,7 +8,7 @@ function css() {
   const start = process.hrtime()
   try {
     const css = sass.renderSync({
-      file: 'src/main.sass', 
+      file: paths.styleFile, 
       outputStyle: 'compressed',
     })
 

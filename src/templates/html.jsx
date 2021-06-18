@@ -3,7 +3,7 @@ import { h } from 'preact';
 export const HTML = ({
 	children,
 	title,
-	cssFileNames = [],
+	cssFileName,
 	jsFileNames = [],
 	excerpt
 }) => (
@@ -15,9 +15,7 @@ export const HTML = ({
 			{excerpt && <meta name="description" content={excerpt}></meta>}
 			<title>{title || 'thesmartwon.com'}</title>
       {/* https://varvy.com/pagespeed/render-blocking-css.html */}
-			{cssFileNames.map(fileName =>
-				<link rel="stylesheet" type="text/css" href={fileName} />
-			)}
+			{cssFileName && <link rel="stylesheet" type="text/css" href={cssFileName} />}
 			<link rel="shortcut icon" href="/favicon.png" />
 			<link rel="manifest" href="/manifest.webmanifest" />
 			<link rel="alternate" type="application/rss+xml" title="The Smart Blog • Feed" href="/feed" />

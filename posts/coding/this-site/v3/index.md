@@ -140,7 +140,7 @@ esbuild.build({
         return
       }
       // TODO: render only changed post + pages
-      render({ cssFileNames })
+      render({ cssFileName })
       clients.forEach(res => res.write('data: update'))
       clients.length = 0
     },

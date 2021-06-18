@@ -13,7 +13,7 @@ function register(path, listener) {
   watch(path, { ignoreInitial: true }).on('all', listener)
 }
 
-let cssFileNames = build()
+const cssFileName = build()
 console.log('watching for changes')
 // TODO: sass graph
 register('src/**/*.sass', () => {
@@ -48,7 +48,7 @@ esbuild.build({
         return
       }
       // TODO: find out way to render only changed post + pages
-      render({ cssFileNames })
+      render({ cssFileName })
       clients.forEach(res => res.write('data: update\n\n'))
       clients.length = 0
     },

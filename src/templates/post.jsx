@@ -46,7 +46,7 @@ export const renderPost = ({
   path,
   title,
   excerpt,
-  cssFileNames,
+  cssFileName,
   jsFileNames,
   dateShort,
   dateLong,
@@ -57,7 +57,7 @@ export const renderPost = ({
 	<HTML
     title={title}
     excerpt={excerpt}
-		cssFileNames={cssFileNames}
+		cssFileName={cssFileName}
 		jsFileNames={jsFileNames}
   >
 		<PostTemplate

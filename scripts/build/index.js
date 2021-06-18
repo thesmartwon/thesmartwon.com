@@ -7,10 +7,10 @@ const { clean } = require('../clean')
 function build() {
   clean()
   copy()
-  const cssFileNames = [css()]
+  const cssFileName = css()
   source()
-  render({ cssFileNames })
-  return cssFileNames
+  render({ cssFileName })
+  return cssFileName
 }
 
 if (require.main === module) build()

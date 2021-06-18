@@ -9,8 +9,10 @@ I also want to write my posts in [MDX](https://mdxjs.com/) and include some fron
 them to my React templates for index pages that show all posts.
 
 ### What it does
-- Scan src/pages for pages to render
-- Scan src/content for content to render according to a template
+- Scan postsDir for pages to render
+- Scan pagesDir for content to render according to a template
 	- Gather metadata for pages (title, date, JS enabled, `<head>` content)
-- Render a single CSS sheet using sass
-- ESBuild to bundle JS
+	- Use ESBuild to bundle JS
+- Renders pages using ESBuild and preact-render-to-string
+- Render a single CSS stylesheet using sass
+- Copies staticDir to outdir

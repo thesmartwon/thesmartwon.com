@@ -13,13 +13,13 @@ const esbuildConfigSSR = {
   ...esbuildConfig
 }
 
-function renderPage({ slug, props, cssFileNames, entryFile }) {
+function renderPageOrPost({ slug, props, cssFileName, entryFile }) {
   const { App, renderPost, renderPage } = require(entryFile)
   const outFile = path.join(paths.outdir, slug, 'index.html')
   fs.mkdirSync(path.dirname(outFile), { recursive: true })
   global.location = { pathname: slug }
   props.children = h(App)
-  props.cssFileNames = cssFileNames
+  props.cssFileName = cssFileName
   props.path = slug
   let html
   if (props.timeToRead) {
@@ -31,7 +31,7 @@ function renderPage({ slug, props, cssFileNames, entryFile }) {
   fs.writeFileSync(outFile, html)
 }
 
-function render({ cssFileNames }) {
+function render({ cssFileName }) {
   const start = process.hrtime()
   console.log('[render] start')
   const { metafile } = esbuild.buildSync(esbuildConfigSSR)
@@ -42,7 +42,7 @@ function render({ cssFileNames }) {
 
   const index = require(generatedIndex)
   Object.entries(index).forEach(([slug, props]) =>
-    renderPage({ slug, props, cssFileNames, entryFile })
+    renderPageOrPost({ slug, props, cssFileName, entryFile })
   )
   rss(index)
 
@@ -52,7 +52,6 @@ function render({ cssFileNames }) {
 
 module.exports = {
   render,
-  renderPage,
   esbuildConfigSSR
 }
 

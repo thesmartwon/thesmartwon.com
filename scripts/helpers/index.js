@@ -8,6 +8,7 @@ const paths = {
   pagesDir: 'src/pages',
   staticDir: 'static',
   generatedDir: 'src/generated',
+  styleFile: 'src/styles/main.sass'
 }
 
 const slugify = p => p

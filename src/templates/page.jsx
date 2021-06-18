@@ -4,9 +4,9 @@ import { HTML } from './html'
 
 export const renderPage = ({
 	title,
-	cssFileNames = [], 
+	cssFileName, 
 	children,
 }) => '<!DOCTYPE html>' + render(
-	<HTML title={title} cssFileNames={cssFileNames}>
+	<HTML title={title} cssFileName={cssFileName}>
     {children}
 	</HTML>)
