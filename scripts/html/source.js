@@ -1,7 +1,7 @@
 const { slugify, paths, walk } = require('../helpers/index')
 const { capitalize } = require('../../src/helpers/capitalize')
 const { js } = require('../build/js')
-const indexTitles = require('../../src/components/postIndex/titles')
+const indexTitles = require('../../src/components/post-index/titles')
 const fs = require('fs')
 const path = require('path')
 const marked = require('marked')
@@ -142,7 +142,7 @@ ${html}
     const indexSlug = '/' + split.join('/') + '/'
     const title = split[split.length - 1].replace(/-/g, ' ')
     index[indexSlug] = {
-      destFile: path.resolve(__dirname, '../../src/components/postIndex'),
+      destFile: path.resolve(__dirname, '../../src/components/post-index'),
       frontmatter: {
         title: capitalize(title) + (title.includes('posts') ? '' : ' posts'),
         subtitle: indexTitles[indexSlug] || '[Insert sassy comment here]',
