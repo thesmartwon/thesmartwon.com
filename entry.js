@@ -1154,19 +1154,19 @@ var init_index_md = __esm({
   }
 });
 
-// src/components/postIndex/index.jsx
-var postIndex_exports = {};
-__export(postIndex_exports, {
-  default: () => postIndex_default
+// src/components/post-index/index.jsx
+var post_index_exports = {};
+__export(post_index_exports, {
+  default: () => post_index_default
 });
-var import_generated2, postIndex_default;
-var init_postIndex = __esm({
-  "src/components/postIndex/index.jsx"() {
+var import_generated2, post_index_default;
+var init_post_index = __esm({
+  "src/components/post-index/index.jsx"() {
     init_preact();
     init_center_layout();
     init_article_preview();
     import_generated2 = __toModule(require_generated());
-    postIndex_default = ({path}) => {
+    post_index_default = ({path}) => {
       const {title: title4, subtitle} = import_generated2.default[path];
       return /* @__PURE__ */ a(center_layout_default, {
         title: /* @__PURE__ */ a("h1", {
@@ -2047,7 +2047,7 @@ esbuild.build({
         return
       }
       // TODO: render only changed post + pages
-      render({ cssFileNames })
+      render({ cssFileName })
       clients.forEach(res => res.write('data: update'))
       clients.length = 0
     },
@@ -3407,12 +3407,12 @@ var require_generated = __commonJS({
         "dateShort": "2018-01-10"
       },
       "/posts/bikes/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "Bikes posts",
         "subtitle": "Bikes are fun. Biking is fun."
       },
       "/posts/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "Posts",
         "subtitle": "I hope something tickles your fancy"
       },
@@ -3428,12 +3428,12 @@ var require_generated = __commonJS({
         ]
       },
       "/posts/coding/canvas-game-engine/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "Canvas game engine posts",
         "subtitle": "Posts about a toy canvas game engine"
       },
       "/posts/coding/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "Coding posts",
         "subtitle": "Beep boop. Coding is like Legos. Move one lego and it all falls apart. But if you leave it alone, it's magnificant."
       },
@@ -3465,7 +3465,7 @@ var require_generated = __commonJS({
         "dateShort": "2019-05-12"
       },
       "/posts/coding/this-site/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "This site posts",
         "subtitle": "Handmade with lots of \u2764\uFE0F"
       },
@@ -3500,7 +3500,7 @@ var require_generated = __commonJS({
         ]
       },
       "/posts/money/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "Money posts",
         "subtitle": "Time is money, friend"
       },
@@ -3529,7 +3529,7 @@ var require_generated = __commonJS({
         "dateShort": "2017-10-30"
       },
       "/posts/school/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "School posts",
         "subtitle": "School sucks"
       },
@@ -3542,7 +3542,7 @@ var require_generated = __commonJS({
         "dateShort": "2020-02-02"
       },
       "/posts/work/": {
-        Component: () => (init_postIndex(), postIndex_exports),
+        Component: () => (init_post_index(), post_index_exports),
         "title": "Work posts",
         "subtitle": "Work sucks less than school"
       }
@@ -3740,7 +3740,7 @@ init_preact();
 var HTML = ({
   children,
   title: title4,
-  cssFileNames = [],
+  cssFileName,
   jsFileNames = [],
   excerpt
 }) => /* @__PURE__ */ a("html", {
@@ -3756,11 +3756,11 @@ var HTML = ({
 }), excerpt && /* @__PURE__ */ a("meta", {
   name: "description",
   content: excerpt
-}), /* @__PURE__ */ a("title", null, title4 || "thesmartwon.com"), cssFileNames.map((fileName) => /* @__PURE__ */ a("link", {
+}), /* @__PURE__ */ a("title", null, title4 || "thesmartwon.com"), cssFileName && /* @__PURE__ */ a("link", {
   rel: "stylesheet",
   type: "text/css",
-  href: fileName
-})), /* @__PURE__ */ a("link", {
+  href: cssFileName
+}), /* @__PURE__ */ a("link", {
   rel: "shortcut icon",
   href: "/favicon.png"
 }), /* @__PURE__ */ a("link", {
@@ -3781,11 +3781,11 @@ var HTML = ({
 // src/templates/page.jsx
 var renderPage = ({
   title: title4,
-  cssFileNames = [],
+  cssFileName,
   children
 }) => "<!DOCTYPE html>" + dist_default(/* @__PURE__ */ a(HTML, {
   title: title4,
-  cssFileNames
+  cssFileName
 }, children));
 
 // src/templates/post.jsx
@@ -3826,7 +3826,7 @@ var renderPost = ({
   path,
   title: title4,
   excerpt,
-  cssFileNames,
+  cssFileName,
   jsFileNames,
   dateShort,
   dateLong,
@@ -3836,7 +3836,7 @@ var renderPost = ({
 }) => "<!DOCTYPE html>\n" + dist_default(/* @__PURE__ */ a(HTML, {
   title: title4,
   excerpt,
-  cssFileNames,
+  cssFileName,
   jsFileNames
 }, /* @__PURE__ */ a(PostTemplate, {
   path,
