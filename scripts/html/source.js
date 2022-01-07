@@ -75,6 +75,9 @@ function post(file) {
 
       return false
     },
+    text(src) {
+      return src.replace(/\n/g, ' ')
+    },
     html: addFullText,
     codespan(src) {
       return '<code>' + highlight(src).replace(/&gt;/g, '>').replace(/&lt;/g, '<') + '</code>'

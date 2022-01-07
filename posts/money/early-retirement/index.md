@@ -90,7 +90,7 @@ Money put into the account is not tax-deffered, and gains are taxed as income.
 However, withdrawals have no penalty or restrictions (except for what your brokerage states)!
 
 # Conclusion
-If you want more control over the numbers, you can play around with [an (incomplete) Python script I wrote](https://gist.github.com/thesmartwon/acab1443532c03f27accc04c254355f1) or the [source code for the calculator on the page](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/helpers/retire.js) . I hope you realize retirement is closer than you think!
+If you want more control over the numbers, you can play around with [an (incomplete) Python script I wrote](https://gist.github.com/thesmartwon/acab1443532c03f27accc04c254355f1) or the [source code for the calculator on the page.](https://github.com/thesmartwon/thesmartwon.com/blob/master/src/helpers/retire.js) I hope you realize retirement is closer than you think!
 
 Remember, your mileage may vary!
 <figure>
