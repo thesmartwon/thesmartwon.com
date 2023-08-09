@@ -88,7 +88,7 @@ And an `index.html` template.
 		</canvas>
 	</body>
 </html>
-``` 
+```
 
 Add some scripts to pull up your webserver to your `package.json`:
 

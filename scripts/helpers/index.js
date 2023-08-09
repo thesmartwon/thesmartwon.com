@@ -8,13 +8,12 @@ const paths = {
   pagesDir: 'src/pages',
   staticDir: 'static',
   generatedDir: 'src/generated',
-  styleFile: 'src/styles/main.sass'
 }
 
 const slugify = p => p
 	.replace(/\\/g, '/')
   .replace(/\/\//g, '/')
-	.replace('/index', '/')
+	.replace('/index', '')
   .replace(/^([^\/])/, (_, match) => '/' + match)
 	.replace('.md', '')
 	.replace('.jsx', '')

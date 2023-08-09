@@ -1,5 +1,4 @@
 const { build } = require('./build')
-const { css } = require('./build/css')
 const { copy } = require('./build/copy')
 const { post, index, writeIndex } = require('./html/source')
 const { render, esbuildConfigSSR } = require('./html/render')
@@ -15,12 +14,6 @@ function register(path, listener) {
 
 const cssFileName = build()
 console.log('watching for changes')
-// TODO: sass graph
-register('src/**/*.sass', () => {
-  css()
-  clients.forEach(res => res.write('data: update\n\n'))
-  clients.length = 0
-})
 register('posts/**/*.{jpg,jpeg,gif,svg,png}', copy) // TODO: copy only what changes
 register('posts/**/*.{md,js,jsx}', (ev, file) => {
   console.log('[watch]', ev, file)

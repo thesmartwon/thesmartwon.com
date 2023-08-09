@@ -148,9 +148,9 @@ But when the delayed strategy works, it's _really_ the better strategy to use by
 
 |Horizon | Mean naive | Mean delayed
 |--------| ----------:|------------:
-|1 year  |      15.05 |       11.01 
+|1 year  |      15.05 |       11.01
 |5 year  |      63.22 |       57.80
-|10 year |      193.0 |       182.8 
+|10 year |      193.0 |       182.8
 
 As you can see, these differences are so miniscule that timing the market doesn't really matter for people looking to invest over long time horizons.
 

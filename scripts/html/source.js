@@ -4,7 +4,7 @@ const { js } = require('../build/js')
 const indexTitles = require('../../src/components/post-index/titles')
 const fs = require('fs')
 const path = require('path')
-const marked = require('marked')
+const { marked } = require('marked')
 const yaml = require('js-yaml')
 
 function getWordCount(text) {
@@ -15,7 +15,7 @@ function getWordCount(text) {
 function splitFrontmatter(file) {
   let contents = fs.readFileSync(file, 'utf8')
   const frontmatterRegex = /---/g;
-  const start = frontmatterRegex.exec(contents) 
+  const start = frontmatterRegex.exec(contents)
   const end = frontmatterRegex.exec(contents)
 
   if (!start || !end) {
@@ -84,7 +84,7 @@ function post(file) {
     }
   }
 
-  marked.use({ renderer })
+  marked.use({ renderer, mangle: false, headerIds: false, })
   marked.setOptions({ highlight })
   const html = marked(contents)
   const jsx = `${imports.join('\n')}

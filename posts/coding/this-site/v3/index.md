@@ -3,7 +3,7 @@ title: How this Site will Always be Built
 date: 2021-05-12
 ---
 
-After getting nagged with [6 dependabot security vulnerabilities](https://github.com/thesmartwon/thesmartwon.com/pulls?q=is%3Apr+author%3Aapp%2Fdependabot) (which weren't actually vulnerabilities) I figured it was finally time to dust off this site and give it some love. 
+After getting nagged with [6 dependabot security vulnerabilities](https://github.com/thesmartwon/thesmartwon.com/pulls?q=is%3Apr+author%3Aapp%2Fdependabot) (which weren't actually vulnerabilities) I figured it was finally time to dust off this site and give it some love.
 
 ## What I really really want
 - Write blog posts in MD which are rendered to HTML
@@ -31,7 +31,7 @@ v2 of this site had [too many dependencies](https://github.com/thesmartwon/thesm
 ## The perfect system
 <figure>
   <img src="perfect-system.jpg" alt="Clu asking to create perfect system" />
-  <figcaption>Am I still to create the perfect system? [Tron]</figcaption>
+  <figcaption>Am I still to create the perfect system? [Tron Legacy]</figcaption>
 </figure>
 
 I decided the perfect blog build system has just 3 tasks:
